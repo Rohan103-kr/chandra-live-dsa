@@ -1,0 +1,3375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mission Chandra-Live · Striver A2Z DSA Sheet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --surface-elevated: #ffffff;
+      --border: #e2e8f0;
+      --border-subtle: #edf2f7;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --text-subtle: #94a3b8;
+      
+      --primary: #f97316;
+      --primary-hover: #ea580c;
+      --primary-light: rgba(249, 115, 22, 0.1);
+      
+      --accent: #6366f1;
+      --accent-light: rgba(99, 102, 241, 0.1);
+      
+      --success: #10b981;
+      --success-hover: #059669;
+      --success-light: rgba(16, 185, 129, 0.12);
+      --success-border: rgba(16, 185, 129, 0.25);
+      
+      --warning: #f59e0b;
+      --warning-light: rgba(245, 158, 11, 0.12);
+      --warning-border: rgba(245, 158, 11, 0.25);
+      
+      --danger: #ef4444;
+      --danger-light: rgba(239, 68, 68, 0.12);
+      --danger-border: rgba(239, 68, 68, 0.25);
+
+      --row-hover: #f8fafc;
+      --row-solved: #f0fdf4;
+      --card-shadow: 0 1px 3px 0 rgba(0,0,0,0.05), 0 1px 2px -1px rgba(0,0,0,0.05);
+      --modal-backdrop: rgba(15, 23, 42, 0.5);
+
+      color-scheme: light;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #090d16;
+        --surface: #111827;
+        --surface-alt: #1a2234;
+        --surface-elevated: #1e293b;
+        --border: #263147;
+        --border-subtle: #1e2738;
+        --text: #f8fafc;
+        --text-muted: #94a3b8;
+        --text-subtle: #64748b;
+        
+        --primary: #fb923c;
+        --primary-hover: #f97316;
+        --primary-light: rgba(251, 146, 60, 0.15);
+        
+        --accent: #818cf8;
+        --accent-light: rgba(129, 140, 248, 0.15);
+        
+        --success: #34d399;
+        --success-hover: #10b981;
+        --success-light: rgba(52, 211, 153, 0.15);
+        --success-border: rgba(52, 211, 153, 0.3);
+        
+        --warning: #fbbf24;
+        --warning-light: rgba(251, 191, 36, 0.15);
+        --warning-border: rgba(251, 191, 36, 0.3);
+        
+        --danger: #f87171;
+        --danger-light: rgba(248, 113, 113, 0.15);
+        --danger-border: rgba(248, 113, 113, 0.3);
+
+        --row-hover: #162035;
+        --row-solved: rgba(16, 185, 129, 0.08);
+        --card-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
+        --modal-backdrop: rgba(0, 0, 0, 0.75);
+
+        color-scheme: dark;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #090d16;
+      --surface: #111827;
+      --surface-alt: #1a2234;
+      --surface-elevated: #1e293b;
+      --border: #263147;
+      --border-subtle: #1e2738;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-subtle: #64748b;
+      
+      --primary: #fb923c;
+      --primary-hover: #f97316;
+      --primary-light: rgba(251, 146, 60, 0.15);
+      
+      --accent: #818cf8;
+      --accent-light: rgba(129, 140, 248, 0.15);
+      
+      --success: #34d399;
+      --success-hover: #10b981;
+      --success-light: rgba(52, 211, 153, 0.15);
+      --success-border: rgba(52, 211, 153, 0.3);
+      
+      --warning: #fbbf24;
+      --warning-light: rgba(251, 191, 36, 0.15);
+      --warning-border: rgba(251, 191, 36, 0.3);
+      
+      --danger: #f87171;
+      --danger-light: rgba(248, 113, 113, 0.15);
+      --danger-border: rgba(248, 113, 113, 0.3);
+
+      --row-hover: #162035;
+      --row-solved: rgba(16, 185, 129, 0.08);
+      --card-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
+      --modal-backdrop: rgba(0, 0, 0, 0.75);
+
+      color-scheme: dark;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* Global Container */
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+    .nav-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 20px;
+      box-shadow: 0 2px 8px rgba(249, 115, 22, 0.35);
+      flex-shrink: 0;
+    }
+    .brand-text h1 {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .badge-target {
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 2px 7px;
+      border-radius: 6px;
+      border: 1px solid rgba(249, 115, 22, 0.2);
+    }
+    .brand-text p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .nav-btn:hover {
+      background: var(--border);
+      color: var(--text);
+    }
+    .nav-btn.primary {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+    .nav-btn.primary:hover {
+      background: var(--primary-hover);
+    }
+
+    /* Striver Hero Dashboard */
+    .dashboard {
+      margin-top: 20px;
+      margin-bottom: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 24px;
+      box-shadow: var(--card-shadow);
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+    @media (max-width: 860px) {
+      .dashboard {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 16px;
+      }
+    }
+    
+    /* Overall progress donut / summary */
+    .progress-hero {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-right: 1px solid var(--border);
+      padding-right: 28px;
+    }
+    @media (max-width: 860px) {
+      .progress-hero {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding-right: 0;
+        padding-bottom: 18px;
+      }
+    }
+    .progress-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .progress-big {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .progress-big span {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .progress-percent-badge {
+      display: inline-block;
+      margin-left: auto;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--success);
+      background: var(--success-light);
+      padding: 3px 8px;
+      border-radius: 99px;
+      border: 1px solid var(--success-border);
+    }
+    .hero-bar-container {
+      width: 100%;
+      height: 10px;
+      background: var(--surface-alt);
+      border-radius: 99px;
+      overflow: hidden;
+      display: flex;
+    }
+    .hero-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+      border-radius: 99px;
+      transition: width 0.4s ease;
+    }
+    
+    /* Stats grid */
+    .stats-tiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+    }
+    .stat-tile {
+      background: var(--surface-alt);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: transform 0.15s ease;
+    }
+    .stat-tile:hover {
+      border-color: var(--border);
+    }
+    .stat-tile-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .stat-tile-val {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .stat-tile-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .pill-core {
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    /* Live Clock Pill */
+    .live-clock-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+    .clock-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+      animation: pulseDot 2s infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulseDot {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+
+    /* Today's Target Highlight Hub */
+    .today-banner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: 16px;
+      padding: 18px 22px;
+      margin-bottom: 24px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .today-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .today-title-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .today-title-area h3 {
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+    }
+    .today-badge-count {
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 99px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid rgba(249, 115, 22, 0.25);
+    }
+    .today-badge-overdue {
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 99px;
+      background: var(--danger-light);
+      color: var(--danger);
+      border: 1px solid var(--danger-border);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .today-meta-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .today-clock-display {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--surface-alt);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-variant-numeric: tabular-nums;
+    }
+    .today-progress-pill {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--success);
+      background: var(--success-light);
+      border: 1px solid var(--success-border);
+      padding: 4px 10px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .today-subtext {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: -8px;
+    }
+    
+    .today-target-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .today-target-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 14px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      transition: all 0.15s ease;
+      flex-wrap: wrap;
+    }
+    .today-target-item:hover {
+      border-color: var(--border);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    }
+    .today-target-item.is-overdue {
+      border-left: 3.5px solid var(--danger);
+      background: rgba(239, 68, 68, 0.04);
+    }
+    .today-target-item.is-today {
+      border-left: 3.5px solid var(--primary);
+    }
+    .today-target-item.is-done {
+      opacity: 0.75;
+      background: rgba(16, 185, 129, 0.06);
+      border-left: 3.5px solid var(--success);
+    }
+    .today-target-item.is-done .target-item-title {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+    
+    .target-item-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      min-width: 260px;
+    }
+    .target-item-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .target-item-title:hover {
+      color: var(--primary);
+    }
+    
+    .target-tag {
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 6px;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .tag-overdue {
+      background: var(--danger-light);
+      color: var(--danger);
+      border: 1px solid var(--danger-border);
+    }
+    .tag-today {
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid rgba(249, 115, 22, 0.25);
+    }
+    .tag-preview {
+      background: var(--surface);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .tag-revision {
+      background: rgba(168, 85, 247, 0.12);
+      color: #9333ea;
+      border: 1px solid rgba(168, 85, 247, 0.28);
+    }
+    [data-theme="dark"] .tag-revision {
+      background: rgba(192, 132, 252, 0.16);
+      color: #d8b4fe;
+      border: 1px solid rgba(192, 132, 252, 0.35);
+    }
+
+    .target-item-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .target-jump-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s;
+    }
+    .target-jump-btn:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      background: var(--surface);
+    }
+
+    .today-target-drawer {
+      width: 100%;
+      margin-top: 6px;
+      padding: 8px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+      display: none;
+    }
+    .today-target-drawer.open {
+      display: block;
+    }
+
+    /* Views and Filters Section */
+    .controls-wrapper {
+      position: sticky;
+      top: 63px;
+      z-index: 30;
+      background: var(--bg);
+      padding: 10px 0 14px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .search-filter-bar {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .search-box {
+      flex: 1;
+      min-width: 240px;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px 12px 9px 38px;
+      font-size: 13.5px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+    }
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-subtle);
+      pointer-events: none;
+      font-size: 14px;
+    }
+    .search-clear {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 16px;
+      display: none;
+      padding: 2px 6px;
+    }
+    
+    /* Filter chips row */
+    .filter-chips-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .filter-chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      user-select: none;
+    }
+    .filter-chip:hover {
+      border-color: var(--text-muted);
+      color: var(--text);
+    }
+    .filter-chip.active {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .filter-chip.active-green {
+      background: var(--success-light);
+      border-color: var(--success);
+      color: var(--success);
+      font-weight: 600;
+    }
+    .filter-chip.active-amber {
+      background: var(--warning-light);
+      border-color: var(--warning);
+      color: var(--warning);
+      font-weight: 600;
+    }
+    .filter-chip.active-rose {
+      background: var(--danger-light);
+      border-color: var(--danger);
+      color: var(--danger);
+      font-weight: 600;
+    }
+    
+    .view-toggles {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .view-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .view-btn:hover {
+      color: var(--text);
+      border-color: var(--text-muted);
+    }
+    .view-btn.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    /* Global Actions (Expand all / Collapse all / Pick Random) */
+    .sheet-meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .sheet-count {
+      font-weight: 600;
+      color: var(--text);
+    }
+    .sheet-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .action-link-btn {
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 6px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.15s;
+    }
+    .action-link-btn:hover {
+      background: var(--primary-light);
+    }
+
+    /* Accordion / Step Blocks (Iconic Striver Sheet Pattern) */
+    .steps-container {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .step-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .step-card.completed {
+      border-color: var(--success-border);
+    }
+    .step-card:hover {
+      border-color: rgba(249, 115, 22, 0.4);
+    }
+    
+    .step-header {
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      user-select: none;
+      background: var(--surface);
+      transition: background-color 0.15s;
+    }
+    .step-header:hover {
+      background-color: var(--surface-alt);
+    }
+    
+    .step-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex: 1;
+      min-width: 0;
+    }
+    .step-badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid rgba(249, 115, 22, 0.25);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 3px 8px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .step-badge.completed-badge {
+      background: var(--success-light);
+      color: var(--success);
+      border-color: var(--success-border);
+    }
+    .step-title-area {
+      min-width: 0;
+      flex: 1;
+    }
+    .step-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .step-subtext {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .step-progress-area {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+    .step-progress-counter {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .step-progress-counter.done {
+      color: var(--success);
+    }
+    .step-mini-bar {
+      width: 90px;
+      height: 7px;
+      background: var(--surface-alt);
+      border-radius: 99px;
+      overflow: hidden;
+      display: block;
+    }
+    .step-mini-fill {
+      height: 100%;
+      background: var(--success);
+      border-radius: 99px;
+      transition: width 0.3s ease;
+    }
+    .step-chevron {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-subtle);
+      transition: transform 0.2s ease;
+    }
+    .step-card.open .step-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* Accordion Content / Table */
+    .step-content {
+      display: none;
+      border-top: 1px solid var(--border);
+    }
+    .step-card.open .step-content {
+      display: block;
+    }
+
+    /* Striver Problems Table */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+    }
+    .problem-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13.5px;
+    }
+    .problem-table th {
+      background: var(--surface-alt);
+      color: var(--text-muted);
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .problem-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: middle;
+      transition: background-color 0.1s ease;
+    }
+    .problem-table tr:last-child td {
+      border-bottom: none;
+    }
+    .problem-table tr:hover td {
+      background: var(--row-hover);
+    }
+    .problem-table tr.is-solved td {
+      background: var(--row-solved);
+    }
+    .problem-table tr.is-solved .prob-title-text {
+      color: var(--text-muted);
+    }
+
+    /* Problem Columns */
+    .col-status {
+      width: 48px;
+      text-align: center;
+      padding-right: 4px !important;
+    }
+    .col-title {
+      min-width: 280px;
+    }
+    .col-diff {
+      width: 110px;
+      white-space: nowrap;
+    }
+    .col-tier {
+      width: 90px;
+      white-space: nowrap;
+    }
+    .col-practice {
+      width: 120px;
+      white-space: nowrap;
+    }
+    .col-rev {
+      width: 44px;
+      text-align: center;
+    }
+    .col-notes {
+      width: 50px;
+      text-align: center;
+    }
+
+    /* Status Button */
+    .status-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      background: transparent;
+      color: transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: all 0.15s ease;
+      padding: 0;
+    }
+    .status-btn:hover {
+      border-color: var(--primary);
+      transform: scale(1.1);
+    }
+    .status-btn.status-1 {
+      border-color: var(--warning);
+      color: var(--warning);
+      background: var(--warning-light);
+    }
+    .status-btn.status-2 {
+      border-color: var(--success);
+      background: var(--success);
+      color: #ffffff;
+      box-shadow: 0 1px 4px rgba(16, 185, 129, 0.3);
+    }
+
+    /* Title & Meta */
+    .prob-title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .prob-title-text {
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s;
+    }
+    .prob-title-text:hover {
+      color: var(--primary);
+    }
+    .prob-schedule-tag {
+      font-size: 11px;
+      color: var(--text-muted);
+      background: var(--surface-alt);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 1px 6px;
+      white-space: nowrap;
+    }
+    
+    /* Mission details toggle & drawer inside row */
+    .intel-toggle-btn {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 2px 5px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      margin-left: 2px;
+    }
+    .intel-toggle-btn:hover {
+      background: var(--accent-light);
+    }
+    .intel-drawer {
+      display: none;
+      margin-top: 8px;
+      padding: 8px 12px;
+      background: var(--surface-alt);
+      border-left: 3px solid var(--primary);
+      border-radius: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .intel-drawer.open {
+      display: block;
+    }
+    .intel-story {
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+    .intel-idea {
+      font-weight: 500;
+      color: var(--primary);
+    }
+
+    /* Difficulty Pills (Striver Style) */
+    .diff-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .diff-easy {
+      background: var(--success-light);
+      color: var(--success);
+      border: 1px solid var(--success-border);
+    }
+    .diff-med {
+      background: var(--warning-light);
+      color: var(--warning);
+      border: 1px solid var(--warning-border);
+    }
+    .diff-hard {
+      background: var(--danger-light);
+      color: var(--danger);
+      border: 1px solid var(--danger-border);
+    }
+
+    /* Tier Pills */
+    .tier-pill {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 6px;
+    }
+    .tier-1 {
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid rgba(249, 115, 22, 0.25);
+    }
+    .tier-2 {
+      background: var(--surface-alt);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    /* Practice External Link Buttons */
+    .practice-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .practice-lc {
+      background: rgba(255, 161, 22, 0.12);
+      color: #ea580c;
+      border: 1px solid rgba(255, 161, 22, 0.3);
+    }
+    .practice-lc:hover {
+      background: #ea580c;
+      color: #ffffff;
+    }
+    .practice-gfg {
+      background: rgba(43, 147, 72, 0.12);
+      color: #15803d;
+      border: 1px solid rgba(43, 147, 72, 0.3);
+    }
+    .practice-gfg:hover {
+      background: #15803d;
+      color: #ffffff;
+    }
+    .practice-gen {
+      background: var(--surface-alt);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .practice-gen:hover {
+      background: var(--border);
+    }
+
+    /* Revision Star Button */
+    .rev-btn {
+      background: none;
+      border: none;
+      color: var(--text-subtle);
+      font-size: 18px;
+      cursor: pointer;
+      padding: 4px;
+      transition: transform 0.15s, color 0.15s;
+      line-height: 1;
+    }
+    .rev-btn:hover {
+      transform: scale(1.2);
+      color: var(--warning);
+    }
+    .rev-btn.is-active {
+      color: #f59e0b;
+    }
+
+    /* Notes Button */
+    .notes-btn {
+      background: none;
+      border: none;
+      color: var(--text-subtle);
+      font-size: 16px;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 6px;
+      transition: all 0.15s;
+      position: relative;
+      line-height: 1;
+    }
+    .notes-btn:hover {
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+    .notes-btn.has-note {
+      color: var(--primary);
+    }
+    .notes-btn.has-note::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 6px;
+      height: 6px;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+
+    /* Flash highlight animation for picked random problem */
+    @keyframes rowPulse {
+      0% { background-color: var(--primary-light); }
+      50% { background-color: rgba(249, 115, 22, 0.35); }
+      100% { background-color: var(--surface); }
+    }
+    .highlight-flash {
+      animation: rowPulse 2.5s ease-out;
+    }
+
+    /* Modal dialogs */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: var(--modal-backdrop);
+      backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 580px;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+      overflow: hidden;
+      animation: modalPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes modalPop {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .modal-head {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .modal-head h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .modal-close-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+      padding: 4px;
+      border-radius: 6px;
+    }
+    .modal-close-btn:hover {
+      color: var(--text);
+      background: var(--surface-alt);
+    }
+    .modal-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .modal-foot {
+      padding: 14px 20px;
+      border-top: 1px solid var(--border);
+      background: var(--surface-alt);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .modal-textarea {
+      width: 100%;
+      height: 160px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      font-family: inherit;
+      font-size: 13.5px;
+      color: var(--text);
+      outline: none;
+      resize: vertical;
+    }
+    .modal-textarea:focus {
+      border-color: var(--primary);
+    }
+    
+    /* Toast feedback */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+      z-index: 120;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile Responsive Card Row */
+    @media (max-width: 768px) {
+      .problem-table th:nth-child(4),
+      .problem-table td:nth-child(4) {
+        display: none;
+      }
+      .step-header {
+        padding: 14px 16px;
+      }
+      .step-mini-bar {
+        display: none;
+      }
+      .table-container {
+        font-size: 12.5px;
+      }
+      .problem-table td {
+        padding: 10px 10px;
+      }
+    }
+    /* Calendar View Styles */
+    .calendar-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .calendar-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .calendar-month-nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .calendar-month-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      min-width: 170px;
+    }
+    .cal-nav-btn {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      transition: all 0.15s;
+    }
+    .cal-nav-btn:hover {
+      background: var(--border);
+      color: var(--primary);
+    }
+    .cal-today-btn {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .cal-today-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .calendar-legend {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+    .cal-legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .cal-legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .calendar-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .cal-weekday {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 6px 0;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+    .cal-day-cell {
+      min-height: 84px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      user-select: none;
+    }
+    .cal-day-cell:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+    .cal-day-cell.other-month {
+      opacity: 0.35;
+    }
+    .cal-day-cell.is-today {
+      border: 2px solid var(--primary);
+      background: rgba(249, 115, 22, 0.04);
+    }
+    .cal-day-cell.is-selected {
+      box-shadow: 0 0 0 2px var(--accent);
+      border-color: var(--accent);
+    }
+    .cal-day-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .cal-day-num {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .cal-today-tag {
+      font-size: 9px;
+      font-weight: 800;
+      background: var(--primary);
+      color: #fff;
+      padding: 1px 4px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .cal-missions-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 6px;
+      margin-top: 4px;
+      width: fit-content;
+    }
+    .badge-all-done {
+      background: var(--success-light);
+      color: var(--success);
+      border: 1px solid var(--success-border);
+    }
+    .badge-partial {
+      background: var(--warning-light);
+      color: var(--warning);
+      border: 1px solid var(--warning-border);
+    }
+    .badge-overdue {
+      background: var(--danger-light);
+      color: var(--danger);
+      border: 1px solid var(--danger-border);
+    }
+    .badge-scheduled {
+      background: var(--surface);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .badge-weekend-rev {
+      background: rgba(168, 85, 247, 0.12);
+      color: #9333ea;
+      border: 1px solid rgba(168, 85, 247, 0.28);
+    }
+    [data-theme="dark"] .badge-weekend-rev {
+      background: rgba(192, 132, 252, 0.16);
+      color: #d8b4fe;
+      border: 1px solid rgba(192, 132, 252, 0.35);
+    }
+    .cal-day-cell.cal-weekend-cell {
+      background: rgba(168, 85, 247, 0.03);
+      border-style: dashed;
+      border-color: rgba(168, 85, 247, 0.22);
+    }
+    [data-theme="dark"] .cal-day-cell.cal-weekend-cell {
+      background: rgba(168, 85, 247, 0.05);
+      border-color: rgba(168, 85, 247, 0.3);
+    }
+    .cal-weekday.weekend-head {
+      color: #a855f7;
+    }
+    .weekly-weekend-card {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.06), rgba(249, 115, 22, 0.04));
+      border: 1px dashed rgba(168, 85, 247, 0.35);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .weekend-card-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .weekend-icon {
+      font-size: 24px;
+    }
+    .weekend-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .weekend-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .weekend-rev-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .weekend-rev-btn:hover {
+      border-color: #a855f7;
+      color: #a855f7;
+    }
+
+    /* Selected Day Detail Card */
+    .cal-day-detail-card {
+      margin-top: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 14px;
+      padding: 18px 20px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .cal-detail-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .cal-detail-title h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cal-detail-title p {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .calendar-container { padding: 14px; }
+      .cal-day-cell { min-height: 56px; padding: 4px; }
+      .cal-missions-badge { font-size: 9.5px; padding: 1px 4px; }
+      .calendar-month-title { font-size: 16px; min-width: 140px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Sticky Navigation -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">
+        <div class="brand-icon">🚀</div>
+        <div class="brand-text">
+          <h1>Mission Chandra-Live <span class="badge-target">Microsoft Target</span></h1>
+          <p>Striver A2Z DSA Tracker · 210 Moon-Lander Missions</p>
+        </div>
+      </a>
+      
+      <div class="nav-actions">
+        <div class="live-clock-pill" title="Current Live Date & Time">
+          <span class="clock-dot"></span>
+          <span id="nav-live-clock">Loading live time...</span>
+        </div>
+        <button class="nav-btn" id="btn-pick-random" title="Pick a random unsolved problem to practice">
+          <span>🎲</span> Pick Random
+        </button>
+        <button class="nav-btn" id="btn-settings" title="Settings, schedule date & backup">
+          <span>⚙️</span> Settings
+        </button>
+        <button class="nav-btn" id="th" title="Toggle theme">
+          🌙 Dark
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    
+    <!-- Hero / Progress Dashboard (Striver Style) -->
+    <div class="dashboard">
+      <div class="progress-hero">
+        <div class="progress-title">Overall DSA Mastery</div>
+        <div class="progress-big">
+          <span id="stat-solved-count" style="font-size: 32px; font-weight: 800; color: var(--text);">0</span>
+          <span>/ 210</span>
+          <div class="progress-percent-badge" id="stat-percent">0% Done</div>
+        </div>
+        <div class="hero-bar-container">
+          <div class="hero-bar-fill" id="stat-hero-fill" style="width: 0%"></div>
+        </div>
+        <div style="font-size: 11.5px; color: var(--text-muted); display: flex; justify-content: space-between;">
+          <span>Target: 21+ LPA</span>
+          <span id="stat-remaining-txt">210 to go</span>
+        </div>
+      </div>
+      
+      <div class="stats-tiles">
+        <div class="stat-tile">
+          <div class="stat-tile-label"><span class="pill-core">CORE</span> Tier 1</div>
+          <div class="stat-tile-val" id="stat-t1-val">0 / 140</div>
+          <div class="stat-tile-sub">High-probability focus</div>
+        </div>
+        
+        <div class="stat-tile">
+          <div class="stat-tile-label"><span>✨</span> Tier 2</div>
+          <div class="stat-tile-val" id="stat-t2-val">0 / 70</div>
+          <div class="stat-tile-sub">Advanced depth</div>
+        </div>
+
+        <div class="stat-tile">
+          <div class="stat-tile-label"><span>★</span> Revisit</div>
+          <div class="stat-tile-val" id="stat-rev-val">0</div>
+          <div class="stat-tile-sub">Starred questions</div>
+        </div>
+
+        <div class="stat-tile">
+          <div class="stat-tile-label"><span>📅</span> Schedule</div>
+          <div class="stat-tile-val" id="stat-plan-val">0</div>
+          <div class="stat-tile-sub" id="stat-plan-sub">Planned by today</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Today's Daily Target Hub -->
+    <div class="today-banner" id="today-banner">
+      <div class="today-header">
+        <div class="today-title-area">
+          <h3><span>🎯</span> Today's Daily Target</h3>
+          <span class="today-badge-count" id="today-total-badge">0 Tasks</span>
+          <span class="today-badge-overdue" id="today-overdue-badge" style="display: none;">⚠️ 0 Overdue Rolled Over</span>
+        </div>
+        <div class="today-meta-right">
+          <div class="today-clock-display" title="Live Clock">
+            <span>🕒</span>
+            <span id="banner-live-clock">Loading live time...</span>
+          </div>
+          <div class="today-progress-pill" id="today-progress-pill">0 / 0 Done</div>
+        </div>
+      </div>
+      <p class="today-subtext" id="today-subtext">Calculating today's scheduled cadence and rolled-over tasks...</p>
+      <div class="today-target-list" id="today-target-list">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Controls Wrapper (Sticky Filter Bar) -->
+    <div class="controls-wrapper">
+      <div class="search-filter-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="search-input" class="search-input" placeholder="Search 210 problems, topics, algorithms, or stories...">
+          <button id="search-clear" class="search-clear" title="Clear search">×</button>
+        </div>
+
+        <div class="view-toggles">
+          <button class="view-btn active" id="view-topics-btn">A2Z Steps</button>
+          <button class="view-btn" id="view-weeks-btn">Weekly Schedule</button>
+          <button class="view-btn" id="view-calendar-btn">📅 Calendar</button>
+        </div>
+      </div>
+
+      <div class="filter-chips-row">
+        <button class="filter-chip active" data-filter="status" data-val="">All (210)</button>
+        <button class="filter-chip" data-filter="status" data-val="unsolved">○ Unsolved</button>
+        <button class="filter-chip" data-filter="status" data-val="solved">✓ Solved</button>
+        <button class="filter-chip" data-filter="rev" data-val="1">★ Starred</button>
+        <span style="color: var(--border); font-size: 14px;">|</span>
+        <button class="filter-chip" data-filter="tier" data-val="1">Tier 1 Core</button>
+        <button class="filter-chip" data-filter="tier" data-val="2">Tier 2</button>
+        <span style="color: var(--border); font-size: 14px;">|</span>
+        <button class="filter-chip" data-filter="diff" data-val="easy">Easy</button>
+        <button class="filter-chip" data-filter="diff" data-val="med">Medium</button>
+        <button class="filter-chip" data-filter="diff" data-val="hard">Hard</button>
+      </div>
+    </div>
+
+    <!-- Meta / Actions Header -->
+    <div class="sheet-meta-bar">
+      <div>
+        Showing <span class="sheet-count" id="filtered-count">210 problems</span>
+        <span id="active-filter-label" style="margin-left: 6px; font-size: 12px; color: var(--primary);"></span>
+      </div>
+      <div class="sheet-actions">
+        <button class="action-link-btn" id="btn-expand-all">
+          <span>⊞</span> Expand All
+        </button>
+        <button class="action-link-btn" id="btn-collapse-all">
+          <span>⊟</span> Collapse All
+        </button>
+        <button class="action-link-btn" id="btn-reset-filters" style="display:none; color: var(--danger);">
+          <span>↺</span> Clear Filters
+        </button>
+      </div>
+    </div>
+
+    <!-- Calendar View Container (Visible when Calendar View is active) -->
+    <div id="calendar-view-container" style="display: none;">
+      <div class="calendar-container">
+        <div class="calendar-top-bar">
+          <div class="calendar-month-nav">
+            <button class="cal-nav-btn" id="cal-prev-btn" title="Previous Month">‹</button>
+            <h2 class="calendar-month-title" id="cal-month-title">November 2026</h2>
+            <button class="cal-nav-btn" id="cal-next-btn" title="Next Month">›</button>
+            <button class="cal-today-btn" id="cal-today-btn">Jump to Today</button>
+          </div>
+
+          <div class="calendar-legend">
+            <span class="cal-legend-item"><span class="cal-legend-dot" style="background:var(--success);"></span> Solved</span>
+            <span class="cal-legend-item"><span class="cal-legend-dot" style="background:var(--warning);"></span> In Progress</span>
+            <span class="cal-legend-item"><span class="cal-legend-dot" style="background:var(--danger);"></span> Overdue</span>
+            <span class="cal-legend-item"><span class="cal-legend-dot" style="background:var(--text-muted);"></span> Weekday Target</span>
+            <span class="cal-legend-item"><span class="cal-legend-dot" style="background:#a855f7;"></span> 🏖️ Weekend Revise</span>
+          </div>
+        </div>
+
+        <div class="calendar-weekdays">
+          <div class="cal-weekday weekend-head">Sun 🏖️</div>
+          <div class="cal-weekday">Mon</div>
+          <div class="cal-weekday">Tue</div>
+          <div class="cal-weekday">Wed</div>
+          <div class="cal-weekday">Thu</div>
+          <div class="cal-weekday">Fri</div>
+          <div class="cal-weekday weekend-head">Sat 🏖️</div>
+        </div>
+
+        <div class="calendar-grid" id="calendar-days-grid">
+          <!-- Calendar cells rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Selected Date Problems Inspector -->
+      <div class="cal-day-detail-card" id="cal-day-inspector">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Steps Accordion Container -->
+    <div class="steps-container" id="steps-container">
+      <!-- Injected by JavaScript -->
+    </div>
+
+  </div>
+
+  <!-- Note Edit Modal -->
+  <div class="modal-overlay" id="note-modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div>
+          <div style="font-size: 11px; font-weight: 700; color: var(--primary); text-transform: uppercase;" id="note-modal-subtitle">Problem Note</div>
+          <h2 id="note-modal-title">Note</h2>
+        </div>
+        <button class="modal-close-btn" id="note-modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="font-size: 12.5px; color: var(--text-muted); background: var(--surface-alt); padding: 8px 12px; border-radius: 8px;" id="note-modal-idea">
+          💡 Key Idea: -
+        </div>
+        <textarea class="modal-textarea" id="note-modal-text" placeholder="Write your intuition, time/space complexity, edge cases, or mistakes to avoid..."></textarea>
+      </div>
+      <div class="modal-foot">
+        <span style="font-size: 12px; color: var(--success);" id="note-save-status">Saved automatically ✓</span>
+        <div style="display: flex; gap: 8px;">
+          <button class="nav-btn" id="note-modal-clear" style="color: var(--danger);">Clear</button>
+          <button class="nav-btn primary" id="note-modal-done">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings & Backup Modal -->
+  <div class="modal-overlay" id="settings-modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>Sheet Settings & Backup</h2>
+        <button class="modal-close-btn" id="settings-modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Target Plan Start Date</label>
+          <input type="date" id="plan-start-date" class="search-input" style="padding-left: 12px;">
+          <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Recalculates planned schedule dates for all 210 problems.</p>
+        </div>
+
+        <div>
+          <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Backup & Transfer Data</label>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">Your progress lives locally in this browser. Export or restore your backup JSON to move to another device.</p>
+          <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+            <button class="nav-btn" id="btn-export-backup">📋 Copy Backup Text</button>
+            <button class="nav-btn" id="btn-import-backup">📥 Restore from Text</button>
+          </div>
+          <textarea class="modal-textarea" id="backup-text" style="height: 100px; font-family: monospace; font-size: 11px;" placeholder="Backup JSON will appear here, or paste backup JSON here and click Restore."></textarea>
+        </div>
+
+        <div style="border-top: 1px solid var(--border); padding-top: 12px;">
+          <button class="nav-btn" id="btn-reset-all" style="color: var(--danger); border-color: rgba(239, 68, 68, 0.3);">
+            ⚠️ Reset All Progress
+          </button>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <div></div>
+        <button class="nav-btn primary" id="settings-modal-done">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">Toast message</div>
+
+  <script>
+    // Problem Data Array
+    const D = [[1, 1, 1, 0, 2, "Min and Max in Array", 1, 1, "1M temperature readings, RAM for only two variables. Report the lowest and highest.", "Single pass, O(1) space", "https://www.geeksforgeeks.org/problems/find-minimum-and-maximum-element-in-an-array4428/1"], [2, 1, 1, 0, 5, "Check If Array is Sorted", 1, 1, "Packet timestamps must arrive in order. Stop at the first violation.", "Compare neighbours, early exit", "https://www.geeksforgeeks.org/problems/check-if-an-array-is-sorted0701/1"], [3, 1, 2, 0, 10, "Missing Number", 2, 1, "Packets are numbered 0..N and one was lost in transit. Find it without storing all IDs.", "Sum or XOR trick", "https://leetcode.com/problems/missing-number/description/"], [4, 1, 2, 0, 14, "Move Zeroes to End", 2, 1, "Dead sensors report 0. Push them to the end in place, keeping live readings in order.", "Two pointers, in place", "https://leetcode.com/problems/move-zeroes/description/"], [5, 1, 3, 0, 15, "Sort array with 0's 1's and 2's (Dutch Flag)", 2, 1, "Status array of 0 (ok), 1 (warn), 2 (fault). Sort in one pass with no extra memory.", "Three pointers (Dutch flag)", "https://leetcode.com/problems/sort-colors/"], [6, 1, 3, 0, 20, "Rearrange Array Elements by Sign", 3, 1, "Thruster pulses must alternate + and -. Rearrange, keeping relative order.", "Two write indices", "https://leetcode.com/problems/rearrange-array-elements-by-sign/"], [7, 1, 4, 0, 22, "Majority Element I (Boyer - Moore)", 3, 1, "Which command was sent by more than half of the ground stations?", "Boyer-Moore voting", "https://leetcode.com/problems/majority-element/"], [8, 1, 4, 0, 23, "Rotate Array by K steps", 4, 1, "The onboard ring buffer wrapped by K positions. Restore the order without a second buffer.", "Reverse three times", "https://leetcode.com/problems/rotate-array/"], [9, 1, 5, 0, 26, "Best Time to Buy and Sell Stock", 4, 1, "From hourly temperatures, find the biggest rise from an earlier hour to a later one.", "Track minimum so far", "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/"], [10, 1, 5, 0, 27, "Next Permutation", 4, 1, "Step through experiment orderings in lexicographic order, in place.", "Find pivot, swap, reverse tail", "https://leetcode.com/problems/next-permutation/"], [11, 2, 1, 1, 37, "Spiral Matrix", 4, 1, "Read a camera sensor matrix in spiral order, outside in.", "Four shrinking boundaries", "https://leetcode.com/problems/spiral-matrix/"], [12, 2, 1, 1, 39, "Rotate Matrix (90\u00b0)", 4, 1, "The camera is mounted sideways. Rotate the image 90 degrees in place.", "Transpose then reverse rows", "https://leetcode.com/problems/rotate-image/"], [13, 2, 2, 1, 41, "Set Matrix Zeroes", 5, 1, "A dead pixel at (r,c) blanks its whole row and column. No second matrix allowed.", "First row/col as flags", "https://leetcode.com/problems/set-matrix-zeroes/"], [14, 2, 2, 2, 52, "Valid Palindrome", 2, 1, "Check that a command string reads the same both ways, ignoring symbols and case.", "Two pointers", "https://leetcode.com/problems/valid-palindrome/description/"], [15, 2, 3, 2, 56, "Reverse Words in a String", 3, 1, "A log line arrives with its words in reverse order. Fix it with minimal memory.", "Split/trim, reverse", "https://leetcode.com/problems/reverse-words-in-a-string/"], [16, 2, 3, 2, 57, "String to integer (atoi)", 3, 1, "Parse a numeric string from the uplink into an integer: signs, spaces, overflow.", "Careful state handling", "https://leetcode.com/problems/string-to-integer-atoi/"], [17, 2, 4, 2, 61, "Longest palindromic substring", 4, 1, "Find the longest mirror-symmetric pattern inside a signal string.", "Expand around centre", "https://leetcode.com/problems/longest-palindromic-substring/"], [18, 2, 4, 2, 62, "Multiply Two Strings", 4, 1, "Multiply two huge numbers sent as strings; the chip has no big-int type.", "Digit-by-digit multiplication", "https://www.geeksforgeeks.org/problems/multiply-two-strings/1"], [19, 2, 5, 0, 18, "Leaders in Array", 3, 2, "Which readings are greater than everything to their right (new peaks seen from the end)?", "Scan from the right", "https://www.geeksforgeeks.org/problems/leaders-in-an-array-1587115620/1?itm_source=geeksforgeeks&itm_medium=article&itm_campaign=practice_card"], [20, 2, 5, 0, 25, "Majority Element II", 4, 2, "Find commands sent more than n/3 times (up to two candidates).", "Extended Boyer-Moore", "https://leetcode.com/problems/majority-element-ii/"], [21, 3, 1, 0, 29, "First Missing Positive", 5, 2, "Find the smallest missing positive packet ID using O(1) extra memory.", "Place value v at index v-1", "https://leetcode.com/problems/first-missing-positive/"], [22, 3, 1, 2, 53, "Valid Anagram", 2, 2, "Are two sensor labels rearrangements of each other?", "Frequency count", "https://leetcode.com/problems/valid-anagram/"], [23, 3, 2, 2, 60, "Longest common prefix", 3, 2, "Find the prefix shared by all command names to build a short opcode.", "Compare column by column", "https://leetcode.com/problems/longest-common-prefix/description/"], [24, 3, 2, 3, 74, "Find minimum in Rotated Sorted Array", 2, 1, "A ring buffer was rotated. Find the oldest (smallest) timestamp fast.", "Binary search on pivot", "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/"], [25, 3, 3, 3, 75, "First and last occurrence", 3, 1, "Find the first and last log entry with a given error code in a sorted log.", "Two bound searches", "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/description/"], [26, 3, 3, 3, 76, "Search in rotated sorted array-I", 3, 1, "Search the wrapped ring buffer for a timestamp in O(log n).", "Find the sorted half", "https://leetcode.com/problems/search-in-rotated-sorted-array/"], [27, 3, 4, 3, 80, "Find Peak Element", 3, 1, "Find any signal peak in a trace without scanning all of it.", "Binary search on slope", "https://leetcode.com/problems/find-peak-element/"], [28, 3, 4, 3, 83, "Search a 2D Matrix I", 2, 1, "Search a sorted telemetry table where each row continues from the previous one.", "Treat as flat array", "https://leetcode.com/problems/search-a-2d-matrix/description/"], [29, 3, 5, 3, 84, "Search a 2D Matrix II", 3, 1, "Search a table where rows and columns are each sorted.", "Staircase from a corner", "https://leetcode.com/problems/search-a-2d-matrix-ii/description/"], [30, 3, 5, 3, 87, "Sqrt (x)", 2, 1, "Compute an integer square root with no floating point unit.", "Binary search on answer", "https://leetcode.com/problems/sqrtx/"], [31, 4, 1, 3, 90, "Koko eating bananas", 3, 1, "All packet piles must be downlinked within H windows. Find the minimum rate per window.", "Binary search on answer", "https://leetcode.com/problems/koko-eating-bananas/"], [32, 4, 1, 3, 94, "Capacity to Ship Packages Within D Days", 3, 1, "Ship data blocks in order within D days. Find the minimum daily link capacity.", "Binary search on answer", "https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/"], [33, 4, 2, 3, 96, "Split Array Largest Sum", 4, 1, "Split sensor batches among K processors so the busiest one has the least work.", "Binary search on answer", "https://leetcode.com/problems/split-array-largest-sum/"], [34, 4, 2, 3, 99, "Aggressive Cows", 5, 1, "Place K antennas on sites so the closest pair is as far apart as possible.", "Binary search on answer", "https://www.geeksforgeeks.org/problems/aggressive-cows/0"], [35, 4, 3, 3, 66, "Lower Bound", 2, 2, "Find the first log position where the timestamp is at least T.", "Lower bound", "https://www.geeksforgeeks.org/problems/implement-lower-bound/1"], [36, 4, 3, 3, 78, "Single element in a Sorted Array", 3, 2, "Sorted array where every value appears twice except one. Find the odd one.", "Binary search on index parity", "https://leetcode.com/problems/single-element-in-a-sorted-array/"], [37, 4, 4, 3, 91, "Find the Smallest Divisor Given a Threshold", 3, 2, "Pick the smallest divisor so the sum of divided readings stays under a limit.", "Binary search on answer", "https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/"], [38, 4, 4, 3, 95, "Book Allocation Problem", 3, 2, "Allocate data volumes to K stations so the largest load is as small as possible.", "Binary search on answer", "https://www.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1"], [39, 4, 5, 3, 101, "Median of Two Sorted Arrays", 5, 2, "Find the median of two sorted sensor feeds without merging them.", "Partition binary search", "https://leetcode.com/problems/median-of-two-sorted-arrays/description/"], [40, 4, 5, 4, 108, "Pow(x, n)", 2, 1, "Compute x to the power n for orbit maths with few multiplications.", "Fast exponentiation", "https://leetcode.com/problems/powx-n/"], [41, 5, 1, 5, 113, "Sort An Array (Implement Merge / Quick Sort)", 2, 1, "Sort 1M readings in O(n log n) without a built-in sort.", "Merge sort or quick sort", "https://leetcode.com/problems/sort-an-array/description/"], [42, 5, 1, 5, 118, "Merge Intervals", 3, 1, "Merge overlapping communication windows into the fewest windows.", "Sort then sweep", "https://leetcode.com/problems/merge-intervals/description/"], [43, 5, 2, 5, 119, "Count Inversions (Merge Sort)", 5, 1, "Count how many packets arrived out of order (inversions).", "Merge sort counting", "https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1"], [44, 5, 2, 5, 116, "Sort Elements by Decreasing Frequency", 3, 2, "Sort error codes by how often they occur, most frequent first.", "Frequency plus custom sort", "https://www.geeksforgeeks.org/problems/sorting-elements-of-an-array-by-frequency-1587115621/1"], [45, 5, 3, 5, 120, "Reverse Pairs (Merge Sort)", 5, 2, "Count pairs where a reading is more than double a later reading.", "Merge sort counting", "https://leetcode.com/problems/reverse-pairs/"], [46, 5, 3, 6, 137, "Middle of the Linked List", 2, 1, "Find the middle module of a firmware chain in one pass.", "Slow/fast pointers", "https://leetcode.com/problems/middle-of-the-linked-list/"], [47, 5, 4, 6, 138, "Linked List Cycle", 2, 1, "Detect whether the firmware jump chain loops forever.", "Floyd cycle detection", "https://leetcode.com/problems/linked-list-cycle/"], [48, 5, 4, 6, 139, "Intersection of Two Linked Lists", 2, 1, "Two telemetry chains join into one shared tail. Find the join point.", "Pointer swap trick", "https://leetcode.com/problems/intersection-of-two-linked-lists/"], [49, 5, 5, 6, 141, "Linked List Cycle II (Find Starting Point)", 3, 1, "Where does the firmware loop begin?", "Floyd phase 2", "https://leetcode.com/problems/linked-list-cycle-ii/"], [50, 5, 5, 6, 143, "Remove Nth Node From End of List", 3, 1, "Remove the Nth module from the end of the chain in one pass.", "Gap pointers", "https://leetcode.com/problems/remove-nth-node-from-end-of-list/"], [51, 6, 1, 6, 144, "Reverse a Linked List (Iterative & Recursive)", 2, 1, "Reverse the command chain in place.", "Three pointers", "https://leetcode.com/problems/reverse-linked-list/"], [52, 6, 1, 6, 145, "Palindrome Linked List", 2, 1, "Does a chain of values read the same forwards and backwards?", "Reverse second half", "https://leetcode.com/problems/palindrome-linked-list/"], [53, 6, 2, 6, 149, "Rotate List", 4, 1, "Rotate the chain by K nodes.", "Close into ring, cut", "https://leetcode.com/problems/rotate-list/"], [54, 6, 2, 6, 151, "Add Two Numbers (Reverse Order)", 3, 1, "Add two big numbers stored digit by digit in chains.", "Carry handling", "https://leetcode.com/problems/add-two-numbers/"], [55, 6, 3, 6, 153, "Merge Two Sorted Lists", 2, 1, "Merge two sorted event streams into one sorted chain.", "Dummy node merge", "https://leetcode.com/problems/merge-two-sorted-lists/"], [56, 6, 3, 6, 158, "Sort List (Merge Sort on LL)", 5, 1, "Sort a chain of 1M nodes with O(1) extra memory.", "Merge sort on list", "https://leetcode.com/problems/sort-list/"], [57, 7, 1, 6, 166, "Copy List with Random Pointer (Clone LL)", 4, 1, "Clone a chain where each node also points to a random node.", "Interleave copies", "https://leetcode.com/problems/copy-list-with-random-pointer/"], [58, 7, 1, 6, 134, "Delete Node in a Linked List (Given only node ref)", 3, 2, "Delete a module when you only hold a pointer to that module.", "Copy next, skip next", "https://leetcode.com/problems/delete-node-in-a-linked-list/"], [59, 7, 2, 6, 146, "Swap Nodes in Pairs", 3, 2, "Swap every pair of adjacent modules.", "Pointer rewiring", "https://leetcode.com/problems/swap-nodes-in-pairs/"], [60, 7, 2, 6, 167, "Flattening a Linked List", 4, 2, "Flatten a multi-level chain into a single sorted list.", "Merge plus recursion", "https://www.geeksforgeeks.org/problems/flattening-a-linked-list/1"], [61, 7, 3, 6, 168, "Reverse Linked List in Groups of Size K", 5, 2, "Reverse modules in groups of K.", "Reverse and reconnect", "https://leetcode.com/problems/reverse-nodes-in-k-group/"], [62, 7, 3, 7, 172, "Valid Parentheses", 2, 1, "Check that every opening bracket in a packet frame has a matching close.", "Stack", "https://leetcode.com/problems/valid-parentheses/"], [63, 7, 4, 7, 177, "Evaluate Reverse Polish Notation", 3, 1, "Evaluate a command expression written in postfix form.", "Stack of operands", "https://leetcode.com/problems/evaluate-reverse-polish-notation/"], [64, 7, 4, 7, 184, "Next Greater Element I", 2, 1, "For each reading, find the next higher reading to its right.", "Monotonic stack", "https://leetcode.com/problems/next-greater-element-i/"], [65, 7, 5, 7, 186, "Next Greater Element II (Circular Array)", 3, 1, "Same, but the buffer is circular.", "Monotonic stack, two passes", "https://leetcode.com/problems/next-greater-element-ii/"], [66, 7, 5, 7, 187, "Stock Span Problem", 3, 1, "For each day, count consecutive earlier days with temperature at most today's.", "Monotonic stack", "https://leetcode.com/problems/online-stock-span/"], [67, 8, 1, 7, 192, "Largest Rectangle in Histogram", 4, 1, "Largest rectangular area under a power-usage histogram.", "Monotonic stack", "https://leetcode.com/problems/largest-rectangle-in-histogram/"], [68, 8, 1, 7, 196, "Min Stack (Design a stack with O(1) getMin)", 3, 1, "A stack that returns the current minimum temperature in O(1).", "Stack of pairs", "https://leetcode.com/problems/min-stack/description/"], [69, 8, 2, 8, 205, "Sliding Window Maximum", 4, 1, "Peak load in each window of K readings.", "Monotonic deque", "https://leetcode.com/problems/sliding-window-maximum/"], [70, 8, 2, 7, 176, "Minimum Remove to Make Valid Parentheses", 3, 2, "Remove the fewest bad brackets to make a frame valid.", "Stack plus indices", "https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/"], [71, 8, 3, 7, 189, "Asteroid Collision", 3, 2, "Debris collides; sign gives direction. Which pieces survive?", "Stack simulation", "https://leetcode.com/problems/asteroid-collision/"], [72, 8, 3, 7, 190, "Remove K Digits", 4, 2, "Remove K digits to leave the smallest possible number.", "Monotonic stack", "https://leetcode.com/problems/remove-k-digits/"], [73, 8, 4, 7, 193, "Sum of Subarray Minimums", 4, 2, "Sum of the minimum of every subarray window.", "Monotonic stack, contribution", "https://leetcode.com/problems/sum-of-subarray-minimums/"], [74, 8, 4, 8, 200, "Queue Implementation Implement Queue using Stacks", 2, 2, "Build a queue from two stacks (memory offers only stacks).", "Two stacks", "https://leetcode.com/problems/implement-queue-using-stacks/"], [75, 8, 5, 8, 204, "First non-repeating character in a stream", 3, 2, "First non-repeating character in a live stream.", "Queue plus counts", "https://leetcode.com/problems/first-unique-character-in-a-string/"], [76, 8, 5, 9, 208, "Preorder Traversal (Recursive & Iterative)", 3, 1, "Boot the subsystem tree parent first.", "Preorder, iterative stack", "https://leetcode.com/problems/binary-tree-preorder-traversal/"], [77, 9, 1, 9, 209, "Inorder Traversal (Recursive & Iterative)", 3, 1, "Visit the subsystem tree in sorted order.", "Inorder DFS", "https://leetcode.com/problems/binary-tree-inorder-traversal/"], [78, 9, 1, 9, 210, "Postorder Traversal (Recursive & Iterative)", 3, 1, "Shut down children before parents.", "Postorder DFS", "https://leetcode.com/problems/binary-tree-postorder-traversal/"], [79, 9, 2, 9, 211, "Binary Tree Level Order Traversal", 4, 1, "Visit subsystems level by level.", "BFS with queue", "https://leetcode.com/problems/binary-tree-level-order-traversal/"], [80, 9, 2, 9, 212, "Binary Tree Zigzag Level Order Traversal", 4, 1, "Level order, alternating direction each level.", "BFS plus direction flag", "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/"], [81, 9, 3, 9, 213, "Left / Right View of Binary Tree", 4, 1, "What is visible from the left or right side of the tree?", "BFS, first/last per level", "https://leetcode.com/problems/binary-tree-right-side-view/"], [82, 9, 3, 9, 218, "Maximum Depth of Binary Tree", 3, 1, "How many levels deep is the subsystem hierarchy?", "DFS height", "https://leetcode.com/problems/maximum-depth-of-binary-tree/"], [83, 9, 4, 9, 220, "Invert Binary Tree", 3, 1, "Mirror the subsystem tree.", "Swap children", "https://leetcode.com/problems/invert-binary-tree/"], [84, 9, 4, 9, 221, "Symmetric Tree", 4, 1, "Is the subsystem layout symmetric?", "Compare mirrored halves", "https://leetcode.com/problems/symmetric-tree/"], [85, 9, 5, 9, 224, "Diameter of Binary Tree", 5, 1, "Longest communication path between any two modules.", "Height plus best-so-far", "https://leetcode.com/problems/diameter-of-binary-tree/"], [86, 9, 5, 9, 225, "Balanced Binary Tree", 5, 1, "Is the tree balanced at every node?", "Height with early exit", "https://leetcode.com/problems/balanced-binary-tree/"], [87, 10, 1, 9, 226, "Path Sum I", 3, 1, "Does any root-to-leaf path have power sum equal to X?", "DFS", "https://leetcode.com/problems/path-sum/"], [88, 10, 1, 9, 230, "Lowest Common Ancestor of a Binary Tree", 5, 1, "Find the lowest shared parent subsystem of two faulty modules.", "DFS returning found nodes", "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/"], [89, 10, 2, 9, 231, "Binary Tree Maximum Path Sum", 5, 1, "Maximum-power path through the tree, any start and end.", "DFS with global max", "https://leetcode.com/problems/binary-tree-maximum-path-sum/"], [90, 10, 2, 9, 238, "Structural Modifications & Construct Binary Tree from Preorder and Inorder Traversal", 5, 1, "Rebuild the tree from preorder and inorder dumps.", "Index map plus recursion", "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/"], [91, 10, 3, 9, 241, "Serialize and Deserialize Binary Tree", 5, 1, "Compress the tree to a string to send to Earth, then rebuild it there.", "Preorder with null markers", "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/"], [92, 10, 3, 10, 242, "Search in a Binary Search Tree", 2, 1, "Find an entry in the sorted registry tree.", "BST search", "https://leetcode.com/problems/search-in-a-binary-search-tree/"], [93, 10, 4, 10, 248, "Validate Binary Search Tree", 5, 1, "Check the registry tree truly obeys its ordering.", "Range bounds", "https://leetcode.com/problems/validate-binary-search-tree/"], [94, 10, 4, 10, 249, "Kth Smallest Element in a BST", 5, 1, "Find the Kth smallest registry entry.", "Inorder traversal", "https://leetcode.com/problems/kth-smallest-element-in-a-bst/"], [95, 10, 5, 11, 258, "Implement Trie (Prefix Tree)", 4, 1, "Autocomplete commands as the operator types.", "Trie", "https://leetcode.com/problems/implement-trie-prefix-tree/"], [96, 10, 5, 9, 214, "Top / Bottom View of Binary Tree", 4, 2, "Top and bottom views of the tree.", "BFS with column index", "https://www.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1"], [97, 11, 1, 9, 219, "Same Tree", 3, 2, "Do two subsystem trees match exactly?", "Recursive compare", "https://leetcode.com/problems/same-tree/"], [98, 11, 1, 9, 222, "Maximum Width of Binary Tree", 4, 2, "Widest level of the tree.", "BFS with indices", "https://leetcode.com/problems/maximum-width-of-binary-tree/"], [99, 11, 2, 9, 227, "Path Sum II", 4, 2, "List all root-to-leaf paths with a given sum.", "DFS backtracking", "https://leetcode.com/problems/path-sum-ii/"], [100, 11, 2, 9, 229, "Maximum Difference Between Node and Ancestor", 4, 2, "Max difference between a node and its ancestor.", "DFS carrying min/max", "https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/"], [101, 11, 3, 9, 234, "All Nodes Distance K in Binary Tree", 5, 2, "All modules at distance K from a faulty module.", "Parent map plus BFS", "https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/"], [102, 11, 3, 9, 239, "Construct Binary Tree from Inorder and Postorder Traversal", 4, 2, "Rebuild the tree from inorder and postorder dumps.", "Index map plus recursion", "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/"], [103, 11, 4, 9, 240, "Flatten Binary Tree to Linked List", 4, 2, "Flatten the tree into a command list in place.", "Preorder rewiring", "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/"], [104, 11, 4, 10, 247, "Lowest Common Ancestor of a Binary Search Tree", 4, 2, "Lowest shared ancestor in the sorted registry.", "Use the ordering", "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/"], [105, 11, 5, 10, 250, "Standard Modifications & Delete Node in a BST", 4, 2, "Delete an entry while keeping the order intact.", "Three deletion cases", "https://leetcode.com/problems/delete-node-in-a-bst/"], [106, 11, 5, 11, 259, "Design Add and Search Words Data Structure", 4, 2, "Search stored commands with a wildcard character.", "Trie plus DFS", "https://leetcode.com/problems/design-add-and-search-words-data-structure/"], [107, 12, 1, 12, 265, "Contains Duplicate", 1, 1, "Detect duplicate packet IDs.", "Hash set", "https://leetcode.com/problems/contains-duplicate/"], [108, 12, 1, 12, 269, "Two Sum", 2, 1, "Find two readings that sum to a target.", "Hash map of complements", "https://leetcode.com/problems/two-sum/"], [109, 12, 2, 12, 273, "Group Anagrams", 3, 1, "Group sensor labels that are rearrangements of each other.", "Canonical key", "https://leetcode.com/problems/group-anagrams/"], [110, 12, 2, 12, 274, "Longest Consecutive Sequence", 3, 1, "Longest run of consecutive packet IDs in O(n).", "Hash set, start of run", "https://leetcode.com/problems/longest-consecutive-sequence/"], [111, 12, 3, 12, 275, "Subarray Sum Equals K", 3, 1, "Count windows of readings whose sum equals K.", "Prefix sum plus hashmap", "https://leetcode.com/problems/subarray-sum-equals-k/"], [112, 12, 3, 12, 276, "Contiguous Array / Largest subarray with 0 sum", 3, 1, "Longest window with equal numbers of 0s and 1s.", "Prefix plus first-index map", "https://leetcode.com/problems/contiguous-array/"], [113, 12, 4, 12, 281, "Top K Frequent Elements", 3, 1, "Top K most frequent error codes.", "Count plus bucket or heap", "https://leetcode.com/problems/top-k-frequent-elements/"], [114, 12, 4, 12, 282, "LRU Cache (Least Recently Used)", 4, 1, "A small onboard cache evicts the least recently used item.", "Hashmap plus doubly linked list", "https://leetcode.com/problems/lru-cache/"], [115, 12, 5, 13, 288, "Kth Largest Element in an Array", 4, 1, "Kth largest reading without sorting everything.", "Min-heap of size K", "https://leetcode.com/problems/kth-largest-element-in-an-array/"], [116, 12, 5, 13, 293, "Merge K Sorted Lists", 5, 1, "Merge K sorted sensor feeds into one.", "Min-heap", "https://leetcode.com/problems/merge-k-sorted-lists/"], [117, 13, 1, 13, 298, "Find Median from Data Stream", 5, 1, "Live median of streaming readings.", "Two heaps", "https://leetcode.com/problems/find-median-from-data-stream/"], [118, 13, 1, 14, 303, "Product of Array Except Self", 3, 1, "For each reading, the product of all others, without division.", "Prefix times suffix", "https://leetcode.com/problems/product-of-array-except-self/"], [119, 13, 2, 14, 305, "Trapping Rain Water (Prefix Max / Min)", 4, 1, "How much dust fills the valleys of a terrain profile?", "Prefix/suffix max", "https://leetcode.com/problems/trapping-rain-water/"], [120, 13, 2, 15, 313, "Container With Most Water", 3, 1, "Two walls trap the most water; choose the best pair.", "Two pointers", "https://leetcode.com/problems/container-with-most-water/"], [121, 13, 3, 15, 314, "3Sum", 3, 1, "Find all triplets of readings that sum to zero.", "Sort plus two pointers", "https://leetcode.com/problems/3sum/"], [122, 13, 3, 15, 320, "Find All Anagrams in a String", 3, 1, "Find every position where an anagram of a pattern occurs.", "Fixed window plus counts", "https://leetcode.com/problems/find-all-anagrams-in-a-string/"], [123, 13, 4, 15, 322, "Minimum Size Subarray Sum", 3, 1, "Shortest window whose sum reaches a target.", "Variable window", "https://leetcode.com/problems/minimum-size-subarray-sum/"], [124, 13, 4, 15, 323, "Longest Substring Without Repeating Characters", 3, 1, "Longest stretch with no repeated packet ID.", "Variable window plus set", "https://leetcode.com/problems/longest-substring-without-repeating-characters/"], [125, 13, 5, 15, 324, "Longest Repeating Character Replacement", 3, 1, "Longest stretch after at most K character replacements.", "Window plus max frequency", "https://leetcode.com/problems/longest-repeating-character-replacement/"], [126, 13, 5, 15, 333, "Minimum Window Substring", 5, 1, "Smallest window containing all required codes.", "Window plus counts", "https://leetcode.com/problems/minimum-window-substring/"], [127, 14, 1, 16, 340, "Single Number I", 2, 1, "Find the single reading that has no duplicate pair.", "XOR", "https://leetcode.com/problems/single-number/description/"], [128, 14, 1, 16, 342, "Find the repeating and missing number", 3, 1, "Find the repeating and the missing packet ID.", "Math or XOR", "https://leetcode.com/problems/find-missing-and-repeated-values/"], [129, 14, 2, 12, 277, "Count subarrays with given XOR", 3, 2, "Count windows whose XOR equals K.", "Prefix XOR plus map", "https://www.geeksforgeeks.org/problems/count-subarray-with-given-xor/1"], [130, 14, 2, 12, 278, "Subarray Sums Divisible by K", 3, 2, "Count windows whose sum is divisible by K.", "Prefix mod map", "https://leetcode.com/problems/subarray-sums-divisible-by-k/"], [131, 14, 3, 13, 287, "Last Stone Weight", 3, 2, "Repeatedly smash the two heaviest rocks.", "Max-heap", "https://leetcode.com/problems/last-stone-weight/"], [132, 14, 3, 13, 289, "K Closest Points to Origin", 4, 2, "K closest craters to the lander.", "Heap of size K", "https://leetcode.com/problems/k-closest-points-to-origin/"], [133, 14, 4, 14, 301, "Find Pivot Index", 2, 2, "Find the index where left sum equals right sum.", "Total minus left", "https://leetcode.com/problems/find-pivot-index/"], [134, 14, 4, 14, 302, "Range Sum Query - Immutable", 2, 2, "Answer many range-sum queries on a fixed log.", "Prefix array", "https://leetcode.com/problems/range-sum-query-immutable/"], [135, 14, 5, 15, 311, "Two Sum II - Input Array Is Sorted", 2, 2, "Two Sum on a sorted array.", "Two pointers", "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/"], [136, 14, 5, 15, 315, "Maximum Average Subarray I", 2, 2, "Maximum average of K consecutive readings (noise filter).", "Fixed window", "https://leetcode.com/problems/maximum-average-subarray-i/"], [137, 15, 1, 15, 325, "Max Consecutive Ones III", 3, 2, "Longest run of 1s after flipping at most K zeros.", "Variable window", "https://leetcode.com/problems/max-consecutive-ones-iii/"], [138, 15, 1, 15, 326, "Fruit Into Baskets", 3, 2, "Longest stretch with at most 2 distinct types.", "Window plus map", "https://leetcode.com/problems/fruit-into-baskets/"], [139, 15, 2, 16, 336, "Bit Basics & Properties Check If Number Power of 2 or Not", 2, 2, "Is a buffer size a power of 2?", "n and (n-1)", "https://leetcode.com/problems/power-of-two/"], [140, 15, 2, 17, 355, "Insert Interval", 3, 1, "Insert a new communication window into the sorted list.", "Interval merge", "https://leetcode.com/problems/insert-interval/"], [141, 15, 3, 17, 356, "Non-overlapping Intervals", 3, 1, "Fewest windows to drop so none overlap.", "Sort by end time", "https://leetcode.com/problems/non-overlapping-intervals/"], [142, 15, 3, 17, 359, "Minimum Platforms required for a railway", 3, 1, "How many antennas are needed at the busiest moment?", "Sort plus sweep", "https://www.geeksforgeeks.org/problems/minimum-platforms-1587115620/1"], [143, 15, 4, 17, 362, "Jump Game", 3, 1, "Can the rover reach the last waypoint given hop limits?", "Track furthest reach", "https://leetcode.com/problems/jump-game/"], [144, 15, 4, 17, 364, "Gas Station", 3, 1, "Choose the starting station to complete the fuel circuit.", "Running tank", "https://leetcode.com/problems/gas-station/"], [145, 15, 5, 18, 371, "BFS of Graph", 1, 1, "Spread a signal level by level across stations.", "BFS", "https://www.geeksforgeeks.org/problems/bfs-traversal-of-graph/1"], [146, 15, 5, 18, 372, "DFS of Graph", 1, 1, "Explore all connected modules depth first.", "DFS", "https://www.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1"], [147, 16, 1, 18, 374, "Number of Provinces", 2, 1, "Count isolated ground-station clusters.", "DFS or union-find", "https://leetcode.com/problems/number-of-provinces/"], [148, 16, 1, 18, 375, "Clone Graph", 3, 1, "Copy the station network.", "DFS plus map", "https://leetcode.com/problems/clone-graph/"], [149, 16, 2, 18, 378, "Max Area of Island", 2, 1, "Largest connected landing zone in an image.", "DFS on grid", "https://leetcode.com/problems/max-area-of-island/"], [150, 16, 2, 18, 379, "Number of Islands", 3, 1, "Count craters (islands) in a satellite image.", "DFS/BFS on grid", "https://leetcode.com/problems/number-of-islands/"], [151, 16, 3, 18, 380, "Rotting Oranges", 3, 1, "A fault spreads each minute. Time until every component fails?", "Multi-source BFS", "https://leetcode.com/problems/rotting-oranges/"], [152, 16, 3, 18, 388, "Detect Cycle in a Directed Graph", 3, 1, "Detect circular dependencies among subsystems.", "DFS colours or Kahn", "https://www.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1"], [153, 16, 4, 18, 390, "Topological Sort", 2, 1, "Find a valid boot order for subsystems.", "Kahn's algorithm", "https://www.geeksforgeeks.org/problems/topological-sort/1"], [154, 16, 4, 18, 391, "Course Schedule", 3, 1, "Can all subsystem checks complete, with no dependency loop?", "Topological sort", "https://leetcode.com/problems/course-schedule/"], [155, 16, 5, 18, 392, "Course Schedule II", 3, 1, "Give one valid order for subsystem checks.", "Topological sort", "https://leetcode.com/problems/course-schedule-ii/"], [156, 16, 5, 18, 397, "Dijkstra's Algorithm", 3, 1, "Fastest signal route to every station.", "Dijkstra", "https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1"], [157, 17, 1, 18, 398, "Network Delay Time", 3, 1, "Time for a signal to reach every station.", "Dijkstra", "https://leetcode.com/problems/network-delay-time/"], [158, 17, 1, 18, 410, "Disjoint Set", 2, 1, "Group stations into networks quickly as links are added.", "Union-Find", "https://www.geeksforgeeks.org/problems/disjoint-set-union-find/1"], [159, 17, 2, 18, 422, "Word Ladder", 4, 1, "Shortest chain of one-letter changes between two commands.", "BFS", "https://leetcode.com/problems/word-ladder/"], [160, 17, 2, 17, 353, "Activity Selection / N Meetings in One Room", 2, 2, "Maximum number of experiments in one time slot.", "Sort by end time", "https://www.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1"], [161, 17, 3, 17, 357, "Minimum Number of Arrows to Burst Balloons", 3, 2, "Fewest pulses to clear all overlapping debris intervals.", "Sort by end time", "https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/"], [162, 17, 3, 17, 365, "Jump Game II", 3, 2, "Minimum hops to reach the last waypoint.", "Greedy BFS levels", "https://leetcode.com/problems/jump-game-ii/"], [163, 17, 4, 17, 367, "Candy", 4, 2, "Share fuel units so higher-priority neighbours get more.", "Two passes", "https://leetcode.com/problems/candy/description/"], [164, 17, 4, 18, 376, "Is Graph Bipartite?", 3, 2, "Can modules be split into two non-interfering groups?", "BFS colouring", "https://leetcode.com/problems/is-graph-bipartite/"], [165, 17, 5, 18, 381, "01 Matrix / Distance of nearest cell having 1", 3, 2, "Distance of every cell from the nearest hot spot.", "Multi-source BFS", "https://www.geeksforgeeks.org/problems/distance-of-nearest-cell-having-1-1587115620/1"], [166, 17, 5, 18, 382, "Surrounded Regions", 3, 2, "Which regions are fully enclosed by walls?", "DFS from the border", "https://leetcode.com/problems/surrounded-regions/"], [167, 18, 1, 18, 387, "Cycle Detection in Undirected Graph", 2, 2, "Detect a cycle in an undirected network.", "DFS or union-find", "https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1"], [168, 18, 1, 18, 400, "Cheapest Flights Within K Stops", 3, 2, "Cheapest signal route using at most K relays.", "Bellman-Ford style", "https://leetcode.com/problems/cheapest-flights-within-k-stops/description/"], [169, 18, 2, 18, 409, "Min Cost to Connect All Points (Kruskal)", 3, 2, "Cheapest way to connect all ground stations.", "Kruskal or Prim", "https://leetcode.com/problems/min-cost-to-connect-all-points/"], [170, 18, 2, 18, 414, "Redundant Connection", 3, 2, "Find the extra cable that creates a loop.", "Union-Find", "https://leetcode.com/problems/redundant-connection/"], [171, 18, 3, 19, 428, "Subsets / Power Set", 3, 1, "All combinations of instruments to switch on.", "Include/exclude", "https://leetcode.com/problems/subsets/"], [172, 18, 3, 19, 429, "Subsets II (With Duplicates)", 3, 1, "Same, but some instruments are duplicates.", "Sort plus skip duplicates", "https://leetcode.com/problems/subsets-ii/"], [173, 18, 4, 19, 431, "Combination Sum I", 3, 1, "Ways to hit the power budget exactly, reusing components.", "Backtracking", "https://leetcode.com/problems/combination-sum/"], [174, 18, 4, 19, 432, "Combination Sum II", 3, 1, "Same, but each component may be used once.", "Skip duplicates", "https://leetcode.com/problems/combination-sum-ii/"], [175, 18, 5, 19, 435, "Permutations II (With Duplicates)", 3, 1, "All orderings of experiments that include repeats.", "Used array plus skip", "https://leetcode.com/problems/permutations-ii/"], [176, 18, 5, 19, 436, "Letter Combinations of a Phone Number", 3, 1, "Decode keypad digits into all possible command strings.", "Backtracking", "https://leetcode.com/problems/letter-combinations-of-a-phone-number/"], [177, 19, 1, 19, 437, "Generate Parentheses", 3, 1, "Generate all valid bracket frames of length 2N.", "Open/close counts", "https://leetcode.com/problems/generate-parentheses/"], [178, 19, 1, 19, 438, "Palindrome Partitioning", 4, 1, "Split a string into palindromic parts in all ways.", "Backtracking", "https://leetcode.com/problems/palindrome-partitioning/"], [179, 19, 2, 19, 443, "Word Search", 4, 1, "Does a path of letters exist in the grid?", "DFS plus visited", "https://leetcode.com/problems/word-search/"], [180, 19, 2, 19, 445, "N-Queens", 5, 1, "Place N instruments so none conflict.", "Row by row, conflict sets", "https://leetcode.com/problems/n-queens/"], [181, 19, 3, 20, 449, "Climbing Stairs", 1, 1, "Ways to descend N steps of the landing ladder, 1 or 2 at a time.", "1D DP", "https://leetcode.com/problems/climbing-stairs/"], [182, 19, 3, 20, 453, "House Robber", 2, 1, "Never fire adjacent thrusters; maximize total benefit.", "Take or skip", "https://leetcode.com/problems/house-robber/"], [183, 19, 4, 20, 454, "House Robber II", 3, 1, "Same, but the thrusters sit on a ring.", "Two runs", "https://leetcode.com/problems/house-robber-ii/"], [184, 19, 4, 20, 456, "Unique Paths", 2, 1, "Count paths from top-left to bottom-right of a grid.", "2D DP", "https://leetcode.com/problems/unique-paths/"], [185, 19, 5, 20, 458, "Minimum Path Sum", 3, 1, "Cheapest fuel path across a grid.", "2D DP", "https://leetcode.com/problems/minimum-path-sum/"], [186, 19, 5, 20, 464, "Partition Equal Subset Sum", 3, 1, "Can the payload be split into two equal weights?", "Subset sum", "https://leetcode.com/problems/partition-equal-subset-sum/"], [187, 20, 1, 20, 468, "0/1 Knapsack Problem", 3, 1, "Maximize science value within a weight limit.", "0/1 knapsack", "https://www.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1"], [188, 20, 1, 20, 472, "Coin Change", 3, 1, "Fewest components that make an exact total.", "Unbounded DP", "https://leetcode.com/problems/coin-change/"], [189, 20, 2, 20, 473, "Coin Change II", 3, 1, "Count the ways to make a total from components.", "Unbounded DP", "https://leetcode.com/problems/coin-change-ii/"], [190, 20, 2, 20, 475, "Longest Common Subsequence", 3, 1, "Longest common subsequence of two logs.", "2D DP", "https://leetcode.com/problems/longest-common-subsequence/"], [191, 20, 3, 20, 483, "Edit Distance", 4, 1, "Fewest edits to turn one command into another.", "2D DP", "https://leetcode.com/problems/edit-distance/"], [192, 20, 3, 20, 492, "Longest Increasing Subsequence", 3, 1, "Longest rising trend in a series.", "DP or patience sorting", "https://leetcode.com/problems/longest-increasing-subsequence/"], [193, 20, 4, 19, 433, "Combination Sum III", 3, 2, "Pick K distinct digits 1-9 that sum to N.", "Backtracking", "https://leetcode.com/problems/combination-sum-iii/"], [194, 20, 4, 19, 439, "Word Break", 4, 2, "Can a command string be split into dictionary words?", "DP or backtracking", "https://leetcode.com/problems/word-break/"], [195, 20, 5, 19, 442, "Rat in a Maze", 4, 2, "Find all rover paths through a maze.", "DFS backtracking", "https://www.geeksforgeeks.org/problems/rat-in-a-maze-problem/1"], [196, 20, 5, 20, 450, "Min Cost Climbing Stairs", 2, 2, "Minimum fuel to climb steps with a cost per step.", "1D DP", "https://leetcode.com/problems/min-cost-climbing-stairs/"], [197, 21, 1, 20, 455, "Decode Ways", 3, 2, "Number of ways to decode a numeric string.", "1D DP", "https://leetcode.com/problems/decode-ways/"], [198, 21, 1, 20, 457, "Unique Paths II", 3, 2, "Grid paths with obstacles.", "2D DP", "https://leetcode.com/problems/unique-paths-ii/"], [199, 21, 2, 20, 460, "Minimum Falling Path Sum", 3, 2, "Minimum falling path sum.", "2D DP", "https://leetcode.com/problems/minimum-falling-path-sum/"], [200, 21, 2, 20, 466, "Target Sum", 3, 2, "Ways to reach a target by adding or subtracting values.", "Subset sum count", "https://www.geeksforgeeks.org/problems/target-sum-1626326450/1"], [201, 21, 3, 20, 474, "Perfect Squares", 3, 2, "Fewest square numbers that sum to n.", "Unbounded DP", "https://leetcode.com/problems/perfect-squares/"], [202, 21, 3, 20, 478, "Longest Palindromic Subsequence", 3, 2, "Longest palindromic subsequence.", "LCS with the reverse", "https://leetcode.com/problems/longest-palindromic-subsequence/"], [203, 21, 4, 20, 487, "Best Time to Buy and Sell Stock II", 2, 2, "Maximum profit with unlimited trades.", "Greedy or DP", "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/"], [204, 21, 4, 20, 488, "Best Time to Buy and Sell Stock with Cooldown", 2, 2, "Stock trading with a cooldown day.", "State DP", "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/"], [205, 22, 1, 21, 124, "Interfaces & Abstract Classes", 3, 1, "Camera and spectrometer must both expose read(). Define the common contract.", "Interface / abstract class", ""], [206, 22, 2, 21, 125, "Singleton Pattern", 3, 1, "Only one comms module may control the antenna. Enforce a single instance.", "Singleton", ""], [207, 22, 3, 21, 126, "Factory Pattern", 4, 1, "Create the right sensor object from a config string without hard-coding classes.", "Factory", ""], [208, 23, 1, 21, 121, "Classes, Objects & Constructors", 1, 2, "Model a Sensor with a constructor and fields.", "Classes and objects", ""], [209, 23, 2, 21, 122, "Inheritance & Polymorphism", 2, 2, "Build Instrument, then Camera and Thermometer with overridden behaviour.", "Inheritance, polymorphism", ""], [210, 23, 3, 21, 123, "Encapsulation & Abstraction", 2, 2, "Hide raw hardware registers behind safe methods.", "Encapsulation", ""]];
+
+    // Topic Chapters
+    const CH = ["1A Raw Telemetry (Arrays)", "1B Camera Frames (2D Arrays)", "1C Command Strings", "2 Searching Huge Logs (Binary Search)", "3A Orbit Math (Recursion)", "3B Onboard Sorting", "5A Firmware Chains (Linked List)", "5B Packet Validation (Stack)", "5C Uplink Queue", "6A Subsystem Tree (Binary Tree)", "6B Sorted Registry (BST)", "6C Command Autocomplete (Trie)", "7A Packet Lookup (Hashmap)", "7B Priority Alerts (Heap)", "7C Telemetry Stats (Prefix Sum)", "7D Noise Filter (Two Pointers and Window)", "7E Error Bits (Bit Manipulation)", "8A Mission Scheduling (Greedy)", "8B Ground Station Network (Graphs)", "9A Mode Planning (Backtracking)", "9B Budget Optimizer (DP)", "4 Flight Software Design (OOP)"];
+
+    // Friendly Striver-style Step Titles mapping
+    const STEP_NAMES = [
+      "Arrays · Raw Telemetry",
+      "2D Arrays & Matrices · Camera Frames",
+      "Strings · Command Logs",
+      "Binary Search · Searching Huge Logs",
+      "Recursion · Orbit Math",
+      "Sorting Techniques · Onboard Sorting",
+      "Linked Lists · Firmware Chains",
+      "Stacks · Packet Validation",
+      "Queues · Uplink Queue",
+      "Binary Trees · Subsystem Tree",
+      "Binary Search Trees · Sorted Registry",
+      "Trie Data Structure · Command Autocomplete",
+      "Hashmaps & Sets · Packet Lookup",
+      "Heaps & Priority Queues · Priority Alerts",
+      "Prefix Sum · Telemetry Stats",
+      "Two Pointers & Sliding Window · Noise Filter",
+      "Bit Manipulation · Error Bits",
+      "Greedy Algorithms · Mission Scheduling",
+      "Graphs · Ground Station Network",
+      "Recursion & Backtracking · Mode Planning",
+      "Dynamic Programming · Budget Optimizer",
+      "OOP & Low-Level Design · Flight Software"
+    ];
+
+    // Utilities
+    const $ = id => document.getElementById(id);
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+    // State
+    let S = {};
+    let start = "2026-11-03";
+    let activeView = "topics"; // 'topics' or 'weeks'
+    let currentNoteSr = null;
+    let expandedSteps = new Set([0]); // Open first step by default
+
+    // Filters State
+    let filterStatus = ""; // "", "unsolved", "solved"
+    let filterTier = "";   // "", "1", "2"
+    let filterDiff = "";   // "", "easy", "med", "hard"
+    let filterRev = false; // boolean
+    let searchQuery = "";
+
+    // Load Local Storage
+    try {
+      const saved = JSON.parse(localStorage.getItem("chandra-v1") || "{}");
+      S = saved.p || {};
+      start = "2026-11-03";
+      if (saved.start && saved.start !== "2026-11-02" && saved.start !== "2026-10-26") {
+        start = saved.start;
+      } else {
+        start = "2026-11-03";
+        save();
+      }
+    } catch (e) {}
+
+    const save = () => {
+      try {
+        localStorage.setItem("chandra-v1", JSON.stringify({ p: S, start }));
+      } catch (e) {}
+    };
+
+    const getProg = sr => S[sr] || (S[sr] = { s: 0, r: 0, n: "" });
+
+    // Weekday-only schedule calculation: weekends (Sat & Sun) are strictly OFF for new problems
+    let _weekdayCacheKey = "";
+    let _weekdayCache = [];
+
+    function getWeekdayDate(startDateStr, weekdayIdx) {
+      if (_weekdayCacheKey !== startDateStr || _weekdayCache.length === 0) {
+        _weekdayCacheKey = startDateStr;
+        _weekdayCache = [];
+        const d = new Date(startDateStr + "T00:00:00");
+        // If start date itself is a weekend, forward to the upcoming Monday
+        while (d.getDay() === 0 || d.getDay() === 6) {
+          d.setDate(d.getDate() + 1);
+        }
+        const cur = new Date(d);
+        while (_weekdayCache.length < 500) {
+          if (cur.getDay() !== 0 && cur.getDay() !== 6) {
+            _weekdayCache.push(new Date(cur));
+          }
+          cur.setDate(cur.getDate() + 1);
+        }
+      }
+      return _weekdayCache[weekdayIdx] ? new Date(_weekdayCache[weekdayIdx]) : new Date();
+    }
+
+    const planDate = r => {
+      const wk = r[1];
+      const dy = Math.min(5, Math.max(1, r[2]));
+      const weekdayIdx = (wk - 1) * 5 + (dy - 1);
+      return getWeekdayDate(start, weekdayIdx);
+    };
+    const fd = d => d.toLocaleDateString(undefined, { weekday: "short", day: "numeric", month: "short" });
+
+    // Difficulty calculation from stars (st: 1..5)
+    const getDiffInfo = st => {
+      if (st <= 2) return { label: "Easy", cls: "diff-easy" };
+      if (st <= 4) return { label: "Medium", cls: "diff-med" };
+      return { label: "Hard", cls: "diff-hard" };
+    };
+
+    // Toast helper
+    let toastTimeout;
+    function showToast(msg) {
+      const t = $("toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => t.classList.remove("show"), 2800);
+    }
+
+    // Render Stats
+    function updateStats() {
+      const total = D.length;
+      const doneList = D.filter(r => getProg(r[4]).s === 2);
+      const doneCount = doneList.length;
+      const pct = Math.round((doneCount / total) * 100);
+
+      $("stat-solved-count").textContent = doneCount;
+      $("stat-percent").textContent = pct + "% Solved";
+      $("stat-hero-fill").style.width = pct + "%";
+      $("stat-remaining-txt").textContent = (total - doneCount) + " to go";
+
+      const t1List = D.filter(r => r[7] === 1);
+      const t1Done = t1List.filter(r => getProg(r[4]).s === 2).length;
+      $("stat-t1-val").textContent = t1Done + " / " + t1List.length;
+
+      const t2List = D.filter(r => r[7] === 2);
+      const t2Done = t2List.filter(r => getProg(r[4]).s === 2).length;
+      $("stat-t2-val").textContent = t2Done + " / " + t2List.length;
+
+      const revCount = D.filter(r => getProg(r[4]).r).length;
+      $("stat-rev-val").textContent = revCount;
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const plannedCount = D.filter(r => planDate(r) <= today).length;
+      $("stat-plan-val").textContent = plannedCount;
+      $("stat-plan-sub").textContent = doneCount >= plannedCount ? "On track 👍" : (plannedCount - doneCount) + " behind";
+    }
+
+    // Live Clock & Time Logic
+    function updateLiveClock() {
+      const now = new Date();
+      const dateStr = now.toLocaleDateString(undefined, { 
+        weekday: "short", 
+        day: "numeric", 
+        month: "short", 
+        year: "numeric" 
+      });
+      const timeStr = now.toLocaleTimeString(undefined, {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+      });
+      const fullText = dateStr + " · " + timeStr;
+
+      const navEl = $("nav-live-clock");
+      if (navEl) navEl.textContent = fullText;
+
+      const bannerEl = $("banner-live-clock");
+      if (bannerEl) bannerEl.textContent = fullText;
+    }
+    setInterval(updateLiveClock, 1000);
+
+    // Get today's daily target tasks (including weekend revision mode and rollover logic)
+    function getDailyTargetData() {
+      const now = new Date();
+      const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const startDate = new Date(start + "T00:00:00");
+      const isBeforeStart = todayMidnight < startDate;
+      const isWeekend = now.getDay() === 0 || now.getDay() === 6;
+
+      // 1. Previous uncompleted tasks (scheduled on weekdays before todayMidnight and status !== 2)
+      const overdueTasks = D.filter(r => {
+        const pDate = planDate(r);
+        const p = getProg(r[4]);
+        return pDate < todayMidnight && p.s !== 2;
+      }).map(r => ({ r, type: "overdue" }));
+
+      // 2. Tasks scheduled for today (weekdays only)
+      const todayScheduled = isWeekend ? [] : D.filter(r => {
+        const pDate = planDate(r);
+        return pDate.getTime() === todayMidnight.getTime();
+      }).map(r => ({ r, type: "today" }));
+
+      // 3. Flagged Revision Bookmarks (problems with r === 1)
+      const revisionBookmarks = D.filter(r => {
+        const p = getProg(r[4]);
+        return p.r === 1;
+      }).map(r => ({ r, type: "revision" }));
+
+      let allTargets = [];
+      let isPreview = false;
+
+      if (isWeekend) {
+        // Weekends: OFF from new tasks, dedicated to REVISION & CATCH-UP
+        const combined = [...revisionBookmarks, ...overdueTasks];
+        const seenSr = new Set();
+        allTargets = [];
+        combined.forEach(item => {
+          const sr = item.r[4];
+          if (!seenSr.has(sr)) {
+            seenSr.add(sr);
+            allTargets.push(item);
+          }
+        });
+
+        if (allTargets.length === 0) {
+          // If no revision flags and no backlog, show top 3 Tier 1 core problems as recommended review
+          const recTier1 = D.filter(r => r[7] === 1).slice(0, 3);
+          allTargets = recTier1.map(r => ({ r, type: "rec-review" }));
+          isPreview = true;
+        }
+      } else {
+        // Weekdays: Normal schedule
+        allTargets = [...overdueTasks, ...todayScheduled];
+
+        if (allTargets.length === 0) {
+          const nextUncompleted = D.filter(r => getProg(r[4]).s !== 2).slice(0, 3);
+          allTargets = nextUncompleted.map(r => ({ r, type: isBeforeStart ? "starts-soon" : "preview" }));
+          isPreview = true;
+        }
+      }
+
+      return {
+        allTargets,
+        overdueCount: overdueTasks.length,
+        todayCount: todayScheduled.length,
+        revisionCount: revisionBookmarks.length,
+        isWeekend,
+        isPreview,
+        isBeforeStart,
+        startDate
+      };
+    }
+
+    // Toggle target intel drawer
+    window.toggleTargetIntel = function(sr) {
+      const el = $("target-intel-" + sr);
+      if (el) el.classList.toggle("open");
+    };
+
+    // Render Today's Target Hub
+    function renderTodayBanner() {
+      updateLiveClock();
+      const { allTargets, overdueCount, todayCount, revisionCount, isWeekend, isPreview, isBeforeStart, startDate } = getDailyTargetData();
+      const container = $("today-target-list");
+      const totalBadge = $("today-total-badge");
+      const overdueBadge = $("today-overdue-badge");
+      const progressPill = $("today-progress-pill");
+      const subtext = $("today-subtext");
+
+      const now = new Date();
+      const todayStr = now.toLocaleDateString(undefined, { weekday: "long", day: "numeric", month: "short" });
+
+      if (isWeekend) {
+        totalBadge.textContent = "🏖️ Weekend · Revision Only";
+        if (overdueCount > 0) {
+          overdueBadge.style.display = "inline-flex";
+          overdueBadge.textContent = "⚠️ " + overdueCount + " Backlog to Catch Up";
+        } else {
+          overdueBadge.style.display = "none";
+        }
+
+        const doneCount = allTargets.filter(item => getProg(item.r[4]).s === 2).length;
+        progressPill.textContent = (revisionCount > 0 ? revisionCount + " Flagged" : "") + (overdueCount > 0 ? (revisionCount > 0 ? " · " : "") + overdueCount + " Catch-up" : (revisionCount === 0 ? "Revision & Rest" : ""));
+
+        if (isPreview) {
+          subtext.innerHTML = '<strong>' + todayStr + ' (Weekend):</strong> 🎉 Stellar job! No pending backlog and no bookmarked revisions. Weekends are off from new tasks. Rest up or review these key Tier 1 patterns:';
+        } else {
+          let desc = '<strong>' + todayStr + ' · Weekend Revision Hub:</strong> No new tasks scheduled today! ';
+          if (revisionCount > 0 && overdueCount > 0) {
+            desc += 'Focus on <strong>' + revisionCount + ' bookmarked revision problem' + (revisionCount === 1 ? '' : 's') + '</strong> and catch up on <span style="color:var(--danger); font-weight:600;">' + overdueCount + ' overdue task' + (overdueCount === 1 ? '' : 's') + '</span>.';
+          } else if (revisionCount > 0) {
+            desc += 'You have <strong>' + revisionCount + ' problem' + (revisionCount === 1 ? '' : 's') + ' flagged for revision</strong> below. Review intuition and solidify core concepts.';
+          } else {
+            desc += 'Clear your <span style="color:var(--danger); font-weight:600;">' + overdueCount + ' rollover backlog task' + (overdueCount === 1 ? '' : 's') + '</span> to start fresh on Monday!';
+          }
+          subtext.innerHTML = desc;
+        }
+      } else if (isPreview) {
+        if (!allTargets.length) {
+          totalBadge.textContent = "All Conquered 🎉";
+          overdueBadge.style.display = "none";
+          progressPill.textContent = "100% Complete";
+          subtext.textContent = "Incredible job! All 210 missions across the entire curriculum are complete!";
+          container.innerHTML = '<div style="text-align:center; padding:18px; color:var(--success); font-weight:700; font-size:14px;">🚀 Mission Complete! Ready for Microsoft SDE Interviews!</div>';
+          return;
+        }
+
+        if (isBeforeStart) {
+          const daysLeft = Math.ceil((startDate - now) / (1000 * 60 * 60 * 24));
+          totalBadge.textContent = daysLeft <= 1 ? "Starts Tomorrow (3 Nov) 🚀" : "Starts " + fd(startDate);
+          overdueBadge.style.display = "none";
+          progressPill.textContent = "Launches 3 Nov";
+          subtext.innerHTML = '<strong>Target Start Date: ' + fd(startDate) + ' (' + (daysLeft <= 1 ? 'Tomorrow' : 'in ' + daysLeft + ' days') + '):</strong> Your 210-mission roadmap begins on 3 November! Day 1 target problems are queued below so you can get a head start:';
+        } else {
+          totalBadge.textContent = "Ahead of Schedule";
+          overdueBadge.style.display = "none";
+          const doneToday = allTargets.filter(item => getProg(item.r[4]).s === 2).length;
+          progressPill.textContent = doneToday + " / " + allTargets.length + " Done";
+          subtext.innerHTML = '<strong>' + todayStr + ':</strong> No overdue tasks! You are completely up to date. Previewing upcoming missions for next cadence:';
+        }
+      } else {
+        const doneCount = allTargets.filter(item => getProg(item.r[4]).s === 2).length;
+        totalBadge.textContent = allTargets.length + " Task" + (allTargets.length === 1 ? "" : "s") + " for Today";
+
+        if (overdueCount > 0) {
+          overdueBadge.style.display = "inline-flex";
+          overdueBadge.textContent = "⚠️ " + overdueCount + " Previous Task" + (overdueCount === 1 ? "" : "s") + " Rolled Over";
+        } else {
+          overdueBadge.style.display = "none";
+        }
+
+        progressPill.textContent = doneCount + " / " + allTargets.length + " Done (" + Math.round((doneCount / allTargets.length) * 100) + "%)";
+
+        if (doneCount === allTargets.length) {
+          subtext.innerHTML = '<span style="color:var(--success); font-weight:700;">🎉 Stellar work! All ' + allTargets.length + ' tasks for ' + todayStr + ' (including rollovers) are completed!</span>';
+        } else {
+          let desc = '<strong>Cadence for ' + todayStr + ':</strong> ';
+          if (overdueCount > 0 && todayCount > 0) {
+            desc += '<span style="color:var(--danger); font-weight:600;">' + overdueCount + ' uncompleted task' + (overdueCount === 1 ? '' : 's') + ' rolled over from previous days</span> + ' + todayCount + ' scheduled for today. Complete them below:';
+          } else if (overdueCount > 0) {
+            desc += '<span style="color:var(--danger); font-weight:600;">' + overdueCount + ' uncompleted task' + (overdueCount === 1 ? '' : 's') + ' rolled over from previous days.</span> Clear the backlog to stay on track!';
+          } else {
+            desc += todayCount + ' task' + (todayCount === 1 ? '' : 's') + ' scheduled for today. Keep up the great pace!';
+          }
+          subtext.innerHTML = desc;
+        }
+      }
+
+      container.innerHTML = allTargets.map(item => {
+        const [seq, wk, dy, ch, sr, nm, st, tr, br, id, url] = item.r;
+        const p = getProg(sr);
+        const diff = getDiffInfo(st);
+        const isSolved = p.s === 2;
+
+        let tagHtml = "";
+        let itemClass = "today-target-item";
+
+        if (item.type === "revision") {
+          tagHtml = '<span class="target-tag tag-revision">🔖 Flagged for Revision</span>';
+          itemClass += " is-revision";
+        } else if (item.type === "rec-review") {
+          tagHtml = '<span class="target-tag tag-preview">💡 Recommended Revision · W' + wk + 'D' + dy + '</span>';
+        } else if (item.type === "overdue") {
+          tagHtml = '<span class="target-tag tag-overdue">⚠️ ' + (isWeekend ? 'Weekend Catch-Up' : 'Rolled Over') + ' · W' + wk + 'D' + dy + ' (' + fd(planDate(item.r)) + ')</span>';
+          itemClass += " is-overdue";
+        } else if (item.type === "today") {
+          tagHtml = '<span class="target-tag tag-today">📅 Scheduled Today · W' + wk + 'D' + dy + '</span>';
+          itemClass += " is-today";
+        } else if (item.type === "starts-soon") {
+          tagHtml = '<span class="target-tag tag-today">🚀 Starts ' + fd(planDate(item.r)) + ' · W' + wk + 'D' + dy + '</span>';
+        } else {
+          tagHtml = '<span class="target-tag tag-preview">⏭️ Upcoming · W' + wk + 'D' + dy + ' (' + fd(planDate(item.r)) + ')</span>';
+        }
+
+        if (isSolved) itemClass += " is-done";
+
+        let platformBadge = '<span class="practice-btn practice-gen">Practice</span>';
+        if (url) {
+          if (url.includes("leetcode.com")) {
+            platformBadge = '<a href="' + esc(url) + '" target="_blank" rel="noopener" class="practice-btn practice-lc">LeetCode ↗</a>';
+          } else if (url.includes("geeksforgeeks.org")) {
+            platformBadge = '<a href="' + esc(url) + '" target="_blank" rel="noopener" class="practice-btn practice-gfg">GFG ↗</a>';
+          } else {
+            platformBadge = '<a href="' + esc(url) + '" target="_blank" rel="noopener" class="practice-btn practice-gen">Problem ↗</a>';
+          }
+        }
+
+        const statusIcon = isSolved ? "✓" : (p.s === 1 ? "◐" : "○");
+
+        return `
+          <div class="${itemClass}">
+            <div class="target-item-left">
+              <button class="status-btn status-${p.s}" title="Click to toggle solved" onclick="toggleStatus(${sr})">
+                ${statusIcon}
+              </button>
+              ${tagHtml}
+              <a href="${url ? esc(url) : '#'}" target="${url ? '_blank' : '_self'}" rel="noopener" class="target-item-title" onclick="${url ? '' : 'return false;'}">
+                ${esc(nm)}
+              </a>
+              <button class="intel-toggle-btn" onclick="toggleTargetIntel(${sr})" title="View Mission Story & Idea">
+                💡 Intel
+              </button>
+            </div>
+            <div class="target-item-right">
+              <span class="diff-pill ${diff.cls}">${diff.label}</span>
+              <span class="tier-pill tier-${tr}">Tier ${tr}</span>
+              ${platformBadge}
+              <button class="target-jump-btn" onclick="scrollToProblem(${sr})" title="Locate problem in A2Z sheet">
+                📍 Jump in Sheet
+              </button>
+            </div>
+            <div class="today-target-drawer" id="target-intel-${sr}">
+              <div style="color:var(--text); margin-bottom:3px;"><strong>Mission Brief:</strong> ${esc(br)}</div>
+              <div style="color:var(--primary); font-weight:500;"><strong>Key Idea:</strong> ${esc(id)} · <em>Planned: ${fd(planDate(item.r))}</em></div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    // Filter Logic
+    function matchesFilters(r) {
+      const [seq, wk, dy, ch, sr, nm, st, tr, br, id, url] = r;
+      const p = getProg(sr);
+      const diff = getDiffInfo(st);
+
+      // Search Query
+      if (searchQuery) {
+        const text = (nm + " " + br + " " + id + " " + CH[ch] + " " + STEP_NAMES[ch] + " W" + wk).toLowerCase();
+        if (!text.includes(searchQuery)) return false;
+      }
+
+      // Status
+      if (filterStatus === "solved" && p.s !== 2) return false;
+      if (filterStatus === "unsolved" && p.s === 2) return false;
+
+      // Revisit
+      if (filterRev && !p.r) return false;
+
+      // Tier
+      if (filterTier && String(tr) !== String(filterTier)) return false;
+
+      // Difficulty
+      if (filterDiff) {
+        if (filterDiff === "easy" && diff.label !== "Easy") return false;
+        if (filterDiff === "med" && diff.label !== "Medium") return false;
+        if (filterDiff === "hard" && diff.label !== "Hard") return false;
+      }
+
+      return true;
+    }
+
+    // Render Problem Table Row
+    function problemRowHTML(r) {
+      const [seq, wk, dy, ch, sr, nm, st, tr, br, id, url] = r;
+      const p = getProg(sr);
+      const diff = getDiffInfo(st);
+      const isSolved = p.s === 2;
+
+      // Platform badge
+      let platformBadge = '<span class="practice-btn practice-gen">Practice</span>';
+      if (url) {
+        if (url.includes("leetcode.com")) {
+          platformBadge = `<a href="${esc(url)}" target="_blank" rel="noopener" class="practice-btn practice-lc" title="Solve on LeetCode">LeetCode ↗</a>`;
+        } else if (url.includes("geeksforgeeks.org")) {
+          platformBadge = `<a href="${esc(url)}" target="_blank" rel="noopener" class="practice-btn practice-gfg" title="Solve on GeeksforGeeks">GFG ↗</a>`;
+        } else {
+          platformBadge = `<a href="${esc(url)}" target="_blank" rel="noopener" class="practice-btn practice-gen">Problem ↗</a>`;
+        }
+      }
+
+      const statusIcon = p.s === 2 ? "✓" : (p.s === 1 ? "◐" : "○");
+      const statusTitle = p.s === 2 ? "Solved (Click to reset)" : (p.s === 1 ? "In Progress (Click to solve)" : "Not Started (Click to solve)");
+
+      return `
+        <tr class="prob-row ${isSolved ? "is-solved" : ""}" id="prob-row-${sr}" data-sr="${sr}">
+          <td class="col-status">
+            <button class="status-btn status-${p.s}" title="${statusTitle}" onclick="toggleStatus(${sr})">
+              ${statusIcon}
+            </button>
+          </td>
+          <td class="col-title">
+            <div class="prob-title-row">
+              <span class="prob-schedule-tag">Wk ${wk} · D${dy}</span>
+              <a href="${url ? esc(url) : '#'}" target="${url ? '_blank' : '_self'}" rel="noopener" class="prob-title-text" onclick="${url ? '' : 'return false;'}">
+                ${esc(nm)}
+              </a>
+              <button class="intel-toggle-btn" onclick="toggleIntel(${sr})" title="Toggle Mission Brief & Key Idea">
+                💡 Intel
+              </button>
+            </div>
+            <div class="intel-drawer" id="intel-${sr}">
+              <div class="intel-story"><strong>Mission Brief:</strong> ${esc(br)}</div>
+              <div class="intel-idea"><strong>Key Idea:</strong> ${esc(id)} · <em>${fd(planDate(r))}</em></div>
+            </div>
+          </td>
+          <td class="col-diff">
+            <span class="diff-pill ${diff.cls}">${diff.label}</span>
+          </td>
+          <td class="col-tier">
+            <span class="tier-pill tier-${tr}">Tier ${tr}</span>
+          </td>
+          <td class="col-practice">
+            ${platformBadge}
+          </td>
+          <td class="col-rev">
+            <button class="rev-btn ${p.r ? "is-active" : ""}" title="${p.r ? "Remove bookmark" : "Bookmark for revision"}" onclick="toggleRevisit(${sr})">
+              ${p.r ? "★" : "☆"}
+            </button>
+          </td>
+          <td class="col-notes">
+            <button class="notes-btn ${p.n && p.n.trim() ? "has-note" : ""}" title="${p.n && p.n.trim() ? "Edit note" : "Add note"}" onclick="openNoteModal(${sr})">
+              📝
+            </button>
+          </td>
+        </tr>
+      `;
+    }
+
+    // Render Steps Accordions
+    function renderSheet() {
+      const container = $("steps-container");
+      let totalVisible = 0;
+      let html = "";
+
+      if (activeView === "topics") {
+        // Group by 22 Chapters
+        CH.forEach((chName, idx) => {
+          const allInStep = D.filter(r => r[3] === idx);
+          const visibleInStep = allInStep.filter(matchesFilters);
+          totalVisible += visibleInStep.length;
+
+          // If filtering or searching, skip empty steps
+          if ((searchQuery || filterStatus || filterTier || filterDiff || filterRev) && visibleInStep.length === 0) {
+            return;
+          }
+
+          const doneInStep = allInStep.filter(r => getProg(r[4]).s === 2).length;
+          const isAllDone = doneInStep === allInStep.length;
+          const stepPercent = Math.round((doneInStep / allInStep.length) * 100);
+          
+          // Auto-expand if search query or active filter, or if manually in expandedSteps
+          const isOpen = (searchQuery || filterStatus || filterTier || filterDiff || filterRev) 
+            ? visibleInStep.length > 0 
+            : expandedSteps.has(idx);
+
+          const stepBadgeText = "STEP " + String(idx + 1).padStart(2, '0');
+          const stepTitle = STEP_NAMES[idx] || chName;
+
+          html += `
+            <div class="step-card ${isOpen ? "open" : ""} ${isAllDone ? "completed" : ""}" id="step-${idx}">
+              <div class="step-header" onclick="toggleStep(${idx})">
+                <div class="step-info">
+                  <span class="step-badge ${isAllDone ? "completed-badge" : ""}">${stepBadgeText}</span>
+                  <div class="step-title-area">
+                    <div class="step-title">
+                      ${esc(stepTitle)}
+                    </div>
+                    <div class="step-subtext">
+                      ${allInStep.length} missions · Chandrayaan Flight Telemetry
+                    </div>
+                  </div>
+                </div>
+
+                <div class="step-progress-area">
+                  <div class="step-progress-counter ${isAllDone ? "done" : ""}">
+                    ${doneInStep} / ${allInStep.length} Solved
+                  </div>
+                  <div class="step-mini-bar">
+                    <div class="step-mini-fill" style="width: ${stepPercent}%"></div>
+                  </div>
+                  <div class="step-chevron">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step-content">
+                <div class="table-container">
+                  <table class="problem-table">
+                    <thead>
+                      <tr>
+                        <th class="col-status">Status</th>
+                        <th class="col-title">Problem</th>
+                        <th class="col-diff">Difficulty</th>
+                        <th class="col-tier">Tier</th>
+                        <th class="col-practice">Practice</th>
+                        <th class="col-rev">Revise</th>
+                        <th class="col-notes">Notes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${visibleInStep.map(problemRowHTML).join("")}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+      } else {
+        // Group by Weeks (1..23)
+        const weeks = [...new Set(D.map(r => r[1]))].sort((a,b)=>a-b);
+        weeks.forEach(wk => {
+          const allInWk = D.filter(r => r[1] === wk);
+          const visibleInWk = allInWk.filter(matchesFilters);
+          totalVisible += visibleInWk.length;
+
+          if ((searchQuery || filterStatus || filterTier || filterDiff || filterRev) && visibleInWk.length === 0) {
+            return;
+          }
+
+          const doneInWk = allInWk.filter(r => getProg(r[4]).s === 2).length;
+          const isAllDone = doneInWk === allInWk.length;
+          const wkPercent = Math.round((doneInWk / allInWk.length) * 100);
+          const isOpen = (searchQuery || filterStatus || filterTier || filterDiff || filterRev) 
+            ? visibleInWk.length > 0 
+            : expandedSteps.has(wk + 100);
+
+          html += `
+            <div class="step-card ${isOpen ? "open" : ""} ${isAllDone ? "completed" : ""}" id="step-wk-${wk}">
+              <div class="step-header" onclick="toggleStep(${wk + 100})">
+                <div class="step-info">
+                  <span class="step-badge ${isAllDone ? "completed-badge" : ""}">WEEK ${String(wk).padStart(2, '0')}</span>
+                  <div class="step-title-area">
+                    <div class="step-title">
+                      Week ${wk} Target Roadmap
+                    </div>
+                    <div class="step-subtext">
+                      ${allInWk.length} scheduled problems
+                    </div>
+                  </div>
+                </div>
+
+                <div class="step-progress-area">
+                  <div class="step-progress-counter ${isAllDone ? "done" : ""}">
+                    ${doneInWk} / ${allInWk.length} Done
+                  </div>
+                  <div class="step-mini-bar">
+                    <div class="step-mini-fill" style="width: ${wkPercent}%"></div>
+                  </div>
+                  <div class="step-chevron">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step-content">
+                <div class="table-container">
+                  <table class="problem-table">
+                    <thead>
+                      <tr>
+                        <th class="col-status">Status</th>
+                        <th class="col-title">Problem</th>
+                        <th class="col-diff">Difficulty</th>
+                        <th class="col-tier">Tier</th>
+                        <th class="col-practice">Practice</th>
+                        <th class="col-rev">Revise</th>
+                        <th class="col-notes">Notes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${visibleInWk.map(problemRowHTML).join("")}
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="weekly-weekend-card">
+                  <div class="weekend-card-left">
+                    <span class="weekend-icon">🏖️</span>
+                    <div>
+                      <div class="weekend-title">Saturday & Sunday: Weekend Revision & Buffer</div>
+                      <div class="weekend-sub">Off from new problems · Review Week ${wk} notes & intuition · Solve 🔖 bookmarked tasks</div>
+                    </div>
+                  </div>
+                  <button class="weekend-rev-btn" onclick="filterRevisionOnly()">
+                    🔖 Show Revision Missions
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+      }
+
+      if (totalVisible === 0) {
+        html = `
+          <div style="text-align: center; padding: 48px 16px; background: var(--surface); border: 1px dashed var(--border); border-radius: 16px;">
+            <div style="font-size: 32px; margin-bottom: 12px;">🔍</div>
+            <h3 style="font-size: 16px; font-weight: 700; color: var(--text);">No matching missions found</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Try searching for a different keyword or resetting your filters.</p>
+            <button class="nav-btn primary" onclick="resetAllFilters()" style="margin-top: 14px;">Reset All Filters</button>
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+      $("filtered-count").textContent = totalVisible + " problem" + (totalVisible === 1 ? '' : 's');
+
+      // Show/hide Clear Filters button
+      const isFiltered = Boolean(searchQuery || filterStatus || filterTier || filterDiff || filterRev);
+      $("btn-reset-filters").style.display = isFiltered ? "inline-flex" : "none";
+    }
+
+    // Toggle step open/collapse
+    window.toggleStep = function(id) {
+      if (expandedSteps.has(id)) {
+        expandedSteps.delete(id);
+      } else {
+        expandedSteps.add(id);
+      }
+      renderSheet();
+    };
+
+    // Expand / Collapse all
+    $("btn-expand-all").onclick = () => {
+      if (activeView === "topics") {
+        CH.forEach((_, idx) => expandedSteps.add(idx));
+      } else {
+        for (let i = 1; i <= 23; i++) expandedSteps.add(i + 100);
+      }
+      renderSheet();
+    };
+    $("btn-collapse-all").onclick = () => {
+      expandedSteps.clear();
+      renderSheet();
+    };
+
+    // Toggle Intel Drawer
+    window.toggleIntel = function(sr) {
+      const drawer = $("intel-" + sr);
+      if (drawer) {
+        drawer.classList.toggle("open");
+      }
+    };
+
+    // Status Toggle (Left Click = toggle Solved / Unsolved, or cycle)
+    window.toggleStatus = function(sr) {
+      const p = getProg(sr);
+      // Toggle between 0 (not started) and 2 (solved)
+      if (p.s === 2) {
+        p.s = 0;
+      } else {
+        p.s = 2;
+        showToast("🎉 Mission marked as Solved!");
+      }
+      save();
+      updateStats();
+      renderTodayBanner();
+      renderSheet();
+    };
+
+    // Revisit Toggle
+    window.toggleRevisit = function(sr) {
+      const p = getProg(sr);
+      p.r = p.r ? 0 : 1;
+      save();
+      updateStats();
+      renderSheet();
+      showToast(p.r ? "★ Added to Revisit list" : "Removed from Revisit list");
+    };
+
+    // Notes Modal
+    window.openNoteModal = function(sr) {
+      currentNoteSr = sr;
+      const prob = D.find(r => r[4] === sr);
+      if (!prob) return;
+      const p = getProg(sr);
+      $("note-modal-title").textContent = prob[5];
+      $("note-modal-subtitle").textContent = "Step: " + CH[prob[3]] + " · Week " + prob[1] + " Day " + prob[2];
+      $("note-modal-idea").textContent = "💡 Key Idea: " + prob[9];
+      $("note-modal-text").value = p.n || "";
+      $("note-save-status").textContent = "All changes saved ✓";
+      $("note-modal").classList.add("open");
+      $("note-modal-text").focus();
+    };
+
+    $("note-modal-text").addEventListener("input", e => {
+      if (currentNoteSr != null) {
+        getProg(currentNoteSr).n = e.target.value;
+        save();
+        $("note-save-status").textContent = "Saving... ✓";
+        setTimeout(() => {
+          $("note-save-status").textContent = "Saved automatically ✓";
+        }, 400);
+      }
+    });
+
+    $("note-modal-clear").onclick = () => {
+      if (currentNoteSr != null && confirm("Clear this note?")) {
+        $("note-modal-text").value = "";
+        getProg(currentNoteSr).n = "";
+        save();
+        renderSheet();
+      }
+    };
+
+    $("note-modal-close").onclick = $("note-modal-done").onclick = () => {
+      $("note-modal").classList.remove("open");
+      currentNoteSr = null;
+      renderSheet();
+    };
+
+    // Pick Random Problem
+    $("btn-pick-random").onclick = () => {
+      const unsolved = D.filter(r => getProg(r[4]).s !== 2 && matchesFilters(r));
+      if (!unsolved.length) {
+        showToast("No unsolved problems match your current filter!");
+        return;
+      }
+      const picked = unsolved[Math.floor(Math.random() * unsolved.length)];
+      const [seq, wk, dy, ch, sr, nm] = picked;
+
+      if (activeView === "topics") {
+        expandedSteps.add(ch);
+      } else {
+        expandedSteps.add(wk + 100);
+      }
+      renderSheet();
+
+      setTimeout(() => {
+        scrollToProblem(sr);
+        showToast("🎯 Picked: " + nm);
+      }, 50);
+    };
+
+    function scrollToProblem(sr) {
+      const row = $("prob-row-" + sr);
+      if (row) {
+        row.scrollIntoView({ behavior: "smooth", block: "center" });
+        row.classList.remove("highlight-flash");
+        void row.offsetWidth; // trigger reflow
+        row.classList.add("highlight-flash");
+      }
+    }
+
+    // View Switching
+    $("view-topics-btn").onclick = () => {
+      activeView = "topics";
+      $("view-topics-btn").classList.add("active");
+      $("view-weeks-btn").classList.remove("active");
+      expandedSteps = new Set([0]);
+      renderSheet();
+    };
+
+    $("view-weeks-btn").onclick = () => {
+      activeView = "weeks";
+      $("view-weeks-btn").classList.add("active");
+      $("view-topics-btn").classList.remove("active");
+      expandedSteps = new Set([101]); // Week 1
+      renderSheet();
+    };
+
+    // Search Box
+    const searchInput = $("search-input");
+    const searchClear = $("search-clear");
+    searchInput.addEventListener("input", e => {
+      searchQuery = e.target.value.trim().toLowerCase();
+      searchClear.style.display = searchQuery ? "block" : "none";
+      renderSheet();
+    });
+    searchClear.onclick = () => {
+      searchInput.value = "";
+      searchQuery = "";
+      searchClear.style.display = "none";
+      renderSheet();
+    };
+
+    // Filter Chips
+    document.querySelectorAll(".filter-chip").forEach(chip => {
+      chip.addEventListener("click", () => {
+        const filterType = chip.dataset.filter;
+        const val = chip.dataset.val;
+
+        if (filterType === "status") {
+          filterStatus = val;
+          document.querySelectorAll("[data-filter='status']").forEach(c => c.classList.remove("active"));
+          chip.classList.add("active");
+        } else if (filterType === "rev") {
+          filterRev = !filterRev;
+          chip.classList.toggle("active-amber", filterRev);
+        } else if (filterType === "tier") {
+          if (filterTier === val) {
+            filterTier = "";
+            chip.classList.remove("active");
+          } else {
+            filterTier = val;
+            document.querySelectorAll("[data-filter='tier']").forEach(c => c.classList.remove("active"));
+            chip.classList.add("active");
+          }
+        } else if (filterType === "diff") {
+          if (filterDiff === val) {
+            filterDiff = "";
+            chip.classList.remove("active", "active-green", "active-amber", "active-rose");
+          } else {
+            filterDiff = val;
+            document.querySelectorAll("[data-filter='diff']").forEach(c => c.classList.remove("active", "active-green", "active-amber", "active-rose"));
+            if (val === "easy") chip.classList.add("active-green");
+            else if (val === "med") chip.classList.add("active-amber");
+            else chip.classList.add("active-rose");
+          }
+        }
+
+        renderSheet();
+      });
+    });
+
+    window.resetAllFilters = function() {
+      searchQuery = "";
+      filterStatus = "";
+      filterTier = "";
+      filterDiff = "";
+      filterRev = false;
+      searchInput.value = "";
+      searchClear.style.display = "none";
+      document.querySelectorAll(".filter-chip").forEach(c => c.classList.remove("active", "active-green", "active-amber", "active-rose"));
+      document.querySelector("[data-filter='status'][data-val='']").classList.add("active");
+      renderSheet();
+    };
+    $("btn-reset-filters").onclick = resetAllFilters;
+
+    // Settings Modal
+    $("btn-settings").onclick = () => {
+      $("plan-start-date").value = start;
+      $("backup-text").value = JSON.stringify({ p: S, start });
+      $("settings-modal").classList.add("open");
+    };
+    $("settings-modal-close").onclick = $("settings-modal-done").onclick = () => {
+      $("settings-modal").classList.remove("open");
+    };
+    $("plan-start-date").onchange = e => {
+      if (e.target.value) {
+        start = e.target.value;
+        save();
+        updateStats();
+        renderTodayBanner();
+        renderSheet();
+        showToast("📅 Plan start date updated!");
+      }
+    };
+    $("btn-export-backup").onclick = () => {
+      const txt = JSON.stringify({ p: S, start });
+      navigator.clipboard.writeText(txt).then(() => {
+        showToast("📋 Backup JSON copied to clipboard!");
+      }).catch(() => {
+        $("backup-text").value = txt;
+        $("backup-text").select();
+        showToast("Backup JSON generated in textarea.");
+      });
+    };
+    $("btn-import-backup").onclick = () => {
+      try {
+        const parsed = JSON.parse($("backup-text").value);
+        if (parsed.p) {
+          S = parsed.p;
+          if (parsed.start) start = parsed.start;
+          save();
+          updateStats();
+          renderTodayBanner();
+          renderSheet();
+          showToast("✅ Progress restored successfully!");
+          $("settings-modal").classList.remove("open");
+        } else {
+          alert("Invalid backup format: missing progress data.");
+        }
+      } catch (err) {
+        alert("Failed to parse backup text. Please ensure valid JSON is entered.");
+      }
+    };
+    $("btn-reset-all").onclick = () => {
+      if (confirm("⚠️ Are you sure you want to reset all progress? This cannot be undone!")) {
+        if (confirm("Confirm one more time: Reset all 210 problem statuses and notes?")) {
+          S = {};
+          save();
+          updateStats();
+          renderTodayBanner();
+          renderSheet();
+          showToast("Progress has been reset.");
+          $("settings-modal").classList.remove("open");
+        }
+      }
+    };
+
+    // Close modals on Esc or overlay click
+    window.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        $("note-modal").classList.remove("open");
+        $("settings-modal").classList.remove("open");
+      }
+    });
+    [$("note-modal"), $("settings-modal")].forEach(modal => {
+      modal.addEventListener("click", e => {
+        if (e.target === modal) modal.classList.remove("open");
+      });
+    });
+
+    // Theme Switcher (Dark / Light)
+    const root = document.documentElement;
+    const mq = matchMedia("(prefers-color-scheme: dark)");
+    let savedTheme = null;
+    try { savedTheme = localStorage.getItem("chandra-theme"); } catch (e) {}
+
+    const getEffectiveTheme = () => root.dataset.theme || (mq.matches ? "dark" : "light");
+    const updateThemeButton = () => {
+      const isDark = getEffectiveTheme() === "dark";
+      $("th").textContent = isDark ? "☀️ Light" : "🌙 Dark";
+    };
+
+    if (savedTheme) root.dataset.theme = savedTheme;
+    updateThemeButton();
+
+    $("th").onclick = () => {
+      const nextTheme = getEffectiveTheme() === "dark" ? "light" : "dark";
+      root.dataset.theme = nextTheme;
+      try { localStorage.setItem("chandra-theme", nextTheme); } catch (e) {}
+      updateThemeButton();
+    };
+    if (mq.addEventListener) mq.addEventListener("change", updateThemeButton);
+
+    // Initial Execution
+    updateLiveClock();
+    updateStats();
+    renderTodayBanner();
+    renderSheet();
+
+    // ==========================================
+    // CALENDAR VIEW MODULE
+    // ==========================================
+    const nowRef = new Date();
+    let calYear = nowRef.getFullYear();
+    let calMonth = nowRef.getMonth();
+    const toDateKey = d => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, '0') + "-" + String(d.getDate()).padStart(2, '0');
+    let calSelectedDate = toDateKey(nowRef);
+
+    // Map all 210 problems by planned date key YYYY-MM-DD
+    function getProblemsByDateMap() {
+      const map = {};
+      D.forEach(r => {
+        const pDate = planDate(r);
+        const key = toDateKey(pDate);
+        if (!map[key]) map[key] = [];
+        map[key].push(r);
+      });
+      return map;
+    }
+
+    const MONTH_NAMES = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    function renderCalendar() {
+      const titleEl = $("cal-month-title");
+      if (titleEl) titleEl.textContent = `${MONTH_NAMES[calMonth]} ${calYear}`;
+
+      const gridEl = $("calendar-days-grid");
+      if (!gridEl) return;
+
+      const probMap = getProblemsByDateMap();
+      const today = new Date();
+      const todayKey = toDateKey(today);
+      const todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+      const firstDay = new Date(calYear, calMonth, 1);
+      const startingDay = firstDay.getDay(); // 0 = Sun
+      const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+      const daysInPrevMonth = new Date(calYear, calMonth, 0).getDate();
+
+      let cellsHtml = "";
+
+      // Previous month trailing days
+      for (let i = startingDay - 1; i >= 0; i--) {
+        const dayNum = daysInPrevMonth - i;
+        const prevDate = new Date(calYear, calMonth - 1, dayNum);
+        const key = toDateKey(prevDate);
+        cellsHtml += createCalCellHTML(prevDate, dayNum, key, true, probMap[key] || [], todayKey, todayMidnight);
+      }
+
+      // Current month days
+      for (let d = 1; d <= daysInMonth; d++) {
+        const currDate = new Date(calYear, calMonth, d);
+        const key = toDateKey(currDate);
+        cellsHtml += createCalCellHTML(currDate, d, key, false, probMap[key] || [], todayKey, todayMidnight);
+      }
+
+      // Next month leading days to complete grid (42 total or multiple of 7)
+      const totalCells = startingDay + daysInMonth;
+      const remaining = (7 - (totalCells % 7)) % 7;
+      for (let d = 1; d <= remaining; d++) {
+        const nextDate = new Date(calYear, calMonth + 1, d);
+        const key = toDateKey(nextDate);
+        cellsHtml += createCalCellHTML(nextDate, d, key, true, probMap[key] || [], todayKey, todayMidnight);
+      }
+
+      gridEl.innerHTML = cellsHtml;
+      renderCalendarDayDetail();
+    }
+
+    function createCalCellHTML(dateObj, dayNum, key, isOtherMonth, scheduledProbs, todayKey, todayMidnight) {
+      const isToday = key === todayKey;
+      const isSelected = key === calSelectedDate;
+      const count = scheduledProbs.length;
+      const isWeekend = dateObj.getDay() === 0 || dateObj.getDay() === 6;
+
+      let badgeHtml = "";
+      if (isWeekend) {
+        badgeHtml = `<div class="cal-missions-badge badge-weekend-rev">🏖️ Revise</div>`;
+      } else if (count > 0) {
+        const doneCount = scheduledProbs.filter(r => getProg(r[4]).s === 2).length;
+        let badgeClass = "badge-scheduled";
+        let badgeIcon = "📅";
+
+        if (doneCount === count) {
+          badgeClass = "badge-all-done";
+          badgeIcon = "✓";
+        } else if (doneCount > 0) {
+          badgeClass = "badge-partial";
+          badgeIcon = "◐";
+        } else if (dateObj < todayMidnight) {
+          badgeClass = "badge-overdue";
+          badgeIcon = "⚠️";
+        }
+
+        badgeHtml = `<div class="cal-missions-badge ${badgeClass}">${badgeIcon} ${doneCount}/${count}</div>`;
+      }
+
+      return `
+        <div class="cal-day-cell ${isOtherMonth ? "other-month" : ""} ${isWeekend ? "cal-weekend-cell" : ""} ${isToday ? "is-today" : ""} ${isSelected ? "is-selected" : ""}" onclick="selectCalendarDate('${key}')">
+          <div class="cal-day-header">
+            <span class="cal-day-num">${dayNum}</span>
+            ${isToday ? `<span class="cal-today-tag">Today</span>` : (isWeekend ? `<span style="font-size:8px; font-weight:800; color:#a855f7; text-transform:uppercase;">OFF</span>` : "")}
+          </div>
+          ${badgeHtml}
+        </div>
+      `;
+    }
+
+    window.selectCalendarDate = function(key) {
+      calSelectedDate = key;
+      renderCalendar();
+    };
+
+    window.filterRevisionOnly = function() {
+      filterRev = true;
+      document.querySelectorAll("[data-filter='rev']").forEach(c => c.classList.add("active-amber"));
+      if (activeView === "calendar") {
+        activeView = "topics";
+        $("view-topics-btn").classList.add("active");
+        $("view-weeks-btn").classList.remove("active");
+        $("view-calendar-btn").classList.remove("active");
+        $("calendar-view-container").style.display = "none";
+        $("steps-container").style.display = "flex";
+      }
+      renderSheet();
+      showToast("Showing bookmarked revision missions 🔖");
+    };
+
+    function renderCalendarDayDetail() {
+      const inspectorEl = $("cal-day-inspector");
+      if (!inspectorEl) return;
+
+      const probMap = getProblemsByDateMap();
+      const parts = calSelectedDate.split("-").map(Number);
+      const selDate = new Date(parts[0], parts[1] - 1, parts[2]);
+      const dateFormatted = selDate.toLocaleDateString(undefined, { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+      const today = new Date();
+      const isToday = calSelectedDate === toDateKey(today);
+      const isWeekend = selDate.getDay() === 0 || selDate.getDay() === 6;
+
+      if (isWeekend) {
+        // Weekend Revision Mode
+        const revProbs = D.filter(r => getProg(r[4]).r === 1);
+        const overdueProbs = D.filter(r => planDate(r) < selDate && getProg(r[4]).s !== 2);
+
+        if (revProbs.length === 0 && overdueProbs.length === 0) {
+          inspectorEl.innerHTML = `
+            <div class="cal-detail-header">
+              <div class="cal-detail-title">
+                <h3><span>🏖️</span> ${dateFormatted} ${isToday ? `<span class="today-badge-count" style="margin-left:6px;">Today</span>` : ""}</h3>
+                <p><strong>Weekend Revision Day:</strong> No new problems scheduled on weekends. You have 0 pending backlogs and 0 bookmarked revisions. Rest up or test yourself with a random problem!</p>
+              </div>
+              <button class="nav-btn primary" onclick="switchToA2ZAndPick()">Pick a Random Problem 🎲</button>
+            </div>
+          `;
+          return;
+        }
+
+        const combinedWeekendList = [];
+        const seenSr = new Set();
+        revProbs.forEach(r => {
+          seenSr.add(r[4]);
+          combinedWeekendList.push({ r, type: "revision" });
+        });
+        overdueProbs.forEach(r => {
+          if (!seenSr.has(r[4])) {
+            seenSr.add(r[4]);
+            combinedWeekendList.push({ r, type: "overdue" });
+          }
+        });
+
+        const doneCount = combinedWeekendList.filter(item => getProg(item.r[4]).s === 2).length;
+
+        inspectorEl.innerHTML = `
+          <div class="cal-detail-header">
+            <div class="cal-detail-title">
+              <h3><span>🏖️</span> ${dateFormatted} · Weekend Revision Day ${isToday ? `<span class="today-badge-count" style="margin-left:6px;">Today</span>` : ""}</h3>
+              <p>No new missions scheduled. Dedicated to revising bookmarked problems, intuition notes, and clearing any backlog.</p>
+            </div>
+            <div class="today-progress-pill">${revProbs.length} to Revise${overdueProbs.length > 0 ? " · " + overdueProbs.length + " Catch-up" : ""}</div>
+          </div>
+
+          <div class="today-target-list">
+            ${combinedWeekendList.map(item => {
+              const [seq, wk, dy, ch, sr, nm, st, tr, br, id, url] = item.r;
+              const p = getProg(sr);
+              const diff = getDiffInfo(st);
+              const isSolved = p.s === 2;
+
+              let platformBadge = '<span class="practice-btn practice-gen">Practice</span>';
+              if (url) {
+                if (url.includes("leetcode.com")) {
+                  platformBadge = `<a href="${esc(url)}" target="_blank" rel="noopener" class="practice-btn practice-lc">LeetCode ↗</a>`;
+                } else if (url.includes("geeksforgeeks.org")) {
+                  platformBadge = `<a href="${esc(url)}" target="_blank" rel="noopener" class="practice-btn practice-gfg">GFG ↗</a>`;
+                } else {
+                  platformBadge = `<a href="${esc(url)}" target="_blank" rel="noopener" class="practice-btn practice-gen">Problem ↗</a>`;
+                }
+              }
+
+              const statusIcon = isSolved ? "✓" : (p.s === 1 ? "◐" : "○");
+              const tagHtml = item.type === "revision" 
+                ? '<span class="target-tag tag-revision">🔖 Flagged Revision</span>'
+                : '<span class="target-tag tag-overdue">⚠️ Weekend Catch-Up · W' + wk + 'D' + dy + '</span>';
+
+              return `
+                <div class="today-target-item ${isSolved ? "is-done" : ""}">
+                  <div class="target-item-left">
+                    <button class="status-btn status-${p.s}" title="Toggle status" onclick="toggleStatus(${sr}); renderCalendar();">
+                      ${statusIcon}
+                    </button>
+                    ${tagHtml}
+                    <a href="${url ? esc(url) : '#'}" target="${url ? '_blank' : '_self'}" rel="noopener" class="target-item-title" onclick="${url ? '' : 'return false;'}">
+                      ${esc(nm)}
+                    </a>
+                    <button class="intel-toggle-btn" onclick="toggleTargetIntel(${sr})" title="Mission Story">
+                      💡 Intel
+                    </button>
+                  </div>
+                  <div class="target-item-right">
+                    <span class="diff-pill ${diff.cls}">${diff.label}</span>
+                    <span class="tier-pill tier-${tr}">Tier ${tr}</span>
+                    ${platformBadge}
+                    <button class="target-jump-btn" onclick="jumpFromCalToSheet(${sr}, ${ch})" title="Locate in A2Z Sheet">
+                      📍 Jump in Sheet
+                    </button>
+                  </div>
+                  <div class="today-target-drawer" id="target-intel-${sr}">
+                    <div style="color:var(--text); margin-bottom:3px;"><strong>Mission Brief:</strong> ${esc(br)}</div>
+                    <div style="color:var(--primary); font-weight:500;"><strong>Key Idea:</strong> ${esc(id)} · <em>Planned: ${fd(planDate(item.r))}</em></div>
+                  </div>
+                </div>
+              `;
+            }).join("")}
+          </div>
+        `;
+        return;
+      }
+
+      // Weekday schedule
+      const scheduled = probMap[calSelectedDate] || [];
+
+      if (scheduled.length === 0) {
+        inspectorEl.innerHTML = `
+          <div class="cal-detail-header">
+            <div class="cal-detail-title">
+              <h3><span>📅</span> ${dateFormatted} ${isToday ? `<span class="today-badge-count" style="margin-left:6px;">Today</span>` : ""}</h3>
+              <p>No new missions scheduled for this date. Perfect day for revision or mock practice!</p>
+            </div>
+            <button class="nav-btn primary" onclick="switchToA2ZAndPick()">Pick a Random Problem 🎲</button>
+          </div>
+        `;
+        return;
+      }
+
+      const doneCount = scheduled.filter(r => getProg(r[4]).s === 2).length;
+      const pct = Math.round((doneCount / scheduled.length) * 100);
+
+      inspectorEl.innerHTML = `
+        <div class="cal-detail-header">
+          <div class="cal-detail-title">
+            <h3><span>📅</span> Missions for ${dateFormatted} ${isToday ? `<span class="today-badge-count" style="margin-left:6px;">Today</span>` : ""}</h3>
+            <p>Week ${scheduled[0][1]} · Day ${scheduled[0][2]} Cadence · ${doneCount} of ${scheduled.length} Solved (${pct}%)</p>
+          </div>
+          <div class="today-progress-pill">${doneCount} / ${scheduled.length} Done</div>
+        </div>
+
+        <div class="today-target-list">
+          ${scheduled.map(r => {
+            const [seq, wk, dy, ch, sr, nm, st, tr, br, id, url] = r;
+            const p = getProg(sr);
+            const diff = getDiffInfo(st);
+            const isSolved = p.s === 2;
+
+            let platformBadge = '<span class="practice-btn practice-gen">Practice</span>';
+            if (url) {
+              if (url.includes("leetcode.com")) {
+                platformBadge = `<a href="${esc(url)}" target="_blank" rel="noopener" class="practice-btn practice-lc">LeetCode ↗</a>`;
+              } else if (url.includes("geeksforgeeks.org")) {
+                platformBadge = `<a href="${esc(url)}" target="_blank" rel="noopener" class="practice-btn practice-gfg">GFG ↗</a>`;
+              } else {
+                platformBadge = `<a href="${esc(url)}" target="_blank" rel="noopener" class="practice-btn practice-gen">Problem ↗</a>`;
+              }
+            }
+
+            const statusIcon = isSolved ? "✓" : (p.s === 1 ? "◐" : "○");
+
+            return `
+              <div class="today-target-item ${isSolved ? "is-done" : ""}">
+                <div class="target-item-left">
+                  <button class="status-btn status-${p.s}" title="Toggle status" onclick="toggleStatus(${sr}); renderCalendar();">
+                    ${statusIcon}
+                  </button>
+                  <span class="target-tag tag-today">W${wk}D${dy}</span>
+                  <a href="${url ? esc(url) : '#'}" target="${url ? '_blank' : '_self'}" rel="noopener" class="target-item-title" onclick="${url ? '' : 'return false;'}">
+                    ${esc(nm)}
+                  </a>
+                  <button class="intel-toggle-btn" onclick="toggleTargetIntel(${sr})" title="Mission Story">
+                    💡 Intel
+                  </button>
+                </div>
+                <div class="target-item-right">
+                  <span class="diff-pill ${diff.cls}">${diff.label}</span>
+                  <span class="tier-pill tier-${tr}">Tier ${tr}</span>
+                  ${platformBadge}
+                  <button class="target-jump-btn" onclick="jumpFromCalToSheet(${sr}, ${ch})" title="Locate in A2Z Sheet">
+                    📍 Jump in Sheet
+                  </button>
+                </div>
+                <div class="today-target-drawer" id="target-intel-${sr}">
+                  <div style="color:var(--text); margin-bottom:3px;"><strong>Mission Brief:</strong> ${esc(br)}</div>
+                  <div style="color:var(--primary); font-weight:500;"><strong>Key Idea:</strong> ${esc(id)} · <em>Planned: ${fd(planDate(r))}</em></div>
+                </div>
+              </div>
+            `;
+          }).join("")}
+        </div>
+      `;
+    }
+
+    window.jumpFromCalToSheet = function(sr, ch) {
+      activeView = "topics";
+      $("view-topics-btn").classList.add("active");
+      $("view-weeks-btn").classList.remove("active");
+      $("view-calendar-btn").classList.remove("active");
+      $("calendar-view-container").style.display = "none";
+      $("steps-container").style.display = "flex";
+      expandedSteps.add(ch);
+      renderSheet();
+      setTimeout(() => scrollToProblem(sr), 60);
+    };
+
+    window.switchToA2ZAndPick = function() {
+      activeView = "topics";
+      $("view-topics-btn").classList.add("active");
+      $("view-weeks-btn").classList.remove("active");
+      $("view-calendar-btn").classList.remove("active");
+      $("calendar-view-container").style.display = "none";
+      $("steps-container").style.display = "flex";
+      renderSheet();
+      $("btn-pick-random").click();
+    };
+
+    // Calendar navigation listeners
+    $("cal-prev-btn").onclick = () => {
+      calMonth--;
+      if (calMonth < 0) {
+        calMonth = 11;
+        calYear--;
+      }
+      renderCalendar();
+    };
+
+    $("cal-next-btn").onclick = () => {
+      calMonth++;
+      if (calMonth > 11) {
+        calMonth = 0;
+        calYear++;
+      }
+      renderCalendar();
+    };
+
+    $("cal-today-btn").onclick = () => {
+      const t = new Date();
+      calYear = t.getFullYear();
+      calMonth = t.getMonth();
+      calSelectedDate = toDateKey(t);
+      renderCalendar();
+    };
+
+    // Update view switching for Calendar View
+    $("view-calendar-btn").onclick = () => {
+      activeView = "calendar";
+      $("view-calendar-btn").classList.add("active");
+      $("view-topics-btn").classList.remove("active");
+      $("view-weeks-btn").classList.remove("active");
+      $("steps-container").style.display = "none";
+      $("calendar-view-container").style.display = "block";
+      renderCalendar();
+    };
+
+    const origTopicsClick = $("view-topics-btn").onclick;
+    $("view-topics-btn").onclick = () => {
+      $("calendar-view-container").style.display = "none";
+      $("steps-container").style.display = "flex";
+      $("view-calendar-btn").classList.remove("active");
+      origTopicsClick();
+    };
+
+    const origWeeksClick = $("view-weeks-btn").onclick;
+    $("view-weeks-btn").onclick = () => {
+      $("calendar-view-container").style.display = "none";
+      $("steps-container").style.display = "flex";
+      $("view-calendar-btn").classList.remove("active");
+      origWeeksClick();
+    };
+
+  </script>
+</body>
+</html>
