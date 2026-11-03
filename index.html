@@ -2216,11 +2216,532 @@
       border-color: rgba(245, 158, 11, 0.45);
     }
 
+    /* ========================================================
+       APP MODE SLIDING SWITCHER (DSA vs BACKEND + AI)
+       ======================================================== */
+    .mode-switch-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 10px;
+    }
+    .mode-sliding-switch {
+      position: relative;
+      display: inline-flex;
+      background: var(--surface-alt);
+      border: 1.5px solid var(--border);
+      border-radius: 99px;
+      padding: 3px;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+      width: 320px;
+      max-width: 100%;
+    }
+    .mode-slider-pill {
+      position: absolute;
+      top: 3px;
+      bottom: 3px;
+      left: 3px;
+      width: calc(50% - 3px);
+      background: linear-gradient(135deg, var(--primary), #2563eb);
+      border-radius: 99px;
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 2px 10px rgba(37, 99, 235, 0.4);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .mode-sliding-switch.backend-active .mode-slider-pill {
+      transform: translateX(100%);
+      background: linear-gradient(135deg, #059669, #10b981);
+      box-shadow: 0 2px 12px rgba(16, 185, 129, 0.45);
+    }
+    .mode-switch-btn {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 99px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      transition: color 0.2s ease;
+      white-space: nowrap;
+    }
+    .mode-switch-btn.active {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .mode-sliding-switch {
+      background: rgba(15, 23, 42, 0.6);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    /* ========================================================
+       BACKEND + AI 90-DAY ROADMAP STYLES
+       ======================================================== */
+    .backend-ai-container {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      margin-bottom: 40px;
+      animation: fadeIn 0.25s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero Banner */
+    .backend-hero {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(37, 99, 235, 0.08) 50%, rgba(139, 92, 246, 0.06) 100%), var(--surface);
+      border: 1.5px solid rgba(16, 185, 129, 0.35);
+      border-radius: 20px;
+      padding: 26px 30px;
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1), var(--card-shadow);
+      display: grid;
+      grid-template-columns: 1fr 310px;
+      gap: 24px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    [data-theme="dark"] .backend-hero {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(37, 99, 235, 0.12) 50%, rgba(139, 92, 246, 0.09) 100%), var(--surface);
+      border-color: rgba(16, 185, 129, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    @media (max-width: 960px) {
+      .backend-hero {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+    }
+    .backend-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #059669;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 3px 10px;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+    [data-theme="dark"] .backend-hero-badge {
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.2);
+    }
+    .backend-hero-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      line-height: 1.25;
+    }
+    .backend-hero-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .backend-stat-box {
+      background: var(--surface);
+      border: 1.5px solid rgba(16, 185, 129, 0.35);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 4px 18px rgba(16, 185, 129, 0.08);
+    }
+    .backend-stat-num {
+      font-size: 30px;
+      font-weight: 800;
+      color: #059669;
+      letter-spacing: -0.02em;
+    }
+    [data-theme="dark"] .backend-stat-num {
+      color: #34d399;
+      text-shadow: 0 0 18px rgba(52, 211, 153, 0.35);
+    }
+
+    /* 6-Hour Daily Routine Banner */
+    .routine-banner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 22px;
+      box-shadow: var(--card-shadow);
+    }
+    .routine-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .routine-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .routine-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+    @media (max-width: 1000px) {
+      .routine-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 580px) {
+      .routine-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .routine-card {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+    .routine-card:hover {
+      border-color: #10b981;
+      transform: translateY(-2px);
+    }
+    .routine-card.checked {
+      border-color: #10b981;
+      background: rgba(16, 185, 129, 0.08);
+    }
+    .routine-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .routine-card-dur {
+      background: rgba(16, 185, 129, 0.15);
+      color: #059669;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 10.5px;
+      font-weight: 700;
+    }
+    [data-theme="dark"] .routine-card-dur {
+      color: #34d399;
+    }
+    .routine-card-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* Final Tech Stack Badges Grid */
+    .tech-stack-banner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px 20px;
+    }
+    .tech-badges-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .tech-item {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.15s ease;
+    }
+    .tech-item:hover {
+      border-color: #10b981;
+      background: rgba(16, 185, 129, 0.06);
+      transform: translateY(-1px);
+    }
+    .tech-item-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .tech-item-role {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Phase Tabs / Controls */
+    .phase-filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 8px 12px;
+    }
+    .phase-chips-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .phase-chip {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .phase-chip:hover {
+      color: var(--text);
+      border-color: #10b981;
+    }
+    .phase-chip.active {
+      background: #059669;
+      color: #fff;
+      border-color: #059669;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.35);
+    }
+
+    /* Week Accordion Cards */
+    .backend-week-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      box-shadow: var(--card-shadow);
+      transition: border-color 0.15s;
+    }
+    .backend-week-card:hover {
+      border-color: rgba(16, 185, 129, 0.4);
+    }
+    .backend-week-card.is-current-week {
+      border: 2px solid #10b981;
+      box-shadow: 0 4px 18px rgba(16, 185, 129, 0.15);
+    }
+    .backend-week-header {
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      cursor: pointer;
+      user-select: none;
+      background: var(--surface);
+      transition: background 0.15s;
+    }
+    .backend-week-header:hover {
+      background: var(--surface-alt);
+    }
+    .backend-week-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+    }
+    .backend-week-badge {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(16, 185, 129, 0.14);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    [data-theme="dark"] .backend-week-badge {
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.2);
+    }
+    .backend-week-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .backend-week-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .backend-week-content {
+      display: none;
+      border-top: 1px solid var(--border);
+    }
+    .backend-week-card.open .backend-week-content {
+      display: block;
+    }
+    .backend-week-card.open .step-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* Day Rows */
+    .backend-day-row {
+      display: grid;
+      grid-template-columns: 46px 1fr 160px 100px;
+      gap: 12px;
+      padding: 12px 18px;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background 0.12s;
+    }
     @media (max-width: 768px) {
-      .calendar-container { padding: 14px; }
-      .cal-day-cell { min-height: 56px; padding: 4px; }
-      .cal-missions-badge { font-size: 9.5px; padding: 1px 4px; }
-      .calendar-month-title { font-size: 16px; min-width: 140px; }
+      .backend-day-row {
+        grid-template-columns: 40px 1fr;
+        gap: 8px;
+      }
+      .backend-day-deliverable, .backend-day-actions {
+        grid-column: 2;
+      }
+    }
+    .backend-day-row:last-child {
+      border-bottom: none;
+    }
+    .backend-day-row:hover {
+      background: var(--surface-alt);
+    }
+    .backend-day-row.is-completed {
+      background: rgba(16, 185, 129, 0.04);
+    }
+    .backend-day-row.is-today-day {
+      background: rgba(16, 185, 129, 0.08);
+      border-left: 3px solid #10b981;
+    }
+    .day-status-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 800;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      transition: all 0.15s ease;
+    }
+    .day-status-btn.status-1 {
+      border-color: #f59e0b;
+      color: #f59e0b;
+      background: rgba(245, 158, 11, 0.1);
+    }
+    .day-status-btn.status-2 {
+      border-color: #10b981;
+      color: #fff;
+      background: #10b981;
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+    }
+    .day-main-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .day-title-line {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .day-desc-line {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+    .day-deliverable-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(59, 130, 246, 0.12);
+      color: #2563eb;
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 100%;
+      display: inline-block;
+    }
+    [data-theme="dark"] .day-deliverable-badge {
+      color: #60a5fa;
+      background: rgba(59, 130, 246, 0.18);
+    }
+
+    /* Internship Strategy & Guardrails Card */
+    .internship-banner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 860px) {
+      .internship-banner {
+        grid-template-columns: 1fr;
+      }
+    }
+    .intern-subcard {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
   </style>
 </head>
@@ -2252,12 +2773,25 @@
   <nav class="navbar">
     <div class="nav-inner">
       <a href="#" class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">
-        <div class="brand-icon">🚀<span style="font-size: 13px; margin-left: 2px;">🪔</span></div>
+        <div class="brand-icon" id="main-brand-icon">🚀<span style="font-size: 13px; margin-left: 2px;">🪔</span></div>
         <div class="brand-text">
-          <h1>Mission Chandra-Live <span class="badge-target">Microsoft Target</span></h1>
-          <p>Striver A2Z DSA Tracker · 210 Moon-Lander Missions</p>
+          <h1 id="main-brand-title">Mission Chandra-Live <span class="badge-target">Microsoft Target</span></h1>
+          <p id="main-brand-sub">Striver A2Z DSA Tracker · 210 Moon-Lander Missions</p>
         </div>
       </a>
+
+      <!-- Sliding App Mode Switcher (DSA vs Backend+AI) -->
+      <div class="mode-switch-wrapper">
+        <div class="mode-sliding-switch" id="mode-sliding-switch">
+          <div class="mode-slider-pill" id="mode-slider-pill"></div>
+          <button class="mode-switch-btn active" id="btn-mode-dsa" onclick="setAppMode('dsa')" title="Striver A2Z DSA Tracker">
+            <span>🚀</span> DSA Tracker
+          </button>
+          <button class="mode-switch-btn" id="btn-mode-backend" onclick="setAppMode('backend')" title="90-Day Backend + Applied AI Roadmap">
+            <span>⚡</span> Backend + AI (90D)
+          </button>
+        </div>
+      </div>
       
       <div class="nav-actions">
         <div class="live-clock-pill" title="Current Live Date & Time">
@@ -2281,6 +2815,9 @@
   </nav>
 
   <div class="container">
+    
+    <!-- DSA Application Page -->
+    <div id="dsa-app-view">
     
     <!-- Hero / Progress Dashboard (Striver Style) -->
     <div class="dashboard">
@@ -2451,6 +2988,39 @@
       <!-- Injected by JavaScript -->
     </div>
 
+    </div> <!-- /#dsa-app-view -->
+
+    <!-- 90-Day Backend + Applied AI Roadmap Application Page -->
+    <div id="backend-ai-app-view" style="display: none;">
+      <!-- Injected by JavaScript renderBackendRoadmap() -->
+    </div>
+
+  </div>
+
+  <!-- Backend Day Note Edit Modal -->
+  <div class="modal-overlay" id="backend-note-modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div>
+          <div style="font-size: 11px; font-weight: 700; color: #10b981; text-transform: uppercase;" id="backend-note-modal-subtitle">Roadmap Day Note</div>
+          <h2 id="backend-note-modal-title">Day Note</h2>
+        </div>
+        <button class="modal-close-btn" id="backend-note-modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="font-size: 12.5px; color: var(--text-muted); background: var(--surface-alt); padding: 8px 12px; border-radius: 8px;" id="backend-note-modal-topic">
+          🎯 Topic: -
+        </div>
+        <textarea class="modal-textarea" id="backend-note-modal-text" placeholder="Write your key learnings, code snippets, project links, or interview questions..."></textarea>
+      </div>
+      <div class="modal-foot">
+        <span style="font-size: 12px; color: var(--success);" id="backend-note-save-status">Saved automatically ✓</span>
+        <div style="display: flex; gap: 8px;">
+          <button class="nav-btn" id="backend-note-modal-clear" style="color: var(--danger);">Clear</button>
+          <button class="nav-btn primary" id="backend-note-modal-done" style="background: #10b981; border-color: #10b981;">Done</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Note Edit Modal -->
@@ -4348,6 +4918,825 @@
     const diwaliTabBtn = $("view-diwali-btn");
     if (diwaliTabBtn) diwaliTabBtn.onclick = () => switchView("diwali");
     window.switchToDiwaliView = () => switchView("diwali");
+
+  
+    // ========================================================
+    // 90-DAY BACKEND + APPLIED AI ENGINEERING ROADMAP
+    // ========================================================
+    const BACKEND_90_DAYS = [
+      // Week 1: Python for Backend Engineering (Days 1–7)
+      { day: 1, date: "2026-11-03", dateFmt: "Tue, 3 Nov 2026", phase: 1, week: 1, topic: "Python Revision, Data Types & Functions", desc: "Core data types, mutability vs immutability, memory model, list/dict comprehensions, type hints, args/kwargs, pure functions.", deliverable: "Python core foundations", link: "https://docs.python.org/3/tutorial/" },
+      { day: 2, date: "2026-11-04", dateFmt: "Wed, 4 Nov 2026", phase: 1, week: 1, topic: "OOP, Inheritance & Abstraction", desc: "Classes, instances, magic/dunder methods (__init__, __str__, __repr__, __call__), inheritance, abstract base classes (abc module), encapsulation.", deliverable: "OOP architecture", link: "https://docs.python.org/3/tutorial/classes.html" },
+      { day: 3, date: "2026-11-05", dateFmt: "Thu, 5 Nov 2026", phase: 1, week: 1, topic: "Decorators, Generators & Iterators", desc: "Function decorators with args, functools.wraps, generator functions, yield, memory efficiency for streaming data, custom iterator protocol.", deliverable: "Advanced Python patterns", link: "https://docs.python.org/3/glossary.html#term-decorator" },
+      { day: 4, date: "2026-11-06", dateFmt: "Fri, 6 Nov 2026", phase: 1, week: 1, topic: "Exception Handling & Production Logging", desc: "Custom exception hierarchies, try-except-else-finally, python logging module, log levels, formatting, file & console handlers, structured logging basics.", deliverable: "Robust error handling", link: "https://docs.python.org/3/howto/logging.html" },
+      { day: 5, date: "2026-11-07", dateFmt: "Sat, 7 Nov 2026", phase: 1, week: 1, topic: "Virtual Environments, Pip & Modules", desc: "venv, poetry/uv packaging, requirements.txt, pyproject.toml, module imports vs package structure, __init__.py, path management.", deliverable: "Clean project environment", link: "https://docs.python.org/3/tutorial/venv.html" },
+      { day: 6, date: "2026-11-08", dateFmt: "Sun, 8 Nov 2026", phase: 1, week: 1, topic: "Asyncio, Async/Await & Event Loop", desc: "Synchronous vs asynchronous I/O, event loop fundamentals, asyncio.gather, asyncio.sleep, concurrency vs parallelism, blocking calls pitfalls.", deliverable: "Asynchronous Python mastery", link: "https://docs.python.org/3/library/asyncio.html" },
+      { day: 7, date: "2026-11-09", dateFmt: "Mon, 9 Nov 2026", phase: 1, week: 1, topic: "Mini Project & Week 1 Revision", desc: "Build Python Employee Management CLI with OOP classes, validation, file/JSON persistence, logging, and error handling.", deliverable: "Project: Employee Management CLI", link: "https://docs.python.org/3/tutorial/" },
+
+      // Week 2: FastAPI Fundamentals (Days 8–14)
+      { day: 8, date: "2026-11-10", dateFmt: "Tue, 10 Nov 2026", phase: 1, week: 2, topic: "HTTP, REST APIs & Status Codes", desc: "HTTP methods (GET, POST, PUT, PATCH, DELETE), headers, URL query parameters, path params, status codes (200, 201, 400, 401, 403, 404, 500), idempotency.", deliverable: "REST principles", link: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview" },
+      { day: 9, date: "2026-11-11", dateFmt: "Wed, 11 Nov 2026", phase: 1, week: 2, topic: "FastAPI Setup, Uvicorn & Routing", desc: "FastAPI app instance, ASGI server (Uvicorn), APIRouter for modular endpoint design, Swagger UI (/docs) and ReDoc (/redoc).", deliverable: "FastAPI boilerplate", link: "https://fastapi.tiangolo.com/tutorial/first-steps/" },
+      { day: 10, date: "2026-11-12", dateFmt: "Thu, 12 Nov 2026", phase: 1, week: 2, topic: "Pydantic Models & Request Validation", desc: "BaseModel, Field, data validation, type conversion, custom validators, nested models, Request body parsing.", deliverable: "Pydantic schema validation", link: "https://fastapi.tiangolo.com/tutorial/body/" },
+      { day: 11, date: "2026-11-13", dateFmt: "Fri, 13 Nov 2026", phase: 1, week: 2, topic: "Request & Response Handling", desc: "response_model, response status codes, Query/Path/Header/Cookie parameters, Form data and File uploads.", deliverable: "Structured API responses", link: "https://fastapi.tiangolo.com/tutorial/response-model/" },
+      { day: 12, date: "2026-11-14", dateFmt: "Sat, 14 Nov 2026", phase: 1, week: 2, topic: "FastAPI Dependency Injection (Depends)", desc: "Why DI matters, Depends(), shared logic, database session injection, security dependencies, sub-dependencies.", deliverable: "Clean Dependency Injection", link: "https://fastapi.tiangolo.com/tutorial/dependencies/" },
+      { day: 13, date: "2026-11-15", dateFmt: "Sun, 15 Nov 2026", phase: 1, week: 2, topic: "Middleware & Custom Exception Handling", desc: "HTTPException, custom exception handlers, CORS middleware, timing middleware, request logging middleware.", deliverable: "Global error & middleware pipeline", link: "https://fastapi.tiangolo.com/tutorial/middleware/" },
+      { day: 14, date: "2026-11-16", dateFmt: "Mon, 16 Nov 2026", phase: 1, week: 2, topic: "API Mini Project & Week 2 Consolidation", desc: "Convert CLI into Employee Management REST API with routers, Pydantic schemas, validation, and Swagger docs.", deliverable: "Project: Employee Management REST API", link: "https://fastapi.tiangolo.com/" },
+
+      // Week 3: PostgreSQL & Databases (Days 15–21)
+      { day: 15, date: "2026-11-17", dateFmt: "Tue, 17 Nov 2026", phase: 1, week: 3, topic: "Relational Database Design & Normalization", desc: "Entities, attributes, primary keys, foreign keys, 1:1, 1:N, N:M relations, ER diagrams, 1NF, 2NF, 3NF normalization.", deliverable: "Relational schema design", link: "https://www.postgresql.org/docs/current/tutorial.html" },
+      { day: 16, date: "2026-11-18", dateFmt: "Wed, 18 Nov 2026", phase: 1, week: 3, topic: "SQL Joins, Aggregations & Subqueries", desc: "INNER JOIN, LEFT/RIGHT/FULL OUTER JOIN, GROUP BY, HAVING, COUNT, SUM, AVG, nested queries, Common Table Expressions (WITH CTE).", deliverable: "Advanced SQL queries", link: "https://www.postgresql.org/docs/current/queries-table-expressions.html" },
+      { day: 17, date: "2026-11-19", dateFmt: "Thu, 19 Nov 2026", phase: 1, week: 3, topic: "Indexes & Query Optimization", desc: "B-Tree indexes, Composite indexes, Unique indexes, EXPLAIN & EXPLAIN ANALYZE, query execution plans, sequential scans vs index scans.", deliverable: "Database indexing & performance", link: "https://www.postgresql.org/docs/current/indexes.html" },
+      { day: 18, date: "2026-11-20", dateFmt: "Fri, 20 Nov 2026", phase: 1, week: 3, topic: "Transactions, Isolation Levels & ACID", desc: "Atomicity, Consistency, Isolation, Durability, BEGIN/COMMIT/ROLLBACK, isolation levels (Read Committed, Repeatable Read, Serializable), dirty reads.", deliverable: "ACID transactions", link: "https://www.postgresql.org/docs/current/transaction-iso.html" },
+      { day: 19, date: "2026-11-21", dateFmt: "Sat, 21 Nov 2026", phase: 1, week: 3, topic: "SQLAlchemy 2.0 ORM & Declarative Models", desc: "Engine, Session, sessionmaker, declarative_base / DeclarativeBase, mapped_column, relationship(), lazy vs eager loading.", deliverable: "SQLAlchemy ORM models", link: "https://docs.sqlalchemy.org/en/20/tutorial/" },
+      { day: 20, date: "2026-11-22", dateFmt: "Sun, 22 Nov 2026", phase: 1, week: 3, topic: "Alembic Migrations", desc: "Alembic setup, alembic.ini, env.py, revision --autogenerate, upgrade head, downgrade, migration history tracking.", deliverable: "Version-controlled DB migrations", link: "https://alembic.sqlalchemy.org/en/latest/tutorial.html" },
+      { day: 21, date: "2026-11-23", dateFmt: "Mon, 23 Nov 2026", phase: 1, week: 3, topic: "Connect FastAPI with PostgreSQL via Session DI", desc: "get_db() dependency with yield & session.close(), AsyncSession (asyncpg) or Session (psycopg2), repository pattern.", deliverable: "Project: DB-backed Employee Tables", link: "https://fastapi.tiangolo.com/tutorial/sql-databases/" },
+
+      // Week 4: Authentication & Testing (Days 22–30)
+      { day: 22, date: "2026-11-24", dateFmt: "Tue, 24 Nov 2026", phase: 1, week: 4, topic: "Authentication vs Authorization Concepts", desc: "Identity vs permissions, session-based vs token-based auth, statelessness, security best practices (HTTPS, CSRF, XSS).", deliverable: "Auth architecture theory", link: "https://fastapi.tiangolo.com/tutorial/security/" },
+      { day: 23, date: "2026-11-25", dateFmt: "Wed, 25 Nov 2026", phase: 1, week: 4, topic: "JWT (JSON Web Token) Implementation", desc: "JWT structure (Header, Payload, Signature), secret key, pyjwt / python-jose, access token generation, expiration, token verification.", deliverable: "JWT auth flow", link: "https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/" },
+      { day: 24, date: "2026-11-26", dateFmt: "Thu, 26 Nov 2026", phase: 1, week: 4, topic: "Password Hashing (Passlib/Bcrypt) & RBAC", desc: "bcrypt hashing with salt, passlib.context.CryptContext, Role-Based Access Control (Admin vs Employee permissions) via FastAPI dependencies.", deliverable: "Secure passwords & RBAC guards", link: "https://fastapi.tiangolo.com/tutorial/security/simple-oauth2/" },
+      { day: 25, date: "2026-11-27", dateFmt: "Fri, 27 Nov 2026", phase: 1, week: 4, topic: "Pagination, Filtering & Sorting", desc: "Offset/limit pagination, cursor-based pagination concept, dynamic query filtering in SQLAlchemy, sort order query parameters.", deliverable: "Production pagination & filters", link: "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/" },
+      { day: 26, date: "2026-11-28", dateFmt: "Sat, 28 Nov 2026", phase: 1, week: 4, topic: "Pytest Fundamentals & Fixtures", desc: "pytest, test discovery, assertions, pytest fixtures, scope (function/module/session), test database configuration with SQLite/Postgres test db.", deliverable: "Automated test suite setup", link: "https://docs.pytest.org/en/stable/" },
+      { day: 27, date: "2026-11-29", dateFmt: "Sun, 29 Nov 2026", phase: 1, week: 4, topic: "API Integration Testing with TestClient", desc: "FastAPI TestClient (httpx), testing auth endpoints, testing CRUD operations, status code & payload assertions, mock external services.", deliverable: "Integration tests for all endpoints", link: "https://fastapi.tiangolo.com/tutorial/testing/" },
+      { day: 28, date: "2026-11-30", dateFmt: "Mon, 30 Nov 2026", phase: 1, week: 4, topic: "API Documentation & Error Handling Polish", desc: "OpenAPI metadata, tags, summary, response descriptions, standardized error response schemas (detail, code, timestamp).", deliverable: "Polished Swagger documentation", link: "https://fastapi.tiangolo.com/tutorial/metadata/" },
+      { day: 29, date: "2026-12-01", dateFmt: "Tue, 1 Dec 2026", phase: 1, week: 4, topic: "Phase 1 Project Completion & Code Review", desc: "Assemble full Employee Management Backend with all features: Auth, RBAC, CRUD, Postgres, Pytest suite.", deliverable: "Phase 1 Project Finalization", link: "https://github.com" },
+      { day: 30, date: "2026-12-02", dateFmt: "Wed, 2 Dec 2026", phase: 1, week: 4, topic: "GitHub README, API Docs & Phase 1 Showcase", desc: "Write comprehensive GitHub README: architecture diagrams, setup instructions, curl examples, test coverage badge.", deliverable: "Deliverable: Employee Management Backend", link: "https://github.com" },
+
+      // Week 5: Redis and Caching (Days 31–37)
+      { day: 31, date: "2026-12-03", dateFmt: "Thu, 3 Dec 2026", phase: 2, week: 5, topic: "Redis Fundamentals & Architecture", desc: "In-memory data store, single-threaded event loop, persistence (RDB snapshots vs AOF logs), redis-cli commands.", deliverable: "Redis server understanding", link: "https://redis.io/docs/latest/" },
+      { day: 32, date: "2026-12-04", dateFmt: "Fri, 4 Dec 2026", phase: 2, week: 5, topic: "Key-Value Storage & Data Structures", desc: "Strings (SET/GET/INCR), Hashes (HSET/HGETALL), Lists (LPUSH/RPOP), Sets (SADD/SMEMBERS), Sorted Sets (ZADD/ZRANGEBYSCORE).", deliverable: "Redis data structure mastery", link: "https://redis.io/docs/latest/develop/data-types/" },
+      { day: 33, date: "2026-12-05", dateFmt: "Sat, 5 Dec 2026", phase: 2, week: 5, topic: "Cache-Aside (Lazy Loading) Strategy", desc: "Cache-aside pattern: check cache -> if miss, fetch from DB and store in cache with TTL. Write-through vs Write-back trade-offs.", deliverable: "Cache-aside implementation", link: "https://redis.io/docs/latest/develop/use/caching/" },
+      { day: 34, date: "2026-12-06", dateFmt: "Sun, 6 Dec 2026", phase: 2, week: 5, topic: "TTL & Cache Invalidation Techniques", desc: "EXPIRE, PEXPIRE, TTL calculation, Cache Invalidation on updates/deletes, cache stampede prevention, stale data risks.", deliverable: "Cache invalidation hygiene", link: "https://redis.io/docs/latest/commands/expire/" },
+      { day: 35, date: "2026-12-07", dateFmt: "Mon, 7 Dec 2026", phase: 2, week: 5, topic: "Redis with FastAPI Integration", desc: "redis-py / aioredis client, async Redis connection pooling, caching expensive database queries in FastAPI endpoints.", deliverable: "FastAPI + Redis caching endpoint", link: "https://redis.io/docs/latest/develop/connect/clients/python/" },
+      { day: 36, date: "2026-12-08", dateFmt: "Tue, 8 Dec 2026", phase: 2, week: 5, topic: "API Rate Limiting with Redis", desc: "Token bucket & sliding window rate limiting algorithms, custom rate limiter middleware with Redis INCR and EXPIRE.", deliverable: "Rate limiting middleware", link: "https://redis.io/docs/latest/develop/use/patterns/rate-limiting/" },
+      { day: 37, date: "2026-12-09", dateFmt: "Wed, 9 Dec 2026", phase: 2, week: 5, topic: "Performance Testing & Latency Benchmarks", desc: "Benchmark API response times with and without cache using Locust or wrk, measure p50, p95, p99 latency reduction.", deliverable: "Performance benchmark report", link: "https://locust.io/" },
+
+      // Week 6: Linux, Docker and Background Processing (Days 38–44)
+      { day: 38, date: "2026-12-10", dateFmt: "Thu, 10 Dec 2026", phase: 2, week: 6, topic: "Linux Commands, Permissions & Processes", desc: "Linux filesystem hierarchy, chmod, chown, user management, ps, top, htop, kill, systemctl, service management, journalctl logs.", deliverable: "Linux server essentials", link: "https://linuxjourney.com/" },
+      { day: 39, date: "2026-12-11", dateFmt: "Fri, 11 Dec 2026", phase: 2, week: 6, topic: "Networking, Ports, DNS & Environment Variables", desc: "IP addresses, ports, netstat, lsof, curl, ping, DNS resolution, environment variables (.env), export, process.env in Linux.", deliverable: "Server networking mastery", link: "https://linuxjourney.com/lesson/network-basics" },
+      { day: 40, date: "2026-12-12", dateFmt: "Sat, 12 Dec 2026", phase: 2, week: 6, topic: "Docker Fundamentals & Container Lifecycle", desc: "Virtual Machines vs Containers, Docker engine, images, containers, docker run, docker ps, docker stop/rm, volume mounts.", deliverable: "Docker fundamentals", link: "https://docs.docker.com/get-started/" },
+      { day: 41, date: "2026-12-13", dateFmt: "Sun, 13 Dec 2026", phase: 2, week: 6, topic: "Multi-Stage Dockerfile & Docker Compose", desc: "Writing production Dockerfiles with python-slim, non-root user, multi-stage builds, docker-compose.yml services, networks, volumes.", deliverable: "Docker Compose configuration", link: "https://docs.docker.com/compose/" },
+      { day: 42, date: "2026-12-14", dateFmt: "Mon, 14 Dec 2026", phase: 2, week: 6, topic: "Containerize FastAPI + PostgreSQL + Redis", desc: "Compose multi-container stack, container networking, health checks, depend_on with condition, environment variables via compose.", deliverable: "Containerized multi-service stack", link: "https://docs.docker.com/samples/fastapi/" },
+      { day: 43, date: "2026-12-15", dateFmt: "Tue, 15 Dec 2026", phase: 2, week: 6, topic: "Celery & Asynchronous Background Tasks", desc: "Why background workers are needed, Celery worker architecture, broker (Redis), results backend, @celery.task, task.delay().", deliverable: "Celery worker setup", link: "https://docs.celeryq.dev/en/stable/getting-started/introduction.html" },
+      { day: 44, date: "2026-12-16", dateFmt: "Wed, 16 Dec 2026", phase: 2, week: 6, topic: "Redis Broker, Retries & Scheduled Tasks", desc: "Celery task retries with exponential backoff, dead letter / failure handling, Celery Beat periodic scheduled jobs.", deliverable: "Resilient async queue with retries", link: "https://docs.celeryq.dev/en/stable/userguide/tasks.html#retrying" },
+
+      // Week 7: Production Backend & Document Processing Service (Days 45–50)
+      { day: 45, date: "2026-12-17", dateFmt: "Thu, 17 Dec 2026", phase: 2, week: 7, topic: "Structured JSON Logging (Loguru / Structlog)", desc: "Why plaintext logs fail in production, structured JSON logging, correlation/request ID propagation across async calls.", deliverable: "Structured logging framework", link: "https://github.com/Delgan/loguru" },
+      { day: 46, date: "2026-12-18", dateFmt: "Fri, 18 Dec 2026", phase: 2, week: 7, topic: "Health Checks, Liveness & Readiness Probes", desc: "GET /health/live and /health/ready, validating DB connection & Redis ping in health check, graceful shutdown signals.", deliverable: "Production health endpoints", link: "https://fastapi.tiangolo.com/" },
+      { day: 47, date: "2026-12-19", dateFmt: "Sat, 19 Dec 2026", phase: 2, week: 7, topic: "API Performance Profiling & Optimization", desc: "Profiling code with cProfile / py-spy, eliminating N+1 query bugs with joinedload / selectinload, optimizing response serialization.", deliverable: "Optimized endpoint latency", link: "https://docs.sqlalchemy.org/en/20/orm/queryguide/relationships.html" },
+      { day: 48, date: "2026-12-20", dateFmt: "Sun, 20 Dec 2026", phase: 2, week: 7, topic: "Database Connection Pooling & Tuning", desc: "SQLAlchemy QueuePool, pool_size, max_overflow, pool_recycle, avoiding pool exhaustion under high concurrency.", deliverable: "Tuned connection pool", link: "https://docs.sqlalchemy.org/en/20/core/pooling.html" },
+      { day: 49, date: "2026-12-21", dateFmt: "Mon, 21 Dec 2026", phase: 2, week: 7, topic: "Security Headers, CORS & Secrets Management", desc: "CORS whitelist, Security headers (Content-Security-Policy, HSTS, X-Frame-Options), handling sensitive secrets via pydantic-settings.", deliverable: "Security audit & hardening", link: "https://fastapi.tiangolo.com/tutorial/cors/" },
+      { day: 50, date: "2026-12-22", dateFmt: "Tue, 22 Dec 2026", phase: 2, week: 7, topic: "CI/CD Pipeline with GitHub Actions & Phase 2 Project", desc: "Automate linting (ruff/flake8), testing (pytest), and Docker build on git push. Document Processing Service complete.", deliverable: "Deliverable: Document Processing Service + CI/CD", link: "https://docs.github.com/en/actions" },
+
+      // Week 8: LLM Foundations (Days 51–58)
+      { day: 51, date: "2026-12-23", dateFmt: "Wed, 23 Dec 2026", phase: 3, week: 8, topic: "LLM Fundamentals, Architecture & Tokenization", desc: "Transformer architecture overview, next-token prediction, tokenizers (tiktoken, BPE), context window limits, pricing & token counts.", deliverable: "LLM mental model & token math", link: "https://github.com/openai/tiktoken" },
+      { day: 52, date: "2026-12-24", dateFmt: "Thu, 24 Dec 2026", phase: 3, week: 8, topic: "Prompt Engineering Principles & Few-Shot Prompting", desc: "System vs User vs Assistant messages, zero-shot, few-shot prompting, Chain-of-Thought (CoT), clear constraints, persona setting.", deliverable: "Effective prompt engineering", link: "https://www.promptingguide.ai/" },
+      { day: 53, date: "2026-12-25", dateFmt: "Fri, 25 Dec 2026", phase: 3, week: 8, topic: "LLM API Integration (OpenAI / Anthropic / Local)", desc: "Calling chat completion APIs via official Python SDKs, streaming responses (SSE / streaming responses in FastAPI), error handling.", deliverable: "FastAPI streaming LLM endpoint", link: "https://platform.openai.com/docs/api-reference" },
+      { day: 54, date: "2026-12-26", dateFmt: "Sat, 26 Dec 2026", phase: 3, week: 8, topic: "Structured JSON Outputs with Pydantic & Instructor", desc: "Forcing LLMs to return strict JSON matching Pydantic schemas, response_format={'type': 'json_object'}, Instructor library.", deliverable: "Guaranteed structured outputs", link: "https://python.useinstructor.com/" },
+      { day: 55, date: "2026-12-27", dateFmt: "Sun, 27 Dec 2026", phase: 3, week: 8, topic: "Function Calling & Tool Use", desc: "Declaring tools with JSON schemas, LLM tool selection, executing tool locally, passing tool outputs back to conversation loop.", deliverable: "Working function-calling pipeline", link: "https://platform.openai.com/docs/guides/function-calling" },
+      { day: 56, date: "2026-12-28", dateFmt: "Mon, 28 Dec 2026", phase: 3, week: 8, topic: "Dense Embeddings & Vector Representations", desc: "What are vector embeddings, dimensionality, semantic distance, text-embedding-3-small, open-source sentence-transformers.", deliverable: "Embeddings generator service", link: "https://platform.openai.com/docs/guides/embeddings" },
+      { day: 57, date: "2026-12-29", dateFmt: "Tue, 29 Dec 2026", phase: 3, week: 8, topic: "Vector Similarity Metrics (Cosine, Dot, Euclidean)", desc: "Mathematical formulas for Cosine Similarity, Dot Product, Euclidean distance (L2), when to use each, numpy implementation.", deliverable: "Vector math & similarity calculator", link: "https://en.wikipedia.org/wiki/Cosine_similarity" },
+      { day: 58, date: "2026-12-30", dateFmt: "Wed, 30 Dec 2026", phase: 3, week: 8, topic: "Model Limitations, Hallucination Mitigation & Guardrails", desc: "Why models hallucinate, temperature parameter, frequency/presence penalties, prompt defensive guardrails (NeMo Guardrails / strict checks).", deliverable: "Defensive AI safeguards", link: "https://github.com/NVIDIA/NeMo-Guardrails" },
+
+      // Week 9: RAG and Vector Databases (Days 59–66)
+      { day: 59, date: "2026-12-31", dateFmt: "Thu, 31 Dec 2026", phase: 3, week: 9, topic: "Document Ingestion Pipeline Architecture", desc: "End-to-end ingestion pipeline: file upload -> validation -> text extraction -> cleaning -> chunking -> embedding -> indexing.", deliverable: "Ingestion pipeline design", link: "https://docs.llamaindex.ai/en/stable/module_guides/loading/documents_and_nodes/" },
+      { day: 60, date: "2027-01-01", dateFmt: "Fri, 1 Jan 2027", phase: 3, week: 9, topic: "PDF Extraction & Text Cleaning (pypdf/pdfplumber)", desc: "Extracting text and tables from PDFs, stripping headers/footers, handling unicode, whitespace normalization, layout parsing.", deliverable: "Robust PDF parser", link: "https://github.com/jsvine/pdfplumber" },
+      { day: 61, date: "2027-01-02", dateFmt: "Sat, 2 Jan 2027", phase: 3, week: 9, topic: "Chunking Strategies (Fixed, Recursive, Semantic)", desc: "Chunk size vs chunk overlap trade-offs, RecursiveCharacterTextSplitter, token-aware splitting, sentence-based semantic chunking.", deliverable: "Text chunking engine", link: "https://python.langchain.com/docs/modules/data_connection/document_transformers/" },
+      { day: 62, date: "2027-01-03", dateFmt: "Sun, 3 Jan 2027", phase: 3, week: 9, topic: "Batch Embedding Generation & Rate Limiting", desc: "Batching chunks for embedding API calls, handling rate limits with tenacity retries, saving token costs.", deliverable: "Scalable batch embedder", link: "https://tenacity.readthedocs.io/" },
+      { day: 63, date: "2027-01-04", dateFmt: "Mon, 4 Jan 2027", phase: 3, week: 9, topic: "PostgreSQL with pgvector Extension & Indexing", desc: "CREATE EXTENSION vector, VECTOR(1536) column type, HNSW vs IVFFlat index types, similarity operators (<->, <=>, <#>).", deliverable: "pgvector configured in PostgreSQL", link: "https://github.com/pgvector/pgvector" },
+      { day: 64, date: "2027-01-05", dateFmt: "Tue, 5 Jan 2027", phase: 3, week: 9, topic: "Semantic Search Queries & Similarity Thresholds", desc: "Writing SQL queries using pgvector for top-K nearest neighbors, setting minimum cosine distance thresholds to discard irrelevant context.", deliverable: "Semantic search endpoint", link: "https://github.com/pgvector/pgvector-python" },
+      { day: 65, date: "2027-01-06", dateFmt: "Wed, 6 Jan 2027", phase: 3, week: 9, topic: "Retrieval Reranking (Cohere Rerank / Cross-Encoder)", desc: "Why bi-encoders miss nuance, two-stage retrieval (Retrieve 25 chunks -> Rerank top 5), Cohere Rerank API, cross-encoder models.", deliverable: "High-precision reranker", link: "https://docs.cohere.com/docs/rerank-overview" },
+      { day: 66, date: "2027-01-07", dateFmt: "Thu, 7 Jan 2027", phase: 3, week: 9, topic: "Source Citations & Grounded Generation", desc: "Attaching document name, page number, and chunk ID to LLM prompt, forcing LLM to output citations [Doc 1, Page 4] in responses.", deliverable: "Grounded RAG with citations", link: "https://docs.llamaindex.ai/" },
+
+      // Week 10: Advanced AI Applications & Flagship Project (Days 67–75)
+      { day: 67, date: "2027-01-08", dateFmt: "Fri, 8 Jan 2027", phase: 3, week: 10, topic: "RAG Pipeline Optimization & Context Compression", desc: "Contextual compression, query rewriting/expansion (HyDE - Hypothetical Document Embeddings), removing redundant context.", deliverable: "Optimized retrieval pipeline", link: "https://docs.llamaindex.ai/en/stable/examples/query_transformations/HyDEQueryTransformDemo/" },
+      { day: 68, date: "2027-01-09", dateFmt: "Sat, 9 Jan 2027", phase: 3, week: 10, topic: "Hybrid Search (BM25 Keyword + Dense Vector)", desc: "Why vector search fails on exact keyword codes/IDs, PostgreSQL tsvector full-text search (BM25) combined with pgvector, Reciprocal Rank Fusion (RRF).", deliverable: "Hybrid search engine", link: "https://www.postgresql.org/docs/current/textsearch.html" },
+      { day: 69, date: "2027-01-10", dateFmt: "Sun, 10 Jan 2027", phase: 3, week: 10, topic: "Metadata Filtering & Multi-Tenant Isolation", desc: "Filtering by department, tags, created_at, enforcing company tenant boundaries in pgvector WHERE clauses.", deliverable: "Filtered vector retrieval", link: "https://github.com/pgvector/pgvector" },
+      { day: 70, date: "2027-01-11", dateFmt: "Mon, 11 Jan 2027", phase: 3, week: 10, topic: "User-Specific Document Permissions in Vector Space", desc: "Enforcing RBAC on documents before embedding retrieval so users only see chunks from documents they have access to.", deliverable: "Secure permissioned RAG", link: "https://fastapi.tiangolo.com/" },
+      { day: 71, date: "2027-01-12", dateFmt: "Tue, 12 Jan 2027", phase: 3, week: 10, topic: "AI Evaluation Frameworks (Ragas / TruLens)", desc: "Evaluating RAG systems: Faithfulness, Answer Relevance, Context Precision, Context Recall. Automated CI evaluation.", deliverable: "Ragas evaluation benchmark", link: "https://github.com/explodinggradients/ragas" },
+      { day: 72, date: "2027-01-13", dateFmt: "Wed, 13 Jan 2027", phase: 3, week: 10, topic: "LangChain / LlamaIndex Core Abstractions", desc: "Using LlamaIndex VectorStoreIndex, QueryEngine, ChatEngine, or LangChain LCEL (LangChain Expression Language).", deliverable: "LlamaIndex / LangChain integration", link: "https://docs.llamaindex.ai/" },
+      { day: 73, date: "2027-01-14", dateFmt: "Thu, 14 Jan 2027", phase: 3, week: 10, topic: "AI Agent Fundamentals & ReAct Pattern", desc: "Reasoning + Acting (ReAct) loop: Thought -> Action -> Observation -> Final Answer. Tool-using agents.", deliverable: "Working ReAct agent", link: "https://www.promptingguide.ai/techniques/react" },
+      { day: 74, date: "2027-01-15", dateFmt: "Fri, 15 Jan 2027", phase: 3, week: 10, topic: "Agentic Tool Calling (SQL Execution & Search)", desc: "Giving agent access to SQL query tool for structured DB analytics and RAG tool for unstructured PDF search.", deliverable: "Multi-tool AI assistant", link: "https://docs.llamaindex.ai/en/stable/module_guides/deploying/agents/" },
+      { day: 75, date: "2027-01-16", dateFmt: "Sat, 16 Jan 2027", phase: 3, week: 10, topic: "Flagship Project: Enterprise AI Knowledge Assistant", desc: "Finalize Enterprise AI Assistant with multi-user JWT, background indexing, pgvector semantic search, grounded Q&A with citations.", deliverable: "Deliverable: Enterprise AI Knowledge Assistant", link: "https://github.com" },
+
+      // Week 11: AWS and Cloud Deployment (Days 76–82)
+      { day: 76, date: "2027-01-17", dateFmt: "Sun, 17 Jan 2027", phase: 4, week: 11, topic: "Cloud Computing Fundamentals & AWS Architecture", desc: "Regions, Availability Zones, IaaS vs PaaS, AWS Free Tier management, cost allocation tags, billing alerts setup.", deliverable: "AWS account & billing guardrails", link: "https://skillbuilder.aws/" },
+      { day: 77, date: "2027-01-18", dateFmt: "Mon, 18 Jan 2027", phase: 4, week: 11, topic: "AWS IAM & Security Fundamentals", desc: "Root account lockdown, IAM users, groups, policies (JSON), least privilege principle, access keys vs IAM roles.", deliverable: "Hardened IAM security", link: "https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html" },
+      { day: 78, date: "2027-01-19", dateFmt: "Tue, 19 Jan 2027", phase: 4, week: 11, topic: "EC2 Linux Server Provisioning & SSH Access", desc: "Launching Ubuntu EC2 instance (t2/t3.micro), Security Groups (inbound ports 22, 80, 443), SSH key pairs, elastic IP.", deliverable: "Live EC2 Linux server", link: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html" },
+      { day: 79, date: "2027-01-20", dateFmt: "Wed, 20 Jan 2027", phase: 4, week: 11, topic: "AWS S3 File Storage & Presigned URLs", desc: "S3 bucket creation, bucket policies, uploading documents via boto3 Python SDK, generating secure presigned URLs.", deliverable: "S3 file storage integration", link: "https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-example-creating-buckets.html" },
+      { day: 80, date: "2027-01-21", dateFmt: "Thu, 21 Jan 2027", phase: 4, week: 11, topic: "Deploy FastAPI + PostgreSQL Application on EC2", desc: "Installing Docker & Compose on EC2, git clone repository, environment variable injection, running multi-container stack in cloud.", deliverable: "Live containerized cloud deployment", link: "https://docs.docker.com/" },
+      { day: 81, date: "2027-01-22", dateFmt: "Fri, 22 Jan 2027", phase: 4, week: 11, topic: "Environment Variables, Parameter Store & Secrets", desc: "AWS Systems Manager Parameter Store or Secrets Manager, fetching DB passwords & OpenAI keys securely at runtime.", deliverable: "Secure cloud secrets management", link: "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html" },
+      { day: 82, date: "2027-01-23", dateFmt: "Sat, 23 Jan 2027", phase: 4, week: 11, topic: "Nginx Reverse Proxy, Custom Domain & HTTPS / SSL", desc: "Setting up Nginx as reverse proxy to Uvicorn, domain DNS A record, Certbot Let's Encrypt automated SSL certificate.", deliverable: "Secure live HTTPS domain", link: "https://certbot.eff.org/" },
+
+      // Week 12: Production Readiness & Monitoring (Days 83–85)
+      { day: 83, date: "2027-01-24", dateFmt: "Sun, 24 Jan 2027", phase: 4, week: 12, topic: "Automated CI/CD Deployment with GitHub Actions", desc: "GitHub Actions workflow to run tests, build Docker image, SSH into EC2, pull latest image and restart services zero-downtime.", deliverable: "Continuous deployment pipeline", link: "https://docs.github.com/en/actions" },
+      { day: 84, date: "2027-01-25", dateFmt: "Mon, 25 Jan 2027", phase: 4, week: 12, topic: "Application Monitoring, Logging & Error Tracking", desc: "Setting up Sentry for real-time error tracking and stack traces, CloudWatch or Prometheus/Grafana metrics monitoring.", deliverable: "Live observability & Sentry alerts", link: "https://sentry.io/" },
+      { day: 85, date: "2027-01-26", dateFmt: "Tue, 26 Jan 2027", phase: 4, week: 12, topic: "Database Backups & Security Audit", desc: "Automating pg_dump database snapshots to S3 via cron, API security audit, load testing with Locust under 500 concurrent users.", deliverable: "Disaster recovery & load test report", link: "https://www.postgresql.org/docs/current/backup-dump.html" },
+
+      // Week 13: Interview & Internship Sprint (Days 86–90)
+      { day: 86, date: "2027-01-27", dateFmt: "Wed, 27 Jan 2027", phase: 4, week: 13, topic: "Python Core & SQL Deep-Dive Interview Prep", desc: "Interview drill: Python memory model, GIL, asyncio event loop, generators vs iterators, complex SQL joins, indexing internals.", deliverable: "Python + SQL interview answers", link: "https://github.com" },
+      { day: 87, date: "2027-01-28", dateFmt: "Thu, 28 Jan 2027", phase: 4, week: 13, topic: "FastAPI, REST & Authentication Architecture Interview", desc: "Interview drill: REST vs gRPC/GraphQL, JWT security vs session cookies, dependency injection design, rate limiting strategies.", deliverable: "FastAPI system design answers", link: "https://fastapi.tiangolo.com/" },
+      { day: 88, date: "2027-01-29", dateFmt: "Fri, 29 Jan 2027", phase: 4, week: 13, topic: "Docker, Redis & PostgreSQL Scalability Interview", desc: "Interview drill: Docker networking, caching strategies (cache stampede, invalidation), database ACID & connection pooling under load.", deliverable: "Backend infrastructure answers", link: "https://redis.io/" },
+      { day: 89, date: "2027-01-30", dateFmt: "Sat, 30 Jan 2027", phase: 4, week: 13, topic: "RAG Architecture, Vector DBs & LLM Interview", desc: "Interview drill: Explaining RAG architecture step-by-step on whiteboard, chunking trade-offs, HNSW indexing, mitigating hallucinations.", deliverable: "Applied AI interview confidence", link: "https://docs.llamaindex.ai/" },
+      { day: 90, date: "2027-01-31", dateFmt: "Sun, 31 Jan 2027", phase: 4, week: 13, topic: "Final Portfolio Review & 60–80 Applications Push 🚀", desc: "Review 2 polished GitHub repos, deployed live URL, tailored ATS resume, push 60-80 targeted applications in Noida & Delhi NCR!", deliverable: "🎯 Internship-Ready in 90 Days!", link: "https://linkedin.com" }
+    ];
+
+    const BACKEND_WEEKS = [
+      { wk: 1, phase: 1, title: "Python for Backend Engineering", dates: "3 Nov – 9 Nov 2026", days: [1, 7], deliverable: "Project: Employee Management CLI" },
+      { wk: 2, phase: 1, title: "FastAPI Fundamentals", dates: "10 Nov – 16 Nov 2026", days: [8, 14], deliverable: "Project: Employee Management REST API" },
+      { wk: 3, phase: 1, title: "PostgreSQL & SQLAlchemy ORM", dates: "17 Nov – 23 Nov 2026", days: [15, 21], deliverable: "Relational DB Design & Alembic Migrations" },
+      { wk: 4, phase: 1, title: "Authentication, RBAC & Pytest", dates: "24 Nov – 2 Dec 2026", days: [22, 30], deliverable: "Deliverable 1: Employee Management Backend" },
+      { wk: 5, phase: 2, title: "Redis and Caching Strategies", dates: "3 Dec – 9 Dec 2026", days: [31, 37], deliverable: "Cache-Aside & API Rate Limiting" },
+      { wk: 6, phase: 2, title: "Linux, Docker & Background Processing", dates: "10 Dec – 16 Dec 2026", days: [38, 44], deliverable: "Containerized Stack + Celery Background Tasks" },
+      { wk: 7, phase: 2, title: "Production Backend & Polish", dates: "17 Dec – 22 Dec 2026", days: [45, 50], deliverable: "Deliverable 2: Document Processing Service + CI/CD" },
+      { wk: 8, phase: 3, title: "LLM Foundations & Embeddings", dates: "23 Dec – 30 Dec 2026", days: [51, 58], deliverable: "Structured Outputs, Function Calling & Embeddings" },
+      { wk: 9, phase: 3, title: "RAG & Vector Databases (pgvector)", dates: "31 Dec – 7 Jan 2027", days: [59, 66], deliverable: "PDF Ingestion, Chunking & Semantic Search" },
+      { wk: 10, phase: 3, title: "Advanced AI Applications & Flagship", dates: "8 Jan – 16 Jan 2027", days: [67, 75], deliverable: "Deliverable 3: Enterprise AI Knowledge Assistant" },
+      { wk: 11, phase: 4, title: "AWS Cloud Deployment", dates: "17 Jan – 23 Jan 2027", days: [76, 82], deliverable: "EC2 + Docker + S3 + Nginx + HTTPS" },
+      { wk: 12, phase: 4, title: "Production Readiness & Monitoring", dates: "24 Jan – 26 Jan 2027", days: [83, 85], deliverable: "Automated CI/CD, Observability & Backups" },
+      { wk: 13, phase: 4, title: "Interview Sprints & 60–80 Applications", dates: "27 Jan – 31 Jan 2027", days: [86, 90], deliverable: "🎯 Internship-Ready in 90 Days!" }
+    ];
+
+    const TECH_STACK_ITEMS = [
+      { name: "Python", role: "Backend Language", desc: "Type hints, asyncio, OOP, generators", link: "https://docs.python.org/3/tutorial/" },
+      { name: "FastAPI", role: "API Framework", desc: "Async REST APIs, Pydantic, OpenAPI", link: "https://fastapi.tiangolo.com/" },
+      { name: "PostgreSQL", role: "Relational Database", desc: "ACID, indexing, joins, migrations", link: "https://www.postgresql.org/docs/current/tutorial.html" },
+      { name: "SQLAlchemy", role: "ORM & Migrations", desc: "SQLAlchemy 2.0 ORM + Alembic", link: "https://docs.sqlalchemy.org/en/20/tutorial/" },
+      { name: "Redis", role: "Caching & Rate Limiting", desc: "In-memory caching, TTL, token bucket", link: "https://redis.io/docs/latest/" },
+      { name: "Docker", role: "Containerization", desc: "Multi-stage builds, Docker Compose", link: "https://docs.docker.com/get-started/" },
+      { name: "Linux", role: "Server Operations", desc: "Bash, permissions, systemctl, network", link: "https://linuxjourney.com/" },
+      { name: "Celery + Redis", role: "Background Workers", desc: "Async tasks, queues, retries, cron", link: "https://docs.celeryq.dev/en/stable/" },
+      { name: "LangChain / LlamaIndex", role: "Applied AI Framework", desc: "RAG pipelines, retrievers, agents", link: "https://docs.llamaindex.ai/" },
+      { name: "pgvector / Qdrant", role: "Vector Search", desc: "HNSW embeddings index, semantic search", link: "https://github.com/pgvector/pgvector" },
+      { name: "AWS Cloud", role: "Production Cloud", desc: "EC2, S3, IAM, Nginx, HTTPS domain", link: "https://skillbuilder.aws/" }
+    ];
+
+    const DAILY_ROUTINE_ITEMS = [
+      { id: "s1", num: "Session 1", time: "1.5 hr", title: "Python / Backend Concepts", icon: "🐍", desc: "Core theory, documentation reading & architecture" },
+      { id: "s2", num: "Session 2", time: "2.0 hr", title: "Hands-on Development", icon: "💻", desc: "Coding endpoints, schemas, DB models & tests" },
+      { id: "s3", num: "Session 3", time: "1.0 hr", title: "Applied AI / RAG Engineering", icon: "🤖", desc: "Prompting, embeddings, pgvector & LlamaIndex" },
+      { id: "s4", num: "Session 4", time: "1.0 hr", title: "DSA & Problem Solving", icon: "🎯", desc: "Striver A2Z Moon-Lander Missions on LeetCode/GFG" },
+      { id: "s5", num: "Session 5", time: "0.5 hr", title: "Revision / GitHub / Interview", icon: "📝", desc: "Git commits, README polish, LinkedIn & mock questions" }
+    ];
+
+    const DSA_ALIGNMENT = [
+      { wk: "Weeks 1–2", dsa: "Arrays, Strings, Hashing", cs: "OOP Principles & Memory Model" },
+      { wk: "Weeks 3–4", dsa: "Binary Search, Sorting", cs: "DBMS (ACID, Normalization, Indexing)" },
+      { wk: "Weeks 5–6", dsa: "Linked Lists, Stacks & Queues", cs: "Operating Systems (Processes, Threads, I/O)" },
+      { wk: "Weeks 7–8", dsa: "Binary Trees, BST, Heaps", cs: "Computer Networks (TCP/IP, HTTP, DNS, Sockets)" },
+      { wk: "Weeks 9–10", dsa: "Graphs, BFS, DFS", cs: "System Design (Caching, Queues, DB Sharding)" },
+      { wk: "Weeks 11–12", dsa: "Dynamic Programming", cs: "Cloud Architecture & Security (IAM, VPC)" },
+      { wk: "Week 13", dsa: "Revision & Mock DSA Interviews", cs: "Full Technical Mock Interviews & HR Pitch" }
+    ];
+
+    let currentAppMode = "dsa";
+    let backendActivePhase = "all";
+    let backendActiveStatus = "all";
+    let backendSearchQuery = "";
+    let backendExpandedWeeks = new Set([1]); // Week 1 open by default
+    let currentBackendNoteDay = null;
+
+    let backendProg = {};
+    try {
+      const savedBP = localStorage.getItem("backend_ai_prog_v1");
+      if (savedBP) backendProg = JSON.parse(savedBP);
+    } catch(e) {}
+
+    let routineChecks = {};
+    try {
+      const savedRC = localStorage.getItem("backend_ai_routine_v1");
+      if (savedRC) routineChecks = JSON.parse(savedRC);
+    } catch(e) {}
+
+    let internAppsCount = 0;
+    try {
+      const savedIAC = localStorage.getItem("backend_ai_apps_count");
+      if (savedIAC) internAppsCount = parseInt(savedIAC, 10) || 0;
+    } catch(e) {}
+
+    function saveBackendProg() {
+      try {
+        localStorage.setItem("backend_ai_prog_v1", JSON.stringify(backendProg));
+      } catch(e) {}
+    }
+
+    function saveRoutineChecks() {
+      try {
+        localStorage.setItem("backend_ai_routine_v1", JSON.stringify(routineChecks));
+      } catch(e) {}
+    }
+
+    function saveAppsCount() {
+      try {
+        localStorage.setItem("backend_ai_apps_count", internAppsCount);
+      } catch(e) {}
+    }
+
+    function getBackendProg(day) {
+      if (!backendProg[day]) backendProg[day] = { s: 0, n: "" };
+      return backendProg[day];
+    }
+
+    window.toggleBackendStatus = function(day) {
+      const p = getBackendProg(day);
+      if (p.s === 2) {
+        p.s = 0;
+      } else if (p.s === 1) {
+        p.s = 2;
+        showToast("🎉 Day " + day + " Marked as Completed!");
+        if (typeof triggerDiwaliSparkles === "function") triggerDiwaliSparkles();
+      } else {
+        p.s = 2;
+        showToast("🎉 Day " + day + " Marked as Completed!");
+        if (typeof triggerDiwaliSparkles === "function") triggerDiwaliSparkles();
+      }
+      saveBackendProg();
+      renderBackendRoadmap();
+    };
+
+    window.toggleRoutineSession = function(sid) {
+      routineChecks[sid] = !routineChecks[sid];
+      saveRoutineChecks();
+      renderBackendRoadmap();
+    };
+
+    window.updateAppsCount = function(delta) {
+      internAppsCount = Math.max(0, internAppsCount + delta);
+      saveAppsCount();
+      renderBackendRoadmap();
+    };
+
+    window.toggleBackendWeek = function(w) {
+      if (backendExpandedWeeks.has(w)) {
+        backendExpandedWeeks.delete(w);
+      } else {
+        backendExpandedWeeks.add(w);
+      }
+      renderBackendRoadmap();
+    };
+
+    window.setBackendPhase = function(p) {
+      backendActivePhase = p;
+      renderBackendRoadmap();
+    };
+
+    window.setBackendStatus = function(s) {
+      backendActiveStatus = s;
+      renderBackendRoadmap();
+    };
+
+    window.jumpToTodayBackendDay = function() {
+      const today = new Date();
+      const todayKey = toDateKey(today);
+      const matchDay = BACKEND_90_DAYS.find(d => d.date === todayKey);
+      const targetDay = matchDay ? matchDay.day : 1;
+      const targetWeek = matchDay ? matchDay.week : 1;
+      backendExpandedWeeks.add(targetWeek);
+      renderBackendRoadmap();
+      setTimeout(() => {
+        const el = $("backend-day-" + targetDay);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+          el.classList.add("highlight-flash");
+          setTimeout(() => el.classList.remove("highlight-flash"), 1500);
+        }
+      }, 80);
+    };
+
+    window.openBackendNoteModal = function(day) {
+      currentBackendNoteDay = day;
+      const dObj = BACKEND_90_DAYS.find(d => d.day === day);
+      if (!dObj) return;
+      const p = getBackendProg(day);
+
+      $("backend-note-modal-title").textContent = "Day " + day + " · " + dObj.dateFmt;
+      $("backend-note-modal-subtitle").textContent = "Phase " + dObj.phase + " · Week " + dObj.week;
+      $("backend-note-modal-topic").textContent = "🎯 Topic: " + dObj.topic;
+      $("backend-note-modal-text").value = p.n || "";
+      $("backend-note-modal").classList.add("open");
+      $("backend-note-modal-text").focus();
+    };
+
+    const bText = $("backend-note-modal-text");
+    if (bText) {
+      bText.addEventListener("input", () => {
+        if (!currentBackendNoteDay) return;
+        const p = getBackendProg(currentBackendNoteDay);
+        p.n = bText.value;
+        saveBackendProg();
+        $("backend-note-save-status").textContent = "Saved ✓";
+        setTimeout(() => {
+          $("backend-note-save-status").textContent = "Saved automatically ✓";
+        }, 1200);
+      });
+    }
+
+    const bClear = $("backend-note-modal-clear");
+    if (bClear) {
+      bClear.onclick = () => {
+        if (!currentBackendNoteDay) return;
+        bText.value = "";
+        const p = getBackendProg(currentBackendNoteDay);
+        p.n = "";
+        saveBackendProg();
+        renderBackendRoadmap();
+      };
+    }
+
+    const bClose = $("backend-note-modal-close");
+    const bDone = $("backend-note-modal-done");
+    if (bClose) bClose.onclick = () => $("backend-note-modal").classList.remove("open");
+    if (bDone) bDone.onclick = () => $("backend-note-modal").classList.remove("open");
+
+    // Render Backend + AI Roadmap
+    function renderBackendRoadmap() {
+      const container = $("backend-ai-app-view");
+      if (!container) return;
+
+      const totalDays = BACKEND_90_DAYS.length;
+      const completedDays = BACKEND_90_DAYS.filter(d => getBackendProg(d.day).s === 2).length;
+      const inProgressDays = BACKEND_90_DAYS.filter(d => getBackendProg(d.day).s === 1).length;
+      const pct = Math.round((completedDays / totalDays) * 100);
+
+      const today = new Date();
+      const todayKey = toDateKey(today);
+      const currentDayMatch = BACKEND_90_DAYS.find(d => d.date === todayKey);
+      const currentDayNum = currentDayMatch ? currentDayMatch.day : 1;
+
+      // Filtered days
+      let filteredDays = BACKEND_90_DAYS.filter(d => {
+        if (backendActivePhase !== "all" && d.phase !== parseInt(backendActivePhase, 10)) return false;
+        const p = getBackendProg(d.day);
+        if (backendActiveStatus === "done" && p.s !== 2) return false;
+        if (backendActiveStatus === "pending" && p.s === 2) return false;
+        if (backendSearchQuery) {
+          const q = backendSearchQuery.toLowerCase();
+          const matches = d.topic.toLowerCase().includes(q) || d.desc.toLowerCase().includes(q) || d.deliverable.toLowerCase().includes(q);
+          if (!matches) return false;
+        }
+        return true;
+      });
+
+      let html = `
+        <div class="backend-ai-container">
+          
+          <!-- Hero Banner -->
+          <div class="backend-hero">
+            <div class="backend-hero-left">
+              <div class="backend-hero-badge">
+                <span>🚀</span> 90-DAY BACKEND + APPLIED AI ROADMAP · 3 NOV 2026 – 31 JAN 2027
+              </div>
+              <h2 class="backend-hero-title">Internship-Ready in 90 Days · Noida & Delhi NCR Target</h2>
+              <p class="backend-hero-desc">
+                Train to become a production-capable Python Backend Engineer with Applied AI expertise. Not collecting random certificates, but designing, developing, containerizing, testing, and cloud-deploying real-world backend systems with LLMs & vector search.
+              </p>
+              
+              <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px;">
+                <button class="nav-btn primary" onclick="jumpToTodayBackendDay()" style="background: linear-gradient(135deg, #059669, #10b981); border: none; font-size: 12.5px;">
+                  🎯 Jump to Today (Day ${currentDayNum})
+                </button>
+                <button class="nav-btn" onclick="document.getElementById('tech-stack-section').scrollIntoView({behavior: 'smooth'})" style="font-size: 12.5px;">
+                  ⚡ Tech Stack
+                </button>
+                <button class="nav-btn" onclick="document.getElementById('internship-strategy-section').scrollIntoView({behavior: 'smooth'})" style="font-size: 12.5px;">
+                  💼 Internship Tracker
+                </button>
+                <button class="nav-btn" onclick="document.getElementById('resources-section').scrollIntoView({behavior: 'smooth'})" style="font-size: 12.5px;">
+                  📚 Official Resources
+                </button>
+              </div>
+            </div>
+
+            <div class="backend-hero-right">
+              <div class="backend-stat-box">
+                <div class="backend-stat-num">${completedDays} / 90</div>
+                <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Days Completed</div>
+                
+                <div class="diwali-progress-bar" style="margin: 8px 0;">
+                  <div class="diwali-progress-fill" style="width: ${pct}%; background: linear-gradient(90deg, #10b981, #059669);"></div>
+                </div>
+
+                <div style="font-size: 13px; font-weight: 800; color: #10b981;">${pct}% Mastered · 13 Weeks</div>
+                <div style="font-size: 11px; color: var(--text-muted);">Current: Phase ${currentDayMatch ? currentDayMatch.phase : 1} (Week ${currentDayMatch ? currentDayMatch.week : 1})</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Daily 6-Hour Study Routine Tracker -->
+          <div class="routine-banner">
+            <div class="routine-header">
+              <div class="routine-title">
+                <span>⏱️</span> Daily 6-Hour Study Routine (Consistency Beats Intensity)
+              </div>
+              <div style="font-size: 12px; color: var(--text-muted);">
+                Click to check off today's completed study sessions:
+              </div>
+            </div>
+            
+            <div class="routine-grid">
+              ${DAILY_ROUTINE_ITEMS.map(item => {
+                const isChecked = !!routineChecks[item.id];
+                return `
+                  <div class="routine-card ${isChecked ? 'checked' : ''}" onclick="toggleRoutineSession('${item.id}')" title="Click to toggle session complete">
+                    <div class="routine-card-head">
+                      <span>${item.num}</span>
+                      <span class="routine-card-dur">${item.time}</span>
+                    </div>
+                    <div class="routine-card-title">
+                      ${item.icon} ${esc(item.title)}
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">
+                      ${esc(item.desc)}
+                    </div>
+                    <div style="margin-top: 6px; font-size: 11.5px; font-weight: 700; color: ${isChecked ? '#10b981' : 'var(--text-muted)'}; display: flex; align-items: center; gap: 4px;">
+                      <span>${isChecked ? '✓ Done Today' : '○ Pending'}</span>
+                    </div>
+                  </div>
+                `;
+              }).join("")}
+            </div>
+          </div>
+
+          <!-- Phase Navigation & Filter Bar -->
+          <div class="phase-filter-bar">
+            <div class="phase-chips-group">
+              <button class="phase-chip ${backendActivePhase === 'all' ? 'active' : ''}" onclick="setBackendPhase('all')">
+                All 90 Days
+              </button>
+              <button class="phase-chip ${backendActivePhase === '1' ? 'active' : ''}" onclick="setBackendPhase('1')">
+                Phase 1: Backend Foundations (D1–30)
+              </button>
+              <button class="phase-chip ${backendActivePhase === '2' ? 'active' : ''}" onclick="setBackendPhase('2')">
+                Phase 2: Advanced Backend (D31–50)
+              </button>
+              <button class="phase-chip ${backendActivePhase === '3' ? 'active' : ''}" onclick="setBackendPhase('3')">
+                Phase 3: AI Engineering (D51–75)
+              </button>
+              <button class="phase-chip ${backendActivePhase === '4' ? 'active' : ''}" onclick="setBackendPhase('4')">
+                Phase 4: Cloud & Interviews (D76–90)
+              </button>
+            </div>
+
+            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+              <select onchange="setBackendStatus(this.value)" class="search-input" style="padding: 5px 10px; font-size: 12px; height: 32px; width: 130px;">
+                <option value="all" ${backendActiveStatus === 'all' ? 'selected' : ''}>All Status</option>
+                <option value="done" ${backendActiveStatus === 'done' ? 'selected' : ''}>Completed Only</option>
+                <option value="pending" ${backendActiveStatus === 'pending' ? 'selected' : ''}>Pending Only</option>
+              </select>
+              <input type="text" placeholder="Search roadmap topics..." class="search-input" value="${esc(backendSearchQuery)}" oninput="backendSearchQuery = this.value; renderBackendRoadmap();" style="padding: 5px 10px; font-size: 12px; height: 32px; width: 170px;" />
+            </div>
+          </div>
+
+          <!-- 13-Week Accordion Cards -->
+          <div class="backend-weeks-list">
+            ${BACKEND_WEEKS.map(wk => {
+              const weekDays = filteredDays.filter(d => d.week === wk.wk);
+              if (weekDays.length === 0 && (backendActivePhase !== "all" || backendSearchQuery || backendActiveStatus !== "all")) {
+                return "";
+              }
+              const allWkDays = BACKEND_90_DAYS.filter(d => d.week === wk.wk);
+              const doneCount = allWkDays.filter(d => getBackendProg(d.day).s === 2).length;
+              const isWkDone = doneCount === allWkDays.length && allWkDays.length > 0;
+              const isCurrentWk = currentDayMatch && currentDayMatch.week === wk.wk;
+              const isOpen = backendExpandedWeeks.has(wk.wk) || backendSearchQuery.length > 0;
+
+              return `
+                <div class="backend-week-card ${isOpen ? 'open' : ''} ${isCurrentWk ? 'is-current-week' : ''}" id="backend-week-${wk.wk}">
+                  <div class="backend-week-header" onclick="toggleBackendWeek(${wk.wk})">
+                    <div class="backend-week-info">
+                      <span class="backend-week-badge">WEEK ${String(wk.wk).padStart(2, '0')}</span>
+                      <div>
+                        <div class="backend-week-title">
+                          ${esc(wk.title)}
+                          ${isCurrentWk ? '<span style="font-size: 10px; font-weight: 800; background: #10b981; color: #fff; padding: 2px 6px; border-radius: 4px;">CURRENT WEEK</span>' : ''}
+                          ${isWkDone ? '<span style="font-size: 10px; font-weight: 800; background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 6px; border-radius: 4px;">✓ COMPLETED</span>' : ''}
+                        </div>
+                        <div class="backend-week-sub">
+                          <span>${wk.dates}</span> · <span>Deliverable: <strong>${esc(wk.deliverable)}</strong></span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                      <span style="font-size: 12px; font-weight: 700; color: ${isWkDone ? '#10b981' : 'var(--text-muted)'};">
+                        ${doneCount} / ${allWkDays.length} Done
+                      </span>
+                      <div class="step-chevron">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="backend-week-content">
+                    ${allWkDays.map(d => {
+                      const p = getBackendProg(d.day);
+                      const isToday = d.date === todayKey;
+                      const isDone = p.s === 2;
+
+                      return `
+                        <div class="backend-day-row ${isDone ? 'is-completed' : ''} ${isToday ? 'is-today-day' : ''}" id="backend-day-${d.day}">
+                          <div>
+                            <button class="day-status-btn status-${p.s}" onclick="toggleBackendStatus(${d.day})" title="Click to toggle: Completed / Not Started">
+                              ${p.s === 2 ? '✓' : (p.s === 1 ? '◐' : '○')}
+                            </button>
+                          </div>
+
+                          <div class="day-main-info">
+                            <div class="day-title-line">
+                              <span style="font-size: 11px; font-weight: 800; color: var(--primary);">DAY ${String(d.day).padStart(2, '0')}</span>
+                              <span>${esc(d.topic)}</span>
+                              ${isToday ? '<span style="font-size: 9.5px; font-weight: 800; background: #10b981; color: #fff; padding: 1px 5px; border-radius: 4px;">TODAY</span>' : ''}
+                              <span style="font-size: 11px; color: var(--text-muted);">(${d.dateFmt})</span>
+                            </div>
+                            <div class="day-desc-line">
+                              ${esc(d.desc)}
+                            </div>
+                          </div>
+
+                          <div class="backend-day-deliverable">
+                            <span class="day-deliverable-badge" title="${esc(d.deliverable)}">
+                              🎯 ${esc(d.deliverable)}
+                            </span>
+                          </div>
+
+                          <div class="backend-day-actions" style="display: flex; gap: 6px; justify-content: flex-end;">
+                            <a href="${d.link}" target="_blank" rel="noopener" class="action-link-btn" title="Open official documentation for this topic">
+                              Docs ↗
+                            </a>
+                            <button class="action-link-btn" onclick="openBackendNoteModal(${d.day})" title="Add your personal notes or code snippets">
+                              ${p.n ? '📝 Note ✓' : '📝 Note'}
+                            </button>
+                          </div>
+                        </div>
+                      `;
+                    }).join("")}
+                  </div>
+                </div>
+              `;
+            }).join("")}
+          </div>
+
+          <!-- Flagship Projects Showcase -->
+          <div class="routine-banner" id="projects-section">
+            <div style="font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+              <span>🏆</span> Core Portfolio Deliverables (What Interviewers Will Inspect)
+            </div>
+            <div style="font-size: 12.5px; color: var(--text-muted); margin-bottom: 14px;">
+              By Day 90, your GitHub will feature two polished backend services and one cloud-deployed Enterprise AI flagship assistant with architecture diagrams and test suites.
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;">
+              <div class="routine-card" style="cursor: default;">
+                <div style="font-size: 11px; font-weight: 800; color: #3b82f6; text-transform: uppercase;">Phase 1 Milestone (Day 30)</div>
+                <div style="font-size: 14px; font-weight: 800; color: var(--text); margin-top: 2px;">Employee Management Backend</div>
+                <div style="font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-top: 4px;">
+                  Production-style REST API with registration & login, Admin/Employee RBAC, full CRUD, PostgreSQL DB, pagination, JWT security, Pytest suite, and Swagger docs.
+                </div>
+                <div style="margin-top: 8px; font-size: 11px; font-weight: 700; color: #3b82f6;">Stack: Python · FastAPI · PostgreSQL · JWT · Pytest</div>
+              </div>
+
+              <div class="routine-card" style="cursor: default;">
+                <div style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase;">Phase 2 Milestone (Day 50)</div>
+                <div style="font-size: 14px; font-weight: 800; color: var(--text); margin-top: 2px;">Document Processing Service</div>
+                <div style="font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-top: 4px;">
+                  Scalable backend service: user uploads document, API queues background worker via Celery + Redis, async worker extracts & processes, result stored in PostgreSQL. CI/CD via GitHub Actions.
+                </div>
+                <div style="margin-top: 8px; font-size: 11px; font-weight: 700; color: #f59e0b;">Stack: Docker Compose · Celery · Redis · Linux · GitHub Actions</div>
+              </div>
+
+              <div class="routine-card" style="cursor: default; border-color: rgba(16, 185, 129, 0.5); background: rgba(16, 185, 129, 0.05);">
+                <div style="font-size: 11px; font-weight: 800; color: #10b981; text-transform: uppercase;">Phase 3 Flagship (Day 75) ⭐</div>
+                <div style="font-size: 14px; font-weight: 800; color: var(--text); margin-top: 2px;">Enterprise AI Knowledge Assistant</div>
+                <div style="font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-top: 4px;">
+                  Multi-user knowledge base over thousands of company PDFs. Semantic search with pgvector, RAG-based grounded question answering with exact source citations, Redis caching, RBAC document permissions, Ragas evaluation.
+                </div>
+                <div style="margin-top: 8px; font-size: 11px; font-weight: 700; color: #10b981;">Stack: LlamaIndex/LangChain · pgvector · OpenAI · FastAPI · AWS</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Final Tech Stack -->
+          <div class="tech-stack-banner" id="tech-stack-section">
+            <div style="font-size: 15px; font-weight: 800; color: var(--text); display: flex; align-items: center; gap: 8px;">
+              <span>⚡</span> Target Technology Stack (10 Essential Tools)
+            </div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">
+              Click any technology to open its official documentation:
+            </div>
+            <div class="tech-badges-grid">
+              ${TECH_STACK_ITEMS.map(t => `
+                <a href="${t.link}" target="_blank" rel="noopener" class="tech-item">
+                  <div class="tech-item-name">
+                    <span>${t.name}</span>
+                    <span style="font-size: 11px; color: var(--primary);">↗</span>
+                  </div>
+                  <div style="font-size: 11px; font-weight: 700; color: #10b981;">${t.role}</div>
+                  <div class="tech-item-role">${t.desc}</div>
+                </a>
+              `).join("")}
+            </div>
+          </div>
+
+          <!-- Weekly DSA Alignment & Computer Science Revisions -->
+          <div class="routine-banner">
+            <div style="font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+              <span>🧩</span> 13-Week DSA & Core CS Alignment (1 Hour Daily)
+            </div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+              Do not abandon DSA while specializing. Keep 1 hour daily aligned with your Striver A2Z Moon-Lander missions:
+            </div>
+
+            <div class="table-container">
+              <table class="problem-table">
+                <thead>
+                  <tr>
+                    <th style="width: 120px;">Timeline</th>
+                    <th>DSA Focus (1 hr daily)</th>
+                    <th>Core Computer Science Focus</th>
+                    <th style="width: 120px; text-align: center;">Practice</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${DSA_ALIGNMENT.map(row => `
+                    <tr>
+                      <td style="font-weight: 700; font-size: 12px; color: var(--primary);">${row.wk}</td>
+                      <td style="font-weight: 600; font-size: 13px;">${row.dsa}</td>
+                      <td style="font-size: 12.5px; color: var(--text-muted);">${row.cs}</td>
+                      <td style="text-align: center;">
+                        <button class="action-link-btn" onclick="setAppMode('dsa')">DSA Sheet ↗</button>
+                      </td>
+                    </tr>
+                  `).join("")}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Internship Strategy & Guardrails -->
+          <div class="internship-banner" id="internship-strategy-section">
+            <div class="intern-subcard">
+              <div style="font-size: 15px; font-weight: 800; color: var(--text); display: flex; align-items: center; gap: 8px;">
+                <span>💼</span> Internship Application Strategy (Start Week 3!)
+              </div>
+              <div style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">
+                Target Locations: <strong>Noida, Greater Noida, Delhi, Gurugram</strong>.<br/>
+                Target Roles: Python Backend Intern · FastAPI Dev Intern · Applied AI / RAG Intern · GenAI Intern.
+              </div>
+
+              <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px; display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                <div>
+                  <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Applications Submitted</div>
+                  <div style="font-size: 24px; font-weight: 800; color: #10b981;">${internAppsCount} / 80 Target</div>
+                </div>
+                <div style="display: flex; gap: 6px;">
+                  <button class="nav-btn" onclick="updateAppsCount(-1)" style="padding: 4px 10px; font-size: 14px; font-weight: 800;">-</button>
+                  <button class="nav-btn primary" onclick="updateAppsCount(1)" style="padding: 4px 12px; font-size: 14px; font-weight: 800; background: #10b981; border-color: #10b981;">+ 1 Applied</button>
+                </div>
+              </div>
+
+              <div style="font-size: 11.5px; color: var(--text-muted); line-height: 1.6; margin-top: 4px;">
+                📅 <strong>Phased Quotas:</strong><br/>
+                • Days 1–15: Resume, GitHub & LinkedIn preparation<br/>
+                • Days 16–30: 5–8 targeted applications / week<br/>
+                • Days 31–50: 8–10 applications / week<br/>
+                • Days 51–75: 10–15 applications / week<br/>
+                • Days 76–90: 15 targeted applications / week
+              </div>
+            </div>
+
+            <div class="intern-subcard">
+              <div style="font-size: 15px; font-weight: 800; color: #ef4444; display: flex; align-items: center; gap: 8px;">
+                <span>⚠️</span> What to Avoid (Save Hundreds of Wasted Hours)
+              </div>
+              <ul style="font-size: 12px; color: var(--text-muted); line-height: 1.65; margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px;">
+                <li><strong>Don't learn Kubernetes</strong> before properly understanding Docker Compose.</li>
+                <li><strong>Don't jump into AI agents</strong> before mastering RAG, chunking & evaluation.</li>
+                <li><strong>Don't learn Kafka and RabbitMQ simultaneously</strong>. Master Celery + Redis first.</li>
+                <li><strong>Don't build projects by blindly copying tutorials</strong>; build your own schema and features.</li>
+                <li><strong>Don't delay internship applications</strong> until all 90 days are over. Start early!</li>
+                <li><strong>Don't waste money on expensive bootcamps</strong>. Use official docs and build real APIs.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Official Learning Resources -->
+          <div class="tech-stack-banner" id="resources-section">
+            <div style="font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+              <span>📚</span> Official Learning Resources (No Tutorial Hell)
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;">
+              <a href="https://docs.python.org/3/tutorial/" target="_blank" rel="noopener" class="tech-item">
+                <div class="tech-item-name">Python 3 Official Tutorial ↗</div>
+                <div class="tech-item-role">docs.python.org</div>
+              </a>
+              <a href="https://fastapi.tiangolo.com/tutorial/" target="_blank" rel="noopener" class="tech-item">
+                <div class="tech-item-name">FastAPI Documentation ↗</div>
+                <div class="tech-item-role">fastapi.tiangolo.com</div>
+              </a>
+              <a href="https://www.postgresql.org/docs/current/tutorial.html" target="_blank" rel="noopener" class="tech-item">
+                <div class="tech-item-name">PostgreSQL Official Tutorial ↗</div>
+                <div class="tech-item-role">postgresql.org</div>
+              </a>
+              <a href="https://docs.sqlalchemy.org/en/20/tutorial/" target="_blank" rel="noopener" class="tech-item">
+                <div class="tech-item-name">SQLAlchemy 2.0 Docs ↗</div>
+                <div class="tech-item-role">docs.sqlalchemy.org</div>
+              </a>
+              <a href="https://redis.io/docs/latest/" target="_blank" rel="noopener" class="tech-item">
+                <div class="tech-item-name">Redis Official Docs ↗</div>
+                <div class="tech-item-role">redis.io</div>
+              </a>
+              <a href="https://docs.docker.com/get-started/" target="_blank" rel="noopener" class="tech-item">
+                <div class="tech-item-name">Docker Getting Started ↗</div>
+                <div class="tech-item-role">docs.docker.com</div>
+              </a>
+              <a href="https://linuxjourney.com/" target="_blank" rel="noopener" class="tech-item">
+                <div class="tech-item-name">Linux Journey ↗</div>
+                <div class="tech-item-role">linuxjourney.com</div>
+              </a>
+              <a href="https://docs.celeryq.dev/en/stable/" target="_blank" rel="noopener" class="tech-item">
+                <div class="tech-item-name">Celery Documentation ↗</div>
+                <div class="tech-item-role">docs.celeryq.dev</div>
+              </a>
+              <a href="https://docs.llamaindex.ai/" target="_blank" rel="noopener" class="tech-item">
+                <div class="tech-item-name">LlamaIndex Documentation ↗</div>
+                <div class="tech-item-role">docs.llamaindex.ai</div>
+              </a>
+              <a href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener" class="tech-item">
+                <div class="tech-item-name">pgvector GitHub Repository ↗</div>
+                <div class="tech-item-role">github.com/pgvector</div>
+              </a>
+              <a href="https://skillbuilder.aws/" target="_blank" rel="noopener" class="tech-item">
+                <div class="tech-item-name">AWS Skill Builder ↗</div>
+                <div class="tech-item-role">skillbuilder.aws</div>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      `;
+
+      container.innerHTML = html;
+    }
+
+    // App Mode Switcher (DSA vs Backend+AI)
+    window.setAppMode = function(mode) {
+      currentAppMode = mode;
+      const switchEl = $("mode-sliding-switch");
+      const dsaBtn = $("btn-mode-dsa");
+      const backendBtn = $("btn-mode-backend");
+      const dsaView = $("dsa-app-view");
+      const backendView = $("backend-ai-app-view");
+      const brandTitle = $("main-brand-title");
+      const brandSub = $("main-brand-sub");
+      const brandIcon = $("main-brand-icon");
+      const diwaliNav = $("nav-diwali-btn");
+
+      if (mode === "backend") {
+        if (switchEl) switchEl.classList.add("backend-active");
+        if (dsaBtn) dsaBtn.classList.remove("active");
+        if (backendBtn) backendBtn.classList.add("active");
+        if (dsaView) dsaView.style.display = "none";
+        if (backendView) backendView.style.display = "block";
+        if (diwaliNav) diwaliNav.style.display = "none";
+        document.title = "Backend + Applied AI · 90-Day Engineering Roadmap";
+        if (brandTitle) brandTitle.innerHTML = `Backend + Applied AI <span class="badge-target" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.4);">Internship Target</span>`;
+        if (brandSub) brandSub.textContent = "90-Day Roadmap · Noida & Delhi NCR · 3 Nov 2026 – 31 Jan 2027";
+        if (brandIcon) brandIcon.innerHTML = "⚡";
+        renderBackendRoadmap();
+      } else {
+        if (switchEl) switchEl.classList.remove("backend-active");
+        if (dsaBtn) dsaBtn.classList.add("active");
+        if (backendBtn) backendBtn.classList.remove("active");
+        if (dsaView) dsaView.style.display = "block";
+        if (backendView) backendView.style.display = "none";
+        if (diwaliNav) diwaliNav.style.display = "inline-flex";
+        document.title = "Mission Chandra-Live · Striver A2Z DSA Sheet";
+        if (brandTitle) brandTitle.innerHTML = `Mission Chandra-Live <span class="badge-target">Microsoft Target</span>`;
+        if (brandSub) brandSub.textContent = "Striver A2Z DSA Tracker · 210 Moon-Lander Missions";
+        if (brandIcon) brandIcon.innerHTML = "🚀<span style=\"font-size: 13px; margin-left: 2px;\">🪔</span>";
+      }
+
+      try {
+        localStorage.setItem("chandra_app_mode", mode);
+        const url = new URL(window.location);
+        url.searchParams.set("mode", mode);
+        window.history.replaceState({}, "", url);
+      } catch(e) {}
+    };
+
+    // Initialize mode from URL or localStorage
+    setTimeout(() => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlMode = urlParams.get("mode");
+      const savedMode = localStorage.getItem("chandra_app_mode");
+      if (urlMode === "backend" || urlMode === "web" || (!urlMode && savedMode === "backend")) {
+        setAppMode("backend");
+      } else {
+        setAppMode("dsa");
+      }
+    }, 10);
 
   </script>
 </body>
