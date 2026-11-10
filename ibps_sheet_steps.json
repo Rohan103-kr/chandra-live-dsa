@@ -1,0 +1,1198 @@
+[
+  {
+    "id": 1,
+    "badge": "STEP 01",
+    "title": "Database Management Systems (DBMS) & SQL",
+    "desc": "Foundational & Advanced DB architecture, Normalization, SQL, Transactions, Concurrency & Indexing",
+    "topics": [
+      [
+        "Data vs Information & 3-Schema Architecture",
+        "ANSI/SPARC 3-schema architecture (physical, conceptual, external view), physical vs logical data independence, DBMS vs file processing system advantages.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/three-schema-architecture-in-dbms/"
+      ],
+      [
+        "ER Model: Entities, Attributes & Cardinalities",
+        "Entity sets, simple vs composite, single vs multivalued, stored vs derived attributes; relationship cardinalities (1:1, 1:N, M:N), participation constraints (total vs partial), weak entity sets.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/er-diagram-in-dbms/"
+      ],
+      [
+        "Relational Model & Database Keys",
+        "Relational schema, tuples, attributes, domains; super key, candidate key, primary key, alternate key, foreign key and composite keys.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/types-of-keys-in-relational-model/"
+      ],
+      [
+        "Integrity Constraints & Referential Integrity",
+        "Domain constraints, entity integrity (no null PK), referential integrity (foreign key constraints), NOT NULL, UNIQUE, CHECK, ON DELETE / ON UPDATE CASCADE.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/integrity-constraints-in-dbms/"
+      ],
+      [
+        "Functional Dependencies & Attribute Closure",
+        "Functional dependencies (FDs), trivial vs non-trivial FDs, Armstrong's Axioms (reflexivity, augmentation, transitivity), attribute closure calculation, finding candidate keys.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/finding-attribute-closure-and-candidate-keys-using-functional-dependencies/"
+      ],
+      [
+        "Normalization: 1NF, 2NF, 3NF & BCNF",
+        "First Normal Form (atomic values), 2NF (no partial dependency), 3NF (no transitive dependency), Boyce-Codd Normal Form (every determinant is superkey), lossless join & dependency preservation.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/normal-forms-in-dbms/"
+      ],
+      [
+        "SQL DDL & DML Commands",
+        "DDL: CREATE TABLE, ALTER TABLE, DROP TABLE, TRUNCATE TABLE vs DELETE; DML: INSERT INTO, UPDATE, DELETE FROM; Data types (VARCHAR, INT, DATE, DECIMAL).",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/sql-ddl-dql-dml-dcl-tcl-commands/"
+      ],
+      [
+        "SQL DQL, Aggregations & Grouping",
+        "SELECT, DISTINCT, WHERE, ORDER BY (ASC/DESC), aggregate functions (COUNT, SUM, AVG, MIN, MAX), GROUP BY clause, HAVING vs WHERE clauses.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/sql-group-by/"
+      ],
+      [
+        "SQL Joins (Inner, Outer, Cross, Self)",
+        "INNER JOIN, LEFT (OUTER) JOIN, RIGHT (OUTER) JOIN, FULL (OUTER) JOIN, CROSS JOIN (Cartesian product), NATURAL JOIN, SELF JOIN with table aliases.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/"
+      ],
+      [
+        "SQL Subqueries & Views",
+        "Single-row vs multi-row subqueries, IN, ANY, ALL operators, correlated subqueries, EXISTS vs NOT EXISTS; CREATE VIEW, updatable views vs read-only views.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/sql-subquery/"
+      ],
+      [
+        "Transactions & ACID Properties",
+        "Transaction lifecycle (Active, Partially Committed, Committed, Failed, Aborted); Atomicity, Consistency, Isolation, Durability; failure and rollback mechanisms.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/acid-properties-in-dbms/"
+      ],
+      [
+        "Concurrency Control & Serializability",
+        "Concurrency anomalies (dirty read, unrepeatable read, phantom read, lost update); conflict serializability, precedence/serialization graph, view serializability.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/conflict-serializability-in-dbms/"
+      ],
+      [
+        "Locking Protocols (2PL) & Timestamp Ordering",
+        "Shared (S) vs Exclusive (X) locks, Two-Phase Locking (2PL: growing & shrinking phase), Strict 2PL, Rigorous 2PL, Timestamp ordering protocol, Thomas Write Rule.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/two-phase-locking-protocol/"
+      ],
+      [
+        "Database Indexing (B-Tree, B+ Tree) & Recovery",
+        "Primary, secondary, clustered vs non-clustered indexing, dense vs sparse index; B-Tree & B+ Tree structure and search complexity; log-based recovery (WAL, checkpoints).",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/indexing-in-databases-set-1/"
+      ]
+    ]
+  },
+  {
+    "id": 2,
+    "badge": "STEP 02",
+    "title": "Operating Systems (OS)",
+    "desc": "Process Lifecycle, CPU Scheduling, Synchronization, Deadlocks, Virtual Memory & File Systems",
+    "topics": [
+      [
+        "OS Functions, Types & Dual-Mode Operation",
+        "OS roles, batch, multiprogrammed, time-sharing, distributed, hard vs soft real-time systems; user mode vs kernel mode, mode bit, trap/interrupt vector.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/introduction-of-operating-system-set-1/"
+      ],
+      [
+        "System Calls & OS Architecture",
+        "System call interface, categories (process control: fork, exec, wait, exit; file management; device management; information; communication).",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/system-calls-in-operating-system/"
+      ],
+      [
+        "Process Management & PCB Architecture",
+        "Program vs Process, Process Control Block (PCB) fields (PID, registers, PC, scheduling info, memory limits), context switching overhead, 5-state process lifecycle (New, Ready, Running, Waiting, Terminated).",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/process-table-and-process-control-block-pcb/"
+      ],
+      [
+        "Threads & Multithreading Models",
+        "Process vs Thread, User-level threads vs Kernel-level threads, many-to-one, one-to-one, many-to-many models, multithreading benefits and race hazards.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/thread-in-operating-system/"
+      ],
+      [
+        "CPU Scheduling Concepts & Criteria",
+        "Preemptive vs Non-preemptive scheduling; CPU utilization, throughput, turnaround time, waiting time, response time calculations.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/cpu-scheduling-in-operating-systems/"
+      ],
+      [
+        "Non-Preemptive Scheduling (FCFS, SJF, Priority)",
+        "First-Come First-Served (FCFS, convoy effect), Shortest Job First (SJF - optimal for waiting time), Priority Non-Preemptive; Gantt charts & average waiting time.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/program-for-fcfs-cpu-scheduling-set-1/"
+      ],
+      [
+        "Preemptive Scheduling (SRTF, Round Robin)",
+        "Shortest Remaining Time First (SRTF), Preemptive Priority, Round Robin (RR, time quantum trade-offs: too large = FCFS, too small = context switch overhead), Multilevel Queue & Multilevel Feedback Queue.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/round-robin-scheduling-with-different-arrival-time/"
+      ],
+      [
+        "Process Synchronization & Critical Section",
+        "Critical Section Problem criteria (Mutual Exclusion, Progress, Bounded Waiting); race conditions; Peterson's solution for two processes; TestAndSet instruction.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/introduction-of-process-synchronization/"
+      ],
+      [
+        "Semaphores & Classic Synchronization Problems",
+        "Counting vs Binary semaphores, wait() / P() and signal() / V() operations; Producer-Consumer (Bounded Buffer), Readers-Writers problem, Dining Philosophers problem.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/semaphores-in-process-synchronization/"
+      ],
+      [
+        "Deadlocks: 4 Coffman Conditions & RAG",
+        "Mutual Exclusion, Hold and Wait, No Preemption, Circular Wait; Resource Allocation Graph (RAG) with single vs multiple instances; cycle detection.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/introduction-of-deadlock-in-operating-system/"
+      ],
+      [
+        "Deadlock Prevention & Avoidance (Banker's Algorithm)",
+        "Deadlock prevention (attacking each of 4 conditions); Deadlock avoidance: Safe state, Banker's algorithm (Allocation, Max, Available, Need matrix calculations).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/bankers-algorithm-in-operating-system-2/"
+      ],
+      [
+        "Deadlock Detection & Recovery",
+        "Wait-for graph (WFG) for single-unit resources, Deadlock detection algorithm, recovery via process termination (abort all vs abort one-by-one) and resource preemption.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/deadlock-detection-and-recovery/"
+      ],
+      [
+        "Memory Management: Contiguous, Paging & TLB",
+        "Fixed vs dynamic partitioning, internal vs external fragmentation, compaction; Paging hardware, Page Table, Translation Lookaside Buffer (TLB), Effective Memory Access Time (EMAT).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/paging-in-operating-system/"
+      ],
+      [
+        "Segmentation & Virtual Memory",
+        "Segmentation architecture, segment table, base and limit registers; Virtual Memory, Demand Paging, page fault service routine.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/virtual-memory-in-operating-system/"
+      ],
+      [
+        "Page Replacement Algorithms & Thrashing",
+        "FIFO page replacement (Belady's Anomaly), Optimal Page Replacement (OPT), Least Recently Used (LRU); Thrashing, working set model, page fault frequency.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/page-replacement-algorithms-in-operating-systems/"
+      ],
+      [
+        "Disk Scheduling Algorithms & File Systems",
+        "File allocation (contiguous, linked, indexed), Inodes; Disk scheduling algorithms: FCFS, SSTF, SCAN (Elevator), C-SCAN, LOOK, C-LOOK head movement calculations.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/disk-scheduling-algorithms/"
+      ]
+    ]
+  },
+  {
+    "id": 3,
+    "badge": "STEP 03",
+    "title": "Computer Networks & Internet Protocols",
+    "desc": "OSI 7-Layer, TCP/IP Suite, Hardware, IPv4/IPv6, CIDR Subnetting, TCP/UDP & Routing",
+    "topics": [
+      [
+        "Network Types & Topologies",
+        "LAN, MAN, WAN, PAN, SAN; topologies (Bus, Star, Ring, Mesh, Tree, Hybrid) pros/cons, link calculations (Mesh links = n(n-1)/2), cable fault isolation.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/types-of-network-topology/"
+      ],
+      [
+        "Transmission Media & Switching Techniques",
+        "Guided (Twisted pair UTP/STP, Coaxial, Fiber Optic: single vs multimode) vs Unguided media; Circuit switching vs Packet switching (datagram vs virtual circuit).",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/transmission-modes-computer-networks/"
+      ],
+      [
+        "OSI 7-Layer Architecture Deep Dive",
+        "Physical (bits), Data Link (frames), Network (packets), Transport (segments), Session, Presentation, Application layers; duties, headers, encapsulation & decapsulation.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/layers-of-osi-model/"
+      ],
+      [
+        "TCP/IP Protocol Suite & Layer Mapping",
+        "4-layer and 5-layer TCP/IP models, comparison with OSI model, protocol mapping across layers, port numbers vs IP addresses vs MAC addresses.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/tcp-ip-model/"
+      ],
+      [
+        "Network Hardware & Physical Devices",
+        "Repeater, Hub (active vs passive, collision domain), Bridge, Layer-2 Switch, Layer-3 Switch, Router, Gateway, Modem, Access Point, NIC.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/network-devices-hub-repeater-bridge-switch-router-gateways/"
+      ],
+      [
+        "Collision Domains vs Broadcast Domains & VLANs",
+        "Collision domains vs broadcast domains per device (Hub = 1 CD / 1 BD; Switch = N CDs / 1 BD; Router = N CDs / N BDs), VLAN segmentation basics.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/collision-domain-and-broadcast-domain-in-computer-network/"
+      ],
+      [
+        "IPv4 Addressing & Classful Architecture",
+        "32-bit IPv4 structure, dotted-decimal notation, Class A, B, C, D (multicast), E (reserved) ranges, default subnet masks, usable host formulas (2^H - 2), private IP ranges.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/ip-addressing-introduction-and-classful-addressing/"
+      ],
+      [
+        "CIDR Subnetting & Mask Calculations",
+        "Classless Inter-Domain Routing (CIDR /n notation), subnetting calculations: network ID, first host, last host, broadcast address, FLSM vs VLSM.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/introduction-to-classless-inter-domain-routing-cidr/"
+      ],
+      [
+        "IPv6 Architecture & IPv4 vs IPv6",
+        "128-bit address format, 8 groups of 4 hex digits, zero compression (::), unicast, anycast, multicast (no broadcast in IPv6), header simplicity vs IPv4.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/internet-protocol-version-6-ipv6/"
+      ],
+      [
+        "Transport Layer: TCP vs UDP Headers",
+        "Connection-oriented vs connectionless; TCP header (20-60 bytes, SEQ, ACK, flags: SYN, ACK, FIN, RST, PSH, URG, window size) vs UDP header (8 bytes: sport, dport, length, checksum).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/differences-between-tcp-and-udp/"
+      ],
+      [
+        "TCP 3-Way Handshake & Connection Teardown",
+        "Client-Server connection establishment (SYN, SYN-ACK, ACK), Sequence & Acknowledgment number increment rules; 4-way termination (FIN, ACK, FIN, ACK).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/tcp-3-way-handshake-process/"
+      ],
+      [
+        "TCP Flow Control & Congestion Control",
+        "Flow control: Sliding window protocol, Stop-and-Wait, Go-Back-N, Selective Repeat ARQ; Congestion control: Slow Start, Congestion Avoidance, Fast Retransmit, Fast Recovery.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/tcp-congestion-control/"
+      ],
+      [
+        "Application Layer Protocols & Default Ports",
+        "DNS (port 53), DHCP (ports 67/68), HTTP (80), HTTPS (443), FTP (20/21), SSH (22), Telnet (23), SMTP (25), POP3 (110), IMAP (143), SNMP (161).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/application-layer-protocols/"
+      ],
+      [
+        "Routing Algorithms: Distance Vector vs Link State",
+        "Intra-domain vs inter-domain routing; Distance Vector Routing (Bellman-Ford algorithm, count-to-infinity problem, split horizon) vs Link State Routing (OSPF, Dijkstra algorithm).",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/routing-v-s-routed-protocols/"
+      ]
+    ]
+  },
+  {
+    "id": 4,
+    "badge": "STEP 04",
+    "title": "Data Structures & Algorithms (Core & Advanced)",
+    "desc": "Arrays, Linked Lists, Stacks, Queues, Hashing, Trees, Heaps, Graphs, Sorting & Complexities",
+    "topics": [
+      [
+        "Asymptotic Analysis & Big-O Notation",
+        "Big-O (worst-case upper bound), Big-Omega (lower bound), Big-Theta (tight bound); space and time complexity calculation, recursion tree & Master Theorem basics.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/analysis-of-algorithms-set-1-asymptotic-analysis/"
+      ],
+      [
+        "Arrays: 1D & 2D Address Calculations",
+        "Row-major order address formula: Base + ((i - L1)*C + (j - L2))*size; Column-major order address formula: Base + ((j - L2)*R + (i - L1))*size.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/calculation-of-address-of-element-of-1-d-2-d-and-3-d-arrays/"
+      ],
+      [
+        "Linked Lists: Singly, Doubly & Circular",
+        "Node structure, pointer manipulation, insertion, deletion, searching, traversal; time complexity comparisons with arrays; cycle detection (Floyd's Tortoise and Hare).",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/data-structures/linked-list/"
+      ],
+      [
+        "Stacks: Applications & Expression Evaluation",
+        "LIFO principle, push, pop, peek; applications: function call stack, balanced parentheses, infix to postfix conversion, postfix evaluation using stack.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/stack-data-structure/"
+      ],
+      [
+        "Queues: FIFO, Circular Queue, Deque, Priority Queue",
+        "FIFO principle, enqueue, dequeue; linear queue overflow vs circular queue (rear = (rear + 1) % capacity); Double-ended queue (Deque); Priority queue concepts.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/queue-data-structure/"
+      ],
+      [
+        "Hashing & Collision Resolution Techniques",
+        "Hash functions (division, mid-square, folding); collision resolution: separate chaining vs open addressing (linear probing, quadratic probing, double hashing); load factor alpha.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/hashing-data-structure/"
+      ],
+      [
+        "Searching Algorithms: Linear vs Binary Search",
+        "Linear search O(n); Binary search O(log n) on sorted arrays, search space reduction, recurrence relation T(n) = T(n/2) + O(1).",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/binary-search/"
+      ],
+      [
+        "Sorting Algorithms & Complexities Comparison",
+        "Bubble Sort, Selection Sort, Insertion Sort, Merge Sort (divide-and-conquer), Quick Sort (partitioning, pivot choice), Heap Sort; Best/Avg/Worst time and auxiliary space comparison.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/sorting-algorithms/"
+      ],
+      [
+        "Binary Trees: Properties & Traversals",
+        "Tree terms (height, depth, leaf, internal node), full, complete, perfect binary trees; Inorder (Left-Root-Right), Preorder, Postorder, Level-order (BFS) traversals.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/binary-tree-data-structure/"
+      ],
+      [
+        "Binary Search Trees (BST): Search, Insert & Delete",
+        "BST property, search O(h), insert O(h), delete node with 0, 1, or 2 children (replace with inorder predecessor/successor), minimum/maximum element.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/binary-search-tree-data-structure/"
+      ],
+      [
+        "AVL Trees & Self-Balancing Rotations",
+        "Balance Factor = Height(Left) - Height(Right) in {-1, 0, +1}; LL, RR, LR, RL rotations for rebalancing after insertion; O(log n) guaranteed search time.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/introduction-to-avl-tree/"
+      ],
+      [
+        "Heaps, Priority Queues & Heapsort",
+        "Complete binary tree property, Min-Heap vs Max-Heap array representation (parent = (i-1)/2, left = 2i+1, right = 2i+2), Heapify O(n), insert O(log n), extract-max O(log n), Heapsort O(n log n).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/heap-data-structure/"
+      ],
+      [
+        "Graph Representations, BFS & DFS",
+        "Adjacency matrix vs Adjacency list (space & lookup trade-offs); Breadth First Search (Queue-based) O(V+E), Depth First Search (Stack/Recursion-based) O(V+E), cycle detection.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/"
+      ],
+      [
+        "Topological Sort & Shortest Path (Dijkstra)",
+        "Directed Acyclic Graphs (DAG), Topological sort (Kahn's algorithm using in-degrees), Dijkstra's single-source shortest path algorithm (greedy, non-negative edge weights).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/topological-sorting/"
+      ],
+      [
+        "Minimum Spanning Tree (MST): Prim & Kruskal",
+        "Spanning tree concept (V vertices, V-1 edges, connected acyclic); Prim's algorithm (cut-based greedy) vs Kruskal's algorithm (edge-based greedy with Disjoint Set Union).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/kruskals-minimum-spanning-tree-algorithm-greedy-algo-2/"
+      ]
+    ]
+  },
+  {
+    "id": 5,
+    "badge": "STEP 05",
+    "title": "OOP, Programming Fundamentals & Software Engineering",
+    "desc": "OOP Pillars, Constructors, Memory Model, Exceptions, SDLC Models, Agile, Testing & Git",
+    "topics": [
+      [
+        "Programming Fundamentals & Memory Layout",
+        "Primitive vs non-primitive data types, type casting, operator precedence; Memory layout of a program (Code segment, Data segment, BSS, Heap, Stack).",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/memory-layout-of-c-program/"
+      ],
+      [
+        "OOP Core: Classes, Objects & Encapsulation",
+        "Classes as blueprints, object instances, data hiding, access modifiers (public, private, protected), getters & setters, encapsulation benefits.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/encapsulation-in-cpp/"
+      ],
+      [
+        "OOP Core: Inheritance Types & Diamond Problem",
+        "Single, multilevel, multiple, hierarchical, hybrid inheritance; the diamond problem in multiple inheritance and virtual base classes.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/inheritance-in-c/"
+      ],
+      [
+        "OOP Core: Polymorphism & Virtual Functions",
+        "Compile-time (function & operator overloading) vs Run-time polymorphism (function overriding); virtual functions, pure virtual functions, abstract classes, Virtual Method Table (vtable) & vptr.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/virtual-function-cpp/"
+      ],
+      [
+        "Constructors, Destructors & Shallow/Deep Copy",
+        "Default, parameterized, copy constructor; constructor overloading; destructor execution order; shallow copy (pointer copy) vs deep copy (duplicate memory allocation).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/constructors-c/"
+      ],
+      [
+        "Pointers, References & Dynamic Memory Allocation",
+        "Pointers vs references, pointer arithmetic; dynamic allocation (malloc/calloc/realloc/free vs new/delete); memory leaks, dangling pointers, wild pointers.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/pointers-in-c-and-c-a-complete-guide/"
+      ],
+      [
+        "Exception Handling & Multithreading Core",
+        "Try, catch, throw, throws, finally blocks; built-in vs custom exceptions; Multithreading concepts: thread lifecycle, race conditions, critical sections, synchronized blocks.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/exception-handling-in-c/"
+      ],
+      [
+        "SDLC Traditional Models: Waterfall to Spiral",
+        "Software Development Life Cycle phases (Requirements, Design, Coding, Testing, Deployment, Maintenance); Waterfall, V-Model, Prototyping, Spiral model (risk-driven).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/software-engineering-software-development-life-cycle-sdlc/"
+      ],
+      [
+        "Agile Methodologies & Scrum Framework",
+        "Agile manifesto (4 core values, 12 principles); Scrum roles (Product Owner, Scrum Master, Dev Team), artifacts (Product Backlog, Sprint Backlog, Increment), ceremonies (Sprint Planning, Daily Standup, Review, Retrospective).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/scrum-in-software-engineering/"
+      ],
+      [
+        "Requirements Engineering, Design & SOLID Principles",
+        "Software Requirements Specification (SRS) qualities (correct, unambiguous, complete, verifiable, traceable); Coupling vs Cohesion; SOLID design principles.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/solid-principles-in-software-engineering/"
+      ],
+      [
+        "Software Testing Levels & Verification vs Validation",
+        "Unit testing, Integration testing (Top-down, Bottom-up, Big Bang), System testing, Acceptance testing (Alpha vs Beta); Verification (Are we building the product right?) vs Validation (Are we building the right product?).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/differences-between-verification-and-validation/"
+      ],
+      [
+        "Black-Box vs White-Box Testing & Cyclomatic Complexity",
+        "Black-box techniques: Equivalence Partitioning, Boundary Value Analysis (BVA); White-box: Statement, Branch, Path coverage; McCabe's Cyclomatic Complexity V(G) = E - N + 2P.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/cyclomatic-complexity/"
+      ],
+      [
+        "Software Maintenance & Git Version Control",
+        "Corrective, adaptive, perfective, preventive maintenance; Git commands: init, clone, add, commit, push, pull, branch, merge, rebase, resolving merge conflicts.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/git-tutorial/"
+      ]
+    ]
+  },
+  {
+    "id": 6,
+    "badge": "STEP 06",
+    "title": "Computer Organization, Architecture (COA) & Microprocessors",
+    "desc": "Number Systems, Logic Gates, CPU Architecture, Addressing Modes, Cache Memory & 8085/8086",
+    "topics": [
+      [
+        "Data Representation, Binary Arithmetic & 2's Complement",
+        "Signed magnitude, 1's complement, 2's complement representation, ranges for n bits, arithmetic addition/subtraction, overflow detection; IEEE 754 floating point format (Single: 1 sign + 8 exp + 23 mantissa).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/computer-organization-and-architecture-number-systems/"
+      ],
+      [
+        "Boolean Algebra, Logic Gates & K-Maps",
+        "Boolean laws, De Morgan's theorems, SOP and POS forms, universal gates (NAND, NOR); Karnaugh Maps (K-Maps) minimization for 2, 3, 4 variables, don't care conditions.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/k-map-karnaugh-map/"
+      ],
+      [
+        "Combinational Circuits: Adders, Multiplexers & Decoders",
+        "Half Adder, Full Adder (sum and carry equations), Multiplexer (MUX, data selector: 2^n to 1), Demultiplexer, Encoders, Priority Encoders, Decoders (n to 2^n).",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/combinational-circuits/"
+      ],
+      [
+        "Sequential Circuits: Flip-Flops & Counters",
+        "Latches vs Flip-flops; SR, JK (race-around condition, Master-Slave JK), D, T flip-flops, excitation tables; Shift registers; Synchronous vs Asynchronous (Ripple) counters.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/flip-flop-types-and-working/"
+      ],
+      [
+        "CPU Architecture & Instruction Cycle",
+        "Von Neumann vs Harvard architecture, CPU components: ALU, Control Unit, Registers (PC, IR, MAR, MDR, AC, Flags); Instruction cycle: Fetch, Decode, Execute, Interrupt.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/instruction-cycle-and-execution-architecture/"
+      ],
+      [
+        "Addressing Modes",
+        "Immediate, Direct (Absolute), Indirect, Register, Register Indirect, Indexed, Relative (PC-relative), Base-register, Auto-increment/decrement addressing modes with effective address formulas.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/addressing-modes/"
+      ],
+      [
+        "Memory Hierarchy & Cache Memory Fundamentals",
+        "Registers, Cache, Main Memory, Secondary Storage latency/speed pyramid; Cache hit, cache miss, hit ratio, miss penalty; Effective memory access time formula.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/memory-hierarchy-in-computer-architecture/"
+      ],
+      [
+        "Cache Mapping Techniques (Direct, Associative, Set-Associative)",
+        "Direct mapping (Tag, Line, Word offsets), Fully associative mapping (Tag, Word offsets), K-way Set-Associative mapping (Tag, Set, Word offsets); Tag comparisons & line calculation.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/cache-memory-in-computer-organization/"
+      ],
+      [
+        "Cache Write Policies & Replacement Algorithms",
+        "Write-Through (write to cache and RAM simultaneously) vs Write-Back (dirty bit, write to RAM on eviction); Cache replacement: LRU, FIFO, Random; Compulsory, Capacity, Conflict misses.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/cache-replacement-policies-in-computer-organization/"
+      ],
+      [
+        "I/O Organization & Direct Memory Access (DMA)",
+        "Programmed I/O, Interrupt-driven I/O, Direct Memory Access (DMA controller, burst mode, cycle stealing), Bus arbitration techniques.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/direct-memory-access-dma-in-computer-architecture/"
+      ],
+      [
+        "Intel 8085 Microprocessor: Architecture & Registers",
+        "8085 8-bit architecture, functional units, internal registers (Accumulator A, B, C, D, E, H, L, Stack Pointer SP, Program Counter PC), Flag register (Sign S, Zero Z, Auxiliary Carry AC, Parity P, Carry CY).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/architecture-of-8085-microprocessor/"
+      ],
+      [
+        "8085 Pin Diagram, Addressing Modes & Instructions",
+        "Pin diagram overview: ALE, IO/M, RD, WR, Ready, Reset; Addressing modes (Immediate, Register, Direct, Indirect, Implicit); Instruction categories (Data transfer, Arithmetic, Logical, Branching).",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/pin-diagram-of-8085-microprocessor/"
+      ],
+      [
+        "8085 Interrupts & Intel 8086 Overview",
+        "Hardware interrupts priority: TRAP (non-maskable, highest), RST 7.5, RST 6.5, RST 5.5, INTR; vectored vs non-vectored interrupts; 8086 16-bit architecture overview: BIU vs EU, 6-byte instruction queue, 1MB segmented memory.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/interrupts-in-8085-microprocessor/"
+      ]
+    ]
+  },
+  {
+    "id": 7,
+    "badge": "STEP 07",
+    "title": "Information Security & Cryptography",
+    "desc": "CIA Triad, Malware, Phishing, Firewalls, IDS/IPS, Symmetric & Asymmetric Crypto, PKI & TLS",
+    "topics": [
+      [
+        "CIA Triad & Security Principles",
+        "Confidentiality, Integrity, Availability, Non-Repudiation, Authenticity; Threat vs Vulnerability vs Risk vs Exploit; Principle of Least Privilege, Defense in Depth.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/the-cia-triad-in-cryptography/"
+      ],
+      [
+        "Malware Taxonomy & Attack Vectors",
+        "Virus (boot sector, file, macro), Worm (self-replicating over network), Trojan horse, Spyware, Ransomware, Adware, Rootkit, Keylogger, Botnet & Zombies, Logic Bomb.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/types-of-malware/"
+      ],
+      [
+        "Social Engineering, Phishing & DoS/DDoS Attacks",
+        "Phishing, Spear Phishing, Whaling, Vishing, Smishing; Denial of Service (DoS) & Distributed DoS (DDoS): SYN Flood, UDP Flood, Smurf Attack, HTTP Flood mitigation.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/types-of-phishing-attacks/"
+      ],
+      [
+        "Access Control Models & MFA",
+        "Discretionary (DAC), Mandatory (MAC, Bell-LaPadula), Role-Based (RBAC), Attribute-Based (ABAC); Authentication factors (Something you know, have, are), Multi-Factor Authentication (MFA), Biometrics, SSO.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/access-control-models-security/"
+      ],
+      [
+        "Firewalls, IDS & IPS Architectures",
+        "Packet filtering firewalls (stateless), Stateful inspection firewalls, Application proxy firewalls, Next-Gen Firewalls (NGFW); IDS vs IPS: Signature-based vs Anomaly-based detection.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/introduction-of-firewall-in-computer-network/"
+      ],
+      [
+        "Backup Strategies & Incident Response Lifecycle",
+        "Full backup, Incremental backup, Differential backup (speed vs restore time trade-offs), 3-2-1 backup rule; Incident Response phases: Preparation, Detection, Containment, Eradication, Recovery, Post-Incident.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/data-backup-strategies-and-types/"
+      ],
+      [
+        "Symmetric Key Cryptography (DES, 3DES, AES)",
+        "Plaintext, Ciphertext, Symmetric key; DES (64-bit block, 56-bit key, 16 Feistel rounds), Triple DES (3DES); Advanced Encryption Standard (AES: 128, 192, 256 bits, 10/12/14 rounds, SPN structure).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/advanced-encryption-standard-aes/"
+      ],
+      [
+        "Asymmetric Key Cryptography & RSA Algorithm",
+        "Public Key vs Private Key; Diffie-Hellman key exchange; RSA algorithm (prime numbers p, q, n=p*q, phi(n)=(p-1)*(q-1), choose e, compute d = e^-1 mod phi(n), encryption c = m^e mod n, decryption m = c^d mod n).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/rsa-algorithm-cryptography/"
+      ],
+      [
+        "Cryptographic Hash Functions & SHA Family",
+        "Hash properties: One-way property (pre-image resistance), Second pre-image resistance, Collision resistance, Avalanche effect; MD5 (128-bit, broken), SHA-1 (160-bit), SHA-256, SHA-512; HMAC.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/cryptographic-hash-function-in-computer-network/"
+      ],
+      [
+        "Digital Signatures, Certificates & PKI",
+        "Digital signature process (hashing message, encrypting hash with sender's private key, recipient decrypts with sender's public key); Digital Certificates, X.509 standard, Certificate Authority (CA), CRL, OCSP.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/digital-signatures-certificates/"
+      ],
+      [
+        "Secure Protocols: SSL/TLS Handshake & HTTPS",
+        "SSL/TLS architecture; TLS 1.3 handshake (negotiating cipher suites, server certificate validation, key exchange, establishing symmetric session key); HTTPS (HTTP over TLS port 443), SSH, IPsec (AH vs ESP).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/ssl-tls-handshake-process/"
+      ]
+    ]
+  },
+  {
+    "id": 8,
+    "badge": "STEP 08",
+    "title": "Web Technologies, APIs & Cloud Infrastructure",
+    "desc": "Client-Server, HTML5/CSS, HTTP Methods & Status Codes, REST APIs, Cookies, OWASP & Cloud Models",
+    "topics": [
+      [
+        "Client-Server Architecture & Web Infrastructure",
+        "Client-server 3-tier enterprise architecture (Presentation, Application/Business logic, Database layer); Web server (Apache, Nginx) vs Application server (Tomcat, Node.js).",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/client-server-model/"
+      ],
+      [
+        "HTML5 Semantic Elements & CSS Layouts",
+        "HTML5 semantics (<header>, <nav>, <main>, <section>, <article>, <aside>, <footer>); CSS Box Model (content, padding, border, margin), CSS Flexbox vs CSS Grid layouts.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/html5-semantics/"
+      ],
+      [
+        "HTTP Protocols, Methods & Headers",
+        "HTTP 1.1 vs HTTP/2 (multiplexing, header compression) vs HTTP/3 (QUIC/UDP); Methods: GET (idempotent, safe), POST, PUT (idempotent), DELETE, PATCH, HEAD, OPTIONS.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/http-methods-get-vs-post/"
+      ],
+      [
+        "HTTP Status Codes Master Sheet",
+        "2xx (200 OK, 201 Created, 204 No Content); 3xx (301 Moved Permanently, 302 Found, 304 Not Modified); 4xx (400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found); 5xx (500 Internal Error, 502 Bad Gateway, 503 Service Unavailable).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/http-status-codes/"
+      ],
+      [
+        "RESTful API Principles & JSON Format",
+        "REST architectural constraints: Client-Server, Stateless, Cacheable, Uniform Interface, Layered System; JSON format (syntax, data types, key-value pairs, nested objects/arrays).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/rest-api-introduction/"
+      ],
+      [
+        "State Management: Cookies, Sessions & JWT",
+        "HTTP statelessness; Cookies (HttpOnly, Secure, SameSite flags); Server sessions vs client session storage; LocalStorage vs SessionStorage; JSON Web Tokens (JWT: Header, Payload, Signature).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/difference-between-session-and-cookie/"
+      ],
+      [
+        "Web Security: OWASP Top 10 Defenses",
+        "SQL Injection (parameterized queries/prepared statements), Cross-Site Scripting (XSS: Stored, Reflected, DOM; input sanitization & CSP), Cross-Site Request Forgery (CSRF tokens), CORS policy.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/top-10-owasp-vulnerabilities/"
+      ],
+      [
+        "Cloud Computing Models: IaaS, PaaS, SaaS",
+        "NIST cloud characteristics (On-demand self-service, Broad network access, Resource pooling, Rapid elasticity, Measured service); Service models: IaaS (AWS EC2), PaaS (Heroku, App Engine), SaaS (Gmail, Salesforce); Shared responsibility.",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/types-of-cloud-computing-service-models/"
+      ],
+      [
+        "Cloud Deployment Models & Virtualization",
+        "Public, Private, Hybrid, Community, Multi-Cloud; Virtualization: Type-1 Bare-Metal hypervisors (ESXi, Xen) vs Type-2 Hosted hypervisors (VirtualBox, VMware Workstation); Virtual Machines.",
+        "Core",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/cloud-deployment-models/"
+      ],
+      [
+        "Containers, Microservices & High Availability",
+        "Docker containers vs VMs (shared OS kernel, lightweight); Microservices vs Monolithic architecture; High availability, horizontal vs vertical scaling, Load balancers; Disaster Recovery (RPO vs RTO).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/introduction-to-docker/"
+      ]
+    ]
+  },
+  {
+    "id": 9,
+    "badge": "STEP 09",
+    "title": "Banking IT, Payment Systems, CBS & NPCI Architecture",
+    "desc": "Core Banking (CBS), NEFT, RTGS, IMPS, UPI, Payment Cards, ATM/POS, NPCI & RBI Cyber Guidelines",
+    "topics": [
+      [
+        "Core Banking Solution (CBS) Architecture",
+        "CBS fundamentals, centralized database, branch automation, 24x7 real-time transaction processing; leading CBS software in Indian banks: Finacle (Infosys), BaNCS (TCS), Flexcube (Oracle).",
+        "High",
+        "Mains IT",
+        "https://www.geeksforgeeks.org/core-banking-system/"
+      ],
+      [
+        "Inter-Bank Settlement: NEFT (Batch Settlement)",
+        "National Electronic Funds Transfer (NEFT): RBI operated, half-hourly batch settlement (DNS - Deferred Net Settlement), 24x7x365 availability, no minimum or maximum limit, IFSC code routing.",
+        "High",
+        "Mains IT",
+        "https://www.rbi.org.in/scripts/faqview.aspx?id=60"
+      ],
+      [
+        "Inter-Bank Settlement: RTGS (Real-Time Gross)",
+        "Real Time Gross Settlement (RTGS): RBI operated, continuous real-time gross settlement, high-value interbank transactions (Minimum \u20b92,00,000, no upper ceiling), 24x7x365 availability.",
+        "High",
+        "Mains IT",
+        "https://www.rbi.org.in/scripts/faqview.aspx?id=65"
+      ],
+      [
+        "Immediate Payment Service (IMPS) Architecture",
+        "Immediate Payment Service (IMPS): NPCI operated, real-time 24x7 instant interbank fund transfer via mobile/internet, Mobile Money Identifier (MMID), account + IFSC transfer mode.",
+        "High",
+        "Mains IT",
+        "https://www.npci.org.in/what-we-do/imps/product-overview"
+      ],
+      [
+        "Unified Payments Interface (UPI) Deep Dive",
+        "UPI architecture: Virtual Payment Address (VPA), 2-factor authentication, single-click 2FA, PSP apps, NPCI switch; UPI 2.0 (overdraft, mandate/autopay), UPI Lite, UPI 123Pay for feature phones.",
+        "High",
+        "Mains IT",
+        "https://www.npci.org.in/what-we-do/upi/product-overview"
+      ],
+      [
+        "Payment Cards: Debit, Credit, EMV Chip & Tokenization",
+        "Debit vs Credit vs Prepaid cards; Magnetic stripe vs EMV Chip & PIN (microprocessor security); CVV/CVV2; RBI Card-on-File (CoF) Tokenization guidelines (device-specific tokens replacing 16-digit PAN).",
+        "High",
+        "Mains IT",
+        "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=54005"
+      ],
+      [
+        "ATM & POS Networks & National Financial Switch (NFS)",
+        "Automated Teller Machine (ATM) hardware components, Point of Sale (POS) terminals; National Financial Switch (NFS) operated by NPCI for domestic ATM interoperability and switching.",
+        "Core",
+        "Mains IT",
+        "https://www.npci.org.in/what-we-do/nfs/product-overview"
+      ],
+      [
+        "NPCI Ecosystem Products (NACH, AePS, BBPS, FASTag)",
+        "National Payments Corporation of India (NPCI) establishment (RBI + IBA); NACH (bulk clearing), AePS (Aadhaar Enabled Payment System, biometric banking), BBPS (bill payments), NETC FASTag.",
+        "High",
+        "Mains IT",
+        "https://www.npci.org.in/"
+      ],
+      [
+        "Banking Regulatory Compliance: KYC & AML Basics",
+        "Know Your Customer (KYC): Customer Identification Procedure (CIP), Customer Due Diligence (CDD), e-KYC via Aadhaar, C-KYC; Anti-Money Laundering (AML) principles, suspicious transaction reporting (STR).",
+        "Core",
+        "Mains IT",
+        "https://www.rbi.org.in/scripts/FS_FAQs.aspx?Id=80&fn=2"
+      ],
+      [
+        "RBI Cybersecurity Framework for Banks & CERT-In",
+        "RBI circular on Cyber Security Framework in Banks: CISO appointment, Security Operations Center (SOC 24x7), baseline cyber controls, incident reporting within specified hours to RBI & CERT-In.",
+        "High",
+        "Mains IT",
+        "https://www.rbi.org.in/scripts/NotificationUser.aspx?Id=10439"
+      ],
+      [
+        "AI/ML, Blockchain & CBDC (e-Rupee) in Banking",
+        "AI/ML use cases (algorithmic fraud detection, automated credit underwriting, AI chatbots); Blockchain & Distributed Ledger Technology in trade finance; Central Bank Digital Currency (CBDC - Digital Rupee / e-Rupee).",
+        "Core",
+        "Mains IT",
+        "https://www.rbi.org.in/scripts/PublicationReportDetails.aspx?UrlPage=&ID=1218"
+      ]
+    ]
+  },
+  {
+    "id": 10,
+    "badge": "STEP 10",
+    "title": "Prelims Master Curriculum: Quantitative Aptitude",
+    "desc": "Simplification, Number Series, Arithmetic Topics, Quadratic Equations, Data Interpretation (DI)",
+    "topics": [
+      [
+        "Simplification & Approximation",
+        "BODMAS rule, fraction-to-percentage conversions (1/2 to 1/20), squares up to 50, cubes up to 30, square root & cube root tricks, surds & indices.",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/simplification-and-approximation-quantitative-aptitude/"
+      ],
+      [
+        "Missing & Wrong Number Series",
+        "Arithmetic difference, double difference, multiplication/division patterns, prime numbers, n^2 + 1, n^3 - 1, alternate series identification.",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/number-series-reasoning-aptitude/"
+      ],
+      [
+        "Percentages, Ratio, Proportion & Averages",
+        "Base change concepts, successive percentage changes (a + b + ab/100), ratio division, mean proportion, third proportion, weighted averages.",
+        "Core",
+        "Prelims",
+        "https://www.geeksforgeeks.org/quantitative-aptitude-percentages/"
+      ],
+      [
+        "Profit, Loss & Discount",
+        "Cost price, Selling price, Marked price, Profit%, Loss%, Discount%, successive discounts, dishonest shopkeeper problems.",
+        "Core",
+        "Prelims",
+        "https://www.geeksforgeeks.org/profit-and-loss/"
+      ],
+      [
+        "Simple & Compound Interest",
+        "SI formula (PRT/100), CI formula (P(1 + R/100)^T), difference between CI and SI for 2 years (P(R/100)^2) and 3 years, half-yearly and quarterly compounding.",
+        "Core",
+        "Prelims",
+        "https://www.geeksforgeeks.org/compound-interest/"
+      ],
+      [
+        "Time & Work, Pipes & Cisterns",
+        "Efficiency method, total work LCM approach, alternate day work, negative work in pipes (inlet vs outlet / leak), man-days-hours formula (M1*D1*H1/W1 = M2*D2*H2/W2).",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/time-and-work/"
+      ],
+      [
+        "Speed, Distance, Time & Trains / Boats",
+        "Average speed formula (2xy/(x+y)), relative speed (same direction vs opposite direction), train crossing pole/platform, boat upstream (u - v) vs downstream (u + v).",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/speed-time-and-distance/"
+      ],
+      [
+        "Quadratic Equations (Sign Method)",
+        "Standard form ax^2 + bx + c = 0, sign comparison technique (+ +, - +, + -, - -), factoring without formula, comparing roots of x and y (x > y, x < y, x >= y, CND).",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/quadratic-equations/"
+      ],
+      [
+        "Data Interpretation: Tables, Bar, Line & Pie Charts",
+        "Table DI calculation speed, single & double bar graphs, line charts, single & multi-pie charts (degree to percentage: 360 deg = 100%), percentage increase/decrease questions.",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/data-interpretation/"
+      ],
+      [
+        "Caselet DI & Arithmetic Data Interpretation",
+        "Paragraph-based caselet DI (Venn diagram based caselets, equation-based caselets, missing data tables), data sufficiency questions in Quant.",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/caselet-data-interpretation/"
+      ]
+    ]
+  },
+  {
+    "id": 11,
+    "badge": "STEP 11",
+    "title": "Prelims Master Curriculum: Reasoning Ability",
+    "desc": "Inequalities, Syllogisms, Blood Relations, Direction, Seating Arrangements & Puzzles",
+    "topics": [
+      [
+        "Inequalities: Direct & Coded",
+        "Direct statement inequalities (>, >=, =, <=, <), priority rules, open gate vs closed gate method, 'Either Or' conditions, coded inequalities.",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/coded-inequalities-reasoning/"
+      ],
+      [
+        "Syllogisms (Standard, 'Only a few', Possibility)",
+        "Venn diagram method, statements (All, Some, No, Some Not), 'Only a few A are B' (Some A are B and Some A are not B), possibility conclusions, 'Either Or' complementary pairs.",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/syllogism-reasoning/"
+      ],
+      [
+        "Blood Relations & Direction Sense",
+        "Standard family tree diagrams, 3-generation problems, coded blood relations; Direction & distance sense: 8 directions, Pythagoras theorem, shadow-based problems.",
+        "Core",
+        "Prelims",
+        "https://www.geeksforgeeks.org/blood-relations-reasoning/"
+      ],
+      [
+        "Alphanumeric Series, Order & Ranking",
+        "Letter-number-symbol series, step movements (5th to the right of 12th from left), total persons = Left + Right - 1, person interchange positions.",
+        "Core",
+        "Prelims",
+        "https://www.geeksforgeeks.org/alphanumeric-series/"
+      ],
+      [
+        "Coding-Decoding (New Pattern & Chinese)",
+        "Word comparison coding (Chinese coding), letter shift patterns, number/symbol based new pattern coding decoding.",
+        "Core",
+        "Prelims",
+        "https://www.geeksforgeeks.org/coding-and-decoding/"
+      ],
+      [
+        "Linear Seating Arrangements (Single & Parallel Rows)",
+        "Single row facing North, facing South, mixed facing North-South; Parallel rows facing each other with 10-12 persons.",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/linear-seating-arrangement/"
+      ],
+      [
+        "Circular & Polygonal Seating Arrangements",
+        "Circular table all facing center, all facing outward, mixed facing; Square & Rectangular table arrangements (corners vs sides).",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/circular-seating-arrangement/"
+      ],
+      [
+        "Floor & Box Puzzles",
+        "Building floors (1 to 8), vacant floors; stacking boxes one above another, conditional positioning (3 boxes between A and B).",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/floor-based-puzzle-reasoning/"
+      ],
+      [
+        "Scheduling Puzzles: Days, Months & Years",
+        "Days of the week (Monday to Sunday), Months with 30/31 days, 2 dates per month (e.g., 7th and 14th of 4 months), Year and age calculation puzzles.",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/scheduling-puzzle-reasoning/"
+      ],
+      [
+        "Machine Input-Output & Critical Reasoning",
+        "Step-by-step shifting, sorting (numbers descending, words alphabetical); Critical reasoning: Statement & Assumption, Statement & Conclusion, Cause & Effect, Course of Action.",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/input-output-reasoning/"
+      ]
+    ]
+  },
+  {
+    "id": 12,
+    "badge": "STEP 12",
+    "title": "Prelims Master Curriculum: English Language",
+    "desc": "Grammar Rules, Error Detection, Cloze Test, Para Jumbles, Reading Comprehension (RC)",
+    "topics": [
+      [
+        "Subject-Verb Agreement Master Rules",
+        "Singular/plural nouns, neither...nor, either...or, not only...but also, along with, as well as, collective nouns, each/every rules.",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/subject-verb-agreement-rules/"
+      ],
+      [
+        "Tenses, Conditionals & Modals",
+        "Present, past, future tenses, past perfect with 'before/after', conditional clauses (If + simple present, will + V1; If + past perfect, would have + V3), modal verbs.",
+        "Core",
+        "Prelims",
+        "https://www.geeksforgeeks.org/tenses-in-english-grammar/"
+      ],
+      [
+        "Articles & Prepositions Rules & Traps",
+        "Definite (The) vs indefinite (A, An) articles, omission of articles; prepositions of time (at, on, in), place, direction, fixed prepositions with verbs and adjectives.",
+        "Core",
+        "Prelims",
+        "https://www.geeksforgeeks.org/prepositions-in-english-grammar/"
+      ],
+      [
+        "Error Detection & Spotting Errors",
+        "Finding grammatical errors across sentences, parallelism rules, pronoun antecedent agreement, dangling modifiers, misplaced adverbs.",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/spotting-error-english-grammar/"
+      ],
+      [
+        "Sentence Improvement & Phrase Replacement",
+        "Identifying highlighted phrase errors, selecting grammatically correct and contextually appropriate replacements from options.",
+        "Core",
+        "Prelims",
+        "https://www.geeksforgeeks.org/sentence-improvement/"
+      ],
+      [
+        "Cloze Test Strategies & Practice",
+        "Reading passage flow, understanding context/tone, eliminating options based on part of speech, collocations, phrasal verbs.",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/cloze-test-reading-comprehension/"
+      ],
+      [
+        "Para Jumbles & Sentence Rearrangement",
+        "Finding the opening/independent sentence, identifying noun-pronoun links, mandatory pairs, chronological connectors, concluding sentences.",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/parajumbles-verbal-ability/"
+      ],
+      [
+        "Reading Comprehension: Editorial & Inference",
+        "Financial & banking editorial passages (The Hindu / Economic Times), main idea identification, factual questions, inference/tone questions, vocabulary in context.",
+        "High",
+        "Prelims",
+        "https://www.geeksforgeeks.org/reading-comprehension-passages-for-competitive-exams/"
+      ]
+    ]
+  },
+  {
+    "id": 13,
+    "badge": "STEP 13",
+    "title": "Mocks, PYQs Marathon & Interview Mastery",
+    "desc": "Timed Test Sprints, Memory Papers, 20-30 Page Revision Pack & Technical Interview Bank",
+    "topics": [
+      [
+        "Baseline Diagnostic Prelims Mock Test #1",
+        "Attempt full 120-minute timed Prelims mock (150 Q: English, Reasoning, Quant); record section scores, time spent, and calculate baseline accuracy.",
+        "Must Do",
+        "Mock",
+        "#"
+      ],
+      [
+        "Core IT Mains Mock #1: DBMS, OS & Networks (50 Q)",
+        "50-Question timed technical test; tag errors by concept gap vs calculation vs guess; log into error notebook.",
+        "Must Do",
+        "Mock",
+        "#"
+      ],
+      [
+        "Systems Mains Mock #2: DSA, OOP, SE & COA (50 Q)",
+        "50-Question timed test on algorithms, programming, memory, software engineering and digital logic.",
+        "Must Do",
+        "Mock",
+        "#"
+      ],
+      [
+        "Specialist IT Mains Mock #3: Security & Banking IT (50 Q)",
+        "50-Question timed test covering CIA triad, cryptography, PKI, CBS, NEFT/RTGS, UPI, and payment security.",
+        "Must Do",
+        "Mock",
+        "#"
+      ],
+      [
+        "Memory-Based Previous Year Questions (PYQs) Marathon",
+        "Solve 100 actual memory-based questions from past 5 years of IBPS SO IT Officer exams; audit frequent patterns.",
+        "Must Do",
+        "Mock",
+        "#"
+      ],
+      [
+        "Full Prelims Mock Sprints #1 to #10",
+        "Ten full-length 120-minute Prelims mocks attempted with strict sectional timing; aim for consistent 75%+ accuracy.",
+        "Must Do",
+        "Mock",
+        "#"
+      ],
+      [
+        "Professional Knowledge Mains Mocks #1 to #10 (60 Q / 45 Min)",
+        "Ten full-length Mains mocks mirroring official exam interface; simulate high-pressure question selection.",
+        "Must Do",
+        "Mock",
+        "#"
+      ],
+      [
+        "Error-Notebook Re-test Drills (48h & 7d Rules)",
+        "Reattempt all incorrect and guessed questions from mock error logs after 48 hours and again after 7 days; verbalize reasoning.",
+        "Must Do",
+        "Mock",
+        "#"
+      ],
+      [
+        "20-30 Page Master Revision Pack Consolidation",
+        "Condense full 6-month syllabus into a 20-30 page master booklet: formulas, port numbers, protocols, SQL syntax, OS algorithms.",
+        "Must Do",
+        "Mock",
+        "#"
+      ],
+      [
+        "Technical Interview Question Bank: Core CS & Banking IT",
+        "Prepare explanations for: Normalization, ACID, deadlock conditions, TCP handshake, RSA vs AES, CBS architecture, UPI switch, project defense.",
+        "Must Do",
+        "Interview",
+        "#"
+      ],
+      [
+        "Interview Personal Deliverables (60s Pitch & 'Why Banking IT?')",
+        "Master 60-second introduction, 2-minute architectural project explanation, 5 STAR situational examples, and 'Why IT Officer in a Bank?'.",
+        "Must Do",
+        "Interview",
+        "#"
+      ]
+    ]
+  }
+]
