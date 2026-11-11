@@ -2643,6 +2643,64 @@
       transform: rotate(180deg);
     }
 
+    
+    /* Focus Mode Blur & Eye Button */
+    .focus-blur-container {
+      position: relative;
+      overflow: hidden;
+    }
+    .backend-week-blurred {
+      filter: blur(6px) !important;
+      opacity: 0.28 !important;
+      user-select: none !important;
+      pointer-events: none !important;
+      transition: filter 0.25s ease, opacity 0.25s ease;
+    }
+    .focus-blur-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 12;
+      background: var(--surface);
+      border: 1.5px solid rgba(16, 185, 129, 0.4);
+      border-radius: 99px;
+      padding: 8px 18px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      backdrop-filter: blur(12px);
+      white-space: nowrap;
+    }
+    .focus-eye-btn {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 3px 7px;
+      cursor: pointer;
+      font-size: 13px;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+      color: var(--text);
+    }
+    .focus-eye-btn:hover {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: #10b981;
+      transform: scale(1.08);
+    }
+    .focus-eye-btn.is-revealed {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: #10b981;
+      color: #10b981;
+    }
+
     /* Day Rows */
     .backend-day-row {
       display: grid;
@@ -5378,6 +5436,41 @@
 
     let currentAppMode = "dsa";
     let backendGroupMode = "phases"; // "phases" (hierarchical phase->week) or "weeks"
+    let backendFocusMode = true; // Focus Mode active by default: blurs non-current weeks
+    try {
+      const savedFocus = localStorage.getItem("chandra_backend_focus_mode");
+      if (savedFocus !== null) backendFocusMode = savedFocus === "true";
+    } catch(e) {}
+    let backendUnblurredWeeks = new Set();
+
+    function saveBackendFocusMode() {
+      try {
+        localStorage.setItem("chandra_backend_focus_mode", backendFocusMode ? "true" : "false");
+      } catch(e) {}
+    }
+
+    window.toggleBackendFocusMode = function() {
+      backendFocusMode = !backendFocusMode;
+      saveBackendFocusMode();
+      if (!backendFocusMode) {
+        showToast("👁️ Focus Mode OFF: All weeks revealed");
+      } else {
+        showToast("👁️ Focus Mode ON: Other weeks blurred for deep focus");
+      }
+      renderBackendRoadmap();
+    };
+
+    window.toggleSingleWeekBlur = function(w) {
+      if (backendUnblurredWeeks.has(w)) {
+        backendUnblurredWeeks.delete(w);
+        showToast("🔒 Week " + w + " Blurred");
+      } else {
+        backendUnblurredWeeks.add(w);
+        showToast("👁️ Week " + w + " Revealed");
+      }
+      renderBackendRoadmap();
+    };
+
     let backendExpandedPhases = new Set([1]); // Phase 1 open by default
     let backendExpandedWeeks = new Set([1, 2]); // Weeks 1 & 2 open by default
     let backendExpandedIntel = new Set();
@@ -5721,6 +5814,9 @@
                   <button class="nav-btn" onclick="toggleAllBackendSteps(false)" style="font-size: 12px;">
                     ➖ Collapse All
                   </button>
+                  <button class="nav-btn ${backendFocusMode ? 'primary' : ''}" onclick="toggleBackendFocusMode()" id="backend-focus-mode-btn" style="font-size: 12px; display: inline-flex; align-items: center; gap: 6px; ${backendFocusMode ? 'background: linear-gradient(135deg, #059669, #10b981); border: none; color: #fff;' : 'background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3); color: #10b981;'}" title="Focus Mode blurs all other weeks except current week (${currentDayMatch ? 'Week ' + currentDayMatch.week : 'Week 1'}). Click to toggle.">
+                    ${backendFocusMode ? '👁️ Focus Mode: ON (Other Weeks Blurred)' : '👁️ Focus Mode: OFF (Reveal All)'}
+                  </button>
                 </div>
 
                 <!-- Grouping Mode Switch -->
@@ -5857,6 +5953,7 @@
                   const wkPct = Math.round((wkDoneCount / allDaysInWk.length) * 100);
                   const isWkCurrent = currentDayMatch && currentDayMatch.week === wk.wk;
                   const isWkOpen = backendExpandedWeeks.has(wk.wk) || backendSearchQuery.length > 0;
+                  const isWkBlurred = backendFocusMode && !isWkCurrent && !backendUnblurredWeeks.has(wk.wk);
 
                   return `
                     <div class="backend-week-card ${isWkOpen ? 'open' : ''} ${isWkCurrent ? 'is-current-week' : ''}" id="backend-week-${wk.wk}" style="background: var(--surface); margin-bottom: 12px; border-radius: 10px; border: 1px solid ${isWkCurrent ? '#10b981' : 'var(--border)'};">
@@ -5878,7 +5975,12 @@
                           </div>
                         </div>
 
-                        <div style="display: flex; align-items: center; gap: 12px; flex-shrink: 0;">
+                        <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
+                          <button class="focus-eye-btn ${isWkBlurred ? '' : 'is-revealed'}" 
+                                  onclick="event.stopPropagation(); toggleSingleWeekBlur(${wk.wk})" 
+                                  title="${isWkBlurred ? 'Click eye to unblur and reveal Week ' + wk.wk : (isWkCurrent ? 'Current Week (Active Focus)' : 'Week ' + wk.wk + ' revealed. Click eye to blur')}">
+                            ${isWkBlurred ? '🙈' : '👁️'}
+                          </button>
                           <span class="step-progress-counter ${isWkDone ? 'done' : ''}" style="font-size: 11.5px;">
                             ${wkDoneCount} / ${allDaysInWk.length} Done
                           </span>
@@ -5893,25 +5995,35 @@
                         </div>
                       </div>
 
-                      <!-- Week Problem Table -->
+                      <!-- Week Problem Table with Focus Blur -->
                       <div class="backend-week-content" style="border-top: 1px solid var(--border);">
-                        <div class="table-container">
-                          <table class="problem-table">
-                            <thead>
-                              <tr>
-                                <th class="col-status">Status</th>
-                                <th class="col-title">Day & Topic</th>
-                                <th class="col-diff">Technology</th>
-                                <th class="col-tier">Deliverable</th>
-                                <th class="col-practice">Resource</th>
-                                <th class="col-rev">Revise</th>
-                                <th class="col-notes">Notes</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              ${visibleDaysInWk.map(d => backendProblemRowHTML(d, todayKey)).join("")}
-                            </tbody>
-                          </table>
+                        <div class="focus-blur-container">
+                          ${isWkBlurred ? `
+                            <div class="focus-blur-overlay">
+                              <span>🔒 Week ${wk.wk} Blurred (Focus Mode)</span>
+                              <button class="nav-btn" onclick="toggleSingleWeekBlur(${wk.wk})" style="font-size: 11.5px; padding: 4px 12px; background: linear-gradient(135deg, #059669, #10b981); border: none; color: #fff; border-radius: 99px; font-weight: 800; cursor: pointer;">
+                                👁️ Reveal Week ${wk.wk}
+                              </button>
+                            </div>
+                          ` : ''}
+                          <div class="table-container ${isWkBlurred ? 'backend-week-blurred' : ''}">
+                            <table class="problem-table">
+                              <thead>
+                                <tr>
+                                  <th class="col-status">Status</th>
+                                  <th class="col-title">Day & Topic</th>
+                                  <th class="col-diff">Technology</th>
+                                  <th class="col-tier">Deliverable</th>
+                                  <th class="col-practice">Resource</th>
+                                  <th class="col-rev">Revise</th>
+                                  <th class="col-notes">Notes</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                ${visibleDaysInWk.map(d => backendProblemRowHTML(d, todayKey)).join("")}
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                       </div>
 
@@ -5939,6 +6051,7 @@
           const wkPct = Math.round((wkDoneCount / allDaysInWk.length) * 100);
           const isWkCurrent = currentDayMatch && currentDayMatch.week === wk.wk;
           const isWkOpen = backendExpandedWeeks.has(wk.wk) || backendSearchQuery.length > 0;
+          const isWkBlurred = backendFocusMode && !isWkCurrent && !backendUnblurredWeeks.has(wk.wk);
 
           html += `
             <div class="step-card ${isWkOpen ? 'open' : ''} ${isWkDone ? 'completed' : ''}" id="backend-week-${wk.wk}" style="margin-bottom: 12px;">
@@ -5959,6 +6072,11 @@
                 </div>
 
                 <div class="step-progress-area">
+                  <button class="focus-eye-btn ${isWkBlurred ? '' : 'is-revealed'}" 
+                          onclick="event.stopPropagation(); toggleSingleWeekBlur(${wk.wk})" 
+                          title="${isWkBlurred ? 'Click eye to unblur and reveal Week ' + wk.wk : (isWkCurrent ? 'Current Week (Active Focus)' : 'Week ' + wk.wk + ' revealed. Click eye to blur')}">
+                    ${isWkBlurred ? '🙈' : '👁️'}
+                  </button>
                   <div class="step-progress-counter ${isWkDone ? 'done' : ''}">
                     ${wkDoneCount} / ${allDaysInWk.length} Done
                   </div>
@@ -5974,23 +6092,33 @@
               </div>
 
               <div class="step-content">
-                <div class="table-container">
-                  <table class="problem-table">
-                    <thead>
-                      <tr>
-                        <th class="col-status">Status</th>
-                        <th class="col-title">Day & Topic</th>
-                        <th class="col-diff">Technology</th>
-                        <th class="col-tier">Deliverable</th>
-                        <th class="col-practice">Resource</th>
-                        <th class="col-rev">Revise</th>
-                        <th class="col-notes">Notes</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      ${visibleDaysInWk.map(d => backendProblemRowHTML(d, todayKey)).join("")}
-                    </tbody>
-                  </table>
+                <div class="focus-blur-container">
+                  ${isWkBlurred ? `
+                    <div class="focus-blur-overlay">
+                      <span>🔒 Week ${wk.wk} Blurred (Focus Mode)</span>
+                      <button class="nav-btn" onclick="toggleSingleWeekBlur(${wk.wk})" style="font-size: 11.5px; padding: 4px 12px; background: linear-gradient(135deg, #059669, #10b981); border: none; color: #fff; border-radius: 99px; font-weight: 800; cursor: pointer;">
+                        👁️ Reveal Week ${wk.wk}
+                      </button>
+                    </div>
+                  ` : ''}
+                  <div class="table-container ${isWkBlurred ? 'backend-week-blurred' : ''}">
+                    <table class="problem-table">
+                      <thead>
+                        <tr>
+                          <th class="col-status">Status</th>
+                          <th class="col-title">Day & Topic</th>
+                          <th class="col-diff">Technology</th>
+                          <th class="col-tier">Deliverable</th>
+                          <th class="col-practice">Resource</th>
+                          <th class="col-rev">Revise</th>
+                          <th class="col-notes">Notes</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        ${visibleDaysInWk.map(d => backendProblemRowHTML(d, todayKey)).join("")}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
