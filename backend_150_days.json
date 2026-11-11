@@ -8,7 +8,8 @@
     "topic": "JavaScript Engine Fundamentals & Memory Model",
     "desc": "V8 call stack, memory heap allocation, primitive types vs reference objects, execution context creation, variable hoisting, and scope chain mechanics.",
     "deliverable": "Engine memory model notes & diagram",
-    "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures"
+    "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures",
+    "tech": "JavaScript Core"
   },
   {
     "day": 2,
@@ -19,7 +20,8 @@
     "topic": "Lexical Scope, Closures & Private State",
     "desc": "Lexical scoping, function closures, practical encapsulation patterns, module factory functions, memory leaks with unreleased closures.",
     "deliverable": "Closure design patterns & unit tests",
-    "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures"
+    "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures",
+    "tech": "JavaScript Core"
   },
   {
     "day": 3,
@@ -30,7 +32,8 @@
     "topic": "Asynchronous JS: Microtasks vs Macrotasks",
     "desc": "Event loop execution order: Call stack, Microtask queue (Promises, process.nextTick, queueMicrotask) vs Macrotask queue (setTimeout, setImmediate, I/O).",
     "deliverable": "Task queue execution visualizer script",
-    "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop"
+    "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop",
+    "tech": "JavaScript Core"
   },
   {
     "day": 4,
@@ -41,7 +44,8 @@
     "topic": "Promises, Async/Await & Custom Error Hierarchies",
     "desc": "Promise lifecycle, Promise.all, Promise.allSettled, Promise.race, async/await syntax, try-catch-finally, custom DomainError classes.",
     "deliverable": "Async error handling utility module",
-    "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+    "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "tech": "JavaScript Core"
   },
   {
     "day": 5,
@@ -52,7 +56,8 @@
     "topic": "Modern ES6+ Syntax, Modules & Iterators",
     "desc": "ES Modules (import/export) vs CommonJS (require), destructuring, rest/spread, Symbols, Generator functions and custom iterator protocol.",
     "deliverable": "Custom iterator & generator functions",
-    "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators"
+    "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators",
+    "tech": "JavaScript Core"
   },
   {
     "day": 6,
@@ -63,7 +68,8 @@
     "topic": "Functional Array Transformations & Immutability",
     "desc": "map, filter, reduce deep dive, pipe/compose utilities, pure functions, avoiding array mutation in production state management.",
     "deliverable": "Data transformation pipeline benchmarks",
-    "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce"
+    "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce",
+    "tech": "JavaScript Core"
   },
   {
     "day": 7,
@@ -74,7 +80,8 @@
     "topic": "Milestone: Async Concurrency Pool & Worker Script",
     "desc": "Building a bounded concurrency execution pool in pure ES6+ to process 1,000 tasks with max N concurrent workers.",
     "deliverable": "Async Concurrency Pool CLI tool",
-    "link": "https://nodejs.org/api/async_hooks.html"
+    "link": "https://nodejs.org/api/async_hooks.html",
+    "tech": "JavaScript Core"
   },
   {
     "day": 8,
@@ -85,7 +92,8 @@
     "topic": "V8 Engine Internals: Turbofan & Ignition",
     "desc": "V8 compilation pipeline: Ignition bytecode interpreter, Turbofan optimizing compiler, inline caching, deoptimization triggers, hidden classes.",
     "deliverable": "V8 optimization benchmark scripts",
-    "link": "https://v8.dev/docs"
+    "link": "https://v8.dev/docs",
+    "tech": "V8 & LibUV Internals"
   },
   {
     "day": 9,
@@ -96,7 +104,8 @@
     "topic": "V8 Garbage Collection: Orinoco & Scavenger",
     "desc": "Memory allocation: Generational hypothesis, Young generation (Nursery, Intermediate, Scavenge GC) vs Old generation (Mark-Sweep-Compact).",
     "deliverable": "Heap dump analysis & memory profiling",
-    "link": "https://nodejs.org/en/learn/diagnostics/memory/using-heap-snapshot"
+    "link": "https://nodejs.org/en/learn/diagnostics/memory/using-heap-snapshot",
+    "tech": "V8 & LibUV Internals"
   },
   {
     "day": 10,
@@ -107,7 +116,8 @@
     "topic": "LibUV Architecture & OS Non-Blocking I/O",
     "desc": "LibUV event-driven architecture, OS kernel asynchronous primitives (epoll on Linux, kqueue on macOS, IOCP on Windows), thread pool offloading.",
     "deliverable": "LibUV thread pool benchmark (UV_THREADPOOL_SIZE)",
-    "link": "https://docs.libuv.org/en/v1.x/design.html"
+    "link": "https://docs.libuv.org/en/v1.x/design.html",
+    "tech": "V8 & LibUV Internals"
   },
   {
     "day": 11,
@@ -118,7 +128,8 @@
     "topic": "Node.js Event Loop Phases Deep Dive",
     "desc": "Timer queue -> Pending callbacks -> Idle/Prepare -> Poll queue -> Check queue (setImmediate) -> Close callbacks; microtask drain between phases.",
     "deliverable": "Phase execution timing demonstration",
-    "link": "https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick"
+    "link": "https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick",
+    "tech": "V8 & LibUV Internals"
   },
   {
     "day": 12,
@@ -129,7 +140,8 @@
     "topic": "Microtasks: process.nextTick vs queueMicrotask",
     "desc": "process.nextTick queue priority over standard microtasks, starvation risks of recursive nextTick calls, when to use setImmediate vs nextTick.",
     "deliverable": "Event loop scheduling comparison matrix",
-    "link": "https://nodejs.org/api/process.html#processnexttickcallback-args"
+    "link": "https://nodejs.org/api/process.html#processnexttickcallback-args",
+    "tech": "V8 & LibUV Internals"
   },
   {
     "day": 13,
@@ -140,7 +152,8 @@
     "topic": "Buffers & Binary Data Management",
     "desc": "Buffer architecture, Buffer.alloc() vs Buffer.allocUnsafe(), Buffer 8KB pool slab allocator, ArrayBuffer, TypedArrays, character encodings (utf-8, hex, base64).",
     "deliverable": "Binary packet parser using Buffer API",
-    "link": "https://nodejs.org/api/buffer.html"
+    "link": "https://nodejs.org/api/buffer.html",
+    "tech": "V8 & LibUV Internals"
   },
   {
     "day": 14,
@@ -151,7 +164,8 @@
     "topic": "Milestone: Raw HTTP/1.1 Server via 'net' Module",
     "desc": "Implementing a raw TCP-based HTTP/1.1 server from scratch using Node.js 'net' module, parsing request lines, headers, body, and returning HTTP responses.",
     "deliverable": "Custom Raw HTTP/1.1 Server without frameworks",
-    "link": "https://nodejs.org/api/net.html"
+    "link": "https://nodejs.org/api/net.html",
+    "tech": "V8 & LibUV Internals"
   },
   {
     "day": 15,
@@ -162,7 +176,8 @@
     "topic": "Node.js Streams Architecture & Backpressure",
     "desc": "Why streams matter for high concurrency; backpressure fundamentals, highWaterMark buffer threshold, flowing vs paused mode in readable streams.",
     "deliverable": "Backpressure monitoring demonstration",
-    "link": "https://nodejs.org/api/stream.html"
+    "link": "https://nodejs.org/api/stream.html",
+    "tech": "Node.js Streams & I/O"
   },
   {
     "day": 16,
@@ -173,7 +188,8 @@
     "topic": "Readable Streams Implementation",
     "desc": "Implementing custom Readable class with _read() method, handling 'data', 'readable', 'end', and 'error' events, reading large files in chunks.",
     "deliverable": "Custom CSV line-by-line stream parser",
-    "link": "https://nodejs.org/api/stream.html#readable-streams"
+    "link": "https://nodejs.org/api/stream.html#readable-streams",
+    "tech": "Node.js Streams & I/O"
   },
   {
     "day": 17,
@@ -184,7 +200,8 @@
     "topic": "Writable Streams & 'drain' Event",
     "desc": "Implementing custom Writable stream with _write(), handling stream.write() return false, listening for 'drain' event to prevent memory bloat.",
     "deliverable": "Bounded memory disk log writer",
-    "link": "https://nodejs.org/api/stream.html#writable-streams"
+    "link": "https://nodejs.org/api/stream.html#writable-streams",
+    "tech": "Node.js Streams & I/O"
   },
   {
     "day": 18,
@@ -195,7 +212,8 @@
     "topic": "Duplex & Transform Streams",
     "desc": "Duplex streams (independent read/write), Transform streams (throughput data modification), building custom encryption and gzip compression streams.",
     "deliverable": "Gzip + AES-256 transform stream pipeline",
-    "link": "https://nodejs.org/api/stream.html#transform-streams"
+    "link": "https://nodejs.org/api/stream.html#transform-streams",
+    "tech": "Node.js Streams & I/O"
   },
   {
     "day": 19,
@@ -206,7 +224,8 @@
     "topic": "Stream Piping & pipeline() Utility",
     "desc": "stream.pipeline() vs .pipe(), automatic resource cleanup on errors, handling abort signals (AbortController) with stream promises.",
     "deliverable": "Resilient file copy & transform pipeline",
-    "link": "https://nodejs.org/api/stream.html#streampipelinesource-transforms-destination-callback"
+    "link": "https://nodejs.org/api/stream.html#streampipelinesource-transforms-destination-callback",
+    "tech": "Node.js Streams & I/O"
   },
   {
     "day": 20,
@@ -217,7 +236,8 @@
     "topic": "File Descriptors & Low-Level File System",
     "desc": "fs/promises, file descriptors (fs.open, fs.read, fs.write, fs.close), chunked multi-gigabyte file manipulation with constant 30MB RAM.",
     "deliverable": "Memory-safe multi-GB file processing tool",
-    "link": "https://nodejs.org/api/fs.html"
+    "link": "https://nodejs.org/api/fs.html",
+    "tech": "Node.js Streams & I/O"
   },
   {
     "day": 21,
@@ -228,7 +248,8 @@
     "topic": "Milestone: High-Performance Chunked Media Processor",
     "desc": "Building a streaming media chunking and hashing tool with real-time SHA-256 calculation and zero memory spikes.",
     "deliverable": "Streaming File Processor CLI",
-    "link": "https://nodejs.org/api/stream.html"
+    "link": "https://nodejs.org/api/stream.html",
+    "tech": "Node.js Streams & I/O"
   },
   {
     "day": 22,
@@ -239,7 +260,8 @@
     "topic": "TypeScript Backend Setup & Core Types",
     "desc": "tsconfig.json optimization for Node.js (NodeNext, target ES2022, strict mode), primitive types, type inference, union & intersection types.",
     "deliverable": "Strict TypeScript Node.js starter template",
-    "link": "https://www.typescriptlang.org/docs/handbook/intro.html"
+    "link": "https://www.typescriptlang.org/docs/handbook/intro.html",
+    "tech": "TypeScript & Architecture"
   },
   {
     "day": 23,
@@ -250,7 +272,8 @@
     "topic": "Advanced Generics & Utility Types",
     "desc": "Generic functions and classes, constraints (extends keyof), Partial, Required, Readonly, Pick, Omit, Record, ReturnType, Parameters, Mapped types.",
     "deliverable": "Type-safe generic repository interfaces",
-    "link": "https://www.typescriptlang.org/docs/handbook/utility-types.html"
+    "link": "https://www.typescriptlang.org/docs/handbook/utility-types.html",
+    "tech": "TypeScript & Architecture"
   },
   {
     "day": 24,
@@ -261,7 +284,8 @@
     "topic": "Structural Typing & Type Narrowing",
     "desc": "Structural typing vs nominal typing, user-defined type guards (is predicate), discriminated unions for domain event modeling.",
     "deliverable": "Domain event type narrowing modules",
-    "link": "https://www.typescriptlang.org/docs/handbook/2/narrowing.html"
+    "link": "https://www.typescriptlang.org/docs/handbook/2/narrowing.html",
+    "tech": "TypeScript & Architecture"
   },
   {
     "day": 25,
@@ -272,7 +296,8 @@
     "topic": "OOP & Design Patterns in TypeScript",
     "desc": "Abstract classes, private/protected/readonly modifiers, Dependency Injection interfaces, Factory and Singleton patterns in TypeScript.",
     "deliverable": "Dependency injection container pattern",
-    "link": "https://www.typescriptlang.org/docs/handbook/2/classes.html"
+    "link": "https://www.typescriptlang.org/docs/handbook/2/classes.html",
+    "tech": "TypeScript & Architecture"
   },
   {
     "day": 26,
@@ -283,7 +308,8 @@
     "topic": "Express.js with TypeScript Foundations",
     "desc": "Express app initialization, typed Request, Response, NextFunction handlers, custom request extensions (augmenting Express.Request type).",
     "deliverable": "Typed Express base server skeleton",
-    "link": "https://expressjs.com/en/starter/installing.html"
+    "link": "https://expressjs.com/en/starter/installing.html",
+    "tech": "TypeScript & Architecture"
   },
   {
     "day": 27,
@@ -294,7 +320,8 @@
     "topic": "Middleware Architecture & Execution Chains",
     "desc": "Application-level, router-level, error-handling middleware (4 arguments: err, req, res, next), async error propagation with express-async-errors.",
     "deliverable": "Global error handling & request logging middleware",
-    "link": "https://expressjs.com/en/guide/using-middleware.html"
+    "link": "https://expressjs.com/en/guide/using-middleware.html",
+    "tech": "TypeScript & Architecture"
   },
   {
     "day": 28,
@@ -305,7 +332,8 @@
     "topic": "Layered Architecture: Modified MVC Pattern",
     "desc": "Separation of concerns: Routes -> Controllers -> Services (Business logic) -> Repositories -> Data Models. Decoupling HTTP transport from business logic.",
     "deliverable": "Layered Service-Repository architecture module",
-    "link": "https://en.wikipedia.org/wiki/Multitier_architecture"
+    "link": "https://en.wikipedia.org/wiki/Multitier_architecture",
+    "tech": "TypeScript & Architecture"
   },
   {
     "day": 29,
@@ -316,7 +344,8 @@
     "topic": "Configuration Management & Env Validation",
     "desc": "Environment variables management with dotenv, type-safe configuration schema validation, fail-fast startup on missing configuration keys.",
     "deliverable": "Type-safe environment config validator",
-    "link": "https://12factor.net/config"
+    "link": "https://12factor.net/config",
+    "tech": "TypeScript & Architecture"
   },
   {
     "day": 30,
@@ -327,7 +356,8 @@
     "topic": "Milestone Project 1: Enterprise Clean REST API",
     "desc": "End-to-end production TypeScript REST API with layered architecture, typed handlers, custom middleware chain, and graceful shutdown.",
     "deliverable": "Enterprise Clean REST API Codebase",
-    "link": "https://github.com/goldbergyoni/nodebestpractices"
+    "link": "https://github.com/goldbergyoni/nodebestpractices",
+    "tech": "TypeScript & Architecture"
   },
   {
     "day": 31,
@@ -338,7 +368,8 @@
     "topic": "Relational Data Modeling: MySQL & PostgreSQL",
     "desc": "Entity-relationship modeling, 1NF to BCNF normalization, primary keys, foreign keys with ON DELETE CASCADE / SET NULL actions.",
     "deliverable": "Relational schema DDL design scripts",
-    "link": "https://www.postgresql.org/docs/current/tutorial.html"
+    "link": "https://www.postgresql.org/docs/current/tutorial.html",
+    "tech": "MySQL & MongoDB Persistence"
   },
   {
     "day": 32,
@@ -349,7 +380,8 @@
     "topic": "Advanced SQL Queries & Multi-Table Joins",
     "desc": "INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN, aggregate functions (COUNT, SUM, AVG, GROUP BY, HAVING), nested subqueries.",
     "deliverable": "Complex analytics multi-table SQL queries",
-    "link": "https://www.postgresql.org/docs/current/queries.html"
+    "link": "https://www.postgresql.org/docs/current/queries.html",
+    "tech": "MySQL & MongoDB Persistence"
   },
   {
     "day": 33,
@@ -360,7 +392,8 @@
     "topic": "Database Indexing & Query Execution Plans",
     "desc": "B-Tree indexes, composite indexes, primary vs secondary indexes, EXPLAIN ANALYZE query plans, index selectivity, eliminating sequential scans.",
     "deliverable": "Index optimization & EXPLAIN ANALYZE benchmarks",
-    "link": "https://use-the-index-luke.com/"
+    "link": "https://use-the-index-luke.com/",
+    "tech": "MySQL & MongoDB Persistence"
   },
   {
     "day": 34,
@@ -371,7 +404,8 @@
     "topic": "NoSQL Modeling with MongoDB",
     "desc": "Document data model, BSON structure, embedding vs referencing trade-offs, schema design patterns (subset pattern, bucket pattern).",
     "deliverable": "MongoDB domain schema design documents",
-    "link": "https://www.mongodb.com/docs/manual/core/data-modeling-introduction/"
+    "link": "https://www.mongodb.com/docs/manual/core/data-modeling-introduction/",
+    "tech": "MySQL & MongoDB Persistence"
   },
   {
     "day": 35,
@@ -382,7 +416,8 @@
     "topic": "MongoDB CRUD & Query Operators",
     "desc": "insertOne, find, updateMany, deleteOne, query operators ($eq, $gt, $in, $or, $and), array operators ($push, $pull, $elemMatch).",
     "deliverable": "MongoDB complex query operations suite",
-    "link": "https://www.mongodb.com/docs/manual/reference/operator/query/"
+    "link": "https://www.mongodb.com/docs/manual/reference/operator/query/",
+    "tech": "MySQL & MongoDB Persistence"
   },
   {
     "day": 36,
@@ -393,7 +428,8 @@
     "topic": "MongoDB Aggregation Pipelines",
     "desc": "$match, $group, $lookup (multi-collection joins), $unwind, $project, $facet, indexing in MongoDB (single field, compound, multikey).",
     "deliverable": "Multi-stage aggregation analytics pipeline",
-    "link": "https://www.mongodb.com/docs/manual/core/aggregation-pipeline/"
+    "link": "https://www.mongodb.com/docs/manual/core/aggregation-pipeline/",
+    "tech": "MySQL & MongoDB Persistence"
   },
   {
     "day": 37,
@@ -404,7 +440,8 @@
     "topic": "ORM & ODM Integration: Prisma & Mongoose",
     "desc": "Type-safe querying with Prisma ORM (schema.prisma, migrations, relations, transactions) and Mongoose ODM models with schema validation.",
     "deliverable": "Prisma ORM & Mongoose repository implementations",
-    "link": "https://www.prisma.io/docs"
+    "link": "https://www.prisma.io/docs",
+    "tech": "MySQL & MongoDB Persistence"
   },
   {
     "day": 38,
@@ -415,7 +452,8 @@
     "topic": "Request Validation with Zod",
     "desc": "Zod schema definitions (string, number, array, object, enum), type inference with z.infer, custom refinements with .refine().",
     "deliverable": "Reusable Zod validation schemas",
-    "link": "https://zod.dev/"
+    "link": "https://zod.dev/",
+    "tech": "Express & Zod Validation"
   },
   {
     "day": 39,
@@ -426,7 +464,8 @@
     "topic": "Input Sanitization & Error Formatting",
     "desc": "XSS sanitization, stripping unknown properties (schema.strip), standardizing validation error responses following RFC 7807 (Problem Details).",
     "deliverable": "RFC 7807 compliant error formatter middleware",
-    "link": "https://datatracker.ietf.org/doc/html/rfc7807"
+    "link": "https://datatracker.ietf.org/doc/html/rfc7807",
+    "tech": "Express & Zod Validation"
   },
   {
     "day": 40,
@@ -437,7 +476,8 @@
     "topic": "Express Zod Middleware Engine",
     "desc": "Building a reusable validation middleware for req.body, req.query, and req.params with full TypeScript type inference inside route controllers.",
     "deliverable": "Express generic Zod validation middleware",
-    "link": "https://zod.dev/?id=basic-usage"
+    "link": "https://zod.dev/?id=basic-usage",
+    "tech": "Express & Zod Validation"
   },
   {
     "day": 41,
@@ -448,7 +488,8 @@
     "topic": "Semantic REST API Standards & Idempotency",
     "desc": "HTTP status codes (200, 201, 204, 400, 401, 403, 404, 409, 422, 500), idempotency rules for PUT vs POST vs PATCH, handling safe vs unsafe methods.",
     "deliverable": "REST API compliance checklist & documentation",
-    "link": "https://restfulapi.net/"
+    "link": "https://restfulapi.net/",
+    "tech": "Express & Zod Validation"
   },
   {
     "day": 42,
@@ -459,7 +500,8 @@
     "topic": "Semantic API Versioning & URL Standards",
     "desc": "URI versioning (/v1/resources) vs Accept header versioning, resource naming conventions (plural nouns, kebab-case, Airbnb API style guide).",
     "deliverable": "Versioned API router structure",
-    "link": "https://semver.org/"
+    "link": "https://semver.org/",
+    "tech": "Express & Zod Validation"
   },
   {
     "day": 43,
@@ -470,7 +512,8 @@
     "topic": "Cursor-based Pagination & Filtering",
     "desc": "Offset-limit pagination flaws on high-concurrency tables; cursor-based (keyset) pagination implementation, dynamic sorting and field selection.",
     "deliverable": "Cursor-based pagination query helper",
-    "link": "https://slack.engineering/evolving-api-pagination-at-slack/"
+    "link": "https://slack.engineering/evolving-api-pagination-at-slack/",
+    "tech": "Express & Zod Validation"
   },
   {
     "day": 44,
@@ -481,7 +524,8 @@
     "topic": "Database Migrations & Reproducible Seeders",
     "desc": "Automated schema migration pipelines with Prisma/Knex, migration rollbacks, generating synthetic realistic test data seeders.",
     "deliverable": "Automated DB migration & seeder pipeline",
-    "link": "https://www.prisma.io/docs/concepts/components/prisma-migrate"
+    "link": "https://www.prisma.io/docs/concepts/components/prisma-migrate",
+    "tech": "Express & Zod Validation"
   },
   {
     "day": 45,
@@ -492,7 +536,8 @@
     "topic": "Introduction to gRPC & Protocol Buffers",
     "desc": "Why gRPC for microservices? Protocol Buffers (.proto) syntax, scalar types, messages, nested structures, service definitions.",
     "deliverable": "Compiled .proto service definitions",
-    "link": "https://grpc.io/docs/languages/node/basics/"
+    "link": "https://grpc.io/docs/languages/node/basics/",
+    "tech": "gRPC & Apollo GraphQL"
   },
   {
     "day": 46,
@@ -503,7 +548,8 @@
     "topic": "Protobuf Serialization & Performance",
     "desc": "Binary wire format serialization, comparison with JSON payload size and parsing speed, backwards compatibility with field tags.",
     "deliverable": "Protobuf vs JSON serialization benchmarks",
-    "link": "https://protobuf.dev/"
+    "link": "https://protobuf.dev/",
+    "tech": "gRPC & Apollo GraphQL"
   },
   {
     "day": 47,
@@ -514,7 +560,8 @@
     "topic": "gRPC Service Lifecycle & Streaming",
     "desc": "Unary RPC, Server streaming RPC, Client streaming RPC, Bidirectional streaming RPC using @grpc/grpc-js in TypeScript.",
     "deliverable": "Bidirectional streaming gRPC service",
-    "link": "https://grpc.io/docs/what-is-grpc/core-concepts/"
+    "link": "https://grpc.io/docs/what-is-grpc/core-concepts/",
+    "tech": "gRPC & Apollo GraphQL"
   },
   {
     "day": 48,
@@ -525,7 +572,8 @@
     "topic": "GraphQL Foundations & Schema Design",
     "desc": "Why GraphQL? Eliminating over-fetching and under-fetching, Schema Definition Language (SDL), Query, Mutation, Subscription types.",
     "deliverable": "GraphQL SDL schema for e-commerce domain",
-    "link": "https://graphql.org/learn/schema/"
+    "link": "https://graphql.org/learn/schema/",
+    "tech": "gRPC & Apollo GraphQL"
   },
   {
     "day": 49,
@@ -536,7 +584,8 @@
     "topic": "Apollo Server with Express Integration",
     "desc": "Setting up Apollo Server v4 with Express, building typed resolvers, context injection (authentication headers, loaders), error handling.",
     "deliverable": "Production Apollo GraphQL API server",
-    "link": "https://www.apollographql.com/docs/apollo-server/"
+    "link": "https://www.apollographql.com/docs/apollo-server/",
+    "tech": "gRPC & Apollo GraphQL"
   },
   {
     "day": 50,
@@ -547,7 +596,8 @@
     "topic": "Solving the N+1 Problem with DataLoader",
     "desc": "Understanding the N+1 database query problem in GraphQL resolvers; batching and per-request memoization caching with DataLoader.",
     "deliverable": "DataLoader batching implementation",
-    "link": "https://github.com/graphql/dataloader"
+    "link": "https://github.com/graphql/dataloader",
+    "tech": "gRPC & Apollo GraphQL"
   },
   {
     "day": 51,
@@ -558,7 +608,8 @@
     "topic": "End-to-End Type Safety with tRPC",
     "desc": "Building full-stack type-safe APIs without code generation or schema duplication; tRPC routers, procedures (query/mutation), input validation with Zod.",
     "deliverable": "tRPC Server & Client Type-Safe Contract",
-    "link": "https://trpc.io/docs"
+    "link": "https://trpc.io/docs",
+    "tech": "gRPC & Apollo GraphQL"
   },
   {
     "day": 52,
@@ -569,7 +620,8 @@
     "topic": "Streaming File Uploads & Multer",
     "desc": "Handling multipart/form-data with Multer, memory storage vs disk storage, file size limits, MIME type and magic number validation.",
     "deliverable": "Secure file upload middleware",
-    "link": "https://github.com/expressjs/multer"
+    "link": "https://github.com/expressjs/multer",
+    "tech": "WebSockets & Auth Security"
   },
   {
     "day": 53,
@@ -580,7 +632,8 @@
     "topic": "AWS S3 Direct Client Uploads via Pre-Signed URLs",
     "desc": "AWS SDK v3 (@aws-sdk/client-s3), PutObjectCommand, generating short-lived pre-signed URLs, client direct-to-S3 uploads, CORS setup.",
     "deliverable": "S3 Pre-signed URL generator service",
-    "link": "https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_s3_code_examples.html"
+    "link": "https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_s3_code_examples.html",
+    "tech": "WebSockets & Auth Security"
   },
   {
     "day": 54,
@@ -591,7 +644,8 @@
     "topic": "Milestone Project 2: Movie Streaming Platform",
     "desc": "Adaptive bitrate video pipeline: Node.js Streams, parallel multipart uploads, HLS video segmentation with FFmpeg, and S3 delivery.",
     "deliverable": "Movie Streaming Backend Engine",
-    "link": "https://ffmpeg.org/"
+    "link": "https://ffmpeg.org/",
+    "tech": "WebSockets & Auth Security"
   },
   {
     "day": 55,
@@ -602,7 +656,8 @@
     "topic": "Real-Time Communication with WebSockets",
     "desc": "WebSocket protocol handshake (HTTP 101 Switching Protocols), full-duplex communication, connection lifecycle, heartbeat ping/pong.",
     "deliverable": "Raw WebSocket echo server using 'ws' package",
-    "link": "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API"
+    "link": "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API",
+    "tech": "WebSockets & Auth Security"
   },
   {
     "day": 56,
@@ -613,7 +668,8 @@
     "topic": "Socket.IO: Rooms, Namespaces & Acknowledgments",
     "desc": "Socket.IO architecture, connection fallbacks, rooms, namespaces, delivery acknowledgments, scaling across multiple nodes with Redis Adapter.",
     "deliverable": "Multi-room real-time broadcasting server",
-    "link": "https://socket.io/docs/v4/"
+    "link": "https://socket.io/docs/v4/",
+    "tech": "WebSockets & Auth Security"
   },
   {
     "day": 57,
@@ -624,7 +680,8 @@
     "topic": "WebSockets vs SSE vs HTTP Long Polling",
     "desc": "Architectural trade-offs: WebSockets (bidirectional) vs Server-Sent Events (SSE: unidirectional HTTP text/event-stream) vs Long Polling.",
     "deliverable": "Live Stock Ticker with Server-Sent Events (SSE)",
-    "link": "https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events"
+    "link": "https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events",
+    "tech": "WebSockets & Auth Security"
   },
   {
     "day": 58,
@@ -635,7 +692,8 @@
     "topic": "Authentication: Access Tokens & Refresh Rotation",
     "desc": "Stateless JWT tokens, signing with RSA/Ed25519, short-lived access tokens (15m), refresh token rotation stored in secure HTTP-only cookies.",
     "deliverable": "JWT authentication service with token rotation",
-    "link": "https://jwt.io/introduction"
+    "link": "https://jwt.io/introduction",
+    "tech": "WebSockets & Auth Security"
   },
   {
     "day": 59,
@@ -646,7 +704,8 @@
     "topic": "Authorization & Multi-Factor Auth (2FA)",
     "desc": "Role-Based Access Control (RBAC), permission matrices, OAuth 2.0 social login, Time-based One-Time Passwords (TOTP via speakeasy) & Email OTP.",
     "deliverable": "Two-Factor Authentication (TOTP) module",
-    "link": "https://datatracker.ietf.org/doc/html/rfc6238"
+    "link": "https://datatracker.ietf.org/doc/html/rfc6238",
+    "tech": "WebSockets & Auth Security"
   },
   {
     "day": 60,
@@ -657,7 +716,8 @@
     "topic": "Milestone Project 3: WhatsApp Real-Time Chat Service",
     "desc": "Full-duplex messaging with Socket.IO, room broadcasting, delivery receipts, read status, and media attachments via S3 pre-signed URLs.",
     "deliverable": "WhatsApp Real-Time Chat Backend",
-    "link": "https://socket.io/"
+    "link": "https://socket.io/",
+    "tech": "WebSockets & Auth Security"
   },
   {
     "day": 61,
@@ -668,7 +728,8 @@
     "topic": "Redis Core Data Structures & Pipelining",
     "desc": "In-memory storage model, Strings, Hashes, Lists, Sets, Sorted Sets (ZSET), atomic operations (INCR, HSET), Redis pipelining for bulk operations.",
     "deliverable": "Redis high-speed data structures benchmark",
-    "link": "https://redis.io/docs/data-types/"
+    "link": "https://redis.io/docs/data-types/",
+    "tech": "Redis Caching & BullMQ"
   },
   {
     "day": 62,
@@ -679,7 +740,8 @@
     "topic": "Enterprise Caching Patterns",
     "desc": "Cache-Aside (Lazy loading), Read-Through, Write-Through, Write-Around, Write-Back patterns; choosing the right pattern per access pattern.",
     "deliverable": "Cache-Aside pattern implementation with Redis",
-    "link": "https://aws.amazon.com/caching/best-practices/"
+    "link": "https://aws.amazon.com/caching/best-practices/",
+    "tech": "Redis Caching & BullMQ"
   },
   {
     "day": 63,
@@ -690,7 +752,8 @@
     "topic": "Cache Invalidation & Thundering Herd Defense",
     "desc": "TTL management, cache stampede / thundering herd mitigation, Probabilistic early expiration (XFetch algorithm), mutual exclusion locks.",
     "deliverable": "Thundering herd defense caching utility",
-    "link": "https://en.wikipedia.org/wiki/Cache_stampede"
+    "link": "https://en.wikipedia.org/wiki/Cache_stampede",
+    "tech": "Redis Caching & BullMQ"
   },
   {
     "day": 64,
@@ -701,7 +764,8 @@
     "topic": "Redis Eviction Policies & Memory Sizing",
     "desc": "maxmemory setting, eviction policies: allkeys-lru, volatile-lru, allkeys-lfu, volatile-ttl, noeviction; memory optimization techniques.",
     "deliverable": "Redis eviction configuration & analysis",
-    "link": "https://redis.io/docs/reference/eviction/"
+    "link": "https://redis.io/docs/reference/eviction/",
+    "tech": "Redis Caching & BullMQ"
   },
   {
     "day": 65,
@@ -712,7 +776,8 @@
     "topic": "Redis Geospatial Indexing & Queries",
     "desc": "GEOADD, GEODIST, GEOSEARCH, spatial radius queries; calculating distances between moving entities for location-based dispatch systems.",
     "deliverable": "Geospatial radius driver locator service",
-    "link": "https://redis.io/commands/geosearch/"
+    "link": "https://redis.io/commands/geosearch/",
+    "tech": "Redis Caching & BullMQ"
   },
   {
     "day": 66,
@@ -723,7 +788,8 @@
     "topic": "Distributed Task Queues with BullMQ",
     "desc": "Redis-backed queues, job producers, worker consumers, retry backoff strategies (exponential/fixed), delayed jobs, stalled job recovery.",
     "deliverable": "Background email & report worker with BullMQ",
-    "link": "https://docs.bullmq.io/"
+    "link": "https://docs.bullmq.io/",
+    "tech": "Redis Caching & BullMQ"
   },
   {
     "day": 67,
@@ -734,7 +800,8 @@
     "topic": "Distributed Locking with Redlock",
     "desc": "Distributed locking semantics, single-node SET NX PX with random token, Redlock multi-node consensus algorithm, lock extension heartbeats.",
     "deliverable": "Distributed lock manager implementation",
-    "link": "https://redis.io/docs/manual/patterns/distributed-locks/"
+    "link": "https://redis.io/docs/manual/patterns/distributed-locks/",
+    "tech": "Redis Caching & BullMQ"
   },
   {
     "day": 68,
@@ -745,7 +812,8 @@
     "topic": "Message Brokers vs Event Logs",
     "desc": "Point-to-point queues vs Publish/Subscribe, AMQP 0-9-1 protocol, RabbitMQ components: Producers, Exchanges, Queues, Channels, Consumers.",
     "deliverable": "RabbitMQ Docker setup & health check",
-    "link": "https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html"
+    "link": "https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html",
+    "tech": "RabbitMQ Message Broker"
   },
   {
     "day": 69,
@@ -756,7 +824,8 @@
     "topic": "RabbitMQ Exchange Types: Direct & Fanout",
     "desc": "Direct exchange with exact routing keys, Fanout exchange for broadcasting messages across all bound queues regardless of routing key.",
     "deliverable": "Pub/Sub notification broadcast service",
-    "link": "https://www.rabbitmq.com/tutorials/tutorial-three-javascript.html"
+    "link": "https://www.rabbitmq.com/tutorials/tutorial-three-javascript.html",
+    "tech": "RabbitMQ Message Broker"
   },
   {
     "day": 70,
@@ -767,7 +836,8 @@
     "topic": "RabbitMQ Topic & Headers Exchanges",
     "desc": "Topic exchanges with wildcard routing keys (word.word, * for one word, # for zero or more words), Headers exchanges using message attributes.",
     "deliverable": "Topic-based log routing system",
-    "link": "https://www.rabbitmq.com/tutorials/tutorial-five-javascript.html"
+    "link": "https://www.rabbitmq.com/tutorials/tutorial-five-javascript.html",
+    "tech": "RabbitMQ Message Broker"
   },
   {
     "day": 71,
@@ -778,7 +848,8 @@
     "topic": "Message Acknowledgments & Reliability",
     "desc": "Manual acknowledgments (channel.ack), negative acks (channel.nack), requeuing, channel.prefetch(1) for fair worker dispatch.",
     "deliverable": "Resilient worker consumer with manual acks",
-    "link": "https://www.rabbitmq.com/confirms.html"
+    "link": "https://www.rabbitmq.com/confirms.html",
+    "tech": "RabbitMQ Message Broker"
   },
   {
     "day": 72,
@@ -789,7 +860,8 @@
     "topic": "Dead-Letter Exchanges (DLX) & Retry Queues",
     "desc": "Routing rejected or expired messages to DLX (x-dead-letter-exchange), building multi-tier retry queues with TTL without blocking main workers.",
     "deliverable": "DLX retry pipeline implementation",
-    "link": "https://www.rabbitmq.com/dlx.html"
+    "link": "https://www.rabbitmq.com/dlx.html",
+    "tech": "RabbitMQ Message Broker"
   },
   {
     "day": 73,
@@ -800,7 +872,8 @@
     "topic": "Consumer Idempotency & Deduplication",
     "desc": "Handling duplicate message delivery in at-least-once systems; unique idempotency keys, atomic deduplication tables in Redis / PostgreSQL.",
     "deliverable": "Idempotent message consumer wrapper",
-    "link": "https://microservices.io/patterns/communication-style/idempotent-consumer.html"
+    "link": "https://microservices.io/patterns/communication-style/idempotent-consumer.html",
+    "tech": "RabbitMQ Message Broker"
   },
   {
     "day": 74,
@@ -811,7 +884,8 @@
     "topic": "Milestone Project 4: Uber Dispatch Engine",
     "desc": "Low-latency geospatial lookup, GeoHashing, Quadtrees, live driver location streaming via Redis, dispatch queue via RabbitMQ.",
     "deliverable": "Uber Dispatch & Ride Match Engine",
-    "link": "https://eng.uber.com/go-geofence/"
+    "link": "https://eng.uber.com/go-geofence/",
+    "tech": "RabbitMQ Message Broker"
   },
   {
     "day": 75,
@@ -822,7 +896,8 @@
     "topic": "Apache Kafka Architecture & Log Model",
     "desc": "Append-only distributed commit log, Brokers, Clusters, Topics, Partitions, Replicas, In-Sync Replicas (ISR), High Watermark.",
     "deliverable": "Kafka cluster setup with Docker Compose",
-    "link": "https://kafka.apache.org/documentation/#intro_concepts_and_terms"
+    "link": "https://kafka.apache.org/documentation/#intro_concepts_and_terms",
+    "tech": "Apache Kafka Event Streaming"
   },
   {
     "day": 76,
@@ -833,7 +908,8 @@
     "topic": "Kafka Producers & Partitioning Strategies",
     "desc": "Producer record anatomy (topic, partition, key, value, timestamp), Murmur2 key hashing, custom partitioners, producer acks (0, 1, all).",
     "deliverable": "High-throughput Kafka producer in Node.js",
-    "link": "https://kafka.js.org/docs/producing"
+    "link": "https://kafka.js.org/docs/producing",
+    "tech": "Apache Kafka Event Streaming"
   },
   {
     "day": 77,
@@ -844,7 +920,8 @@
     "topic": "Consumer Groups & Partition Assignment",
     "desc": "Consumer groups, partition rebalancing, RangeAssignor vs RoundRobinAssignor vs CooperativeStickyAssignor, scaling consumers horizontally.",
     "deliverable": "Kafka consumer group worker fleet",
-    "link": "https://kafka.js.org/docs/consuming"
+    "link": "https://kafka.js.org/docs/consuming",
+    "tech": "Apache Kafka Event Streaming"
   },
   {
     "day": 78,
@@ -855,7 +932,8 @@
     "topic": "Offset Management & Delivery Semantics",
     "desc": "Committed offsets vs current position, __consumer_offsets internal topic, auto-commit hazards, manual synchronous & asynchronous commits.",
     "deliverable": "Manual offset commit consumer pipeline",
-    "link": "https://kafka.apache.org/documentation/#semantics"
+    "link": "https://kafka.apache.org/documentation/#semantics",
+    "tech": "Apache Kafka Event Streaming"
   },
   {
     "day": 79,
@@ -866,7 +944,8 @@
     "topic": "Kafka Retention Policies & Log Compaction",
     "desc": "Time-based retention (log.retention.hours), size-based retention, Log Compaction for state tables (retaining latest value per key).",
     "deliverable": "Compacted topic configuration & reader",
-    "link": "https://kafka.apache.org/documentation/#compaction"
+    "link": "https://kafka.apache.org/documentation/#compaction",
+    "tech": "Apache Kafka Event Streaming"
   },
   {
     "day": 80,
@@ -877,7 +956,8 @@
     "topic": "High-Throughput Optimization in Kafka",
     "desc": "Producer batching (batch.size, linger.ms), wire compression (Snappy, Zstandard), OS zero-copy file transfer (sendfile syscall).",
     "deliverable": "Kafka throughput benchmarking suite",
-    "link": "https://kafka.apache.org/documentation/#performance"
+    "link": "https://kafka.apache.org/documentation/#performance",
+    "tech": "Apache Kafka Event Streaming"
   },
   {
     "day": 81,
@@ -888,7 +968,8 @@
     "topic": "Kafka Integration with Node.js & Graceful Shutdown",
     "desc": "Building production Kafka consumers with KafkaJS, handling disconnects, heartbeats, and graceful consumer group leave on SIGTERM.",
     "deliverable": "Production Kafka Service Wrapper in TypeScript",
-    "link": "https://kafka.js.org/"
+    "link": "https://kafka.js.org/",
+    "tech": "Apache Kafka Event Streaming"
   },
   {
     "day": 82,
@@ -899,7 +980,8 @@
     "topic": "Dual-Write Problem & 2PC Limitations",
     "desc": "Why distributed transactions fail across microservices; Two-Phase Commit (2PC: Prepare -> Commit), blocking coordinator bottleneck.",
     "deliverable": "Dual-write failure analysis & simulation",
-    "link": "https://martinfowler.com/articles/patterns-of-distributed-systems/two-phase-commit.html"
+    "link": "https://martinfowler.com/articles/patterns-of-distributed-systems/two-phase-commit.html",
+    "tech": "Distributed Sagas & CQRS"
   },
   {
     "day": 83,
@@ -910,7 +992,8 @@
     "topic": "Saga Pattern: Choreography Architecture",
     "desc": "Decomposing distributed transactions into local transactions; event-driven choreography where each service publishes domain events upon completion.",
     "deliverable": "Choreographed Saga order-payment service",
-    "link": "https://microservices.io/patterns/data/saga.html"
+    "link": "https://microservices.io/patterns/data/saga.html",
+    "tech": "Distributed Sagas & CQRS"
   },
   {
     "day": 84,
@@ -921,7 +1004,8 @@
     "topic": "Saga Pattern: Orchestration Architecture",
     "desc": "Centralized state machine orchestrator directing participants, handling failures and executing compensating transactions in reverse order.",
     "deliverable": "Orchestrated Saga state machine module",
-    "link": "https://microservices.io/patterns/data/saga.html"
+    "link": "https://microservices.io/patterns/data/saga.html",
+    "tech": "Distributed Sagas & CQRS"
   },
   {
     "day": 85,
@@ -932,7 +1016,8 @@
     "topic": "CQRS (Command Query Responsibility Segregation)",
     "desc": "Separating write domain models (Commands) from read-optimized data stores (Queries); projection workers updating read views asynchronously.",
     "deliverable": "CQRS architecture service implementation",
-    "link": "https://martinfowler.com/bliki/CQRS.html"
+    "link": "https://martinfowler.com/bliki/CQRS.html",
+    "tech": "Distributed Sagas & CQRS"
   },
   {
     "day": 86,
@@ -943,7 +1028,8 @@
     "topic": "Event Sourcing Architecture",
     "desc": "Storing state as an immutable sequence of events; event store design, replaying events to reconstruct entity state, snapshotting.",
     "deliverable": "Event-sourced bank account ledger",
-    "link": "https://martinfowler.com/eaaDev/EventSourcing.html"
+    "link": "https://martinfowler.com/eaaDev/EventSourcing.html",
+    "tech": "Distributed Sagas & CQRS"
   },
   {
     "day": 87,
@@ -954,7 +1040,8 @@
     "topic": "Transactional Outbox Pattern",
     "desc": "Eliminating dual-writes: atomically writing domain state and outbox event record in a single database transaction, relaying to message broker.",
     "deliverable": "Transactional Outbox pattern implementation",
-    "link": "https://microservices.io/patterns/data/transactional-outbox.html"
+    "link": "https://microservices.io/patterns/data/transactional-outbox.html",
+    "tech": "Distributed Sagas & CQRS"
   },
   {
     "day": 88,
@@ -965,7 +1052,8 @@
     "topic": "Change Data Capture (CDC) with Debezium",
     "desc": "Streaming database WAL changes directly into Kafka topics using Debezium connector, achieving near-zero latency data replication.",
     "deliverable": "Debezium CDC to Kafka pipeline setup",
-    "link": "https://debezium.io/documentation/"
+    "link": "https://debezium.io/documentation/",
+    "tech": "Distributed Sagas & CQRS"
   },
   {
     "day": 89,
@@ -976,7 +1064,8 @@
     "topic": "Durable Workflow Orchestration Principles",
     "desc": "Why traditional cron jobs and queues fail on multi-day or long-running processes; Durable Execution guarantees (Temporal.io).",
     "deliverable": "Temporal local cluster setup",
-    "link": "https://docs.temporal.io/"
+    "link": "https://docs.temporal.io/",
+    "tech": "Temporal.io Workflows"
   },
   {
     "day": 90,
@@ -987,7 +1076,8 @@
     "topic": "Temporal Workflows & Deterministic Replay",
     "desc": "Writing Temporal workflows in TypeScript; deterministic constraints (no Math.random, Date.now inside workflow), Activity workers for I/O.",
     "deliverable": "Temporal workflow & activity workers",
-    "link": "https://docs.temporal.io/typescript/introduction"
+    "link": "https://docs.temporal.io/typescript/introduction",
+    "tech": "Temporal.io Workflows"
   },
   {
     "day": 91,
@@ -998,7 +1088,8 @@
     "topic": "State Preservation, Signals & Queries in Temporal",
     "desc": "Long-running stateful workflows, sending external Signals to update running workflows, Querying workflow state without breaking determinism.",
     "deliverable": "Stateful multi-step customer onboarding workflow",
-    "link": "https://docs.temporal.io/typescript/signals"
+    "link": "https://docs.temporal.io/typescript/signals",
+    "tech": "Temporal.io Workflows"
   },
   {
     "day": 92,
@@ -1009,7 +1100,8 @@
     "topic": "Event-Driven Step Functions with Inngest",
     "desc": "Inngest architecture: zero-infrastructure durable functions, step-level retries, sleep-until functions, human-in-the-loop workflows.",
     "deliverable": "Inngest background workflow pipeline",
-    "link": "https://www.inngest.com/docs"
+    "link": "https://www.inngest.com/docs",
+    "tech": "Temporal.io Workflows"
   },
   {
     "day": 93,
@@ -1020,7 +1112,8 @@
     "topic": "Collaborative Systems: OT vs CRDTs",
     "desc": "Concurrency control in real-time collaborative editing: Operational Transformation (OT) vs Conflict-free Replicated Data Types (CRDTs).",
     "deliverable": "OT vs CRDT comparison & architecture notes",
-    "link": "https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type"
+    "link": "https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type",
+    "tech": "Temporal.io Workflows"
   },
   {
     "day": 94,
@@ -1031,7 +1124,8 @@
     "topic": "CRDT State Reconciliation & Vector Clocks",
     "desc": "Lamport timestamps, Vector clocks, Yjs / Automerge shared document models, automatic conflict-free convergence across distributed peers.",
     "deliverable": "Collaborative text document synchronization model",
-    "link": "https://github.com/yjs/yjs"
+    "link": "https://github.com/yjs/yjs",
+    "tech": "Temporal.io Workflows"
   },
   {
     "day": 95,
@@ -1042,7 +1136,8 @@
     "topic": "Milestone Projects 5, 6 & 7 Review",
     "desc": "Reviewing Paytm Ledger (Saga Orchestration), Google Docs Engine (CRDTs), and Calendly Scheduling Engine (Temporal.io).",
     "deliverable": "Distributed Systems Flagship Codebases",
-    "link": "https://docs.temporal.io/"
+    "link": "https://docs.temporal.io/",
+    "tech": "Temporal.io Workflows"
   },
   {
     "day": 96,
@@ -1053,7 +1148,8 @@
     "topic": "Database Internals: Slotted-Page Architecture",
     "desc": "How relational engines organize bytes on disk: Database blocks/pages (8KB in Postgres, 16KB in InnoDB), page headers, slotted-page record layout.",
     "deliverable": "Slotted-page binary structure parser",
-    "link": "https://www.postgresql.org/docs/current/storage-page-layout.html"
+    "link": "https://www.postgresql.org/docs/current/storage-page-layout.html",
+    "tech": "DB Internals (WAL & ACID)"
   },
   {
     "day": 97,
@@ -1064,7 +1160,8 @@
     "topic": "Write-Ahead Logging (WAL) & Crash Recovery",
     "desc": "Write-Ahead Logging principles: Append-only log files, Log Sequence Numbers (LSN), fsync guarantees, checkpoints, ARIES recovery algorithm.",
     "deliverable": "WAL inspection & crash recovery simulation",
-    "link": "https://www.postgresql.org/docs/current/wal-intro.html"
+    "link": "https://www.postgresql.org/docs/current/wal-intro.html",
+    "tech": "DB Internals (WAL & ACID)"
   },
   {
     "day": 98,
@@ -1075,7 +1172,8 @@
     "topic": "B-Trees vs LSM Trees Deep Dive",
     "desc": "B-Tree / B+ Tree (in-place updates, read-optimized) vs Log-Structured Merge-Trees (append-only, write-optimized, memtable, SSTables, compaction).",
     "deliverable": "B-Tree vs LSM Tree performance trade-off report",
-    "link": "https://en.wikipedia.org/wiki/Log-structured_merge-tree"
+    "link": "https://en.wikipedia.org/wiki/Log-structured_merge-tree",
+    "tech": "DB Internals (WAL & ACID)"
   },
   {
     "day": 99,
@@ -1086,7 +1184,8 @@
     "topic": "Database Transactions & ACID Internals",
     "desc": "ACID implementation: Atomicity via undo logs, Consistency via integrity constraints, Durability via WAL, Isolation via MVCC and locks.",
     "deliverable": "Transaction commit/rollback deep trace",
-    "link": "https://www.postgresql.org/docs/current/mvcc-intro.html"
+    "link": "https://www.postgresql.org/docs/current/mvcc-intro.html",
+    "tech": "DB Internals (WAL & ACID)"
   },
   {
     "day": 100,
@@ -1097,7 +1196,8 @@
     "topic": "Transaction Isolation Levels & Concurrency Anomalies",
     "desc": "Read Uncommitted, Read Committed, Repeatable Read, Serializable; Anomalies: Dirty read, Non-repeatable read, Phantom read, Lost update.",
     "deliverable": "Concurrency anomalies test suite in SQL",
-    "link": "https://www.postgresql.org/docs/current/transaction-iso.html"
+    "link": "https://www.postgresql.org/docs/current/transaction-iso.html",
+    "tech": "DB Internals (WAL & ACID)"
   },
   {
     "day": 101,
@@ -1108,7 +1208,8 @@
     "topic": "Snapshot Isolation & Write Skew Anomaly",
     "desc": "Snapshot Isolation mechanics; why Repeatable Read does not prevent Write Skew in banking/medical scheduling; Serializable Snapshot Isolation (SSI).",
     "deliverable": "Write skew reproduction & SSI prevention script",
-    "link": "https://en.wikipedia.org/wiki/Snapshot_isolation"
+    "link": "https://en.wikipedia.org/wiki/Snapshot_isolation",
+    "tech": "DB Internals (WAL & ACID)"
   },
   {
     "day": 102,
@@ -1119,7 +1220,8 @@
     "topic": "Deadlock Detection in Relational Databases",
     "desc": "Wait-for graphs in relational engines, cycle detection algorithms, deadlock_timeout parameter, automatic victim termination.",
     "deliverable": "Deadlock simulation and resolution tests",
-    "link": "https://www.postgresql.org/docs/current/explicit-locking.html"
+    "link": "https://www.postgresql.org/docs/current/explicit-locking.html",
+    "tech": "DB Internals (WAL & ACID)"
   },
   {
     "day": 103,
@@ -1130,7 +1232,8 @@
     "topic": "Read Replicas & Connection Pooling",
     "desc": "Master-Replica asynchronous replication, replication lag hazards (read-your-own-writes consistency), connection pooling with PgBouncer.",
     "deliverable": "PgBouncer configuration & read-replica routing",
-    "link": "https://www.pgbouncer.org/"
+    "link": "https://www.pgbouncer.org/",
+    "tech": "DB Scaling & Sharding"
   },
   {
     "day": 104,
@@ -1141,7 +1244,8 @@
     "topic": "High Availability & Leaderless Quorums",
     "desc": "Automatic master failover (Patroni), split-brain risks, Leaderless quorum systems (Dynamo model: R + W > N for strong consistency).",
     "deliverable": "Quorum read/write calculation simulator",
-    "link": "https://www.allthingsdistributed.com/2007/10/amazons_dynamo.html"
+    "link": "https://www.allthingsdistributed.com/2007/10/amazons_dynamo.html",
+    "tech": "DB Scaling & Sharding"
   },
   {
     "day": 105,
@@ -1152,7 +1256,8 @@
     "topic": "Database Sharding & Consistent Hashing",
     "desc": "Horizontal partitioning vs Sharding; Range sharding, Hash sharding, Consistent Hashing rings with virtual nodes to minimize data migration on scale.",
     "deliverable": "Consistent hashing ring implementation in TypeScript",
-    "link": "https://en.wikipedia.org/wiki/Consistent_hashing"
+    "link": "https://en.wikipedia.org/wiki/Consistent_hashing",
+    "tech": "DB Scaling & Sharding"
   },
   {
     "day": 106,
@@ -1163,7 +1268,8 @@
     "topic": "Cross-Shard Queries & Resharding",
     "desc": "Scatter-gather query execution, distributed join limitations, two-phase commits across shards, zero-downtime resharding strategies.",
     "deliverable": "Sharded database routing proxy",
-    "link": "https://martinfowler.com/articles/patterns-of-distributed-systems/partitioning.html"
+    "link": "https://martinfowler.com/articles/patterns-of-distributed-systems/partitioning.html",
+    "tech": "DB Scaling & Sharding"
   },
   {
     "day": 107,
@@ -1174,7 +1280,8 @@
     "topic": "Advanced MongoDB Replica Sets & Sharded Clusters",
     "desc": "MongoDB Replica Sets (Primary elections, oplog replication, read concerns / write concerns); Sharded clusters (mongos routers, config servers, shard keys).",
     "deliverable": "MongoDB sharded cluster Docker setup",
-    "link": "https://www.mongodb.com/docs/manual/sharding/"
+    "link": "https://www.mongodb.com/docs/manual/sharding/",
+    "tech": "DB Scaling & Sharding"
   },
   {
     "day": 108,
@@ -1185,7 +1292,8 @@
     "topic": "Real-World Schema: Twitter / X Social Graph",
     "desc": "Social graph modeling: User followers/following relationships, news feed generation (Fanout-on-write vs Fanout-on-read, hybrid celebrity threshold).",
     "deliverable": "Twitter Social Graph & Feed Generator Schema",
-    "link": "https://blog.bytebytego.com/p/designing-a-news-feed-system"
+    "link": "https://blog.bytebytego.com/p/designing-a-news-feed-system",
+    "tech": "DB Scaling & Sharding"
   },
   {
     "day": 109,
@@ -1196,7 +1304,8 @@
     "topic": "Real-World Schema: Airbnb Booking Inventory",
     "desc": "High-contention date-range reservations: Calendar availability schemas, preventing double bookings with pessimistic SELECT FOR UPDATE vs optimistic locks.",
     "deliverable": "Airbnb Booking & Inventory Schema",
-    "link": "https://medium.com/airbnb-engineering"
+    "link": "https://medium.com/airbnb-engineering",
+    "tech": "DB Scaling & Sharding"
   },
   {
     "day": 110,
@@ -1207,7 +1316,8 @@
     "topic": "NGINX Reverse Proxy & TLS Termination",
     "desc": "NGINX as reverse proxy, upstream load balancing (round-robin, least_conn, ip_hash), SSL/TLS termination, HTTP/2 termination.",
     "deliverable": "Production NGINX reverse proxy config",
-    "link": "https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/"
+    "link": "https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/",
+    "tech": "NGINX Gateways & Clustering"
   },
   {
     "day": 111,
@@ -1218,7 +1328,8 @@
     "topic": "API Gateway Engineering & Distributed Rate Limiting",
     "desc": "Centralized API Gateway responsibilities; distributed rate limiting algorithms (Token Bucket, Leaky Bucket, Sliding Window Counter) using Redis.",
     "deliverable": "Redis Sliding Window Rate Limiter middleware",
-    "link": "https://konghq.com/learning-center/api-gateway"
+    "link": "https://konghq.com/learning-center/api-gateway",
+    "tech": "NGINX Gateways & Clustering"
   },
   {
     "day": 112,
@@ -1229,7 +1340,8 @@
     "topic": "Resiliency Patterns: Circuit Breaker & Bulkhead",
     "desc": "Circuit Breaker pattern states (Closed, Open, Half-Open), failure thresholds, automatic recovery probes; Bulkhead pattern for failure isolation.",
     "deliverable": "Circuit breaker implementation with opossum",
-    "link": "https://martinfowler.com/bliki/CircuitBreaker.html"
+    "link": "https://martinfowler.com/bliki/CircuitBreaker.html",
+    "tech": "NGINX Gateways & Clustering"
   },
   {
     "day": 113,
@@ -1240,7 +1352,8 @@
     "topic": "Low-Level Design (LLD): Gang of Four Patterns in TS",
     "desc": "Implementing GoF patterns in TypeScript: Singleton (thread-safe), Factory Method, Builder (fluent API), Strategy, and Adapter patterns.",
     "deliverable": "GoF Design Patterns TypeScript repository",
-    "link": "https://refactoring.guru/design-patterns"
+    "link": "https://refactoring.guru/design-patterns",
+    "tech": "NGINX Gateways & Clustering"
   },
   {
     "day": 114,
@@ -1251,7 +1364,8 @@
     "topic": "Node.js Multi-Core Clustering",
     "desc": "Node.js single-threaded model limits; native 'cluster' module, primary process spawning workers per CPU core, IPC message passing, port sharing.",
     "deliverable": "Multi-core clustered Express server",
-    "link": "https://nodejs.org/api/cluster.html"
+    "link": "https://nodejs.org/api/cluster.html",
+    "tech": "NGINX Gateways & Clustering"
   },
   {
     "day": 115,
@@ -1262,7 +1376,8 @@
     "topic": "Process Management with PM2",
     "desc": "PM2 cluster mode, zero-downtime reloads (pm2 reload), auto-restart on memory limit breach (max-memory-restart), ecosystem.config.js.",
     "deliverable": "Production PM2 deployment configuration",
-    "link": "https://pm2.keymetrics.io/docs/usage/cluster-mode/"
+    "link": "https://pm2.keymetrics.io/docs/usage/cluster-mode/",
+    "tech": "NGINX Gateways & Clustering"
   },
   {
     "day": 116,
@@ -1273,7 +1388,8 @@
     "topic": "Monorepo Management with Turborepo",
     "desc": "Microservices in a monorepo; Turborepo pipeline caching, shared TypeScript types package, shared database models, shared linting.",
     "deliverable": "Turborepo full-stack monorepo architecture",
-    "link": "https://turbo.build/repo/docs"
+    "link": "https://turbo.build/repo/docs",
+    "tech": "NGINX Gateways & Clustering"
   },
   {
     "day": 117,
@@ -1284,7 +1400,8 @@
     "topic": "AWS Cloud Foundations: Compute & Networking",
     "desc": "AWS global infrastructure (Regions, AZs); EC2 instances, AMIs, Auto Scaling Groups (ASG), Elastic Load Balancers (ALB vs NLB), VPC, Subnets, Security Groups.",
     "deliverable": "AWS infrastructure architecture diagram & Terraform base",
-    "link": "https://aws.amazon.com/ec2/"
+    "link": "https://aws.amazon.com/ec2/",
+    "tech": "AWS Cloud & Docker DevOps"
   },
   {
     "day": 118,
@@ -1295,7 +1412,8 @@
     "topic": "AWS Managed Databases: RDS & DynamoDB",
     "desc": "AWS RDS (PostgreSQL/MySQL), Multi-AZ deployments, Aurora serverless; DynamoDB (NoSQL single-digit millisecond latency, partition keys, sort keys).",
     "deliverable": "DynamoDB single-table design schema",
-    "link": "https://aws.amazon.com/dynamodb/"
+    "link": "https://aws.amazon.com/dynamodb/",
+    "tech": "AWS Cloud & Docker DevOps"
   },
   {
     "day": 119,
@@ -1306,7 +1424,8 @@
     "topic": "Serverless Compute with AWS Lambda",
     "desc": "Serverless architecture, Lambda execution model, cold starts vs warm execution, API Gateway integration, IAM least-privilege policies.",
     "deliverable": "Serverless REST endpoint with AWS Lambda",
-    "link": "https://aws.amazon.com/lambda/"
+    "link": "https://aws.amazon.com/lambda/",
+    "tech": "AWS Cloud & Docker DevOps"
   },
   {
     "day": 120,
@@ -1317,7 +1436,8 @@
     "topic": "Docker Multi-Stage Builds for Node.js",
     "desc": "Docker engine, image layers, multi-stage builds (Builder stage -> Production runner stage), non-root user security, shrinking images from 1.2GB to 85MB.",
     "deliverable": "Production Dockerfile for TypeScript Node app",
-    "link": "https://docs.docker.com/build/building/multi-stage/"
+    "link": "https://docs.docker.com/build/building/multi-stage/",
+    "tech": "AWS Cloud & Docker DevOps"
   },
   {
     "day": 121,
@@ -1328,7 +1448,8 @@
     "topic": "Docker Networking & Compose Orchestration",
     "desc": "Docker bridge networks, port mapping, Docker Compose v2 for local microservices stack (Node, PostgreSQL, Redis, RabbitMQ, Kafka).",
     "deliverable": "Docker Compose local microservices stack",
-    "link": "https://docs.docker.com/compose/"
+    "link": "https://docs.docker.com/compose/",
+    "tech": "AWS Cloud & Docker DevOps"
   },
   {
     "day": 122,
@@ -1339,7 +1460,8 @@
     "topic": "CI/CD Pipelines: GitHub Actions & Jenkins",
     "desc": "Automated continuous integration pipeline: checkout, lint, test, build Docker image, vulnerability scan (Trivy), push to AWS ECR, deploy.",
     "deliverable": "Production GitHub Actions CI/CD workflow",
-    "link": "https://docs.github.com/en/actions"
+    "link": "https://docs.github.com/en/actions",
+    "tech": "AWS Cloud & Docker DevOps"
   },
   {
     "day": 123,
@@ -1350,7 +1472,8 @@
     "topic": "Production Observability: Prometheus & Grafana",
     "desc": "Metrics collection: Counters, Gauges, Histograms; prom-client for Node.js, scraping /metrics endpoint, Grafana dashboards for RED metrics.",
     "deliverable": "Prometheus metrics & Grafana dashboard setup",
-    "link": "https://prometheus.io/docs/introduction/overview/"
+    "link": "https://prometheus.io/docs/introduction/overview/",
+    "tech": "AWS Cloud & Docker DevOps"
   },
   {
     "day": 124,
@@ -1361,7 +1484,8 @@
     "topic": "Structured Logging & Distributed Tracing",
     "desc": "Structured JSON logging with Pino/Winston, correlation IDs / request IDs across microservices, OpenTelemetry distributed tracing spans.",
     "deliverable": "OpenTelemetry distributed tracing pipeline",
-    "link": "https://opentelemetry.io/docs/"
+    "link": "https://opentelemetry.io/docs/",
+    "tech": "AWS Cloud & Docker DevOps"
   },
   {
     "day": 125,
@@ -1372,7 +1496,8 @@
     "topic": "Milestone Project 8 & 9 Review",
     "desc": "Reviewing Airbnb Microservices Backend with Docker & Enterprise Edge API Gateway with NGINX, rate limiting & circuit breakers.",
     "deliverable": "Cloud-Native Microservices Repositories",
-    "link": "https://github.com/goldbergyoni/nodebestpractices"
+    "link": "https://github.com/goldbergyoni/nodebestpractices",
+    "tech": "AWS Cloud & Docker DevOps"
   },
   {
     "day": 126,
@@ -1383,7 +1508,8 @@
     "topic": "LLM Fundamentals for Backend Engineers",
     "desc": "Tokens, context window limits, temperature, top-p, rate limits, latency bottlenecks, cost modeling across OpenAI & Google Gemini models.",
     "deliverable": "LLM tokenization & cost calculator utility",
-    "link": "https://platform.openai.com/docs/guides/text-generation"
+    "link": "https://platform.openai.com/docs/guides/text-generation",
+    "tech": "Applied AI & Gemini APIs"
   },
   {
     "day": 127,
@@ -1394,7 +1520,8 @@
     "topic": "API Integration: Function & Tool Calling",
     "desc": "Integrating OpenAI & Gemini SDKs in Node.js; Tool Calling (Function Calling), enforcing structured JSON outputs with Zod schema validation.",
     "deliverable": "Type-safe LLM Tool Calling service",
-    "link": "https://ai.google.dev/gemini-api/docs/function-calling"
+    "link": "https://ai.google.dev/gemini-api/docs/function-calling",
+    "tech": "Applied AI & Gemini APIs"
   },
   {
     "day": 128,
@@ -1405,7 +1532,8 @@
     "topic": "Streaming LLM Responses with SSE",
     "desc": "Reducing Time to First Token (TTFT); streaming LLM tokens via Server-Sent Events (SSE) from Node backend to frontend clients in real time.",
     "deliverable": "Streaming LLM Gateway endpoint",
-    "link": "https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events"
+    "link": "https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events",
+    "tech": "Applied AI & Gemini APIs"
   },
   {
     "day": 129,
@@ -1416,7 +1544,8 @@
     "topic": "Text Embeddings & Vector Math",
     "desc": "High-dimensional vector representations, text-embedding-3-small vs text-embedding-004, Cosine similarity, Dot product, Euclidean distance.",
     "deliverable": "Vector similarity search calculator in TypeScript",
-    "link": "https://platform.openai.com/docs/guides/embeddings"
+    "link": "https://platform.openai.com/docs/guides/embeddings",
+    "tech": "Applied AI & Gemini APIs"
   },
   {
     "day": 130,
@@ -1427,7 +1556,8 @@
     "topic": "Vector Databases in Production: pgvector",
     "desc": "pgvector extension for PostgreSQL: vector data type, L2 distance (<->), cosine distance (<=>), IVFFlat vs HNSW indexing algorithms.",
     "deliverable": "pgvector similarity search repository",
-    "link": "https://github.com/pgvector/pgvector"
+    "link": "https://github.com/pgvector/pgvector",
+    "tech": "Applied AI & Gemini APIs"
   },
   {
     "day": 131,
@@ -1438,7 +1568,8 @@
     "topic": "Retrieval-Augmented Generation (RAG) Architecture",
     "desc": "Document ingestion pipeline: text extraction, chunking strategies (recursive character vs semantic chunking), metadata tagging, vector upsert.",
     "deliverable": "Production RAG ingestion pipeline",
-    "link": "https://www.pinecone.io/learn/retrieval-augmented-generation/"
+    "link": "https://www.pinecone.io/learn/retrieval-augmented-generation/",
+    "tech": "Applied AI & Gemini APIs"
   },
   {
     "day": 132,
@@ -1449,7 +1580,8 @@
     "topic": "Milestone Project 10: AI Interview Taker",
     "desc": "Dynamic question prompts, context preservation, real-time streaming audio/text evaluations with Gemini API and Node.js.",
     "deliverable": "AI Interview Taker Backend Service",
-    "link": "https://ai.google.dev/"
+    "link": "https://ai.google.dev/",
+    "tech": "Applied AI & Gemini APIs"
   },
   {
     "day": 133,
@@ -1460,7 +1592,8 @@
     "topic": "Advanced RAG: Hybrid Search & Re-ranking",
     "desc": "Hybrid search combining sparse keyword search (BM25) with dense vector search (Reciprocal Rank Fusion RRF); cross-encoder re-ranking.",
     "deliverable": "Hybrid search & re-ranking engine",
-    "link": "https://cohere.com/rerank"
+    "link": "https://cohere.com/rerank",
+    "tech": "AI Agents & Sandboxes"
   },
   {
     "day": 134,
@@ -1471,7 +1604,8 @@
     "topic": "RAG Evaluation & Hallucination Auditing",
     "desc": "Evaluating RAG systems with Ragas metrics: Faithfulness (hallucination detection), Answer Relevance, Context Precision, and Context Recall.",
     "deliverable": "Automated RAG evaluation pipeline",
-    "link": "https://docs.ragas.io/"
+    "link": "https://docs.ragas.io/",
+    "tech": "AI Agents & Sandboxes"
   },
   {
     "day": 135,
@@ -1482,7 +1616,8 @@
     "topic": "Autonomous AI Agents & ReAct Framework",
     "desc": "ReAct framework (Reasoning + Acting), agent memory models (short-term buffer vs vector long-term memory), stopping conditions, loop guards.",
     "deliverable": "Autonomous task agent engine in TypeScript",
-    "link": "https://www.langchain.com/"
+    "link": "https://www.langchain.com/",
+    "tech": "AI Agents & Sandboxes"
   },
   {
     "day": 136,
@@ -1493,7 +1628,8 @@
     "topic": "Sandboxed Code Execution with E2B",
     "desc": "Spawning isolated secure micro-VMs in the cloud using E2B Sandboxes; executing untrusted LLM-generated code safely with timeouts.",
     "deliverable": "E2B Cloud Sandbox code execution runner",
-    "link": "https://e2b.dev/docs"
+    "link": "https://e2b.dev/docs",
+    "tech": "AI Agents & Sandboxes"
   },
   {
     "day": 137,
@@ -1504,7 +1640,8 @@
     "topic": "Background Agent Workflows with Inngest",
     "desc": "Orchestrating multi-step autonomous agent graphs with Inngest: step-level retries, human approval pauses, durable execution checkpoints.",
     "deliverable": "Inngest durable autonomous agent pipeline",
-    "link": "https://www.inngest.com/"
+    "link": "https://www.inngest.com/",
+    "tech": "AI Agents & Sandboxes"
   },
   {
     "day": 138,
@@ -1515,7 +1652,8 @@
     "topic": "Milestone Project 11: Lovable-Style App Generator",
     "desc": "Sandboxed execution, automated workflow generation, autonomous agents writing and executing full-stack apps inside E2B cloud environments.",
     "deliverable": "Lovable-Style App Generator Backend",
-    "link": "https://e2b.dev/"
+    "link": "https://e2b.dev/",
+    "tech": "AI Agents & Sandboxes"
   },
   {
     "day": 139,
@@ -1526,7 +1664,8 @@
     "topic": "Milestone Project 12: Multimodal Asset Generator",
     "desc": "Media synthesis worker pipelines with AI image/audio generation, background task queues, and S3 asset delivery.",
     "deliverable": "Multimodal Asset Generator Service",
-    "link": "https://ai.google.dev/"
+    "link": "https://ai.google.dev/",
+    "tech": "AI Agents & Sandboxes"
   },
   {
     "day": 140,
@@ -1537,7 +1676,8 @@
     "topic": "Test-Driven Development (TDD) Workflows with Jest",
     "desc": "TDD Red-Green-Refactor cycle, Jest configuration for TypeScript, writing unit tests for domain services, coverage thresholds.",
     "deliverable": "Unit test suite with 90%+ code coverage",
-    "link": "https://jestjs.io/docs/getting-started"
+    "link": "https://jestjs.io/docs/getting-started",
+    "tech": "Testing, Payments & Reliability"
   },
   {
     "day": 141,
@@ -1548,7 +1688,8 @@
     "topic": "Dependency Mocking with Sinon.js",
     "desc": "Test doubles: Mocks, stubs, and spies using Sinon.js; isolating external database connections, third-party HTTP calls, and message queues.",
     "deliverable": "Mocked service integration tests",
-    "link": "https://sinonjs.org/"
+    "link": "https://sinonjs.org/",
+    "tech": "Testing, Payments & Reliability"
   },
   {
     "day": 142,
@@ -1559,7 +1700,8 @@
     "topic": "API Integration Testing with Supertest & K6",
     "desc": "End-to-end HTTP integration tests with Supertest; stress and load testing with K6 (measuring p95, p99 latency under 2,000 req/sec).",
     "deliverable": "K6 load testing scenario scripts",
-    "link": "https://k6.io/docs/"
+    "link": "https://k6.io/docs/",
+    "tech": "Testing, Payments & Reliability"
   },
   {
     "day": 143,
@@ -1570,7 +1712,8 @@
     "topic": "Payment Gateway Integration: Razorpay / Stripe",
     "desc": "Payment lifecycle: Creating orders, client checkout, webhook signature verification, handling payment failures idempotently, refund flows.",
     "deliverable": "Idempotent payment webhook handler",
-    "link": "https://razorpay.com/docs/api/"
+    "link": "https://razorpay.com/docs/api/",
+    "tech": "Testing, Payments & Reliability"
   },
   {
     "day": 144,
@@ -1581,7 +1724,8 @@
     "topic": "Operational Utilities: CRON & Nodemailer",
     "desc": "Distributed CRON scheduling with node-cron / BullMQ repeat, transactional email delivery with Nodemailer, HTML email templates.",
     "deliverable": "Automated daily reporting & notification service",
-    "link": "https://nodemailer.com/"
+    "link": "https://nodemailer.com/",
+    "tech": "Testing, Payments & Reliability"
   },
   {
     "day": 145,
@@ -1592,7 +1736,8 @@
     "topic": "Distributed System Theorems: CAP & PACELC",
     "desc": "CAP Theorem (Consistency, Availability, Partition tolerance trade-offs); PACELC Theorem (If Partition, trade A and C; Else, trade Latency and Consistency).",
     "deliverable": "CAP & PACELC comparison matrix for top databases",
-    "link": "https://en.wikipedia.org/wiki/PACELC_theorem"
+    "link": "https://en.wikipedia.org/wiki/PACELC_theorem",
+    "tech": "Distributed System Design"
   },
   {
     "day": 146,
@@ -1603,7 +1748,8 @@
     "topic": "Network Load Balancing & Anycast",
     "desc": "L4 (Transport / TCP) vs L7 (Application / HTTP) load balancing, SSL offloading, sticky sessions, Anycast routing, global CDN acceleration.",
     "deliverable": "L4 vs L7 load balancing architecture blueprints",
-    "link": "https://www.nginx.com/resources/glossary/layer-4-load-balancing/"
+    "link": "https://www.nginx.com/resources/glossary/layer-4-load-balancing/",
+    "tech": "Distributed System Design"
   },
   {
     "day": 147,
@@ -1614,7 +1760,8 @@
     "topic": "System Design Blueprint: URL Shortener & Flash Sale",
     "desc": "End-to-end system design: URL Shortener with tRPC (base62 encoding, caching, 100M URLs/day) and High-concurrency Flash Sale checkout engine.",
     "deliverable": "System Design architecture diagrams & whitepapers",
-    "link": "https://github.com/donnemartin/system-design-primer"
+    "link": "https://github.com/donnemartin/system-design-primer",
+    "tech": "Distributed System Design"
   },
   {
     "day": 148,
@@ -1625,7 +1772,8 @@
     "topic": "Full Portfolio Polish & Architecture Documentation",
     "desc": "Polishing GitHub repositories for all 12 production projects: README architecture diagrams, tech stack badges, Docker Compose setups, API docs.",
     "deliverable": "Production GitHub Portfolio Audit",
-    "link": "https://github.com/goldbergyoni/nodebestpractices"
+    "link": "https://github.com/goldbergyoni/nodebestpractices",
+    "tech": "Portfolio & Interview Drills"
   },
   {
     "day": 149,
@@ -1636,7 +1784,8 @@
     "topic": "Backend Technical & Behavioral Interview Drills",
     "desc": "Mock interview rehearsals: Database query optimization, concurrency bug debugging, system scalability trade-offs, STAR behavioral responses.",
     "deliverable": "Backend Interview Mastery Guide",
-    "link": "https://github.com/donnemartin/system-design-primer"
+    "link": "https://github.com/donnemartin/system-design-primer",
+    "tech": "Portfolio & Interview Drills"
   },
   {
     "day": 150,
@@ -1646,7 +1795,8 @@
     "week": 22,
     "topic": "Day 150 Graduation & Mission Accomplished",
     "desc": "5-Month Advanced Node.js + Distributed Systems + AI Backend Engineering Journey Completed! Ready for Senior / SDE Backend Engineering roles.",
-    "deliverable": "150-Day Production Engineering Portfolio Mastered \ud83d\ude80",
-    "link": "https://courses.algocamp.io/learn/Lambda5"
+    "deliverable": "150-Day Production Engineering Portfolio Mastered 🚀",
+    "link": "https://courses.algocamp.io/learn/Lambda5",
+    "tech": "Portfolio & Interview Drills"
   }
 ]
