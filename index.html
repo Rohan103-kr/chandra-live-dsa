@@ -2644,56 +2644,111 @@
     }
 
     
-    /* Focus Mode Blur & Eye Button */
+    /* Backend Phase Banners & Clean Focus Mode */
+    .backend-phase-banner {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(5, 150, 105, 0.03) 100%), var(--surface);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 12px;
+      padding: 14px 20px;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .backend-phase-banner:first-of-type {
+      margin-top: 14px;
+    }
+    .backend-phase-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+    .backend-phase-badge {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      padding: 4px 9px;
+      border-radius: 6px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      white-space: nowrap;
+    }
+    .backend-phase-title {
+      font-size: 15.5px;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .backend-phase-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .backend-phase-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+    .backend-phase-counter {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* Polished Focus Mode (Subtle & Non-Destructive) */
     .focus-blur-container {
       position: relative;
-      overflow: hidden;
     }
     .backend-week-blurred {
-      filter: blur(6px) !important;
-      opacity: 0.28 !important;
-      user-select: none !important;
-      pointer-events: none !important;
+      filter: blur(4px);
+      opacity: 0.55;
+      user-select: none;
+      pointer-events: none;
       transition: filter 0.25s ease, opacity 0.25s ease;
     }
     .focus-blur-overlay {
       position: absolute;
-      top: 50%;
+      top: 18px;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       z-index: 12;
       background: var(--surface);
-      border: 1.5px solid rgba(16, 185, 129, 0.4);
+      border: 1.5px solid rgba(16, 185, 129, 0.45);
       border-radius: 99px;
-      padding: 8px 18px;
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+      padding: 6px 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 12px;
+      gap: 10px;
+      font-size: 11.5px;
       font-weight: 700;
       color: var(--text);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(10px);
       white-space: nowrap;
     }
     .focus-eye-btn {
-      background: var(--surface-alt);
+      background: transparent;
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 3px 7px;
+      padding: 3px 8px;
       cursor: pointer;
-      font-size: 13px;
-      line-height: 1;
+      font-size: 12px;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
+      gap: 4px;
+      color: var(--text-muted);
       transition: all 0.15s ease;
-      color: var(--text);
     }
     .focus-eye-btn:hover {
-      background: rgba(16, 185, 129, 0.15);
+      background: rgba(16, 185, 129, 0.12);
       border-color: #10b981;
-      transform: scale(1.08);
+      color: #10b981;
     }
     .focus-eye-btn.is-revealed {
       background: rgba(16, 185, 129, 0.15);
@@ -5436,7 +5491,7 @@
 
     let currentAppMode = "dsa";
     let backendGroupMode = "phases"; // "phases" (hierarchical phase->week) or "weeks"
-    let backendFocusMode = true; // Focus Mode active by default: blurs non-current weeks
+    let backendFocusMode = false; // Focus Mode active by default: blurs non-current weeks
     try {
       const savedFocus = localStorage.getItem("chandra_backend_focus_mode");
       if (savedFocus !== null) backendFocusMode = savedFocus === "true";
@@ -5723,10 +5778,18 @@
       const totalDays = BACKEND_150_DAYS.length;
       let totalSolved = 0;
       let totalBookmarked = 0;
+      let p1Solved = 0, p2Solved = 0, p3Solved = 0, p4Solved = 0, p5Solved = 0;
 
       BACKEND_150_DAYS.forEach(d => {
         const p = getBackendProg(d.day);
-        if (p.s === 2) totalSolved++;
+        if (p.s === 2) {
+          totalSolved++;
+          if (d.phase === 1) p1Solved++;
+          else if (d.phase === 2) p2Solved++;
+          else if (d.phase === 3) p3Solved++;
+          else if (d.phase === 4) p4Solved++;
+          else if (d.phase === 5) p5Solved++;
+        }
         if (p.b) totalBookmarked++;
       });
 
@@ -5735,6 +5798,7 @@
       const todayKey = toDateKey(today);
       const currentDayMatch = BACKEND_150_DAYS.find(d => d.date === todayKey);
       const currentDayNum = currentDayMatch ? currentDayMatch.day : 1;
+      const currentWkNum = currentDayMatch ? currentDayMatch.week : 2;
 
       // Unique tech list for dropdown filter
       const allTechs = [...new Set(BACKEND_150_DAYS.map(d => d.tech))].sort();
@@ -5759,372 +5823,276 @@
         return true;
       });
 
+      // Filter phases to display
+      const phasesToDisplay = backendActivePhase === "all" 
+        ? BACKEND_PHASES 
+        : BACKEND_PHASES.filter(p => p.id === parseInt(backendActivePhase, 10));
+
       let html = `
         <div class="backend-ai-container" style="max-width: 1400px; margin: 0 auto;">
           
-          <!-- DSA-Style Dashboard Header -->
-          <div class="dashboard" style="grid-template-columns: 1fr 2fr; margin-bottom: 14px;">
+          <!-- Striver/DSA-Style Hero Dashboard -->
+          <div class="dashboard" style="margin-bottom: 16px;">
             
             <div class="progress-hero" style="border-right: 1px solid var(--border); padding-right: 24px;">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div class="progress-title" style="color: #10b981; font-weight: 800;">Backend + AI Architecture</div>
+                <div class="progress-title" style="color: #10b981; font-weight: 800;">Backend + AI Mastery</div>
                 <span class="progress-percent-badge" style="background: rgba(16, 185, 129, 0.12); color: #10b981; border-color: rgba(16, 185, 129, 0.3);">${overallPct}% Mastered</span>
               </div>
               <div class="progress-big">
                 <span style="font-size: 34px; font-weight: 800; color: var(--text);">${totalSolved}</span>
-                <span style="font-size: 16px; font-weight: 600; color: var(--text-muted);">/ ${totalDays} Days Mastered</span>
+                <span style="font-size: 16px; font-weight: 600; color: var(--text-muted);">/ ${totalDays} Days Solved</span>
               </div>
               <div class="hero-bar-container" style="height: 10px; margin-top: 4px;">
                 <div class="hero-bar-fill" style="width: ${overallPct}%; background: linear-gradient(90deg, #10b981, #059669);"></div>
               </div>
               <div style="display: flex; justify-content: space-between; font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">
-                <span>150-Day Production Trajectory</span>
+                <span>5-Month Trajectory · 22 Weeks</span>
                 <span>${totalBookmarked} Bookmarked 🔖</span>
               </div>
             </div>
 
-            <!-- Stats & Quick Actions -->
-            <div style="display: flex; flex-direction: column; justify-content: space-between; gap: 12px;">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px;">
-                <div>
-                  <h2 style="font-size: 18px; font-weight: 800; color: var(--text); display: flex; align-items: center; gap: 8px;">
-                    <span>⚡</span> 150-Day Production Backend & AI Architecture Sheet
-                  </h2>
-                  <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 2px;">
-                    Hierarchical tracking: 5 Phases · 22 Weeks · 150 Days across Node.js Internals, Distributed Systems, Microservices, Sagas, Kafka & Applied AI.
-                  </p>
-                </div>
-                <a href="https://courses.algocamp.io/learn/Lambda5" target="_blank" rel="noopener" class="nav-btn" style="font-size: 12px; background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3); color: #10b981; text-decoration: none;">
-                  🔗 AlgoCamp Lambda 5.0 ↗
-                </a>
+            <!-- Stats Tiles (DSA Style) -->
+            <div class="stats-tiles" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+              <div class="stat-tile" style="padding: 12px 14px; background: var(--surface-alt); border: 1px solid var(--border); border-radius: 10px;">
+                <div style="font-size: 11px; font-weight: 700; color: #10b981; text-transform: uppercase;">Phase 1: Foundations</div>
+                <div style="font-size: 18px; font-weight: 800; color: var(--text); margin-top: 2px;">${p1Solved} / 30</div>
+                <div style="font-size: 11px; color: var(--text-muted);">V8, LibUV & TypeScript</div>
               </div>
 
-              <!-- Action Buttons & Grouping Switch -->
-              <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: space-between;">
-                <div style="display: flex; gap: 6px; flex-wrap: wrap; align-items: center;">
-                  <button class="nav-btn primary" onclick="jumpToTodayBackendDay()" style="background: linear-gradient(135deg, #059669, #10b981); border: none; font-size: 12px;">
-                    🎯 Jump to Today (Day ${currentDayNum})
-                  </button>
-                  <button class="nav-btn" onclick="pickRandomBackendDay()" style="font-size: 12px;">
-                    🎲 Pick Random Day
-                  </button>
-                  <button class="nav-btn" onclick="toggleAllBackendSteps(true)" style="font-size: 12px;">
-                    ➕ Expand All
-                  </button>
-                  <button class="nav-btn" onclick="toggleAllBackendSteps(false)" style="font-size: 12px;">
-                    ➖ Collapse All
-                  </button>
-                  <button class="nav-btn ${backendFocusMode ? 'primary' : ''}" onclick="toggleBackendFocusMode()" id="backend-focus-mode-btn" style="font-size: 12px; display: inline-flex; align-items: center; gap: 6px; ${backendFocusMode ? 'background: linear-gradient(135deg, #059669, #10b981); border: none; color: #fff;' : 'background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3); color: #10b981;'}" title="Focus Mode blurs all other weeks except current week (${currentDayMatch ? 'Week ' + currentDayMatch.week : 'Week 1'}). Click to toggle.">
-                    ${backendFocusMode ? '👁️ Focus Mode: ON (Other Weeks Blurred)' : '👁️ Focus Mode: OFF (Reveal All)'}
-                  </button>
-                </div>
-
-                <!-- Grouping Mode Switch -->
-                <div style="display: flex; background: var(--surface-alt); border-radius: 8px; padding: 2px; border: 1px solid var(--border); align-items: center;">
-                  <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); padding: 0 8px;">Structure:</span>
-                  <button class="nav-btn" onclick="setBackendGroupMode('phases')" style="font-size: 11.5px; padding: 4px 10px; border-radius: 6px; border: none; ${backendGroupMode === 'phases' ? 'background: #10b981; color: #fff; font-weight: 800;' : 'background: transparent; color: var(--text);'}">
-                    Phases ➔ Weeks
-                  </button>
-                  <button class="nav-btn" onclick="setBackendGroupMode('weeks')" style="font-size: 11.5px; padding: 4px 10px; border-radius: 6px; border: none; ${backendGroupMode === 'weeks' ? 'background: #10b981; color: #fff; font-weight: 800;' : 'background: transparent; color: var(--text);'}">
-                    22 Weeks Only
-                  </button>
-                </div>
+              <div class="stat-tile" style="padding: 12px 14px; background: var(--surface-alt); border: 1px solid var(--border); border-radius: 10px;">
+                <div style="font-size: 11px; font-weight: 700; color: #3b82f6; text-transform: uppercase;">Phase 2: DBs & APIs</div>
+                <div style="font-size: 18px; font-weight: 800; color: var(--text); margin-top: 2px;">${p2Solved} / 30</div>
+                <div style="font-size: 11px; color: var(--text-muted);">gRPC, GraphQL & WebSockets</div>
               </div>
 
+              <div class="stat-tile" style="padding: 12px 14px; background: var(--surface-alt); border: 1px solid var(--border); border-radius: 10px;">
+                <div style="font-size: 11px; font-weight: 700; color: #f59e0b; text-transform: uppercase;">Phase 3: Distributed</div>
+                <div style="font-size: 18px; font-weight: 800; color: var(--text); margin-top: 2px;">${p3Solved} / 35</div>
+                <div style="font-size: 11px; color: var(--text-muted);">Kafka, Redis, Sagas & Temporal</div>
+              </div>
+
+              <div class="stat-tile" style="padding: 12px 14px; background: var(--surface-alt); border: 1px solid var(--border); border-radius: 10px;">
+                <div style="font-size: 11px; font-weight: 700; color: #8b5cf6; text-transform: uppercase;">Phase 4 & 5: Cloud & AI</div>
+                <div style="font-size: 18px; font-weight: 800; color: var(--text); margin-top: 2px;">${p4Solved + p5Solved} / 55</div>
+                <div style="font-size: 11px; color: var(--text-muted);">AWS, Docker & LLM Agents</div>
+              </div>
             </div>
 
           </div>
 
-          <!-- Controls Bar (Search & Multi-Filters) -->
-          <div class="controls-bar" style="margin-bottom: 12px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
-            <div class="search-box" style="flex: 1; min-width: 240px;">
-              <input 
-                type="text" 
-                class="search-input" 
-                placeholder="🔍 Search day, topic, tech, deliverable, or concept..." 
-                value="${esc(backendSearchQuery)}" 
-                oninput="backendSearchQuery = this.value; renderBackendRoadmap();"
-                style="width: 100%;"
-              >
+          <!-- Controls & Action Bar -->
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px;">
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+              <button class="nav-btn primary" onclick="jumpToTodayBackendDay()" style="background: linear-gradient(135deg, #059669, #10b981); border: none; font-size: 12.5px;">
+                🎯 Jump to Today (Day ${currentDayNum})
+              </button>
+              <button class="nav-btn" onclick="pickRandomBackendDay()" style="font-size: 12.5px;">
+                🎲 Pick Random
+              </button>
+              <button class="nav-btn ${backendFocusMode ? 'primary' : ''}" onclick="toggleBackendFocusMode()" id="backend-focus-mode-btn" style="font-size: 12.5px; display: inline-flex; align-items: center; gap: 6px; ${backendFocusMode ? 'background: #059669; border: none; color: #fff;' : ''}" title="Focus Mode blurs other weeks to eliminate overwhelm. Click to toggle.">
+                <span>${backendFocusMode ? '👁️ Focus Mode: ON' : '👁️‍🗨️ Focus Mode: OFF'}</span>
+              </button>
+              <button class="nav-btn" onclick="toggleAllBackendSteps(true)" style="font-size: 12px;">
+                ➕ Expand All
+              </button>
+              <button class="nav-btn" onclick="toggleAllBackendSteps(false)" style="font-size: 12px;">
+                ➖ Collapse All
+              </button>
             </div>
 
-            <div class="filter-group">
-              <select class="filter-select" onchange="backendActiveStatus = this.value; renderBackendRoadmap();">
+            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+              <div class="search-box" style="width: 220px;">
+                <input 
+                  type="text" 
+                  class="search-input" 
+                  placeholder="🔍 Search day, tech, topic..." 
+                  value="${esc(backendSearchQuery)}" 
+                  oninput="backendSearchQuery = this.value; renderBackendRoadmap();"
+                  style="width: 100%; height: 34px;"
+                >
+              </div>
+
+              <select class="filter-select" onchange="backendActiveStatus = this.value; renderBackendRoadmap();" style="height: 34px;">
                 <option value="all" ${backendActiveStatus === 'all' ? 'selected' : ''}>All Status (${totalDays})</option>
-                <option value="solved" ${backendActiveStatus === 'solved' ? 'selected' : ''}>✓ Mastered Only (${totalSolved})</option>
-                <option value="pending" ${backendActiveStatus === 'pending' ? 'selected' : ''}>○ Pending Only (${totalDays - totalSolved})</option>
-                <option value="bookmarked" ${backendActiveStatus === 'bookmarked' ? 'selected' : ''}>🔖 Bookmarked Only (${totalBookmarked})</option>
+                <option value="solved" ${backendActiveStatus === 'solved' ? 'selected' : ''}>✓ Mastered (${totalSolved})</option>
+                <option value="pending" ${backendActiveStatus === 'pending' ? 'selected' : ''}>○ Pending (${totalDays - totalSolved})</option>
+                <option value="bookmarked" ${backendActiveStatus === 'bookmarked' ? 'selected' : ''}>🔖 Bookmarked (${totalBookmarked})</option>
               </select>
-            </div>
 
-            <div class="filter-group">
-              <select class="filter-select" onchange="backendActivePhase = this.value; renderBackendRoadmap();">
-                <option value="all" ${backendActivePhase === 'all' ? 'selected' : ''}>All 5 Phases</option>
-                <option value="1" ${backendActivePhase === '1' ? 'selected' : ''}>Phase 1: Foundations & Internals (D1–30)</option>
-                <option value="2" ${backendActivePhase === '2' ? 'selected' : ''}>Phase 2: DBs, APIs & Modern Protocols (D31–60)</option>
-                <option value="3" ${backendActivePhase === '3' ? 'selected' : ''}>Phase 3: Distributed Systems & Queues (D61–95)</option>
-                <option value="4" ${backendActivePhase === '4' ? 'selected' : ''}>Phase 4: DB Internals & Cloud Infra (D96–125)</option>
-                <option value="5" ${backendActivePhase === '5' ? 'selected' : ''}>Phase 5: Applied AI & System Design (D126–150)</option>
-              </select>
-            </div>
-
-            <div class="filter-group">
-              <select class="filter-select" onchange="backendActiveTech = this.value; renderBackendRoadmap();">
-                <option value="all" ${backendActiveTech === 'all' ? 'selected' : ''}>All Technologies</option>
+              <select class="filter-select" onchange="backendActiveTech = this.value; renderBackendRoadmap();" style="height: 34px; max-width: 170px;">
+                <option value="all" ${backendActiveTech === 'all' ? 'selected' : ''}>All Tech</option>
                 ${allTechs.map(t => `<option value="${t}" ${backendActiveTech === t ? 'selected' : ''}>${t}</option>`).join("")}
               </select>
             </div>
           </div>
 
-          <!-- Hierarchical Accordion View -->
+          <!-- Phase Navigation Tabs Strip -->
+          <div class="phase-chips-group" style="margin-bottom: 16px;">
+            <button class="phase-chip ${backendActivePhase === 'all' ? 'active' : ''}" onclick="backendActivePhase = 'all'; renderBackendRoadmap();">
+              All 150 Days (22 Weeks)
+            </button>
+            <button class="phase-chip ${backendActivePhase === '1' ? 'active' : ''}" onclick="backendActivePhase = '1'; renderBackendRoadmap();">
+              Phase 1: Foundations (W1–4)
+            </button>
+            <button class="phase-chip ${backendActivePhase === '2' ? 'active' : ''}" onclick="backendActivePhase = '2'; renderBackendRoadmap();">
+              Phase 2: DBs & Protocols (W5–8)
+            </button>
+            <button class="phase-chip ${backendActivePhase === '3' ? 'active' : ''}" onclick="backendActivePhase = '3'; renderBackendRoadmap();">
+              Phase 3: Distributed Systems (W9–13)
+            </button>
+            <button class="phase-chip ${backendActivePhase === '4' ? 'active' : ''}" onclick="backendActivePhase = '4'; renderBackendRoadmap();">
+              Phase 4: DB Internals & Cloud (W14–17)
+            </button>
+            <button class="phase-chip ${backendActivePhase === '5' ? 'active' : ''}" onclick="backendActivePhase = '5'; renderBackendRoadmap();">
+              Phase 5: Applied AI (W18–22)
+            </button>
+          </div>
+
+          <!-- Roadmap Sections: Clean Phase Banner -> Weekly Step Cards -->
           <div class="backend-sheet-list">
       `;
 
-      if (backendGroupMode === "phases") {
-        // HIERARCHICAL MODE: PHASES -> WEEKS -> PROBLEM TABLE
-        BACKEND_PHASES.forEach(phase => {
-          const allDaysInPhase = BACKEND_150_DAYS.filter(d => d.phase === phase.id);
-          const visibleDaysInPhase = filteredDays.filter(d => d.phase === phase.id);
+      // Render each Phase and its Weeks
+      phasesToDisplay.forEach(phase => {
+        const allDaysInPhase = BACKEND_150_DAYS.filter(d => d.phase === phase.id);
+        const visibleDaysInPhase = filteredDays.filter(d => d.phase === phase.id);
 
-          if (visibleDaysInPhase.length === 0 && (backendActivePhase !== "all" || backendSearchQuery || backendActiveStatus !== "all" || backendActiveTech !== "all")) {
-            return;
-          }
+        if (visibleDaysInPhase.length === 0 && (backendActivePhase !== "all" || backendSearchQuery || backendActiveStatus !== "all" || backendActiveTech !== "all")) {
+          return;
+        }
 
-          const phaseDoneCount = allDaysInPhase.filter(d => getBackendProg(d.day).s === 2).length;
-          const isPhaseDone = phaseDoneCount === allDaysInPhase.length && allDaysInPhase.length > 0;
-          const phasePct = Math.round((phaseDoneCount / allDaysInPhase.length) * 100);
-          const isPhaseOpen = backendExpandedPhases.has(phase.id) || backendSearchQuery.length > 0;
-          const isPhaseCurrent = currentDayMatch && currentDayMatch.phase === phase.id;
+        const phaseDoneCount = allDaysInPhase.filter(d => getBackendProg(d.day).s === 2).length;
+        const isPhaseDone = phaseDoneCount === allDaysInPhase.length && allDaysInPhase.length > 0;
+        const phasePct = Math.round((phaseDoneCount / allDaysInPhase.length) * 100);
+        const isPhaseCurrent = currentDayMatch && currentDayMatch.phase === phase.id;
 
-          const weeksInPhase = BACKEND_WEEKS.filter(w => w.phase === phase.id);
+        const weeksInPhase = BACKEND_WEEKS.filter(w => w.phase === phase.id);
 
-          html += `
-            <div class="step-card ${isPhaseOpen ? 'open' : ''} ${isPhaseDone ? 'completed' : ''}" id="backend-phase-${phase.id}" style="margin-bottom: 16px; border: 1.5px solid ${isPhaseCurrent ? '#10b981' : 'var(--border)'};">
-              
-              <!-- Phase Header -->
-              <div class="step-header" onclick="toggleBackendPhase(${phase.id})" style="background: var(--surface); padding: 16px 20px;">
-                <div class="step-info" style="display: flex; align-items: center; gap: 14px; min-width: 0;">
-                  <span class="step-badge ${isPhaseDone ? 'completed-badge' : ''}" style="${!isPhaseDone ? 'background: rgba(16, 185, 129, 0.14); color: #10b981; border-color: rgba(16, 185, 129, 0.3); font-size: 11.5px;' : ''}">
-                    ${phase.badge}
-                  </span>
-                  <div class="step-title-area">
-                    <div class="step-title" style="font-size: 16px; font-weight: 800;">
-                      ${esc(phase.title)}
-                      ${isPhaseCurrent ? '<span style="font-size: 10px; font-weight: 800; background: #10b981; color: #fff; padding: 2px 7px; border-radius: 99px;">CURRENT PHASE</span>' : ''}
-                    </div>
-                    <div class="step-subtext" style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">
-                      ${esc(phase.dates)} · <em>${esc(phase.deliverable)}</em>
-                    </div>
-                  </div>
+        html += `
+          <!-- Phase Section Header Banner -->
+          <div class="backend-phase-banner" id="backend-phase-sec-${phase.id}">
+            <div class="backend-phase-left">
+              <span class="backend-phase-badge">${phase.badge}</span>
+              <div>
+                <div class="backend-phase-title">
+                  ${esc(phase.title)}
+                  ${isPhaseCurrent ? '<span style="font-size: 10px; font-weight: 800; background: #10b981; color: #fff; padding: 1px 6px; border-radius: 4px; margin-left: 6px;">CURRENT PHASE</span>' : ''}
                 </div>
-
-                <div class="step-progress-area">
-                  <div class="step-progress-counter ${isPhaseDone ? 'done' : ''}" style="font-size: 13px; font-weight: 700;">
-                    ${phaseDoneCount} / ${allDaysInPhase.length} Days Done
-                  </div>
-                  <div class="step-mini-bar" style="width: 100px; height: 8px;">
-                    <div class="step-mini-fill" style="width: ${phasePct}%; background: ${isPhaseDone ? 'var(--success)' : '#10b981'};"></div>
-                  </div>
-                  <div class="step-chevron">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                  </div>
+                <div class="backend-phase-desc">
+                  ${esc(phase.dates)} · 🎯 ${esc(phase.deliverable)}
                 </div>
               </div>
-
-              <!-- Phase Content: DIVIDED WEEK-WISE! -->
-              <div class="step-content" style="padding: 14px 16px; background: var(--surface-alt); border-top: 1px solid var(--border);">
-                <div style="font-size: 11.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
-                  <span>📅 Weeks inside ${phase.badge} (${weeksInPhase.length} Weeks)</span>
-                  <span>Click any week to toggle its day table</span>
-                </div>
-
-                ${weeksInPhase.map(wk => {
-                  const allDaysInWk = BACKEND_150_DAYS.filter(d => d.week === wk.wk);
-                  const visibleDaysInWk = filteredDays.filter(d => d.week === wk.wk);
-
-                  if (visibleDaysInWk.length === 0 && (backendActivePhase !== "all" || backendSearchQuery || backendActiveStatus !== "all" || backendActiveTech !== "all")) {
-                    return "";
-                  }
-
-                  const wkDoneCount = allDaysInWk.filter(d => getBackendProg(d.day).s === 2).length;
-                  const isWkDone = wkDoneCount === allDaysInWk.length && allDaysInWk.length > 0;
-                  const wkPct = Math.round((wkDoneCount / allDaysInWk.length) * 100);
-                  const isWkCurrent = currentDayMatch && currentDayMatch.week === wk.wk;
-                  const isWkOpen = backendExpandedWeeks.has(wk.wk) || backendSearchQuery.length > 0;
-                  const isWkBlurred = backendFocusMode && !isWkCurrent && !backendUnblurredWeeks.has(wk.wk);
-
-                  return `
-                    <div class="backend-week-card ${isWkOpen ? 'open' : ''} ${isWkCurrent ? 'is-current-week' : ''}" id="backend-week-${wk.wk}" style="background: var(--surface); margin-bottom: 12px; border-radius: 10px; border: 1px solid ${isWkCurrent ? '#10b981' : 'var(--border)'};">
-                      
-                      <!-- Week Header -->
-                      <div class="backend-week-header" onclick="toggleBackendWeek(${wk.wk})" style="padding: 12px 16px;">
-                        <div class="backend-week-info" style="display: flex; align-items: center; gap: 12px; min-width: 0;">
-                          <span class="backend-week-badge" style="font-size: 10.5px;">
-                            WEEK ${String(wk.wk).padStart(2, '0')}
-                          </span>
-                          <div>
-                            <div class="backend-week-title" style="font-size: 14px; font-weight: 700;">
-                              ${esc(wk.title)}
-                              ${isWkCurrent ? '<span style="font-size: 9.5px; font-weight: 800; background: #10b981; color: #fff; padding: 1px 6px; border-radius: 4px;">CURRENT WEEK</span>' : ''}
-                            </div>
-                            <div class="backend-week-sub" style="font-size: 11.5px; color: var(--text-muted); margin-top: 1px;">
-                              ${esc(wk.dates)} · <em>🎯 ${esc(wk.deliverable)}</em>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
-                          <button class="focus-eye-btn ${isWkBlurred ? '' : 'is-revealed'}" 
-                                  onclick="event.stopPropagation(); toggleSingleWeekBlur(${wk.wk})" 
-                                  title="${isWkBlurred ? 'Click eye to unblur and reveal Week ' + wk.wk : (isWkCurrent ? 'Current Week (Active Focus)' : 'Week ' + wk.wk + ' revealed. Click eye to blur')}">
-                            ${isWkBlurred ? '🙈' : '👁️'}
-                          </button>
-                          <span class="step-progress-counter ${isWkDone ? 'done' : ''}" style="font-size: 11.5px;">
-                            ${wkDoneCount} / ${allDaysInWk.length} Done
-                          </span>
-                          <div class="step-mini-bar" style="width: 70px; height: 6px;">
-                            <div class="step-mini-fill" style="width: ${wkPct}%; background: ${isWkDone ? 'var(--success)' : '#10b981'};"></div>
-                          </div>
-                          <div class="step-chevron">
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                              <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Week Problem Table with Focus Blur -->
-                      <div class="backend-week-content" style="border-top: 1px solid var(--border);">
-                        <div class="focus-blur-container">
-                          ${isWkBlurred ? `
-                            <div class="focus-blur-overlay">
-                              <span>🔒 Week ${wk.wk} Blurred (Focus Mode)</span>
-                              <button class="nav-btn" onclick="toggleSingleWeekBlur(${wk.wk})" style="font-size: 11.5px; padding: 4px 12px; background: linear-gradient(135deg, #059669, #10b981); border: none; color: #fff; border-radius: 99px; font-weight: 800; cursor: pointer;">
-                                👁️ Reveal Week ${wk.wk}
-                              </button>
-                            </div>
-                          ` : ''}
-                          <div class="table-container ${isWkBlurred ? 'backend-week-blurred' : ''}">
-                            <table class="problem-table">
-                              <thead>
-                                <tr>
-                                  <th class="col-status">Status</th>
-                                  <th class="col-title">Day & Topic</th>
-                                  <th class="col-diff">Technology</th>
-                                  <th class="col-tier">Deliverable</th>
-                                  <th class="col-practice">Resource</th>
-                                  <th class="col-rev">Revise</th>
-                                  <th class="col-notes">Notes</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                ${visibleDaysInWk.map(d => backendProblemRowHTML(d, todayKey)).join("")}
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
-                  `;
-                }).join("")}
-
-              </div>
-
             </div>
-          `;
-        });
-      } else {
-        // FLAT 22-WEEK VIEW
-        BACKEND_WEEKS.forEach(wk => {
-          const allDaysInWk = BACKEND_150_DAYS.filter(d => d.week === wk.wk);
-          const visibleDaysInWk = filteredDays.filter(d => d.week === wk.wk);
 
-          if (visibleDaysInWk.length === 0 && (backendActivePhase !== "all" || backendSearchQuery || backendActiveStatus !== "all" || backendActiveTech !== "all")) {
-            return;
-          }
-
-          const wkDoneCount = allDaysInWk.filter(d => getBackendProg(d.day).s === 2).length;
-          const isWkDone = wkDoneCount === allDaysInWk.length && allDaysInWk.length > 0;
-          const wkPct = Math.round((wkDoneCount / allDaysInWk.length) * 100);
-          const isWkCurrent = currentDayMatch && currentDayMatch.week === wk.wk;
-          const isWkOpen = backendExpandedWeeks.has(wk.wk) || backendSearchQuery.length > 0;
-          const isWkBlurred = backendFocusMode && !isWkCurrent && !backendUnblurredWeeks.has(wk.wk);
-
-          html += `
-            <div class="step-card ${isWkOpen ? 'open' : ''} ${isWkDone ? 'completed' : ''}" id="backend-week-${wk.wk}" style="margin-bottom: 12px;">
-              <div class="step-header" onclick="toggleBackendWeek(${wk.wk})">
-                <div class="step-info" style="display: flex; align-items: center; gap: 12px; min-width: 0;">
-                  <span class="step-badge ${isWkDone ? 'completed-badge' : ''}" style="${!isWkDone ? 'background: rgba(16, 185, 129, 0.12); color: #10b981; border-color: rgba(16, 185, 129, 0.25);' : ''}">
-                    WEEK ${String(wk.wk).padStart(2, '0')}
-                  </span>
-                  <div class="step-title-area">
-                    <div class="step-title">
-                      ${esc(wk.title)}
-                      ${isWkCurrent ? '<span style="font-size: 10px; font-weight: 800; background: #10b981; color: #fff; padding: 1px 7px; border-radius: 99px;">CURRENT</span>' : ''}
-                    </div>
-                    <div class="step-subtext">
-                      ${esc(wk.dates)} · Phase ${wk.phase} · <em>${esc(wk.deliverable)}</em>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="step-progress-area">
-                  <button class="focus-eye-btn ${isWkBlurred ? '' : 'is-revealed'}" 
-                          onclick="event.stopPropagation(); toggleSingleWeekBlur(${wk.wk})" 
-                          title="${isWkBlurred ? 'Click eye to unblur and reveal Week ' + wk.wk : (isWkCurrent ? 'Current Week (Active Focus)' : 'Week ' + wk.wk + ' revealed. Click eye to blur')}">
-                    ${isWkBlurred ? '🙈' : '👁️'}
-                  </button>
-                  <div class="step-progress-counter ${isWkDone ? 'done' : ''}">
-                    ${wkDoneCount} / ${allDaysInWk.length} Done
-                  </div>
-                  <div class="step-mini-bar">
-                    <div class="step-mini-fill" style="width: ${wkPct}%; background: ${isWkDone ? 'var(--success)' : '#10b981'};"></div>
-                  </div>
-                  <div class="step-chevron">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                  </div>
-                </div>
+            <div class="backend-phase-right">
+              <div class="backend-phase-counter">
+                ${phaseDoneCount} / ${allDaysInPhase.length} Done (${phasePct}%)
               </div>
+              <div class="step-mini-bar" style="width: 100px; height: 7px;">
+                <div class="step-mini-fill" style="width: ${phasePct}%; background: ${isPhaseDone ? 'var(--success)' : '#10b981'};"></div>
+              </div>
+            </div>
+          </div>
 
-              <div class="step-content">
-                <div class="focus-blur-container">
-                  ${isWkBlurred ? `
-                    <div class="focus-blur-overlay">
-                      <span>🔒 Week ${wk.wk} Blurred (Focus Mode)</span>
-                      <button class="nav-btn" onclick="toggleSingleWeekBlur(${wk.wk})" style="font-size: 11.5px; padding: 4px 12px; background: linear-gradient(135deg, #059669, #10b981); border: none; color: #fff; border-radius: 99px; font-weight: 800; cursor: pointer;">
-                        👁️ Reveal Week ${wk.wk}
+          <!-- Weekly Cards inside this Phase -->
+          <div class="backend-phase-weeks" style="margin-bottom: 20px;">
+            ${weeksInPhase.map(wk => {
+              const allDaysInWk = BACKEND_150_DAYS.filter(d => d.week === wk.wk);
+              const visibleDaysInWk = filteredDays.filter(d => d.week === wk.wk);
+
+              if (visibleDaysInWk.length === 0 && (backendActivePhase !== "all" || backendSearchQuery || backendActiveStatus !== "all" || backendActiveTech !== "all")) {
+                return "";
+              }
+
+              const wkDoneCount = allDaysInWk.filter(d => getBackendProg(d.day).s === 2).length;
+              const isWkDone = wkDoneCount === allDaysInWk.length && allDaysInWk.length > 0;
+              const wkPct = Math.round((wkDoneCount / allDaysInWk.length) * 100);
+              const isWkCurrent = currentDayMatch && currentDayMatch.week === wk.wk;
+              const isWkOpen = backendExpandedWeeks.has(wk.wk) || backendSearchQuery.length > 0;
+              const isWkBlurred = backendFocusMode && !isWkCurrent && !backendUnblurredWeeks.has(wk.wk);
+
+              return `
+                <div class="step-card ${isWkOpen ? 'open' : ''} ${isWkDone ? 'completed' : ''}" id="backend-week-${wk.wk}" style="margin-bottom: 10px; border-color: ${isWkCurrent ? '#10b981' : 'var(--border)'};">
+                  
+                  <!-- Week Header -->
+                  <div class="step-header" onclick="toggleBackendWeek(${wk.wk})">
+                    <div class="step-info" style="display: flex; align-items: center; gap: 12px; min-width: 0;">
+                      <span class="step-badge ${isWkDone ? 'completed-badge' : ''}" style="${!isWkDone ? 'background: rgba(16, 185, 129, 0.12); color: #10b981; border-color: rgba(16, 185, 129, 0.25);' : ''}">
+                        WEEK ${String(wk.wk).padStart(2, '0')}
+                      </span>
+                      <div class="step-title-area">
+                        <div class="step-title">
+                          ${esc(wk.title)}
+                          ${isWkCurrent ? '<span style="font-size: 10px; font-weight: 800; background: #10b981; color: #fff; padding: 2px 7px; border-radius: 99px;">CURRENT WEEK</span>' : ''}
+                        </div>
+                        <div class="step-subtext">
+                          ${esc(wk.dates)} · <em>🎯 ${esc(wk.deliverable)}</em>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="step-progress-area" style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
+                      <!-- Eye Reveal / Blur Button for this Week -->
+                      <button class="focus-eye-btn ${!isWkBlurred ? 'is-revealed' : ''}" 
+                              onclick="event.stopPropagation(); toggleSingleWeekBlur(${wk.wk})" 
+                              title="${isWkBlurred ? 'Click to reveal Week ' + wk.wk : (isWkCurrent ? 'Current Week (Active)' : 'Click to blur Week ' + wk.wk)}">
+                        <span>${isWkBlurred ? '👁️ Reveal' : '👁️ Clear'}</span>
                       </button>
+
+                      <div class="step-progress-counter ${isWkDone ? 'done' : ''}">
+                        ${wkDoneCount} / ${allDaysInWk.length} Done
+                      </div>
+                      <div class="step-mini-bar" style="width: 75px; height: 6px;">
+                        <div class="step-mini-fill" style="width: ${wkPct}%; background: ${isWkDone ? 'var(--success)' : '#10b981'};"></div>
+                      </div>
+                      <div class="step-chevron">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                      </div>
                     </div>
-                  ` : ''}
-                  <div class="table-container ${isWkBlurred ? 'backend-week-blurred' : ''}">
-                    <table class="problem-table">
-                      <thead>
-                        <tr>
-                          <th class="col-status">Status</th>
-                          <th class="col-title">Day & Topic</th>
-                          <th class="col-diff">Technology</th>
-                          <th class="col-tier">Deliverable</th>
-                          <th class="col-practice">Resource</th>
-                          <th class="col-rev">Revise</th>
-                          <th class="col-notes">Notes</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        ${visibleDaysInWk.map(d => backendProblemRowHTML(d, todayKey)).join("")}
-                      </tbody>
-                    </table>
                   </div>
+
+                  <!-- Week Problem Table with Sleek Focus Blur -->
+                  <div class="step-content">
+                    <div class="focus-blur-container">
+                      ${isWkBlurred ? `
+                        <div class="focus-blur-overlay">
+                          <span>🔒 Week ${wk.wk} Hidden (Focus Mode)</span>
+                          <button class="nav-btn" onclick="toggleSingleWeekBlur(${wk.wk})" style="font-size: 11px; padding: 3px 10px; background: #10b981; border: none; color: #fff; border-radius: 99px; font-weight: 800; cursor: pointer;">
+                            👁️ Reveal Week ${wk.wk}
+                          </button>
+                        </div>
+                      ` : ''}
+
+                      <div class="table-container ${isWkBlurred ? 'backend-week-blurred' : ''}">
+                        <table class="problem-table">
+                          <thead>
+                            <tr>
+                              <th class="col-status">Status</th>
+                              <th class="col-title">Day & Topic</th>
+                              <th class="col-diff">Technology</th>
+                              <th class="col-tier">Deliverable</th>
+                              <th class="col-practice">Resource</th>
+                              <th class="col-rev">Revise</th>
+                              <th class="col-notes">Notes</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            ${visibleDaysInWk.map(d => backendProblemRowHTML(d, todayKey)).join("")}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
-              </div>
-            </div>
-          `;
-        });
-      }
+              `;
+            }).join("")}
+          </div>
+        `;
+      });
 
       html += `
           </div>
