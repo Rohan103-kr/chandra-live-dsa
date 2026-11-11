@@ -5377,8 +5377,9 @@
     const BACKEND_90_DAYS = BACKEND_150_DAYS; // Backward compatibility alias
 
     let currentAppMode = "dsa";
-    let backendGroupMode = "phases"; // "phases" or "weeks"
-    let backendExpandedSteps = new Set(["phase-1", "phase-2", "week-1", "week-2"]);
+    let backendGroupMode = "phases"; // "phases" (hierarchical phase->week) or "weeks"
+    let backendExpandedPhases = new Set([1]); // Phase 1 open by default
+    let backendExpandedWeeks = new Set([1, 2]); // Weeks 1 & 2 open by default
     let backendExpandedIntel = new Set();
     let backendActivePhase = "all";
     let backendActiveStatus = "all";
@@ -5459,21 +5460,31 @@
       renderBackendRoadmap();
     };
 
-    window.toggleBackendStep = function(stepId) {
-      if (backendExpandedSteps.has(stepId)) {
-        backendExpandedSteps.delete(stepId);
+    window.toggleBackendPhase = function(pid) {
+      if (backendExpandedPhases.has(pid)) {
+        backendExpandedPhases.delete(pid);
       } else {
-        backendExpandedSteps.add(stepId);
+        backendExpandedPhases.add(pid);
+      }
+      renderBackendRoadmap();
+    };
+
+    window.toggleBackendWeek = function(w) {
+      if (backendExpandedWeeks.has(w)) {
+        backendExpandedWeeks.delete(w);
+      } else {
+        backendExpandedWeeks.add(w);
       }
       renderBackendRoadmap();
     };
 
     window.toggleAllBackendSteps = function(open) {
       if (open) {
-        BACKEND_PHASES.forEach(p => backendExpandedSteps.add("phase-" + p.id));
-        BACKEND_WEEKS.forEach(w => backendExpandedSteps.add("week-" + w.wk));
+        BACKEND_PHASES.forEach(p => backendExpandedPhases.add(p.id));
+        BACKEND_WEEKS.forEach(w => backendExpandedWeeks.add(w.wk));
       } else {
-        backendExpandedSteps.clear();
+        backendExpandedPhases.clear();
+        backendExpandedWeeks.clear();
       }
       renderBackendRoadmap();
     };
@@ -5503,8 +5514,8 @@
       const targetPhase = matchDay ? matchDay.phase : 1;
       const targetWeek = matchDay ? matchDay.week : 1;
 
-      backendExpandedSteps.add("phase-" + targetPhase);
-      backendExpandedSteps.add("week-" + targetWeek);
+      backendExpandedPhases.add(targetPhase);
+      backendExpandedWeeks.add(targetWeek);
       backendActivePhase = "all";
       backendActiveStatus = "all";
       backendActiveTech = "all";
@@ -5527,8 +5538,8 @@
       const pool = pending.length > 0 ? pending : BACKEND_150_DAYS;
       const picked = pool[Math.floor(Math.random() * pool.length)];
 
-      backendExpandedSteps.add("phase-" + picked.phase);
-      backendExpandedSteps.add("week-" + picked.week);
+      backendExpandedPhases.add(picked.phase);
+      backendExpandedWeeks.add(picked.week);
       renderBackendRoadmap();
 
       setTimeout(() => {
@@ -5541,6 +5552,76 @@
       }, 100);
       showToast("🎲 Picked Day " + picked.day + ": " + picked.topic);
     };
+
+    function backendProblemRowHTML(d, todayKey) {
+      const p = getBackendProg(d.day);
+      const isSolved = p.s === 2;
+      const isToday = d.date === todayKey;
+      const isIntelOpen = backendExpandedIntel.has(d.day);
+
+      return `
+        <tr class="prob-row ${isSolved ? "is-solved" : ""} ${isToday ? "pulse-today" : ""}" id="backend-day-row-${d.day}">
+          <td class="col-status">
+            <button class="status-btn status-${p.s}" onclick="toggleBackendDayStatus(${d.day})" title="${isSolved ? 'Mark as Pending' : 'Mark as Mastered'}">
+              ${isSolved ? '✓' : '○'}
+            </button>
+          </td>
+
+          <td class="col-title">
+            <div class="prob-title-row">
+              <span class="prob-schedule-tag" style="background: rgba(16, 185, 129, 0.1); color: #10b981; border-color: rgba(16, 185, 129, 0.25);">
+                Day ${d.day} · ${esc(d.dateFmt.split(',')[0])}, ${esc(d.dateFmt.split(',')[1].trim().split(' ').slice(0, 2).join(' '))}
+              </span>
+              ${isToday ? '<span style="font-size: 10px; font-weight: 800; background: #10b981; color: #fff; padding: 1px 7px; border-radius: 99px;">TODAY</span>' : ''}
+              <span class="prob-title-text" style="cursor: default; font-weight: 700;">
+                ${esc(d.topic)}
+              </span>
+              <button class="intel-toggle-btn" onclick="toggleBackendIntel(${d.day})" title="Toggle topic architecture and practical deliverable">
+                💡 Intel
+              </button>
+            </div>
+
+            <div class="intel-drawer ${isIntelOpen ? 'open' : ''}" style="display: ${isIntelOpen ? 'block' : 'none'}; margin-top: 6px;">
+              <div style="font-size: 12px; line-height: 1.5; color: var(--text-muted); display: flex; flex-direction: column; gap: 4px;">
+                <div>⚙️ <strong>Architecture & Scope:</strong> ${esc(d.desc)}</div>
+                <div>🎯 <strong>Practical Deliverable:</strong> ${esc(d.deliverable)}</div>
+                <div>📅 <strong>Calendar Milestone:</strong> Phase ${d.phase} · Week ${d.week} (${esc(d.dateFmt)})</div>
+              </div>
+            </div>
+          </td>
+
+          <td class="col-diff">
+            <span class="diff-pill diff-easy" style="background: rgba(16, 185, 129, 0.12); color: #10b981; border-color: rgba(16, 185, 129, 0.25); white-space: nowrap;">
+              ${esc(d.tech)}
+            </span>
+          </td>
+
+          <td class="col-tier">
+            <span class="tier-pill tier-1" title="${esc(d.deliverable)}" style="max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block;">
+              🎯 ${esc(d.deliverable)}
+            </span>
+          </td>
+
+          <td class="col-practice">
+            <a href="${esc(d.link)}" target="_blank" rel="noopener" class="practice-btn practice-lc" style="text-decoration: none;" title="Open official documentation">
+              Docs ↗
+            </a>
+          </td>
+
+          <td class="col-rev">
+            <button class="rev-btn ${p.b ? "is-active" : ""}" title="${p.b ? "Remove bookmark" : "Bookmark for revision"}" onclick="toggleBackendDayBookmark(${d.day})">
+              ${p.b ? "★" : "☆"}
+            </button>
+          </td>
+
+          <td class="col-notes">
+            <button class="notes-btn ${p.n && p.n.trim() ? "has-note" : ""}" title="${p.n && p.n.trim() ? "Edit note" : "Add note"}" onclick="openBackendNoteModal(${d.day})">
+              ${p.n && p.n.trim() ? "📝 Note ✓" : "📝 Note"}
+            </button>
+          </td>
+        </tr>
+      `;
+    }
 
     function renderBackendRoadmap() {
       const container = $("backend-ai-app-view");
@@ -5585,30 +5666,6 @@
         return true;
       });
 
-      // Determine groups (by Phase or by Week)
-      let groups = [];
-      if (backendGroupMode === "weeks") {
-        groups = BACKEND_WEEKS.map(w => ({
-          id: "week-" + w.wk,
-          badge: "WEEK " + String(w.wk).padStart(2, "0"),
-          title: w.title,
-          subtext: w.dates + " · Phase " + w.phase,
-          deliverable: w.deliverable,
-          filterFn: d => d.week === w.wk,
-          isCurrent: currentDayMatch && currentDayMatch.week === w.wk
-        }));
-      } else {
-        groups = BACKEND_PHASES.map(p => ({
-          id: "phase-" + p.id,
-          badge: p.badge,
-          title: p.title,
-          subtext: p.dates,
-          deliverable: p.deliverable,
-          filterFn: d => d.phase === p.id,
-          isCurrent: currentDayMatch && currentDayMatch.phase === p.id
-        }));
-      }
-
       let html = `
         <div class="backend-ai-container" style="max-width: 1400px; margin: 0 auto;">
           
@@ -5641,7 +5698,7 @@
                     <span>⚡</span> 150-Day Production Backend & AI Architecture Sheet
                   </h2>
                   <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 2px;">
-                    Day-by-day DSA-style tracking: Node.js Internals, V8/LibUV, gRPC, Kafka, Redis, Distributed Sagas, AWS Cloud, Docker & Applied AI · 3 Nov 2026 – 1 Apr 2027.
+                    Hierarchical tracking: 5 Phases · 22 Weeks · 150 Days across Node.js Internals, Distributed Systems, Microservices, Sagas, Kafka & Applied AI.
                   </p>
                 </div>
                 <a href="https://courses.algocamp.io/learn/Lambda5" target="_blank" rel="noopener" class="nav-btn" style="font-size: 12px; background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3); color: #10b981; text-decoration: none;">
@@ -5666,14 +5723,14 @@
                   </button>
                 </div>
 
-                <!-- Grouping Toggle: 5 Phases vs 22 Weeks -->
+                <!-- Grouping Mode Switch -->
                 <div style="display: flex; background: var(--surface-alt); border-radius: 8px; padding: 2px; border: 1px solid var(--border); align-items: center;">
-                  <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); padding: 0 8px;">View:</span>
+                  <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); padding: 0 8px;">Structure:</span>
                   <button class="nav-btn" onclick="setBackendGroupMode('phases')" style="font-size: 11.5px; padding: 4px 10px; border-radius: 6px; border: none; ${backendGroupMode === 'phases' ? 'background: #10b981; color: #fff; font-weight: 800;' : 'background: transparent; color: var(--text);'}">
-                    5 Phases
+                    Phases ➔ Weeks
                   </button>
                   <button class="nav-btn" onclick="setBackendGroupMode('weeks')" style="font-size: 11.5px; padding: 4px 10px; border-radius: 6px; border: none; ${backendGroupMode === 'weeks' ? 'background: #10b981; color: #fff; font-weight: 800;' : 'background: transparent; color: var(--text);'}">
-                    22 Weeks
+                    22 Weeks Only
                   </button>
                 </div>
               </div>
@@ -5723,145 +5780,225 @@
             </div>
           </div>
 
-          <!-- DSA-Style Accordion Step Cards with Problem Tables -->
+          <!-- Hierarchical Accordion View -->
           <div class="backend-sheet-list">
-            ${groups.map(grp => {
-              const allDaysInGrp = BACKEND_150_DAYS.filter(grp.filterFn);
-              const visibleDays = filteredDays.filter(grp.filterFn);
+      `;
+
+      if (backendGroupMode === "phases") {
+        // HIERARCHICAL MODE: PHASES -> WEEKS -> PROBLEM TABLE
+        BACKEND_PHASES.forEach(phase => {
+          const allDaysInPhase = BACKEND_150_DAYS.filter(d => d.phase === phase.id);
+          const visibleDaysInPhase = filteredDays.filter(d => d.phase === phase.id);
+
+          if (visibleDaysInPhase.length === 0 && (backendActivePhase !== "all" || backendSearchQuery || backendActiveStatus !== "all" || backendActiveTech !== "all")) {
+            return;
+          }
+
+          const phaseDoneCount = allDaysInPhase.filter(d => getBackendProg(d.day).s === 2).length;
+          const isPhaseDone = phaseDoneCount === allDaysInPhase.length && allDaysInPhase.length > 0;
+          const phasePct = Math.round((phaseDoneCount / allDaysInPhase.length) * 100);
+          const isPhaseOpen = backendExpandedPhases.has(phase.id) || backendSearchQuery.length > 0;
+          const isPhaseCurrent = currentDayMatch && currentDayMatch.phase === phase.id;
+
+          const weeksInPhase = BACKEND_WEEKS.filter(w => w.phase === phase.id);
+
+          html += `
+            <div class="step-card ${isPhaseOpen ? 'open' : ''} ${isPhaseDone ? 'completed' : ''}" id="backend-phase-${phase.id}" style="margin-bottom: 16px; border: 1.5px solid ${isPhaseCurrent ? '#10b981' : 'var(--border)'};">
               
-              if (visibleDays.length === 0 && (backendActivePhase !== "all" || backendSearchQuery || backendActiveStatus !== "all" || backendActiveTech !== "all")) {
-                return "";
-              }
-
-              const doneCount = allDaysInGrp.filter(d => getBackendProg(d.day).s === 2).length;
-              const isAllDone = doneCount === allDaysInGrp.length && allDaysInGrp.length > 0;
-              const percent = Math.round((doneCount / allDaysInGrp.length) * 100);
-              const isOpen = backendExpandedSteps.has(grp.id) || backendSearchQuery.length > 0;
-
-              return `
-                <div class="step-card ${isOpen ? "open" : ""} ${isAllDone ? "completed" : ""}" id="backend-group-${grp.id}" style="margin-bottom: 12px;">
-                  <div class="step-header" onclick="toggleBackendStep('${grp.id}')">
-                    <div class="step-info" style="display: flex; align-items: center; gap: 12px; min-width: 0;">
-                      <span class="step-badge ${isAllDone ? "completed-badge" : ""}" style="${!isAllDone ? 'background: rgba(16, 185, 129, 0.12); color: #10b981; border-color: rgba(16, 185, 129, 0.25);' : ''}">
-                        ${grp.badge}
-                      </span>
-                      <div class="step-title-area">
-                        <div class="step-title">
-                          ${esc(grp.title)}
-                          ${grp.isCurrent ? '<span style="font-size: 10px; font-weight: 800; background: #10b981; color: #fff; padding: 1px 7px; border-radius: 99px;">CURRENT</span>' : ''}
-                        </div>
-                        <div class="step-subtext">
-                          ${esc(grp.subtext)} · <em>${esc(grp.deliverable)}</em>
-                        </div>
-                      </div>
+              <!-- Phase Header -->
+              <div class="step-header" onclick="toggleBackendPhase(${phase.id})" style="background: var(--surface); padding: 16px 20px;">
+                <div class="step-info" style="display: flex; align-items: center; gap: 14px; min-width: 0;">
+                  <span class="step-badge ${isPhaseDone ? 'completed-badge' : ''}" style="${!isPhaseDone ? 'background: rgba(16, 185, 129, 0.14); color: #10b981; border-color: rgba(16, 185, 129, 0.3); font-size: 11.5px;' : ''}">
+                    ${phase.badge}
+                  </span>
+                  <div class="step-title-area">
+                    <div class="step-title" style="font-size: 16px; font-weight: 800;">
+                      ${esc(phase.title)}
+                      ${isPhaseCurrent ? '<span style="font-size: 10px; font-weight: 800; background: #10b981; color: #fff; padding: 2px 7px; border-radius: 99px;">CURRENT PHASE</span>' : ''}
                     </div>
-
-                    <div class="step-progress-area">
-                      <div class="step-progress-counter ${isAllDone ? "done" : ""}">
-                        ${doneCount} / ${allDaysInGrp.length} Done
-                      </div>
-                      <div class="step-mini-bar">
-                        <div class="step-mini-fill" style="width: ${percent}%; background: ${isAllDone ? 'var(--success)' : '#10b981'};"></div>
-                      </div>
-                      <div class="step-chevron">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                          <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="step-content">
-                    <div class="table-container">
-                      <table class="problem-table">
-                        <thead>
-                          <tr>
-                            <th class="col-status">Status</th>
-                            <th class="col-title">Day & Topic</th>
-                            <th class="col-diff">Technology</th>
-                            <th class="col-tier">Deliverable</th>
-                            <th class="col-practice">Resource</th>
-                            <th class="col-rev">Revise</th>
-                            <th class="col-notes">Notes</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          ${visibleDays.map(d => {
-                            const p = getBackendProg(d.day);
-                            const isSolved = p.s === 2;
-                            const isToday = d.date === todayKey;
-                            const isIntelOpen = backendExpandedIntel.has(d.day);
-
-                            return `
-                              <tr class="prob-row ${isSolved ? "is-solved" : ""} ${isToday ? "pulse-today" : ""}" id="backend-day-row-${d.day}">
-                                <td class="col-status">
-                                  <button class="status-btn status-${p.s}" onclick="toggleBackendDayStatus(${d.day})" title="${isSolved ? 'Mark as Pending' : 'Mark as Mastered'}">
-                                    ${isSolved ? '✓' : '○'}
-                                  </button>
-                                </td>
-
-                                <td class="col-title">
-                                  <div class="prob-title-row">
-                                    <span class="prob-schedule-tag" style="background: rgba(16, 185, 129, 0.1); color: #10b981; border-color: rgba(16, 185, 129, 0.25);">
-                                      Day ${d.day} · ${esc(d.dateFmt.split(',')[0])}, ${esc(d.dateFmt.split(',')[1].trim().split(' ').slice(0, 2).join(' '))}
-                                    </span>
-                                    ${isToday ? '<span style="font-size: 10px; font-weight: 800; background: #10b981; color: #fff; padding: 1px 7px; border-radius: 99px;">TODAY</span>' : ''}
-                                    <span class="prob-title-text" style="cursor: default; font-weight: 700;">
-                                      ${esc(d.topic)}
-                                    </span>
-                                    <button class="intel-toggle-btn" onclick="toggleBackendIntel(${d.day})" title="Toggle topic architecture and practical deliverable">
-                                      💡 Intel
-                                    </button>
-                                  </div>
-
-                                  <div class="intel-drawer ${isIntelOpen ? 'open' : ''}" style="display: ${isIntelOpen ? 'block' : 'none'}; margin-top: 6px;">
-                                    <div style="font-size: 12px; line-height: 1.5; color: var(--text-muted); display: flex; flex-direction: column; gap: 4px;">
-                                      <div>⚙️ <strong>Architecture & Scope:</strong> ${esc(d.desc)}</div>
-                                      <div>🎯 <strong>Practical Deliverable:</strong> ${esc(d.deliverable)}</div>
-                                      <div>📅 <strong>Calendar Milestone:</strong> Phase ${d.phase} · Week ${d.week} (${esc(d.dateFmt)})</div>
-                                    </div>
-                                  </div>
-                                </td>
-
-                                <td class="col-diff">
-                                  <span class="diff-pill diff-easy" style="background: rgba(16, 185, 129, 0.12); color: #10b981; border-color: rgba(16, 185, 129, 0.25); white-space: nowrap;">
-                                    ${esc(d.tech)}
-                                  </span>
-                                </td>
-
-                                <td class="col-tier">
-                                  <span class="tier-pill tier-1" title="${esc(d.deliverable)}" style="max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block;">
-                                    🎯 ${esc(d.deliverable)}
-                                  </span>
-                                </td>
-
-                                <td class="col-practice">
-                                  <a href="${esc(d.link)}" target="_blank" rel="noopener" class="practice-btn practice-lc" style="text-decoration: none;" title="Open official documentation">
-                                    Docs ↗
-                                  </a>
-                                </td>
-
-                                <td class="col-rev">
-                                  <button class="rev-btn ${p.b ? "is-active" : ""}" title="${p.b ? "Remove bookmark" : "Bookmark for revision"}" onclick="toggleBackendDayBookmark(${d.day})">
-                                    ${p.b ? "★" : "☆"}
-                                  </button>
-                                </td>
-
-                                <td class="col-notes">
-                                  <button class="notes-btn ${p.n && p.n.trim() ? "has-note" : ""}" title="${p.n && p.n.trim() ? "Edit note" : "Add note"}" onclick="openBackendNoteModal(${d.day})">
-                                    ${p.n && p.n.trim() ? "📝 Note ✓" : "📝 Note"}
-                                  </button>
-                                </td>
-                              </tr>
-                            `;
-                          }).join("")}
-                        </tbody>
-                      </table>
+                    <div class="step-subtext" style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">
+                      ${esc(phase.dates)} · <em>${esc(phase.deliverable)}</em>
                     </div>
                   </div>
                 </div>
-              `;
-            }).join("")}
+
+                <div class="step-progress-area">
+                  <div class="step-progress-counter ${isPhaseDone ? 'done' : ''}" style="font-size: 13px; font-weight: 700;">
+                    ${phaseDoneCount} / ${allDaysInPhase.length} Days Done
+                  </div>
+                  <div class="step-mini-bar" style="width: 100px; height: 8px;">
+                    <div class="step-mini-fill" style="width: ${phasePct}%; background: ${isPhaseDone ? 'var(--success)' : '#10b981'};"></div>
+                  </div>
+                  <div class="step-chevron">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Phase Content: DIVIDED WEEK-WISE! -->
+              <div class="step-content" style="padding: 14px 16px; background: var(--surface-alt); border-top: 1px solid var(--border);">
+                <div style="font-size: 11.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                  <span>📅 Weeks inside ${phase.badge} (${weeksInPhase.length} Weeks)</span>
+                  <span>Click any week to toggle its day table</span>
+                </div>
+
+                ${weeksInPhase.map(wk => {
+                  const allDaysInWk = BACKEND_150_DAYS.filter(d => d.week === wk.wk);
+                  const visibleDaysInWk = filteredDays.filter(d => d.week === wk.wk);
+
+                  if (visibleDaysInWk.length === 0 && (backendActivePhase !== "all" || backendSearchQuery || backendActiveStatus !== "all" || backendActiveTech !== "all")) {
+                    return "";
+                  }
+
+                  const wkDoneCount = allDaysInWk.filter(d => getBackendProg(d.day).s === 2).length;
+                  const isWkDone = wkDoneCount === allDaysInWk.length && allDaysInWk.length > 0;
+                  const wkPct = Math.round((wkDoneCount / allDaysInWk.length) * 100);
+                  const isWkCurrent = currentDayMatch && currentDayMatch.week === wk.wk;
+                  const isWkOpen = backendExpandedWeeks.has(wk.wk) || backendSearchQuery.length > 0;
+
+                  return `
+                    <div class="backend-week-card ${isWkOpen ? 'open' : ''} ${isWkCurrent ? 'is-current-week' : ''}" id="backend-week-${wk.wk}" style="background: var(--surface); margin-bottom: 12px; border-radius: 10px; border: 1px solid ${isWkCurrent ? '#10b981' : 'var(--border)'};">
+                      
+                      <!-- Week Header -->
+                      <div class="backend-week-header" onclick="toggleBackendWeek(${wk.wk})" style="padding: 12px 16px;">
+                        <div class="backend-week-info" style="display: flex; align-items: center; gap: 12px; min-width: 0;">
+                          <span class="backend-week-badge" style="font-size: 10.5px;">
+                            WEEK ${String(wk.wk).padStart(2, '0')}
+                          </span>
+                          <div>
+                            <div class="backend-week-title" style="font-size: 14px; font-weight: 700;">
+                              ${esc(wk.title)}
+                              ${isWkCurrent ? '<span style="font-size: 9.5px; font-weight: 800; background: #10b981; color: #fff; padding: 1px 6px; border-radius: 4px;">CURRENT WEEK</span>' : ''}
+                            </div>
+                            <div class="backend-week-sub" style="font-size: 11.5px; color: var(--text-muted); margin-top: 1px;">
+                              ${esc(wk.dates)} · <em>🎯 ${esc(wk.deliverable)}</em>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 12px; flex-shrink: 0;">
+                          <span class="step-progress-counter ${isWkDone ? 'done' : ''}" style="font-size: 11.5px;">
+                            ${wkDoneCount} / ${allDaysInWk.length} Done
+                          </span>
+                          <div class="step-mini-bar" style="width: 70px; height: 6px;">
+                            <div class="step-mini-fill" style="width: ${wkPct}%; background: ${isWkDone ? 'var(--success)' : '#10b981'};"></div>
+                          </div>
+                          <div class="step-chevron">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                              <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Week Problem Table -->
+                      <div class="backend-week-content" style="border-top: 1px solid var(--border);">
+                        <div class="table-container">
+                          <table class="problem-table">
+                            <thead>
+                              <tr>
+                                <th class="col-status">Status</th>
+                                <th class="col-title">Day & Topic</th>
+                                <th class="col-diff">Technology</th>
+                                <th class="col-tier">Deliverable</th>
+                                <th class="col-practice">Resource</th>
+                                <th class="col-rev">Revise</th>
+                                <th class="col-notes">Notes</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              ${visibleDaysInWk.map(d => backendProblemRowHTML(d, todayKey)).join("")}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                    </div>
+                  `;
+                }).join("")}
+
+              </div>
+
+            </div>
+          `;
+        });
+      } else {
+        // FLAT 22-WEEK VIEW
+        BACKEND_WEEKS.forEach(wk => {
+          const allDaysInWk = BACKEND_150_DAYS.filter(d => d.week === wk.wk);
+          const visibleDaysInWk = filteredDays.filter(d => d.week === wk.wk);
+
+          if (visibleDaysInWk.length === 0 && (backendActivePhase !== "all" || backendSearchQuery || backendActiveStatus !== "all" || backendActiveTech !== "all")) {
+            return;
+          }
+
+          const wkDoneCount = allDaysInWk.filter(d => getBackendProg(d.day).s === 2).length;
+          const isWkDone = wkDoneCount === allDaysInWk.length && allDaysInWk.length > 0;
+          const wkPct = Math.round((wkDoneCount / allDaysInWk.length) * 100);
+          const isWkCurrent = currentDayMatch && currentDayMatch.week === wk.wk;
+          const isWkOpen = backendExpandedWeeks.has(wk.wk) || backendSearchQuery.length > 0;
+
+          html += `
+            <div class="step-card ${isWkOpen ? 'open' : ''} ${isWkDone ? 'completed' : ''}" id="backend-week-${wk.wk}" style="margin-bottom: 12px;">
+              <div class="step-header" onclick="toggleBackendWeek(${wk.wk})">
+                <div class="step-info" style="display: flex; align-items: center; gap: 12px; min-width: 0;">
+                  <span class="step-badge ${isWkDone ? 'completed-badge' : ''}" style="${!isWkDone ? 'background: rgba(16, 185, 129, 0.12); color: #10b981; border-color: rgba(16, 185, 129, 0.25);' : ''}">
+                    WEEK ${String(wk.wk).padStart(2, '0')}
+                  </span>
+                  <div class="step-title-area">
+                    <div class="step-title">
+                      ${esc(wk.title)}
+                      ${isWkCurrent ? '<span style="font-size: 10px; font-weight: 800; background: #10b981; color: #fff; padding: 1px 7px; border-radius: 99px;">CURRENT</span>' : ''}
+                    </div>
+                    <div class="step-subtext">
+                      ${esc(wk.dates)} · Phase ${wk.phase} · <em>${esc(wk.deliverable)}</em>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="step-progress-area">
+                  <div class="step-progress-counter ${isWkDone ? 'done' : ''}">
+                    ${wkDoneCount} / ${allDaysInWk.length} Done
+                  </div>
+                  <div class="step-mini-bar">
+                    <div class="step-mini-fill" style="width: ${wkPct}%; background: ${isWkDone ? 'var(--success)' : '#10b981'};"></div>
+                  </div>
+                  <div class="step-chevron">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step-content">
+                <div class="table-container">
+                  <table class="problem-table">
+                    <thead>
+                      <tr>
+                        <th class="col-status">Status</th>
+                        <th class="col-title">Day & Topic</th>
+                        <th class="col-diff">Technology</th>
+                        <th class="col-tier">Deliverable</th>
+                        <th class="col-practice">Resource</th>
+                        <th class="col-rev">Revise</th>
+                        <th class="col-notes">Notes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${visibleDaysInWk.map(d => backendProblemRowHTML(d, todayKey)).join("")}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+      }
+
+      html += `
           </div>
 
           <!-- Flagship Projects Showcase (12 Production Deliverables) -->
